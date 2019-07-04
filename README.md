@@ -1,7 +1,7 @@
 # *Lambda*X
 The *Lambda***X** library contains utility classes for writing code in the chaining style and useful lambdas.
 
-##Examples
+## Examples
 Write code in the chaining style:
 ```java
 Map<Number, CharSequence> map = new HashMapint one = 1;
@@ -31,4 +31,4 @@ String value = Optional.of(map)
         .orElse(null);
 ```
 
-######Coming soon
+###### Coming soon...
