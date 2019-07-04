@@ -10,7 +10,9 @@
     <packaging>jar</packaging>
 
     <name>LambdaX</name>
-    <description>Enhancing Java 8 Lambda</description>
+    <description>The LambdaX library contains utility classes for writing code in the chaining style and useful
+        lambdas
+    </description>
     <url>https://github.com/alexengrig/lambdax</url>
 
     <developers>
