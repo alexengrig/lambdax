@@ -1,3 +1,5 @@
+<img src="https://repository-images.githubusercontent.com/195124600/d08bbd00-9e4d-11e9-9fdb-c6e7eb1a898a" title="LambdaX" alt="LambdaX logo">
+
 # *Lambda*X
 The *Lambda***X** library contains utility classes for writing code in the chaining style and useful lambdas.
 
