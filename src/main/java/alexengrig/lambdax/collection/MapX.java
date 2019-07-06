@@ -15,7 +15,7 @@ import java.util.function.Predicate;
  * @see Predicate
  * @since 0.1.0
  */
-public class MapX {
+public final class MapX {
     private MapX() {
     }
 
