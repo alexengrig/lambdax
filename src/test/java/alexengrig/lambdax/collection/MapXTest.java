@@ -37,7 +37,7 @@ public class MapXTest {
         String value = "three";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Function<Map<? super Number, ?>, ? super CharSequence> getByKey = MapX.get(key);
+        Function<Map<? super Number, ? extends CharSequence>, ? super CharSequence> getByKey = MapX.get(key);
         assertEquals(value, getByKey.apply(numberWords));
     }
 
@@ -47,7 +47,7 @@ public class MapXTest {
         String value = "four";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Function<Map<? super Number, ? super CharSequence>, ? extends CharSequence> putKeyAndValue = MapX.put(key, value);
+        Function<Map<? super Number, ? super CharSequence>, ? super CharSequence> putKeyAndValue = MapX.put(key, value);
         assertEquals(value, putKeyAndValue.apply(numberWords));
     }
 

@@ -32,7 +32,7 @@ public final class MapX {
     }
 
     @SuppressWarnings("unchecked")
-    public static <K, V> Function<Map<? super K, ? super V>, ? extends V> put(K key, V value) {
+    public static <K, V> Function<Map<? super K, ? super V>, ? super V> put(K key, V value) {
         return map -> (V) map.put(key, value);
     }
 
