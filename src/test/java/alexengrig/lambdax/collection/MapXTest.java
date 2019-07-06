@@ -1,6 +1,5 @@
 package alexengrig.lambdax.collection;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -8,77 +7,102 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MapXTest {
-    private Map<Number, CharSequence> map = new HashMap<>();
-    private Integer key = 1;
-    private String value = "Value from map";
-
-    @Before
-    public void fillMap() {
-        map.put(key, value);
+    @Test
+    public void checkContainsKey() {
+        int key = 1;
+        String value = "one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Predicate<Map<? extends Number, ? extends CharSequence>> containsKey = MapX.containsKey(key);
+        assertTrue(containsKey.test(numberWords));
     }
 
     @Test
-    public void checkContainsByKey() {
-        Predicate<Map<? extends Number, ? extends CharSequence>> containsByKey = MapX.containsByKey(key);
-        assertTrue(containsByKey.test(map));
-    }
-
-    @Test
-    public void checkContainsByValue() {
-        Predicate<Map<? extends Number, ? extends CharSequence>> containsByValue = MapX.containsByValue(value);
-        assertTrue(containsByValue.test(map));
+    public void checkContainsValue() {
+        int key = 2;
+        String value = "two";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Predicate<Map<? extends Number, ? extends CharSequence>> containsValue = MapX.containsValue(value);
+        assertTrue(containsValue.test(numberWords));
     }
 
     @Test
     public void checkGet() {
-        Function<Map<? super Number, ? extends CharSequence>, CharSequence> getByKey = MapX.get(key);
-        assertEquals(value, getByKey.apply(map));
+        int key = 3;
+        String value = "three";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Function<Map<? super Number, ?>, ? super CharSequence> getByKey = MapX.get(key);
+        assertEquals(value, getByKey.apply(numberWords));
     }
 
     @Test
     public void checkPut() {
-        Function<Map<? super Number, ? super CharSequence>, CharSequence> putKeyWithValue = MapX.put(key, value);
-        assertEquals(value, putKeyWithValue.apply(map));
-    }
-
-    @Test
-    public void checkRemove() {
-        int keyForRemove = 13;
-        String valueForRemove = "Value for remove";
-        map.put(keyForRemove, valueForRemove);
-        Function<Map<? extends Number, ?>, Object> removeByKey = MapX.remove(keyForRemove);
-        assertEquals(valueForRemove, removeByKey.apply(map));
+        int key = 4;
+        String value = "four";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Function<Map<? super Number, ? super CharSequence>, ? extends CharSequence> putKeyAndValue = MapX.put(key, value);
+        assertEquals(value, putKeyAndValue.apply(numberWords));
     }
 
     @Test
     public void checkPutAll() {
-        Map<Integer, String> newMap = new HashMap<>();
-        int keyForNewMap = 69;
-        String valueForNewMap = "Value for new map";
-        newMap.put(keyForNewMap, valueForNewMap);
-        Consumer<Map<? super Integer, ? super String>> putAll = MapX.putAll(newMap);
-        putAll.accept(map);
-        assertTrue(map.containsKey(keyForNewMap));
-        assertTrue(map.containsValue(valueForNewMap));
+        int key = 5;
+        String value = "five";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        Map<Integer, String> other = new HashMap<>();
+        other.put(key, value);
+        Consumer<Map<? super Number, ? super CharSequence>> putAllValues = MapX.putAll(other);
+        putAllValues.accept(numberWords);
+        assertTrue(numberWords.containsKey(key));
     }
 
     @Test
-    public void checkEqualsTo() {
-        Map<Number, CharSequence> other = map.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        Predicate<Map<? super Number, ? super CharSequence>> equalsTo = MapX.equalsTo(other);
-        assertTrue(equalsTo.test(map));
+    public void checkOnlyPut() {
+        int key = 6;
+        String value = "six";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        Consumer<Map<? super Number, ? super CharSequence>> onlyPutKeyAndValue = MapX.onlyPut(key, value);
+        onlyPutKeyAndValue.accept(numberWords);
+        assertTrue(numberWords.containsKey(key));
     }
 
     @Test
-    public void checkGetOrDefault() {
-        String defaultValue = "Default value";
-        Function<Map<? super Number, ? super CharSequence>, CharSequence> getOrDefault = MapX.getOrDefault(100, defaultValue);
-        assertEquals(defaultValue, getOrDefault.apply(map));
+    public void checkRemove() {
+        int key = 7;
+        String value = "seven";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Function<Map<? extends Number, ? extends CharSequence>, ? extends CharSequence> removeByKey = MapX.remove(key);
+        assertEquals(value, removeByKey.apply(numberWords));
+    }
+
+    @Test
+    public void checkOnlyRemove() {
+        int key = 8;
+        String value = "eight";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Consumer<Map<? extends Number, ? extends CharSequence>> onlyRemoveByKey = MapX.onlyRemove(key);
+        onlyRemoveByKey.accept(numberWords);
+        assertFalse(numberWords.containsKey(key));
+    }
+
+    @Test
+    public void checkEquals() {
+        int key = 9;
+        String value = "nine";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Integer, String> other = new HashMap<>();
+        other.put(key, value);
+        Predicate<Map<? super Number, ? super CharSequence>> equalsToOther = MapX.equalsTo(other);
+        assertTrue(equalsToOther.test(numberWords));
     }
 }
