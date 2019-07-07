@@ -29,6 +29,14 @@
     <description>The LambdaX library contains utility classes with useful lambdas</description>
     <url>https://github.com/alexengrig/lambdax</url>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
             <name>Grig Alex</name>
