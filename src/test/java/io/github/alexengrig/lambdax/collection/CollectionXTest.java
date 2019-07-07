@@ -14,62 +14,62 @@
  * limitations under the License.
  */
 
-package alexengrig.lambdax.collection;
+package io.github.alexengrig.lambdax.collection;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static org.junit.Assert.*;
 
-public class SetXTest {
+public class CollectionXTest {
     @Test
     public void checkContains() {
         int value = 1;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Predicate<Set<? extends Number>> containsValue = SetX.contains(value);
+        Predicate<Collection<? extends Number>> containsValue = CollectionX.contains(value);
         assertTrue(containsValue.test(numbers));
     }
 
     @Test
     public void checkContainsAll() {
         int value = 2;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Set<Integer> values = new HashSet<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Set<? extends Number>> containsAllValues = SetX.containsAll(values);
+        Predicate<Collection<? extends Number>> containsAllValues = CollectionX.containsAll(values);
         assertTrue(containsAllValues.test(numbers));
     }
 
     @Test
     public void checkAdd() {
         int value = 3;
-        Set<Number> numbers = new HashSet<>();
-        Predicate<Set<? super Number>> addValue = SetX.add(value);
+        Collection<Number> numbers = new ArrayList<>();
+        Predicate<Collection<? super Number>> addValue = CollectionX.add(value);
         assertTrue(addValue.test(numbers));
     }
 
     @Test
     public void checkAddAll() {
         int value = 4;
-        Set<Number> numbers = new HashSet<>();
-        Set<Integer> values = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Set<? super Number>> addAllValues = SetX.addAll(values);
+        Predicate<Collection<? super Number>> addAllValues = CollectionX.addAll(values);
         assertTrue(addAllValues.test(numbers));
     }
 
     @Test
     public void checkOnlyAdd() {
         int value = 5;
-        Set<Number> numbers = new HashSet<>();
-        Consumer<Set<? super Number>> onlyAddValue = SetX.onlyAdd(value);
+        Collection<Number> numbers = new ArrayList<>();
+        Consumer<Collection<? super Number>> onlyAddValue = CollectionX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -77,10 +77,10 @@ public class SetXTest {
     @Test
     public void checkOnlyAddAll() {
         int value = 6;
-        Set<Number> numbers = new HashSet<>();
-        Set<Integer> values = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Consumer<Set<? super Number>> onlyAddAllValues = SetX.onlyAddAll(values);
+        Consumer<Collection<? super Number>> onlyAddAllValues = CollectionX.onlyAddAll(values);
         onlyAddAllValues.accept(numbers);
         assertTrue(numbers.containsAll(values));
     }
@@ -88,29 +88,29 @@ public class SetXTest {
     @Test
     public void checkRemove() {
         int value = 7;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Predicate<Set<? super Number>> removeValue = SetX.remove(value);
+        Predicate<Collection<? super Integer>> removeValue = CollectionX.remove(value);
         assertTrue(removeValue.test(numbers));
     }
 
     @Test
     public void checkRemoveAll() {
         int value = 8;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Set<Integer> values = new HashSet<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Set<? super Number>> removeAllValues = SetX.removeAll(values);
+        Predicate<Collection<? super Number>> removeAllValues = CollectionX.removeAll(values);
         assertTrue(removeAllValues.test(numbers));
     }
 
     @Test
     public void checkOnlyRemove() {
         int value = 9;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Consumer<Set<? super Number>> onlyRemoveValue = SetX.onlyRemove(value);
+        Consumer<Collection<? super Integer>> onlyRemoveValue = CollectionX.onlyRemove(value);
         onlyRemoveValue.accept(numbers);
         assertFalse(numbers.contains(value));
     }
@@ -118,34 +118,34 @@ public class SetXTest {
     @Test
     public void checkOnlyRemoveAll() {
         int value = 10;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Set<Integer> values = new HashSet<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Consumer<Set<? super Number>> removeAllValues = SetX.onlyRemoveAll(values);
-        removeAllValues.accept(numbers);
+        Consumer<Collection<? super Number>> onlyRemoveAllValues = CollectionX.onlyRemoveAll(values);
+        onlyRemoveAllValues.accept(numbers);
         assertFalse(numbers.containsAll(values));
     }
 
     @Test
     public void checkRetainAll() {
         int value = 11;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Set<Integer> values = new HashSet<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Set<? super Number>> retainAllValues = SetX.retainAll(values);
+        Predicate<Collection<? super Number>> retainAllValues = CollectionX.retainAll(values);
         assertFalse(retainAllValues.test(numbers));
     }
 
     @Test
     public void checkOnlyRetainAll() {
         int value = 12;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Set<Integer> values = new HashSet<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Consumer<Set<? super Number>> onlyRetainAllValues = SetX.onlyRetainAll(values);
+        Consumer<Collection<? super Number>> onlyRetainAllValues = CollectionX.onlyRetainAll(values);
         onlyRetainAllValues.accept(numbers);
         assertTrue(numbers.containsAll(values));
     }
@@ -153,29 +153,29 @@ public class SetXTest {
     @Test
     public void checkToArray() {
         int value = 13;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Function<Set<? extends Number>, ? extends Number[]> toIntegerArray = SetX.toArray(new Integer[0]);
+        Function<Collection<? extends Number>, ? extends Number[]> toIntegerArray = CollectionX.toArray(new Integer[0]);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
     }
 
     @Test
     public void checkToArrayWithGenerator() {
         int value = 14;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Function<Set<? extends Number>, ? extends Number[]> toIntegerArray = SetX.toArray(Integer[]::new);
+        Function<Collection<? extends Number>, ? extends Number[]> toIntegerArray = CollectionX.toArray(Integer[]::new);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
     }
 
     @Test
     public void checkEquals() {
         int value = 15;
-        Set<Number> numbers = new HashSet<>();
+        Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Set<Integer> values = new HashSet<>();
+        Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Set<? extends Number>> equalsToValues = SetX.equalsTo(values);
+        Predicate<Collection<? extends Number>> equalsToValues = CollectionX.equalsTo(values);
         assertTrue(equalsToValues.test(numbers));
     }
 }

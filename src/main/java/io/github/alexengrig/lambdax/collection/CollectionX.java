@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package alexengrig.lambdax.collection;
+package io.github.alexengrig.lambdax.collection;
 
 import java.util.Collection;
 import java.util.function.Consumer;
