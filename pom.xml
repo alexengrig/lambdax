@@ -22,13 +22,11 @@
 
     <groupId>alexengrig</groupId>
     <artifactId>lambdax</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <name>LambdaX</name>
-    <description>The LambdaX library contains utility classes for writing code in the chaining style and useful
-        lambdas
-    </description>
+    <description>The LambdaX library contains utility classes with useful lambdas</description>
     <url>https://github.com/alexengrig/lambdax</url>
 
     <developers>
