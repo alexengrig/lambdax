@@ -3,36 +3,6 @@
 [![Build Status](https://travis-ci.com/alexengrig/lambdax.svg?branch=master)](https://travis-ci.com/alexengrig/lambdax)
 
 # *Lambda*X
-The *Lambda***X** library contains utility classes for writing code in the chaining style and useful lambdas.
-
-## Examples
-Write code in the chaining style:
-```java
-Map<Number, CharSequence> map = new HashMapint one = 1;
-int key = 2;
-String value = "two";
-String actual = ChainX.of(map)
-         .peek(MapX.onlyPut(one, "one"))  // map.put(one, "one")
-         .filter(MapX.containsByKey(one)) // map.containsByKey(one)
-         .peek(MapX.onlyRemove(one))      // map.remove(one)
-         .peek(MapX.onlyPut(key, value))  // map.put(key, value)
-         .map(MapX.get(key))              // map.get(key)
-         .map(String.class::cast)
-         .orElseThrow();                  // "two"
-```
-
-
-Use lambda to get value from `java.lang.Map` by key:
-```java
-String value = Optional.of(map)
-        .map(m -> m.get(key))
-        .orElse(null);
-
-// with LambdaX
-
-String value = Optional.of(map)
-        .map(MapX.get(key)) 
-        .orElse(null);
-```
+The *Lambda***X** library contains utility classes with useful lambdas.
 
 ###### Coming soon...
