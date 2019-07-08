@@ -5,4 +5,14 @@
 # *Lambda*X
 The *Lambda***X** library contains utility classes with useful lambdas.
 
+### Installation
+
+```xml
+<dependency>
+  <groupId>io.github.alexengrig</groupId>
+  <artifactId>lambdax</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
 ###### Coming soon...
