@@ -18,7 +18,6 @@ package io.github.alexengrig.lambdax;
 
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
@@ -39,7 +38,7 @@ public final class OptionalX {
         return Optional.ofNullable(generator.get());
     }
 
-    public static <T> Function<T, T> peek(Consumer<? super T> action) {
+    public static <T> UnaryOperator<T> peek(Consumer<? super T> action) {
         return t -> {
             action.accept(t);
             return t;

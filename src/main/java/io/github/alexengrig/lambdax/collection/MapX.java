@@ -43,12 +43,12 @@ public final class MapX {
         return map -> map.containsValue(value);
     }
 
-    public static <K, V> Function<Map<? super K, ? extends V>, ? super V> get(K key) {
+    public static <K, V> Function<Map<? extends K, ? extends V>, V> get(K key) {
         return map -> map.get(key);
     }
 
     @SuppressWarnings("unchecked")
-    public static <K, V> Function<Map<? super K, ? super V>, ? super V> put(K key, V value) {
+    public static <K, V> Function<Map<? super K, ? super V>, V> put(K key, V value) {
         return map -> (V) map.put(key, value);
     }
 
@@ -60,7 +60,7 @@ public final class MapX {
         return map -> map.put(key, value);
     }
 
-    public static <K, V> Function<Map<? extends K, ? extends V>, ? extends V> remove(K key) {
+    public static <K, V> Function<Map<? extends K, ? extends V>, V> remove(K key) {
         return map -> map.remove(key);
     }
 

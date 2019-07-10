@@ -16,10 +16,12 @@
 
 package io.github.alexengrig.lambdax.collection;
 
+import io.github.alexengrig.lambdax.OptionalX;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -38,6 +40,18 @@ public class MapXTest {
     }
 
     @Test
+    public void checkContainsKeyOptional() {
+        double key = 1.1;
+        String value = "one.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .filter(MapX.containsKey(key))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numberWords, actual);
+    }
+
+    @Test
     public void checkContainsValue() {
         int key = 2;
         String value = "two";
@@ -48,13 +62,37 @@ public class MapXTest {
     }
 
     @Test
+    public void checkContainsValueOptional() {
+        double key = 2.1;
+        String value = "two.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .filter(MapX.containsValue(value))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numberWords, actual);
+    }
+
+    @Test
     public void checkGet() {
         int key = 3;
         String value = "three";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Function<Map<? super Number, ? extends CharSequence>, ? super CharSequence> getByKey = MapX.get(key);
+        Function<Map<? extends Number, ? extends CharSequence>, CharSequence> getByKey = MapX.get(key);
         assertEquals(value, getByKey.apply(numberWords));
+    }
+
+    @Test
+    public void checkGetOptional() {
+        double key = 3.1;
+        String value = "three.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        CharSequence actual = Optional.of(numberWords)
+                .map(MapX.get(key))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(value, actual);
     }
 
     @Test
@@ -67,16 +105,40 @@ public class MapXTest {
         assertEquals(value, putKeyAndValue.apply(numberWords));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void checkPutOptional() {
+        double key = 4.1;
+        String value = "four.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        CharSequence actual = Optional.of(numberWords)
+                .map(MapX.put(key, value))
+                .orElseThrow(NullPointerException::new);
+    }
+
     @Test
     public void checkPutAll() {
         int key = 5;
         String value = "five";
         Map<Number, CharSequence> numberWords = new HashMap<>();
-        Map<Integer, String> other = new HashMap<>();
-        other.put(key, value);
-        Consumer<Map<? super Number, ? super CharSequence>> putAllValues = MapX.putAll(other);
+        Map<Integer, String> values = new HashMap<>();
+        values.put(key, value);
+        Consumer<Map<? super Number, ? super CharSequence>> putAllValues = MapX.putAll(values);
         putAllValues.accept(numberWords);
         assertTrue(numberWords.containsKey(key));
+    }
+
+    @Test
+    public void checkPutAllOptional() {
+        double key = 5.1;
+        String value = "five.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        Map<Double, String> values = new HashMap<>();
+        values.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .map(OptionalX.peek(MapX.putAll(values)))
+                .filter(MapX.containsKey(key))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(values, actual);
     }
 
     @Test
@@ -90,6 +152,18 @@ public class MapXTest {
     }
 
     @Test
+    public void checkOnlyPutOptional() {
+        double key = 6.1;
+        String value = "six.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .map(OptionalX.peek(MapX.onlyPut(key, value)))
+                .filter(MapX.containsKey(key))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numberWords, actual);
+    }
+
+    @Test
     public void checkRemove() {
         int key = 7;
         String value = "seven";
@@ -97,6 +171,18 @@ public class MapXTest {
         numberWords.put(key, value);
         Function<Map<? extends Number, ? extends CharSequence>, ? extends CharSequence> removeByKey = MapX.remove(key);
         assertEquals(value, removeByKey.apply(numberWords));
+    }
+
+    @Test
+    public void checkRemoveOptional() {
+        double key = 7.1;
+        String value = "seven.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        CharSequence actual = Optional.of(numberWords)
+                .map(MapX.remove(key))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(value, actual);
     }
 
     @Test
@@ -110,15 +196,41 @@ public class MapXTest {
         assertFalse(numberWords.containsKey(key));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void checkOnlyRemoveOptional() {
+        double key = 8.1;
+        String value = "eight.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .map(OptionalX.peek(MapX.onlyRemove(key)))
+                .filter(MapX.containsValue(value))
+                .orElseThrow(NullPointerException::new);
+    }
+
     @Test
     public void checkEquals() {
         int key = 9;
         String value = "nine";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Map<Integer, String> other = new HashMap<>();
-        other.put(key, value);
-        Predicate<Map<? super Number, ? super CharSequence>> equalsToOther = MapX.equalsTo(other);
-        assertTrue(equalsToOther.test(numberWords));
+        Map<Integer, String> values = new HashMap<>();
+        values.put(key, value);
+        Predicate<Map<? super Number, ? super CharSequence>> equalsToValues = MapX.equalsTo(values);
+        assertTrue(equalsToValues.test(numberWords));
+    }
+
+    @Test
+    public void checkEqualsOptional() {
+        double key = 9.1;
+        String value = "nine.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Double, String> values = new HashMap<>();
+        values.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .filter(MapX.equalsTo(values))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(values, actual);
     }
 }
