@@ -26,7 +26,7 @@
     <packaging>jar</packaging>
 
     <name>LambdaX</name>
-    <description>The LambdaX library contains utility classes with useful lambdas</description>
+    <description>This library contains utility classes with useful lambdas</description>
     <url>https://github.com/alexengrig/lambdax</url>
 
     <licenses>
