@@ -8,6 +8,14 @@ The *Lambda***X** library contains utility classes with useful lambdas.
 
 ### Installation
 
+Releases are available in [Maven Central](https://repo1.maven.org/maven2/io/github/alexengrig/lambdax/).
+
+List of version [changes](CHANGES.md).
+
+#### Maven
+
+Add this snippet to the pom.xml `dependencies` section:
+
 ```xml
 <dependency>
   <groupId>io.github.alexengrig</groupId>
@@ -16,4 +24,18 @@ The *Lambda***X** library contains utility classes with useful lambdas.
 </dependency>
 ```
 
-###### Coming soon...
+#### Gradle
+
+Add this snippet to the build.gradle `dependencies` section:
+
+```groovy
+implementation 'io.github.alexengrig:lambdax:0.1.0'
+```
+
+#### Others
+
+Others snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.1.0/jar).
+
+### License
+
+This project is licensed under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
