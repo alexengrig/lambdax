@@ -14,8 +14,9 @@ This library contains utility classes with useful lambdas. Uses [currying](https
 ### Features
 
 *Lambda***X** library provides the following:
-- Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
-- Writing code in chaining style.
+
+* Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
+* Writing code in chaining style.
 
 ### Installation
 
