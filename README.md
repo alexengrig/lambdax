@@ -1,4 +1,6 @@
-<a href="https://github.com/alexengrig/lambdax"><img src="https://repository-images.githubusercontent.com/195124600/d08bbd00-9e4d-11e9-9fdb-c6e7eb1a898a" title="LambdaX" alt="LambdaX logo"></a>
+<a href="https://alexengrig.github.io/lambdax">
+  <img src="logo/lambdax-logo.png" title="LambdaX" alt="LambdaX logo">
+</a>
 
 # *Lambda*X
 
@@ -47,4 +49,4 @@ Others snippets are available in [The Central Repository](https://search.maven.o
 
 ### License
 
-This project is licensed under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+This project is licensed under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
