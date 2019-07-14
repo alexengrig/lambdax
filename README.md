@@ -8,6 +8,7 @@ Perfect Java 8 Lambdas.
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.alexengrig/lambdax.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.alexengrig%22%20AND%20a:%22lambdax%22)
 [![Build Status](https://travis-ci.com/alexengrig/lambdax.svg?branch=master)](https://travis-ci.com/alexengrig/lambdax)
+[![codecov](https://codecov.io/gh/alexengrig/lambdax/branch/master/graph/badge.svg)](https://codecov.io/gh/alexengrig/lambdax)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrigdev/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)
 
 This library contains utility classes with useful lambdas. Uses [currying](https://en.wikipedia.org/wiki/Currying) function.
