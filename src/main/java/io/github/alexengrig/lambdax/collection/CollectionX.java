@@ -40,7 +40,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#contains(Object)}:
-     * item -> collection -> collection.contains(item).</p>
+     * item -&gt; collection -&gt; collection.contains(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#contains(Object)}
      * @param <E>  a type of elements in a collection.
@@ -55,7 +55,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#containsAll(Collection)}:
-     * all -> collection -> collection.containsAll(all).</p>
+     * all -&gt; collection -&gt; collection.containsAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#containsAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -70,7 +70,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#add(Object)}:
-     * item -> collection -> collection.add(item).</p>
+     * item -&gt; collection -&gt; collection.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#add(Object)}
      * @param <E>  a type of elements in a collection.
@@ -85,7 +85,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#addAll(Collection)}:
-     * all -> collection -> collection.addAll(all).</p>
+     * all -&gt; collection -&gt; collection.addAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -100,7 +100,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#add(Object)}:
-     * item -> collection -> collection.add(item).</p>
+     * item -&gt; collection -&gt; collection.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#add(Object)}
      * @param <E>  a type of elements in a collection.
@@ -115,7 +115,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#addAll(Collection)}:
-     * all -> collection -> collection.addAll(all).</p>
+     * all -&gt; collection -&gt; collection.addAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -130,7 +130,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#remove(Object)}:
-     * item -> collection -> collection.remove(item).</p>
+     * item -&gt; collection -&gt; collection.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#remove(Object)}
      * @param <E>  a type of elements in a collection.
@@ -145,7 +145,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#removeAll(Collection)}:
-     * all -> collection -> collection.removeAll(all).</p>
+     * all -&gt; collection -&gt; collection.removeAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -160,7 +160,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#remove(Object)}:
-     * item -> collection -> collection.remove(item).</p>
+     * item -&gt; collection -&gt; collection.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#remove(Object)}
      * @param <E>  a type of elements in a collection.
@@ -175,7 +175,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#removeAll(Collection)}:
-     * all -> collection -> collection.removeAll(all).</p>
+     * all -&gt; collection -&gt; collection.removeAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -190,7 +190,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#retainAll(Collection)}:
-     * all -> collection -> collection.retainAll(all).</p>
+     * all -&gt; collection -&gt; collection.retainAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -205,7 +205,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#retainAll(Collection)}:
-     * all -> collection -> collection.retainAll(all).</p>
+     * all -&gt; collection -&gt; collection.retainAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
      * @param <E> a type of elements in a collection.
@@ -220,7 +220,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#toArray(Object[])}}:
-     * array -> collection -> collection.toArray(array).</p>
+     * array -&gt; collection -&gt; collection.toArray(array).</p>
      *
      * @param array an array of {@link E} objects that is passed as the argument to {@link java.util.Collection#toArray(Object[])}
      * @param <E>   a type of elements in a collection.
@@ -235,7 +235,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#toArray(Object[])}}:
-     * arrayGenerator -> collection -> collection.toArray(arrayGenerator.apply(0).</p>
+     * arrayGenerator -&gt; collection -&gt; collection.toArray(arrayGenerator.apply(0).</p>
      *
      * @param generator a {@link java.util.function.IntFunction} of array generator (array constructor)
      *                  the result of which is passed as the argument to {@link java.util.Collection#toArray(Object[])}
@@ -252,7 +252,7 @@ public final class CollectionX {
 
     /**
      * <p>Returns the carrying of {@link java.util.Collection#equals(Object)}:
-     * other -> collection -> collection.equals(other).</p>
+     * other -&gt; collection -&gt; collection.equals(other).</p>
      *
      * @param other an {@link java.lang.Object} that is passed as the argument to {@link java.util.Collection#equals(Object)})}
      * @param <E>   a type of elements in a collection.
