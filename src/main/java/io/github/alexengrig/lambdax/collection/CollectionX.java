@@ -27,11 +27,11 @@ import java.util.function.Predicate;
  *
  * @author Grig Alex
  * @version 0.1.1
- * @see Collection
- * @see Consumer
- * @see Function
- * @see IntFunction
- * @see Predicate
+ * @see java.util.Collection
+ * @see java.util.function.Consumer
+ * @see java.util.function.Function
+ * @see java.util.function.IntFunction
+ * @see java.util.function.Predicate
  * @since 0.1.0
  */
 public final class CollectionX {
@@ -57,7 +57,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#containsAll(Collection)}:
      * all -> collection -> collection.containsAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#containsAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#containsAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Predicate} .
      * @see java.util.Collection#containsAll(Collection)
@@ -87,7 +87,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#addAll(Collection)}:
      * all -> collection -> collection.addAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Predicate}.
      * @see java.util.Collection#addAll(Collection)
@@ -117,7 +117,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#addAll(Collection)}:
      * all -> collection -> collection.addAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Consumer}.
      * @see java.util.Collection#addAll(Collection)
@@ -147,7 +147,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#removeAll(Collection)}:
      * all -> collection -> collection.removeAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Predicate}.
      * @see java.util.Collection#removeAll(Collection)
@@ -177,7 +177,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#removeAll(Collection)}:
      * all -> collection -> collection.removeAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Consumer}.
      * @see java.util.Collection#removeAll(Collection)
@@ -192,7 +192,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#retainAll(Collection)}:
      * all -> collection -> collection.retainAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Predicate}.
      * @see java.util.Collection#retainAll(Collection)
@@ -207,7 +207,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#retainAll(Collection)}:
      * all -> collection -> collection.retainAll(all).</p>
      *
-     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
      * @param <E> a type of elements in a collection.
      * @return a {@link java.util.function.Consumer}.
      * @see java.util.Collection#retainAll(Collection)
@@ -254,7 +254,7 @@ public final class CollectionX {
      * <p>Returns the carrying of {@link java.util.Collection#equals(Object)}:
      * other -> collection -> collection.equals(other).</p>
      *
-     * @param other an {@link Object} that is passed as the argument to {@link java.util.Collection#equals(Object)})}
+     * @param other an {@link java.lang.Object} that is passed as the argument to {@link java.util.Collection#equals(Object)})}
      * @param <E>   a type of elements in a collection.
      * @return a {@link java.util.function.Predicate}.
      * @see java.util.Collection#equals(Object)
