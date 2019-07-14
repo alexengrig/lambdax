@@ -11,20 +11,20 @@ Perfect Java 8 Lambdas.
 
 This library contains utility classes with useful lambdas. Uses [currying](https://en.wikipedia.org/wiki/Currying) function.
 
-### Features
+## Features
 
 *Lambda***X** library provides the following:
 
 * Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
 * Writing code in chaining style.
 
-### Installation
+## Installation
 
 Releases are available in [Maven Central](https://repo1.maven.org/maven2/io/github/alexengrig/lambdax/).
 
 List of version [changes](CHANGES.md).
 
-#### Maven
+### Maven
 
 Add this snippet to the pom.xml `dependencies` section:
 
@@ -36,7 +36,7 @@ Add this snippet to the pom.xml `dependencies` section:
 </dependency>
 ```
 
-#### Gradle
+### Gradle
 
 Add this snippet to the build.gradle `dependencies` section:
 
@@ -44,10 +44,10 @@ Add this snippet to the build.gradle `dependencies` section:
 implementation 'io.github.alexengrig:lambdax:0.1.0'
 ```
 
-#### Others
+### Others
 
 Others snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.1.0/jar).
 
-### License
+## License
 
 This project is licensed under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
