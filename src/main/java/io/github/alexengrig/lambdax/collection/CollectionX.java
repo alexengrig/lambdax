@@ -23,9 +23,10 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link Collection}
+ * This utility class contains useful lambdas for {@link java.util.Collection}.
  *
  * @author Grig Alex
+ * @version 0.1.1
  * @see Collection
  * @see Consumer
  * @see Function
@@ -37,62 +38,229 @@ public final class CollectionX {
     private CollectionX() {
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#contains(Object)}:
+     * item -> collection -> collection.contains(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#contains(Object)}
+     * @param <E>  a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate} .
+     * @see java.util.Collection#contains(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? extends E>> contains(E item) {
         return c -> c.contains(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#containsAll(Collection)}:
+     * all -> collection -> collection.containsAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#containsAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate} .
+     * @see java.util.Collection#containsAll(Collection)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? extends E>> containsAll(Collection<? extends E> all) {
         return c -> c.containsAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#add(Object)}:
+     * item -> collection -> collection.add(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#add(Object)}
+     * @param <E>  a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate}.
+     * @see java.util.Collection#add(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? super E>> add(E item) {
         return c -> c.add(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#addAll(Collection)}:
+     * all -> collection -> collection.addAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate}.
+     * @see java.util.Collection#addAll(Collection)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? super E>> addAll(Collection<? extends E> all) {
         return c -> c.addAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#add(Object)}:
+     * item -> collection -> collection.add(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#add(Object)}
+     * @param <E>  a type of elements in a collection.
+     * @return a {@link java.util.function.Consumer}.
+     * @see java.util.Collection#add(Object)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Collection<? super E>> onlyAdd(E item) {
         return c -> c.add(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#addAll(Collection)}:
+     * all -> collection -> collection.addAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#addAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Consumer}.
+     * @see java.util.Collection#addAll(Collection)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Collection<? super E>> onlyAddAll(Collection<? extends E> all) {
         return c -> c.addAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#remove(Object)}:
+     * item -> collection -> collection.remove(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#remove(Object)}
+     * @param <E>  a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate}.
+     * @see java.util.Collection#remove(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? super E>> remove(E item) {
         return c -> c.remove(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#removeAll(Collection)}:
+     * all -> collection -> collection.removeAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate}.
+     * @see java.util.Collection#removeAll(Collection)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? super E>> removeAll(Collection<? extends E> all) {
         return c -> c.removeAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#remove(Object)}:
+     * item -> collection -> collection.remove(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Collection#remove(Object)}
+     * @param <E>  a type of elements in a collection.
+     * @return a {@link java.util.function.Consumer}.
+     * @see java.util.Collection#remove(Object)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Collection<? super E>> onlyRemove(E item) {
         return c -> c.remove(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#removeAll(Collection)}:
+     * all -> collection -> collection.removeAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#removeAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Consumer}.
+     * @see java.util.Collection#removeAll(Collection)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Collection<? super E>> onlyRemoveAll(Collection<? extends E> all) {
         return c -> c.removeAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#retainAll(Collection)}:
+     * all -> collection -> collection.retainAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate}.
+     * @see java.util.Collection#retainAll(Collection)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? super E>> retainAll(Collection<? extends E> all) {
         return c -> c.retainAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#retainAll(Collection)}:
+     * all -> collection -> collection.retainAll(all).</p>
+     *
+     * @param all a {@link Collection} that is passed as the argument to {@link java.util.Collection#retainAll(Collection)}
+     * @param <E> a type of elements in a collection.
+     * @return a {@link java.util.function.Consumer}.
+     * @see java.util.Collection#retainAll(Collection)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Collection<? super E>> onlyRetainAll(Collection<? extends E> all) {
         return c -> c.retainAll(all);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#toArray(Object[])}}:
+     * array -> collection -> collection.toArray(array).</p>
+     *
+     * @param array an array of {@link E} objects that is passed as the argument to {@link java.util.Collection#toArray(Object[])}
+     * @param <E>   a type of elements in a collection.
+     * @return a {@link java.util.function.Function}.
+     * @see java.util.Collection#toArray(Object[])
+     * @see java.util.function.Function
+     * @since 0.1.0
+     */
     public static <E> Function<Collection<? extends E>, E[]> toArray(E[] array) {
         return c -> c.toArray(array);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#toArray(Object[])}}:
+     * arrayGenerator -> collection -> collection.toArray(arrayGenerator.apply(0).</p>
+     *
+     * @param generator a {@link java.util.function.IntFunction} of array generator (array constructor)
+     *                  the result of which is passed as the argument to {@link java.util.Collection#toArray(Object[])}
+     * @param <E>       a type of elements in a collection.
+     * @return a {@link java.util.function.Function}.
+     * @see java.util.Collection#toArray(Object[])
+     * @see java.util.function.IntFunction
+     * @see java.util.function.Function
+     * @since 0.1.0
+     */
     public static <E> Function<Collection<? extends E>, E[]> toArray(IntFunction<? extends E[]> generator) {
         return c -> c.toArray(generator.apply(0));
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Collection#equals(Object)}:
+     * other -> collection -> collection.equals(other).</p>
+     *
+     * @param other an {@link Object} that is passed as the argument to {@link java.util.Collection#equals(Object)})}
+     * @param <E>   a type of elements in a collection.
+     * @return a {@link java.util.function.Predicate}.
+     * @see java.util.Collection#equals(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Collection<? extends E>> equalsTo(Object other) {
         return c -> c.equals(other);
     }
