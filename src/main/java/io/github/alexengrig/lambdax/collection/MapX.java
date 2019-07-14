@@ -22,7 +22,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.Map}
+ * This utility class contains useful lambdas for {@link java.util.Map}.
  *
  * @author Grig Alex
  * @version 0.1.1
