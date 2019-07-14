@@ -21,30 +21,75 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link Queue}
+ * This utility class contains useful lambdas for {@link java.util.Queue}.
  *
- * @author Grig Alex
- * @see Queue
- * @see Consumer
- * @see Predicate
+ * @author Grig Alex@
+ * @version 0.1.1
+ * @see java.util.Queue
+ * @see java.util.function.Consumer
+ * @see java.util.function.Predicate
  * @since 0.1.0
  */
 public final class QueueX {
     private QueueX() {
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Queue#add(Object)}:
+     * item -&gt; queue -&gt; queue.add(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#add(Object)}
+     * @param <E>  a type of elements in a queue.
+     * @return a {@link java.util.function.Predicate} .
+     * @see java.util.Queue#add(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Queue<? super E>> add(E item) {
         return q -> q.add(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Queue#add(Object)}:
+     * item -&gt; queue -&gt; queue.add(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#add(Object)}
+     * @param <E>  a type of elements in a queue.
+     * @return a {@link java.util.function.Consumer} .
+     * @see java.util.Queue#add(Object)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Queue<? super E>> onlyAdd(E item) {
         return q -> q.add(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Queue#offer(Object)}:
+     * item -&gt; queue -&gt; queue.offer(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#offer(Object)}
+     * @param <E>  a type of elements in a queue.
+     * @return a {@link java.util.function.Predicate} .
+     * @see java.util.Queue#offer(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.0
+     */
     public static <E> Predicate<Queue<? super E>> offer(E item) {
         return q -> q.offer(item);
     }
 
+    /**
+     * <p>Returns the carrying of {@link java.util.Queue#offer(Object)}:
+     * item -&gt; queue -&gt; queue.offer(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#offer(Object)}
+     * @param <E>  a type of elements in a queue.
+     * @return a {@link java.util.function.Consumer} .
+     * @see java.util.Queue#offer(Object)
+     * @see java.util.function.Consumer
+     * @since 0.1.0
+     */
     public static <E> Consumer<Queue<? super E>> onlyOffer(E item) {
         return q -> q.offer(item);
     }
