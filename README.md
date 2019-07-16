@@ -1,5 +1,5 @@
 <a href="https://alexengrig.github.io/lambdax">
-  <img src="logo/lambdax-logo.png" title="LambdaX" alt="LambdaX logo">
+  <img src="logo/lambdax-preview.png" title="LambdaX" alt="LambdaX logo">
 </a>
 
 # *Lambda*X
