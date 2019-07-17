@@ -113,6 +113,7 @@ public class MapXTest {
         CharSequence actual = Optional.of(numberWords)
                 .map(MapX.put(key, value))
                 .orElseThrow(NullPointerException::new);
+        assertNull(actual);
     }
 
     @Test
