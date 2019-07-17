@@ -16,10 +16,12 @@
 
 package io.github.alexengrig.lambdax.collection;
 
+import io.github.alexengrig.lambdax.OptionalX;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -37,6 +39,17 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkContainsOptional() {
+        double value = 1.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.contains(value))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numbers, actual);
+    }
+
+    @Test
     public void checkContainsAll() {
         int value = 2;
         Collection<Number> numbers = new ArrayList<>();
@@ -48,11 +61,34 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkContainsAllOptional() {
+        double value = 2.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.containsAll(values))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numbers, actual);
+    }
+
+    @Test
     public void checkAdd() {
         int value = 3;
         Collection<Number> numbers = new ArrayList<>();
         Predicate<Collection<? super Number>> addValue = CollectionX.add(value);
         assertTrue(addValue.test(numbers));
+    }
+
+    @Test
+    public void checkAddOptional() {
+        double value = 3.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.add(value))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.contains(value));
     }
 
     @Test
@@ -66,12 +102,34 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkAddAllOptional() {
+        double value = 4.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.addAll(values))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.containsAll(values));
+    }
+
+    @Test
     public void checkOnlyAdd() {
         int value = 5;
         Collection<Number> numbers = new ArrayList<>();
         Consumer<Collection<? super Number>> onlyAddValue = CollectionX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
+    }
+
+    @Test
+    public void checkOnlyAddOptional() {
+        double value = 5.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(CollectionX.onlyAdd(value)))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.contains(value));
     }
 
     @Test
@@ -86,12 +144,35 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkOnlyAddAllOptional() {
+        double value = 6.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(CollectionX.onlyAddAll(values)))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.containsAll(values));
+    }
+
+    @Test
     public void checkRemove() {
         int value = 7;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
         Predicate<Collection<? super Integer>> removeValue = CollectionX.remove(value);
         assertTrue(removeValue.test(numbers));
+    }
+
+    @Test
+    public void checkRemoveOptional() {
+        double value = 7.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.remove(value))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.contains(value));
     }
 
     @Test
@@ -106,6 +187,19 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkRemoveAllOptional() {
+        double value = 8.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.removeAll(values))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.containsAll(values));
+    }
+
+    @Test
     public void checkOnlyRemove() {
         int value = 9;
         Collection<Number> numbers = new ArrayList<>();
@@ -113,6 +207,17 @@ public class CollectionXTest {
         Consumer<Collection<? super Integer>> onlyRemoveValue = CollectionX.onlyRemove(value);
         onlyRemoveValue.accept(numbers);
         assertFalse(numbers.contains(value));
+    }
+
+    @Test
+    public void checkOnlyRemoveOptional() {
+        double value = 9.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(CollectionX.onlyRemove(value)))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.contains(value));
     }
 
     @Test
@@ -128,6 +233,19 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkOnlyRemoveAllOptional() {
+        double value = 10.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(CollectionX.onlyRemoveAll(values)))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.containsAll(values));
+    }
+
+    @Test
     public void checkRetainAll() {
         int value = 11;
         Collection<Number> numbers = new ArrayList<>();
@@ -136,6 +254,19 @@ public class CollectionXTest {
         values.add(value);
         Predicate<Collection<? super Number>> retainAllValues = CollectionX.retainAll(values);
         assertFalse(retainAllValues.test(numbers));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkRetainAllOptional() {
+        double value = 11.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.retainAll(values))
+                .orElseThrow(NullPointerException::new);
+        assertNull(actual);
     }
 
     @Test
@@ -151,12 +282,36 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkOnlyRetainAllOptional() {
+        double value = 12.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(CollectionX.onlyRetainAll(values)))
+                .orElseThrow(NullPointerException::new);
+        assertTrue(actual.containsAll(values));
+    }
+
+    @Test
     public void checkToArray() {
         int value = 13;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
         Function<Collection<? extends Number>, ? extends Number[]> toIntegerArray = CollectionX.toArray(new Integer[0]);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
+    }
+
+    @Test
+    public void checkToArrayOptional() {
+        double value = 13.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Number[] actual = Optional.of(numbers)
+                .map(CollectionX.toArray(new Double[0]))
+                .orElseThrow(IllegalStateException::new);
+        assertArrayEquals(new Double[]{value}, actual);
     }
 
     @Test
@@ -169,6 +324,17 @@ public class CollectionXTest {
     }
 
     @Test
+    public void checkToArrayWithGeneratorOptional() {
+        double value = 14.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Number[] actual = Optional.of(numbers)
+                .map(CollectionX.toArray(Double[]::new))
+                .orElseThrow(IllegalStateException::new);
+        assertArrayEquals(new Double[]{value}, actual);
+    }
+
+    @Test
     public void checkEquals() {
         int value = 15;
         Collection<Number> numbers = new ArrayList<>();
@@ -177,5 +343,18 @@ public class CollectionXTest {
         values.add(value);
         Predicate<Collection<? extends Number>> equalsToValues = CollectionX.equalsTo(values);
         assertTrue(equalsToValues.test(numbers));
+    }
+
+    @Test
+    public void checkEqualsOptional() {
+        double value = 15.1;
+        Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.equalsTo(values))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(values, actual);
     }
 }
