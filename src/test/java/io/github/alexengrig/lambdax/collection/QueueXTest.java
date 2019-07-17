@@ -16,9 +16,11 @@
 
 package io.github.alexengrig.lambdax.collection;
 
+import io.github.alexengrig.lambdax.OptionalX;
 import org.junit.Test;
 
 import java.util.ArrayDeque;
+import java.util.Optional;
 import java.util.Queue;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -35,12 +37,32 @@ public class QueueXTest {
     }
 
     @Test
+    public void checkAddOptional() {
+        double value = 1.1;
+        Queue<Number> numbers = new ArrayDeque<>();
+        Queue<Number> actual = Optional.of(numbers)
+                .filter(QueueX.add(value))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.contains(value));
+    }
+
+    @Test
     public void checkOnlyAdd() {
         int value = 2;
         Queue<Number> numbers = new ArrayDeque<>();
         Consumer<Queue<? super Number>> onlyAddValue = QueueX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
+    }
+
+    @Test
+    public void checkOnlyAddOptional() {
+        double value = 2.1;
+        Queue<Number> numbers = new ArrayDeque<>();
+        Queue<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(QueueX.onlyAdd(value)))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.contains(value));
     }
 
     @Test
@@ -52,11 +74,31 @@ public class QueueXTest {
     }
 
     @Test
+    public void checkOfferOptional() {
+        double value = 3.1;
+        Queue<Number> numbers = new ArrayDeque<>();
+        Queue<Number> actual = Optional.of(numbers)
+                .filter(QueueX.offer(value))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.contains(value));
+    }
+
+    @Test
     public void checkOnlyOffer() {
         int value = 4;
         Queue<Number> numbers = new ArrayDeque<>();
         Consumer<Queue<? super Number>> onlyOfferValue = QueueX.onlyOffer(value);
         onlyOfferValue.accept(numbers);
         assertTrue(numbers.contains(value));
+    }
+
+    @Test
+    public void checkOnlyOfferOptional() {
+        double value = 4.1;
+        Queue<Number> numbers = new ArrayDeque<>();
+        Queue<Number> actual = Optional.of(numbers)
+                .map(OptionalX.peek(QueueX.onlyOffer(value)))
+                .orElseThrow(IllegalStateException::new);
+        assertTrue(actual.contains(value));
     }
 }
