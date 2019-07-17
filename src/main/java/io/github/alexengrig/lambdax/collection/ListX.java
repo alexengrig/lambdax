@@ -84,7 +84,7 @@ public final class ListX {
      * @since 0.1.0
      */
     @SuppressWarnings("unchecked")
-    public static <E> Function<List<? super E>, ? super E> set(int i, E item) {
+    public static <E> Function<List<? super E>, E> set(int i, E item) {
         return l -> (E) l.set(i, item);
     }
 
@@ -99,7 +99,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? extends E>, ? super E> get(int i) {
+    public static <E> Function<List<? extends E>, E> get(int i) {
         return l -> l.get(i);
     }
 
@@ -405,7 +405,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? extends E>, List<? extends E>> subList(int from, int to) {
+    public static <E> Function<List<E>, List<E>> subList(int from, int to) {
         return l -> l.subList(from, to);
     }
 
