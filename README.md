@@ -17,7 +17,7 @@ This library contains utility classes with useful lambdas.
 
 ## Features
 
-*Lambda***X** uses conceptrs of [functional programming](https://en.wikipedia.org/wiki/Functional_programming):
+*Lambda***X** uses concepts of [functional programming](https://en.wikipedia.org/wiki/Functional_programming):
 
 *   [Pure functions](https://en.wikipedia.org/wiki/Pure_function).
 *   [Higher-order functions](https://en.wikipedia.org/wiki/Higher-order_function).
