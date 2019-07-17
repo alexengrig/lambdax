@@ -207,6 +207,7 @@ public class MapXTest {
                 .map(OptionalX.peek(MapX.onlyRemove(key)))
                 .filter(MapX.containsValue(value))
                 .orElseThrow(NullPointerException::new);
+        assertNull(actual);
     }
 
     @Test
