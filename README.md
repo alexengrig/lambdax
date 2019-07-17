@@ -13,11 +13,17 @@ Perfect Java 8 Lambdas.
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrigdev/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexengrig/lambdax.svg)
 
-This library contains utility classes with useful lambdas. Uses [currying](https://en.wikipedia.org/wiki/Currying) function.
+This library contains utility classes with useful lambdas.
 
 ## Features
 
-*Lambda***X** library provides the following:
+*Lambda***X** uses conceptrs of [functional programming](https://en.wikipedia.org/wiki/Functional_programming):
+
+*   [Pure functions](https://en.wikipedia.org/wiki/Pure_function).
+*   [Higher-order functions](https://en.wikipedia.org/wiki/Higher-order_function).
+*   [Currying functions](https://en.wikipedia.org/wiki/Currying).
+
+*Lambda***X** provides the following:
 
 *   Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
 *   Writing code in chaining style.
