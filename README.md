@@ -28,6 +28,53 @@ This library contains utility classes with useful lambdas.
 *   Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
 *   Writing code in chaining style.
 
+## Examples
+
+Get the value from `Map` and print it on the console:
+
+```java
+    Map<Integer, String> map = new HashMap<>();
+    map.put(1, "one");
+    Holder<Map<Integer, String>> holder = new Holder<>(map);
+// Plain Java
+    Map<Integer, String> map = holder.get();
+    String actual = map.get(key);
+    System.out.println(actual);
+// Chaining Style
+    Optional.of(holder)
+            .map(Holder::get)
+            .map(m -> m.get(key))
+            .ifPresent(System.out::println);
+// LambdaX
+    String actual = Optional.of(holder)
+             .map(Holder::get)
+             .map(MapX.get(key))
+             .ifPresent(System.out::println);
+```
+
+Insert the value into `Collection` if it does not contain it:
+
+```java
+    Collection<Integer> numbers = new ArrayList<>();
+    Holder<Collection<Integer>> holder = new Holder<>(numbers);
+    int value = 1;
+// Plain Java
+    Collection<Integer> target = holder.get();
+    if (!target.contains(value)) {
+        target.add(value);
+    }
+// Chaining Style  
+    Optional.of(holder)
+            .map(Holder::get)
+            .filter(collection -> !collection.contains(value))
+            .ifPresent(collection -> collection.add(value));
+// LambdaX
+    Optional.of(holder)
+            .map(Holder::get)
+            .filter(CollectionX.contains(value).negate())
+            .ifPresent(CollectionX.onlyAdd(value));
+```
+
 ## Installation
 
 Releases are available in [Maven Central](https://repo1.maven.org/maven2/io/github/alexengrig/lambdax/).
