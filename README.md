@@ -10,7 +10,7 @@ Perfect Java 8 Lambdas.
 [![Javadocs](https://www.javadoc.io/badge/io.github.alexengrig/lambdax.svg)](https://www.javadoc.io/doc/io.github.alexengrig/lambdax)
 [![Build Status](https://travis-ci.com/alexengrig/lambdax.svg?branch=master)](https://travis-ci.com/alexengrig/lambdax)
 [![codecov](https://codecov.io/gh/alexengrig/lambdax/branch/master/graph/badge.svg)](https://codecov.io/gh/alexengrig/lambdax)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrigdev/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrig/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexengrig/lambdax.svg)
 
 This library contains utility classes with useful lambdas.
