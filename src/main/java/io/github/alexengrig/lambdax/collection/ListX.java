@@ -46,8 +46,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.contains(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#contains(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#contains(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -61,8 +61,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.containsAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#containsAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#containsAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -72,13 +72,43 @@ public final class ListX {
     }
 
     /**
+     * <p>Returns the carrying of {@link java.util.List#contains(Object)} negative:
+     * item -&gt; list -&gt; !list.contains(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#contains(Object)}
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.List#contains(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<List<? extends E>> notContains(E item) {
+        return l -> !l.contains(item);
+    }
+
+    /**
+     * <p>Returns the carrying of {@link java.util.List#containsAll(Collection)} negative:
+     * all -&gt; list -&gt; !list.containsAll(all).</p>
+     *
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#containsAll(Collection)}
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.List#containsAll(Collection)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<List<? extends E>> notContainsAll(Collection<? extends E> all) {
+        return l -> !l.containsAll(all);
+    }
+
+    /**
      * <p>Returns the carrying of {@link java.util.List#set(int, Object)}:
      * (i, item) -&gt; list -&gt; list.set(i, item).</p>
      *
      * @param i    an index that is passed as the first argument to {@link java.util.List#set(int, Object)}
      * @param item an element of {@link E} that is passed as the second argument to {@link java.util.List#set(int, Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#set(int, Object)
      * @see java.util.function.Function
      * @since 0.1.0
@@ -93,8 +123,8 @@ public final class ListX {
      * i -&gt; list -&gt; list.get(i).</p>
      *
      * @param i   an index that is passed as the argument to {@link java.util.List#get(int)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#get(int)
      * @see java.util.function.Function
      * @since 0.1.0
@@ -108,8 +138,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.indexOf(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#indexOf(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#indexOf(Object)
      * @see java.util.function.Function
      * @since 0.1.0
@@ -123,8 +153,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.lastIndexOf(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#lastIndexOf(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#lastIndexOf(Object)
      * @see java.util.function.Function
      * @since 0.1.0
@@ -138,8 +168,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#add(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#add(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -154,8 +184,8 @@ public final class ListX {
      *
      * @param i    an index that is passed as the first argument to {@link java.util.List#add(int, Object)}
      * @param item an element of {@link E} that is passed as the second argument to {@link java.util.List#add(int, Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#add(int, Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -169,8 +199,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.addAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#addAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#addAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -185,8 +215,8 @@ public final class ListX {
      *
      * @param i   an index that is passed as the first argument to {@link java.util.List#addAll(int, Collection)}
      * @param all a {@link java.util.Collection} that is passed as the second argument to {@link java.util.List#addAll(int, Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#addAll(int, Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -200,8 +230,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#add(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#add(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -215,8 +245,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.addAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#addAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#addAll(Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -231,8 +261,8 @@ public final class ListX {
      *
      * @param i   an index that is passed as the first argument to {@link java.util.List#addAll(int, Collection)}
      * @param all a {@link java.util.Collection} that is passed as the second argument to {@link java.util.List#addAll(int, Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#addAll(int, Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -246,8 +276,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#remove(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#remove(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -261,8 +291,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.removeAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#removeAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#removeAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -276,8 +306,8 @@ public final class ListX {
      * item -&gt; list -&gt; list.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.List#remove(Object)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#remove(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -291,8 +321,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.removeAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#removeAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#removeAll(Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -306,8 +336,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.retainAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#retainAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#retainAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -321,8 +351,8 @@ public final class ListX {
      * all -&gt; list -&gt; list.retainAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.List#retainAll(Collection)}
-     * @param <E> a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#retainAll(Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -336,8 +366,8 @@ public final class ListX {
      * operator -&gt; list -&gt; list.replaceAll(operator).</p>
      *
      * @param operator an {@link java.util.function.UnaryOperator} that is passed as the argument to {@link java.util.List#replaceAll(UnaryOperator)}
-     * @param <E>      a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>      a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#replaceAll(UnaryOperator)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -351,8 +381,8 @@ public final class ListX {
      * comparator -&gt; list -&gt; list.sort(comparator).</p>
      *
      * @param comparator a {@link java.util.Comparator} that is passed as the argument to {@link java.util.List#sort(Comparator)}
-     * @param <E>        a type of elements in a list.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>        a type of elements in a list
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.List#sort(Comparator)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -366,8 +396,8 @@ public final class ListX {
      * array -&gt; list -&gt; list.toArray(array).</p>
      *
      * @param array an array of {@link E} objects that is passed as the argument to {@link java.util.List#toArray(Object[])}
-     * @param <E>   a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>   a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#toArray(Object[])
      * @see java.util.function.Function
      * @since 0.1.0
@@ -382,8 +412,8 @@ public final class ListX {
      *
      * @param generator a {@link java.util.function.IntFunction} of array generator (array constructor)
      *                  the result of which is passed as the argument to {@link java.util.List#toArray(Object[])}
-     * @param <E>       a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>       a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#toArray(Object[])
      * @see java.util.function.IntFunction
      * @see java.util.function.Function
@@ -399,8 +429,8 @@ public final class ListX {
      *
      * @param from an index that is passed as the first argument to {@link java.util.List#subList(int, int)}
      * @param to   an index that is passed as the second argument to {@link java.util.List#subList(int, int)}
-     * @param <E>  a type of elements in a list.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>  a type of elements in a list
+     * @return a {@link java.util.function.Function}
      * @see java.util.List#subList(int, int)
      * @see java.util.function.Function
      * @since 0.1.0
@@ -414,13 +444,28 @@ public final class ListX {
      * other -&gt; list -&gt; list.equals(other).</p>
      *
      * @param other an {@link java.lang.Object} that is passed as the argument to {@link java.util.List#equals(Object)})}
-     * @param <E>   a type of elements in a list.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>   a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.List#equals(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
     public static <E> Predicate<List<? extends E>> equalsTo(Object other) {
         return l -> l.equals(other);
+    }
+
+    /**
+     * <p>Returns the carrying of {@link java.util.List#equals(Object)} negative:
+     * other -&gt; list -&gt; !list.equals(other).</p>
+     *
+     * @param other an {@link java.lang.Object} that is passed as the argument to {@link java.util.List#equals(Object)})}
+     * @param <E>   a type of elements in a list
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.List#equals(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<List<? extends E>> notEqualsTo(Object other) {
+        return l -> !l.equals(other);
     }
 }

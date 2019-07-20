@@ -570,6 +570,68 @@ public class ListXTest {
         List<Number> actual = Optional.of(numbers)
                 .filter(ListX.equalsTo(values))
                 .orElseThrow(IllegalStateException::new);
-        assertEquals(actual, numbers);
+        assertEquals(actual, values);
+    }
+
+    @Test
+    public void checkNotContains() {
+        int value = 26;
+        List<Number> numbers = new ArrayList<>();
+        Predicate<List<? extends Number>> containsValue = ListX.notContains(value);
+        assertTrue(containsValue.test(numbers));
+    }
+
+    @Test
+    public void checkNotContainsOptional() {
+        double value = 26.1;
+        List<Number> numbers = new ArrayList<>();
+        List<Number> actual = Optional.of(numbers)
+                .filter(ListX.notContains(value))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.contains(value));
+    }
+
+    @Test
+    public void checkNotContainsAll() {
+        int value = 27;
+        List<Number> numbers = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
+        values.add(value);
+        Predicate<List<? extends Number>> containsAllValues = ListX.notContainsAll(values);
+        assertTrue(containsAllValues.test(numbers));
+    }
+
+    @Test
+    public void checkNotContainsAllOptional() {
+        double value = 27.1;
+        List<Number> numbers = new ArrayList<>();
+        List<Double> values = new ArrayList<>();
+        values.add(value);
+        List<Number> actual = Optional.of(numbers)
+                .filter(ListX.notContainsAll(values))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.containsAll(values));
+    }
+
+    @Test
+    public void checkNotEquals() {
+        int value = 28;
+        List<Number> numbers = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
+        values.add(value);
+        Predicate<List<? extends Number>> equalsToValues = ListX.notEqualsTo(values);
+        assertTrue(equalsToValues.test(numbers));
+    }
+
+    @Test
+    public void checkNotEqualsOptional() {
+        double value = 28.1;
+        List<Number> numbers = new ArrayList<>();
+        List<Double> values = new ArrayList<>();
+        values.add(value);
+        List<Number> actual = Optional.of(numbers)
+                .filter(ListX.notEqualsTo(values))
+                .orElseThrow(IllegalStateException::new);
+        assertNotEquals(actual, values);
     }
 }
