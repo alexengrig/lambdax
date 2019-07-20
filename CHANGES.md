@@ -1,5 +1,10 @@
 # *Lambda*X changes
 
+## 0.1.2
+
+*   [[#48](../../issues/48)] Negate methods - "not"
+    *   CollectionX: notContains, notContainsAll, notEqualsTo
+
 ## 0.1.1
 
 *   [[#15](../../issues/15)] Create CollectionX JavaDoc
