@@ -357,4 +357,66 @@ public class CollectionXTest {
                 .orElseThrow(IllegalStateException::new);
         assertEquals(values, actual);
     }
+
+    @Test
+    public void checkNotContains() {
+        int value = 16;
+        Collection<Number> numbers = new ArrayList<>();
+        Predicate<Collection<? extends Number>> containsValue = CollectionX.notContains(value);
+        assertTrue(containsValue.test(numbers));
+    }
+
+    @Test
+    public void checkNotContainsOptional() {
+        double value = 16.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.notContains(value))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numbers, actual);
+    }
+
+    @Test
+    public void checkNotContainsAll() {
+        int value = 17;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Integer> values = new ArrayList<>();
+        values.add(value);
+        Predicate<Collection<? extends Number>> containsAllValues = CollectionX.notContainsAll(values);
+        assertTrue(containsAllValues.test(numbers));
+    }
+
+    @Test
+    public void checkNotContainsAllOptional() {
+        double value = 17.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.notContainsAll(values))
+                .orElseThrow(IllegalStateException::new);
+        assertEquals(numbers, actual);
+    }
+
+    @Test
+    public void checkNotEquals() {
+        int value = 18;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Integer> values = new ArrayList<>();
+        values.add(value);
+        Predicate<Collection<? extends Number>> equalsToValues = CollectionX.notEqualsTo(values);
+        assertTrue(equalsToValues.test(numbers));
+    }
+
+    @Test
+    public void checkNotEqualsOptional() {
+        double value = 18.1;
+        Collection<Number> numbers = new ArrayList<>();
+        Collection<Double> values = new ArrayList<>();
+        values.add(value);
+        Collection<Number> actual = Optional.of(numbers)
+                .filter(CollectionX.notEqualsTo(values))
+                .orElseThrow(IllegalStateException::new);
+        assertNotEquals(values, actual);
+    }
 }

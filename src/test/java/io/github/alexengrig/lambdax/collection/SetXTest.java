@@ -357,4 +357,70 @@ public class SetXTest {
                 .orElseThrow(IllegalStateException::new);
         assertEquals(values, actual);
     }
+
+    @Test
+    public void checkNotContains() {
+        int value = 16;
+        Set<Number> numbers = new HashSet<>();
+        numbers.add(value);
+        Predicate<Set<? extends Number>> notContainsValue = SetX.notContains(value);
+        assertFalse(notContainsValue.test(numbers));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkNotContainsOptional() {
+        double value = 16.1;
+        Set<Number> numbers = new HashSet<>();
+        numbers.add(value);
+        Set<Number> actual = Optional.of(numbers)
+                .filter(SetX.notContains(value))
+                .orElseThrow(NullPointerException::new);
+        assertNull(actual);
+    }
+
+    @Test
+    public void checkNotContainsAll() {
+        int value = 17;
+        Set<Number> numbers = new HashSet<>();
+        numbers.add(value);
+        Set<Integer> values = new HashSet<>();
+        values.add(value);
+        Predicate<Set<? extends Number>> notContainsAllValues = SetX.notContainsAll(values);
+        assertFalse(notContainsAllValues.test(numbers));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkNotContainsAllOptional() {
+        double value = 17.1;
+        Set<Number> numbers = new HashSet<>();
+        numbers.add(value);
+        Set<Double> values = new HashSet<>();
+        values.add(value);
+        Set<Number> actual = Optional.of(numbers)
+                .filter(SetX.notContainsAll(values))
+                .orElseThrow(NullPointerException::new);
+        assertNull(actual);
+    }
+
+    @Test
+    public void checkNotEquals() {
+        int value = 18;
+        Set<Number> numbers = new HashSet<>();
+        Set<Integer> values = new HashSet<>();
+        values.add(value);
+        Predicate<Set<? extends Number>> notEqualsToValues = SetX.notEqualsTo(values);
+        assertTrue(notEqualsToValues.test(numbers));
+    }
+
+    @Test
+    public void checkNotEqualsOptional() {
+        double value = 18.1;
+        Set<Number> numbers = new HashSet<>();
+        Set<Double> values = new HashSet<>();
+        values.add(value);
+        Set<Number> actual = Optional.of(numbers)
+                .filter(SetX.notEqualsTo(values))
+                .orElseThrow(IllegalStateException::new);
+        assertNotEquals(actual, values);
+    }
 }
