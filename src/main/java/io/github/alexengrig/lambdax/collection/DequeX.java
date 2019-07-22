@@ -21,10 +21,10 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.Deque}.
+ * <p>This utility class contains useful lambdas for {@link java.util.Deque}.</p>
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.1.2
  * @see java.util.Deque
  * @see java.util.function.Consumer
  * @see java.util.function.Predicate
@@ -39,8 +39,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.contains(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#contains(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#contains(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -50,12 +50,27 @@ public final class DequeX {
     }
 
     /**
+     * <p>Returns the carrying of {@link java.util.Deque#contains(Object)} negative:
+     * item -&gt; deque -&gt; !deque.contains(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#contains(Object)}
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.Deque#contains(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<Deque<? super E>> notContains(E item) {
+        return d -> !d.contains(item);
+    }
+
+    /**
      * <p>Returns the carrying of {@link java.util.Deque#add(Object)}:
      * item -&gt; deque -&gt; deque.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#add(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#add(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -69,8 +84,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#add(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#add(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -84,8 +99,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.addFirst(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#addFirst(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#addFirst(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -99,8 +114,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.addLast(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#addLast(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#addLast(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -114,8 +129,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.offer(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#offer(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#offer(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -129,8 +144,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.offer(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#offer(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#offer(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -144,8 +159,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.offerFirst(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#offerFirst(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#offerFirst(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -159,8 +174,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.offerFirst(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#offerFirst(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#offerFirst(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -174,8 +189,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.offerLast(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#offerLast(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#offerLast(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -189,8 +204,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.offerLast(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#offerLast(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#offerLast(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -204,8 +219,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.push(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#push(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#push(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -219,8 +234,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#remove(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#remove(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -234,8 +249,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#remove(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#remove(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -249,8 +264,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.removeFirstOccurrence(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#removeFirstOccurrence(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#removeFirstOccurrence(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -264,8 +279,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.removeFirstOccurrence(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#removeFirstOccurrence(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#removeFirstOccurrence(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -279,8 +294,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.removeLastOccurrence(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#removeLastOccurrence(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#removeLastOccurrence(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -294,8 +309,8 @@ public final class DequeX {
      * item -&gt; deque -&gt; deque.removeLastOccurrence(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Deque#removeLastOccurrence(Object)}
-     * @param <E>  a type of elements in a deque.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a deque
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Deque#removeLastOccurrence(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0

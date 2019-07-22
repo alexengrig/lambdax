@@ -375,4 +375,22 @@ public class DequeXTest {
                 .orElseThrow(IllegalStateException::new);
         assertFalse(actual.contains(value));
     }
+
+    @Test
+    public void checkNotContains() {
+        int value = 18;
+        Deque<Number> numbers = new ArrayDeque<>();
+        Predicate<Deque<? super Number>> containsValue = DequeX.notContains(value);
+        assertTrue(containsValue.test(numbers));
+    }
+
+    @Test
+    public void checkNotContainsOptional() {
+        double value = 18.1;
+        Deque<Number> numbers = new ArrayDeque<>();
+        Deque<Number> actual = Optional.of(numbers)
+                .filter(DequeX.notContains(value))
+                .orElseThrow(IllegalStateException::new);
+        assertFalse(actual.contains(value));
+    }
 }

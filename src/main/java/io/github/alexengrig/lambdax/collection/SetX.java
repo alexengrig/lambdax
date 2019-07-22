@@ -24,10 +24,10 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.Set}.
+ * <p>This utility class contains useful lambdas for {@link java.util.Set}.</p>
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.1.2
  * @see java.util.Collection
  * @see java.util.Set
  * @see java.util.function.Consumer
@@ -45,8 +45,8 @@ public final class SetX {
      * item -&gt; set -&gt; set.contains(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Set#contains(Object)}
-     * @param <E>  a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#contains(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -60,8 +60,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.containsAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#containsAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#containsAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -71,12 +71,42 @@ public final class SetX {
     }
 
     /**
+     * <p>Returns the carrying of {@link java.util.Set#contains(Object)} negative:
+     * item -&gt; set -&gt; !set.contains(item).</p>
+     *
+     * @param item an element of {@link E} that is passed as the argument to {@link java.util.Set#contains(Object)}
+     * @param <E>  a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.Set#contains(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<Set<? extends E>> notContains(E item) {
+        return s -> !s.contains(item);
+    }
+
+    /**
+     * <p>Returns the carrying of {@link java.util.Set#containsAll(Collection)} negative:
+     * all -&gt; set -&gt; !set.containsAll(all).</p>
+     *
+     * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#containsAll(Collection)}
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.Set#containsAll(Collection)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<Set<? extends E>> notContainsAll(Collection<? extends E> all) {
+        return s -> !s.containsAll(all);
+    }
+
+    /**
      * <p>Returns the carrying of {@link java.util.Set#add(Object)}:
      * item -&gt; set -&gt; set.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Set#add(Object)}
-     * @param <E>  a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#add(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -90,8 +120,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.addAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#addAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#addAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -105,8 +135,8 @@ public final class SetX {
      * item -&gt; set -&gt; set.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Set#add(Object)}
-     * @param <E>  a type of elements in a set.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a set
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Set#add(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -120,8 +150,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.addAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#addAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Set#addAll(Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -135,8 +165,8 @@ public final class SetX {
      * item -&gt; set -&gt; set.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Set#remove(Object)}
-     * @param <E>  a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>  a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#remove(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -150,8 +180,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.removeAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#removeAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#removeAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -165,8 +195,8 @@ public final class SetX {
      * item -&gt; set -&gt; set.remove(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Set#remove(Object)}
-     * @param <E>  a type of elements in a set.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E>  a type of elements in a set
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Set#remove(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -180,8 +210,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.removeAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#removeAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Set#removeAll(Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -195,8 +225,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.retainAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#retainAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#retainAll(Collection)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -210,8 +240,8 @@ public final class SetX {
      * all -&gt; set -&gt; set.retainAll(all).</p>
      *
      * @param all a {@link java.util.Collection} that is passed as the argument to {@link java.util.Set#retainAll(Collection)}
-     * @param <E> a type of elements in a set.
-     * @return a {@link java.util.function.Consumer}.
+     * @param <E> a type of elements in a set
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Set#retainAll(Collection)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -225,8 +255,8 @@ public final class SetX {
      * array -&gt; set -&gt; set.toArray(array).</p>
      *
      * @param array an array of {@link E} objects that is passed as the argument to {@link java.util.Set#toArray(Object[])}
-     * @param <E>   a type of elements in a set.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>   a type of elements in a set
+     * @return a {@link java.util.function.Function}
      * @see java.util.Set#toArray(Object[])
      * @see java.util.function.Function
      * @since 0.1.0
@@ -241,8 +271,8 @@ public final class SetX {
      *
      * @param generator a {@link java.util.function.IntFunction} of array generator (array constructor)
      *                  the result of which is passed as the argument to {@link java.util.Set#toArray(Object[])}
-     * @param <E>       a type of elements in a set.
-     * @return a {@link java.util.function.Function}.
+     * @param <E>       a type of elements in a set
+     * @return a {@link java.util.function.Function}
      * @see java.util.Set#toArray(Object[])
      * @see java.util.function.IntFunction
      * @see java.util.function.Function
@@ -257,13 +287,28 @@ public final class SetX {
      * other -&gt; set -&gt; set.equals(other).</p>
      *
      * @param other an {@link java.lang.Object} that is passed as the argument to {@link java.util.Set#equals(Object)})}
-     * @param <E>   a type of elements in a set.
-     * @return a {@link java.util.function.Predicate}.
+     * @param <E>   a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Set#equals(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
     public static <E> Predicate<Set<? extends E>> equalsTo(Object other) {
         return c -> c.equals(other);
+    }
+
+    /**
+     * <p>Returns the carrying of {@link java.util.Set#equals(Object)} negative:
+     * other -&gt; set -&gt; !set.equals(other).</p>
+     *
+     * @param other an {@link java.lang.Object} that is passed as the argument to {@link java.util.Set#equals(Object)})}
+     * @param <E>   a type of elements in a set
+     * @return a {@link java.util.function.Predicate}
+     * @see java.util.Set#equals(Object)
+     * @see java.util.function.Predicate
+     * @since 0.1.2
+     */
+    public static <E> Predicate<Set<? extends E>> notEqualsTo(Object other) {
+        return c -> !c.equals(other);
     }
 }
