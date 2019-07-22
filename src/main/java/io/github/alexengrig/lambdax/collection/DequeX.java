@@ -21,10 +21,10 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.Deque}.
+ * <p>This utility class contains useful lambdas for {@link java.util.Deque}.</p>
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.1.2
  * @see java.util.Deque
  * @see java.util.function.Consumer
  * @see java.util.function.Predicate
@@ -58,7 +58,7 @@ public final class DequeX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Deque#contains(Object)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
     public static <E> Predicate<Deque<? super E>> notContains(E item) {
         return d -> !d.contains(item);
