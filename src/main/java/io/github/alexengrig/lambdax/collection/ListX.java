@@ -23,10 +23,10 @@ import java.util.List;
 import java.util.function.*;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.List}.
+ * <p>This utility class contains useful lambdas for {@link java.util.List}.</p>
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.1.2
  * @see java.util.Collection
  * @see java.util.List
  * @see java.util.Comparator
