@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 /**
  * This utility class contains useful lambdas for {@link java.util.Queue}.
  *
- * @author Grig Alex@
+ * @author Grig Alex
  * @version 0.1.1
  * @see java.util.Queue
  * @see java.util.function.Consumer
@@ -39,8 +39,8 @@ public final class QueueX {
      * item -&gt; queue -&gt; queue.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#add(Object)}
-     * @param <E>  a type of elements in a queue.
-     * @return a {@link java.util.function.Predicate} .
+     * @param <E>  a type of elements in a queue
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Queue#add(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -54,8 +54,8 @@ public final class QueueX {
      * item -&gt; queue -&gt; queue.add(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#add(Object)}
-     * @param <E>  a type of elements in a queue.
-     * @return a {@link java.util.function.Consumer} .
+     * @param <E>  a type of elements in a queue
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Queue#add(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
@@ -69,8 +69,8 @@ public final class QueueX {
      * item -&gt; queue -&gt; queue.offer(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#offer(Object)}
-     * @param <E>  a type of elements in a queue.
-     * @return a {@link java.util.function.Predicate} .
+     * @param <E>  a type of elements in a queue
+     * @return a {@link java.util.function.Predicate}
      * @see java.util.Queue#offer(Object)
      * @see java.util.function.Predicate
      * @since 0.1.0
@@ -84,8 +84,8 @@ public final class QueueX {
      * item -&gt; queue -&gt; queue.offer(item).</p>
      *
      * @param item an element of {@link E} that is passed as the argument to {@link java.util.Queue#offer(Object)}
-     * @param <E>  a type of elements in a queue.
-     * @return a {@link java.util.function.Consumer} .
+     * @param <E>  a type of elements in a queue
+     * @return a {@link java.util.function.Consumer}
      * @see java.util.Queue#offer(Object)
      * @see java.util.function.Consumer
      * @since 0.1.0
