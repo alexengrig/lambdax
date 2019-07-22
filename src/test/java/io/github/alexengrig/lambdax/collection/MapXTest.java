@@ -235,4 +235,72 @@ public class MapXTest {
                 .orElseThrow(IllegalStateException::new);
         assertEquals(values, actual);
     }
+
+    @Test
+    public void checkNotContainsKey() {
+        int key = 10;
+        String value = "ten";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Predicate<Map<? extends Number, ? extends CharSequence>> notContainsKey = MapX.notContainsKey(key);
+        assertFalse(notContainsKey.test(numberWords));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkNotContainsKeyOptional() {
+        double key = 10.1;
+        String value = "ten.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .filter(MapX.notContainsKey(key))
+                .orElseThrow(NullPointerException::new);
+        assertNull(actual);
+    }
+
+    @Test
+    public void checkNotContainsValue() {
+        int key = 11;
+        String value = "eleven";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Predicate<Map<? extends Number, ? extends CharSequence>> notContainsValue = MapX.notConntainsValue(value);
+        assertFalse(notContainsValue.test(numberWords));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkNotContainsValueOptional() {
+        double key = 11.1;
+        String value = "eleven.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .filter(MapX.notConntainsValue(value))
+                .orElseThrow(NullPointerException::new);
+        assertNull(actual);
+    }
+
+    @Test
+    public void checkNotEquals() {
+        int key = 12;
+        String value = "twelve";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        Map<Integer, String> values = new HashMap<>();
+        values.put(key, value);
+        Predicate<Map<? super Number, ? super CharSequence>> notEqualsToValues = MapX.notEqualsTo(values);
+        assertTrue(notEqualsToValues.test(numberWords));
+    }
+
+    @Test
+    public void checkNotEqualsOptional() {
+        double key = 12.1;
+        String value = "twelve.one";
+        Map<Number, CharSequence> numberWords = new HashMap<>();
+        Map<Double, String> values = new HashMap<>();
+        values.put(key, value);
+        Map<Number, CharSequence> actual = Optional.of(numberWords)
+                .filter(MapX.notEqualsTo(values))
+                .orElseThrow(IllegalStateException::new);
+        assertNotEquals(values, actual);
+    }
 }

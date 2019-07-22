@@ -6,6 +6,7 @@
     *   CollectionX: notContains, notContainsAll, notEqualsTo
     *   DequeX: notContains
     *   ListX: notContains, notContainsAll, notEqualsTo
+    *   MapX: notContainsKey, notContainsValue, notEqualsTo
 
 ## 0.1.1
 
