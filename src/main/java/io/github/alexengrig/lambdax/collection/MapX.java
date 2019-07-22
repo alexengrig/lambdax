@@ -22,10 +22,10 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.Map}.
+ * <p>This utility class contains useful lambdas for {@link java.util.Map}.</p>
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.1.2
  * @see java.util.Map
  * @see java.util.function.Consumer
  * @see java.util.function.Function
@@ -62,7 +62,7 @@ public final class MapX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Map#containsKey(Object)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
     public static <K, V> Predicate<Map<? extends K, ? extends V>> notContainsKey(K key) {
         return map -> !map.containsKey(key);
@@ -94,9 +94,9 @@ public final class MapX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Map#containsValue(Object)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
-    public static <K, V> Predicate<Map<? extends K, ? extends V>> notConntainsValue(V value) {
+    public static <K, V> Predicate<Map<? extends K, ? extends V>> notContainsValue(V value) {
         return map -> !map.containsValue(value);
     }
 
@@ -225,7 +225,7 @@ public final class MapX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Map#equals(Object)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
     public static <K, V> Predicate<Map<? super K, ? super V>> notEqualsTo(Object other) {
         return map -> !map.equals(other);
