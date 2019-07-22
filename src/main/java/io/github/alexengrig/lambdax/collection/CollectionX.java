@@ -23,10 +23,10 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 /**
- * This utility class contains useful lambdas for {@link java.util.Collection}.
+ * <p>This utility class contains useful lambdas for {@link java.util.Collection}.</p>
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.1.2
  * @see java.util.Collection
  * @see java.util.function.Consumer
  * @see java.util.function.Function
@@ -77,7 +77,7 @@ public final class CollectionX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Collection#contains(Object)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
     public static <E> Predicate<Collection<? extends E>> notContains(E item) {
         return c -> !c.contains(item);
@@ -92,7 +92,7 @@ public final class CollectionX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Collection#containsAll(Collection)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
     public static <E> Predicate<Collection<? extends E>> notContainsAll(Collection<? extends E> all) {
         return c -> !c.containsAll(all);
@@ -304,7 +304,7 @@ public final class CollectionX {
      * @return a {@link java.util.function.Predicate}
      * @see java.util.Collection#equals(Object)
      * @see java.util.function.Predicate
-     * @since 0.1.0
+     * @since 0.1.2
      */
     public static <E> Predicate<Collection<? extends E>> notEqualsTo(Object other) {
         return c -> !c.equals(other);
