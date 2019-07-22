@@ -2,7 +2,7 @@
 
 ## 0.1.2
 
-*   [[#48](../../issues/48)] Negate methods - "not"
+*   [[#48](../../issues/48)] Negate methods - "not":
     *   CollectionX: notContains, notContainsAll, notEqualsTo
     *   DequeX: notContains
     *   ListX: notContains, notContainsAll, notEqualsTo
