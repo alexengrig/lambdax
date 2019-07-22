@@ -18,7 +18,7 @@
 *   [[#19](../../issues/19)] Create QueueX JavaDoc
 *   [[#20](../../issues/20)] Create DequeX JavaDoc
 *   [[#21](../../issues/21)] Create OptionalX JavaDoc
-*   [[#22](../../issues/22)] Fix Map#get _(Create MapX tests with use Optional)_
+*   [[#22](../../issues/22)] Fix Map#get *(Create MapX tests with use Optional)*
 *   [[#31](../../issues/31)] Create CollectionX tests with use Optional
 *   [[#32](../../issues/32)] Create ListX tests with use Optional
 *   [[#33](../../issues/33)] Create SetX tests with use Optional
