@@ -2,7 +2,7 @@
   <img src="logo/lambdax-preview.png" title="LambdaX" alt="LambdaX logo">
 </a>
 
-# *Lambda*X 0.1.2
+# *Lambda*X 0.1.3
 
 Perfect Java 8 Lambdas.
 
@@ -89,7 +89,7 @@ Add this snippet to the pom.xml `dependencies` section:
 <dependency>
   <groupId>io.github.alexengrig</groupId>
   <artifactId>lambdax</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
 </dependency>
 ```
 
@@ -98,12 +98,12 @@ Add this snippet to the pom.xml `dependencies` section:
 Add this snippet to the build.gradle `dependencies` section:
 
 ```groovy
-implementation 'io.github.alexengrig:lambdax:0.1.2'
+implementation 'io.github.alexengrig:lambdax:0.1.3'
 ```
 
 ### Others
 
-Others snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.1.2/jar).
+Others snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.1.3/jar).
 
 ## License
 
