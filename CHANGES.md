@@ -1,5 +1,9 @@
 # *Lambda*X changes
 
+## 0.1.3
+
+*   [[#58](../../issues/58)] Fix JavaDoc version
+
 ## 0.1.2
 
 *   [[#48](../../issues/48)] Negate methods - "not":
