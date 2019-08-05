@@ -17,8 +17,8 @@
 /**
  * <p>This library contains utility classes with useful lambdas.</p>
  *
- * @version 0.1.2
+ * @version 0.1.3
  * @author Grig Alex
- * @since 0.1.2
+ * @since 0.1.0
  */
 package io.github.alexengrig.lambdax;
