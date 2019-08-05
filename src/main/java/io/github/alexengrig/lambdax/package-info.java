@@ -19,6 +19,6 @@
  *
  * @version 0.1.2
  * @author Grig Alex
- * @since 0.1.2
+ * @since 0.1.0
  */
 package io.github.alexengrig.lambdax;
