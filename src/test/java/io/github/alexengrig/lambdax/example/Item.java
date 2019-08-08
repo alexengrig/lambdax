@@ -16,7 +16,9 @@
 
 package io.github.alexengrig.lambdax.example;
 
-public class Item {
+import java.util.Objects;
+
+public class Item implements Comparable<Item> {
     private String name;
 
     private Item() {
@@ -28,5 +30,10 @@ public class Item {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return Objects.compare(name, item.name, String::compareTo);
     }
 }

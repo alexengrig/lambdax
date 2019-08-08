@@ -33,6 +33,10 @@ public final class PredicateX {
     }
 
     public static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
-        return new BasePredicate<>(mapper);
+        return new PredicateB<>(mapper);
+    }
+
+    public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> ofComparable(Function<T, R> mapper) {
+        return new ComparablePredicateB<>(mapper);
     }
 }

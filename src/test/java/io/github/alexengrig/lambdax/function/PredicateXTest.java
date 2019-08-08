@@ -24,11 +24,18 @@ import java.util.function.Predicate;
 
 import static org.junit.Assert.assertTrue;
 
-public class BasePredicateTest {
+public class PredicateXTest {
     @Test
-    public void check() {
+    public void checkPredicate() {
         Box box = new Box(new Item("Coca-Cola"));
         Predicate<Box> equalsCocaCola = PredicateX.of(Box::getItem).map(Item::getName).check("Coca-Cola"::equals);
+        assertTrue(equalsCocaCola.test(box));
+    }
+
+    @Test
+    public void checkComparablePredicate() {
+        Box box = new Box(new Item("Coca-Cola"));
+        Predicate<Box> equalsCocaCola = PredicateX.ofComparable(Box::getItem).map(Item::getName).less("Pepsi");
         assertTrue(equalsCocaCola.test(box));
     }
 }

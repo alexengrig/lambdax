@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.function;
 
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -29,18 +30,19 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateI
  * @see java.util.function.Predicate
  * @see java.util.function.Function
+ * @see java.util.Objects
  * @since 0.2.0
  */
-/* package */ final class BasePredicate<T, R> implements PredicateI<T, R> {
-    private final Function<T, R> function;
+/* package */final class PredicateB<T, R> implements PredicateI<T, R> {
+    protected final Function<T, R> function;
 
-    public BasePredicate(Function<T, R> mapper) {
-        this.function = mapper;
+    /* package */PredicateB(Function<T, R> mapper) {
+        function = mapper;
     }
 
     @Override
-    public <U> PredicateI<T, U> map(Function<R, U> mapper) {
-        return new BasePredicate<>(function.andThen(mapper));
+    public <V> PredicateI<T, V> map(Function<R, V> mapper) {
+        return new PredicateB<>(function.andThen(mapper));
     }
 
     @Override

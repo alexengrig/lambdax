@@ -30,8 +30,8 @@ import java.util.function.Predicate;
  * @see java.util.function.Function
  * @since 0.2.0
  */
-public interface PredicateI<T, R> {
-    <U> PredicateI<T, U> map(Function<R, U> mapper);
+/* package */interface PredicateI<T, R> {
+    <V> PredicateI<T, V> map(Function<R, V> mapper);
 
     Predicate<T> check(Predicate<R> checker);
 }
