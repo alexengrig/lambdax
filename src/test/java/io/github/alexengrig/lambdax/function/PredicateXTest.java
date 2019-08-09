@@ -35,7 +35,7 @@ public class PredicateXTest {
     }
 
     @Test
-    public void equal() {
+    public void checkEqual() {
         String value = "Coca-Cola";
         Box box = new Box(new Item(value));
         Predicate<Box> equalsCocaCola = PredicateX.of(Box::getItem).map(Item::getName).equal(value);
@@ -43,7 +43,7 @@ public class PredicateXTest {
     }
 
     @Test
-    public void less() {
+    public void checkLess() {
         String value = "Coca-Cola";
         Box box = new Box(new Item(value));
         Predicate<Box> lessPepsi = PredicateX.of(Box::getItem).map(Item::getName).less("Pepsi");
@@ -51,10 +51,26 @@ public class PredicateXTest {
     }
 
     @Test
-    public void greater() {
-        String value = "Dr Pepper";
+    public void checkGreater() {
+        String value = "Schweppes";
         Box box = new Box(new Item(value));
-        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getItem).map(Item::getName).greater("Coca-Cola");
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getItem).map(Item::getName).greater("Dr Pepper");
+        assertTrue(greaterCocaCola.test(box));
+    }
+
+    @Test
+    public void checkLessOrEqual() {
+        String value = "Fanta";
+        Box box = new Box(new Item(value));
+        Predicate<Box> lessPepsi = PredicateX.of(Box::getItem).map(Item::getName).lessOrEqual("Mirinda");
+        assertTrue(lessPepsi.test(box));
+    }
+
+    @Test
+    public void checkGreaterOrEqual() {
+        String value = "Sprite";
+        Box box = new Box(new Item(value));
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getItem).map(Item::getName).greaterOrEqual("7 Up");
         assertTrue(greaterCocaCola.test(box));
     }
 }
