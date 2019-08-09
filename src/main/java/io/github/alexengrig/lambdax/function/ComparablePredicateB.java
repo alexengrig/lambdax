@@ -36,6 +36,7 @@ import java.util.function.Function;
      * <p>The constructor with the mapper.</p>
      *
      * @param mapper a function for map the predicate input to the comparable result
+     * @see java.util.function.Function
      * @since 0.2.0
      */
     /* package */ComparablePredicateB(Function<T, R> mapper) {
