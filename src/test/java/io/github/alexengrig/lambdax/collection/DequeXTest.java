@@ -380,8 +380,9 @@ public class DequeXTest {
     public void checkNotContains() {
         int value = 18;
         Deque<Number> numbers = new ArrayDeque<>();
+        numbers.add(value);
         Predicate<Deque<? super Number>> containsValue = DequeX.notContains(value);
-        assertTrue(containsValue.test(numbers));
+        assertFalse(containsValue.test(numbers));
     }
 
     @Test
