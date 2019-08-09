@@ -406,10 +406,11 @@ public class SetXTest {
     public void checkNotEquals() {
         int value = 18;
         Set<Number> numbers = new HashSet<>();
+        numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
         Predicate<Set<? extends Number>> notEqualsToValues = SetX.notEqualsTo(values);
-        assertTrue(notEqualsToValues.test(numbers));
+        assertFalse(notEqualsToValues.test(numbers));
     }
 
     @Test
