@@ -285,10 +285,11 @@ public class MapXTest {
         int key = 12;
         String value = "twelve";
         Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
         Map<Integer, String> values = new HashMap<>();
         values.put(key, value);
         Predicate<Map<? super Number, ? super CharSequence>> notEqualsToValues = MapX.notEqualsTo(values);
-        assertTrue(notEqualsToValues.test(numberWords));
+        assertFalse(notEqualsToValues.test(numberWords));
     }
 
     @Test
