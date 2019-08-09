@@ -22,20 +22,39 @@ import org.junit.Test;
 
 import java.util.function.Predicate;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class PredicateXTest {
     @Test
-    public void checkPredicate() {
-        Box box = new Box(new Item("Coca-Cola"));
-        Predicate<Box> equalsCocaCola = PredicateX.of(Box::getItem).map(Item::getName).check("Coca-Cola"::equals);
+    public void checkChecker() {
+        String value = "Coca-Cola";
+        Box box = new Box(new Item(value));
+        Predicate<Box> isEmptyItemName = PredicateX.of(Box::getItem).map(Item::getName).check(String::isEmpty);
+        assertFalse(isEmptyItemName.test(box));
+    }
+
+    @Test
+    public void equal() {
+        String value = "Coca-Cola";
+        Box box = new Box(new Item(value));
+        Predicate<Box> equalsCocaCola = PredicateX.of(Box::getItem).map(Item::getName).equal(value);
         assertTrue(equalsCocaCola.test(box));
     }
 
     @Test
-    public void checkComparablePredicate() {
-        Box box = new Box(new Item("Coca-Cola"));
-        Predicate<Box> equalsCocaCola = PredicateX.ofComparable(Box::getItem).map(Item::getName).less("Pepsi");
-        assertTrue(equalsCocaCola.test(box));
+    public void less() {
+        String value = "Coca-Cola";
+        Box box = new Box(new Item(value));
+        Predicate<Box> lessPepsi = PredicateX.of(Box::getItem).map(Item::getName).less("Pepsi");
+        assertTrue(lessPepsi.test(box));
+    }
+
+    @Test
+    public void greater() {
+        String value = "Dr Pepper";
+        Box box = new Box(new Item(value));
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getItem).map(Item::getName).greater("Coca-Cola");
+        assertTrue(greaterCocaCola.test(box));
     }
 }
