@@ -16,15 +16,16 @@
 
 package io.github.alexengrig.lambdax.function;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * <p>The base implementation of {@link io.github.alexengrig.lambdax.function.PredicateI} interface.</p>
+ * <p>The base implementation of the {@link io.github.alexengrig.lambdax.function.PredicateI} interface.</p>
  *
- * @param <T> a type
- * @param <R> a result
+ * @param <T> the type of the input to the predicate
+ * @param <R> the type of the mapper result
  * @author Grig Alex
  * @version 0.2.0
  * @see io.github.alexengrig.lambdax.function.PredicateI
@@ -33,9 +34,18 @@ import java.util.function.Predicate;
  * @see java.util.Objects
  * @since 0.2.0
  */
-/* package */final class PredicateB<T, R> implements PredicateI<T, R> {
+/* package */class PredicateB<T, R> implements PredicateI<T, R> {
+    private final static int ZERO = 0;
+
     protected final Function<T, R> function;
 
+    /**
+     * <p>The constructor with the mapper.</p>
+     *
+     * @param mapper a function for map the predicate input
+     * @see java.util.function.Function
+     * @since 0.2.0
+     */
     /* package */PredicateB(Function<T, R> mapper) {
         function = mapper;
     }
@@ -46,7 +56,27 @@ import java.util.function.Predicate;
     }
 
     @Override
+    public <V extends Comparable<V>> ComparablePredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
+        return new ComparablePredicateB<>(function.andThen(mapper));
+    }
+
+    @Override
     public Predicate<T> check(Predicate<R> checker) {
         return t -> checker.test(function.apply(t));
+    }
+
+    @Override
+    public Predicate<T> equal(R other) {
+        return t -> Objects.equals(t, other);
+    }
+
+    @Override
+    public Predicate<T> less(R other, Comparator<R> comparator) {
+        return t -> comparator.compare(function.apply(t), other) < ZERO;
+    }
+
+    @Override
+    public Predicate<T> greater(R other, Comparator<R> comparator) {
+        return t -> comparator.compare(function.apply(t), other) > ZERO;
     }
 }
