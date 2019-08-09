@@ -362,8 +362,9 @@ public class CollectionXTest {
     public void checkNotContains() {
         int value = 16;
         Collection<Number> numbers = new ArrayList<>();
-        Predicate<Collection<? extends Number>> containsValue = CollectionX.notContains(value);
-        assertTrue(containsValue.test(numbers));
+        numbers.add(value);
+        Predicate<Collection<? extends Number>> notContainsValue = CollectionX.notContains(value);
+        assertFalse(notContainsValue.test(numbers));
     }
 
     @Test
@@ -380,10 +381,11 @@ public class CollectionXTest {
     public void checkNotContainsAll() {
         int value = 17;
         Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? extends Number>> containsAllValues = CollectionX.notContainsAll(values);
-        assertTrue(containsAllValues.test(numbers));
+        Predicate<Collection<? extends Number>> notContainsAllValues = CollectionX.notContainsAll(values);
+        assertFalse(notContainsAllValues.test(numbers));
     }
 
     @Test
@@ -402,10 +404,11 @@ public class CollectionXTest {
     public void checkNotEquals() {
         int value = 18;
         Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? extends Number>> equalsToValues = CollectionX.notEqualsTo(values);
-        assertTrue(equalsToValues.test(numbers));
+        Predicate<Collection<? extends Number>> notEqualsToValues = CollectionX.notEqualsTo(values);
+        assertFalse(notEqualsToValues.test(numbers));
     }
 
     @Test

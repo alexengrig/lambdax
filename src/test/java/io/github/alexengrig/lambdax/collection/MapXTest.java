@@ -242,8 +242,9 @@ public class MapXTest {
         String value = "ten";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
+        numberWords.remove(key);
         Predicate<Map<? extends Number, ? extends CharSequence>> notContainsKey = MapX.notContainsKey(key);
-        assertFalse(notContainsKey.test(numberWords));
+        assertTrue(notContainsKey.test(numberWords));
     }
 
     @Test(expected = NullPointerException.class)
@@ -264,8 +265,9 @@ public class MapXTest {
         String value = "eleven";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
+        numberWords.remove(key);
         Predicate<Map<? extends Number, ? extends CharSequence>> notContainsValue = MapX.notContainsValue(value);
-        assertFalse(notContainsValue.test(numberWords));
+        assertTrue(notContainsValue.test(numberWords));
     }
 
     @Test(expected = NullPointerException.class)
@@ -285,10 +287,11 @@ public class MapXTest {
         int key = 12;
         String value = "twelve";
         Map<Number, CharSequence> numberWords = new HashMap<>();
+        numberWords.put(key, value);
         Map<Integer, String> values = new HashMap<>();
         values.put(key, value);
         Predicate<Map<? super Number, ? super CharSequence>> notEqualsToValues = MapX.notEqualsTo(values);
-        assertTrue(notEqualsToValues.test(numberWords));
+        assertFalse(notEqualsToValues.test(numberWords));
     }
 
     @Test

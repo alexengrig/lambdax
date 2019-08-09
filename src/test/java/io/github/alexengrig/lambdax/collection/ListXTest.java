@@ -577,8 +577,9 @@ public class ListXTest {
     public void checkNotContains() {
         int value = 26;
         List<Number> numbers = new ArrayList<>();
-        Predicate<List<? extends Number>> containsValue = ListX.notContains(value);
-        assertTrue(containsValue.test(numbers));
+        numbers.add(value);
+        Predicate<List<? extends Number>> notContainsValue = ListX.notContains(value);
+        assertFalse(notContainsValue.test(numbers));
     }
 
     @Test
@@ -595,10 +596,11 @@ public class ListXTest {
     public void checkNotContainsAll() {
         int value = 27;
         List<Number> numbers = new ArrayList<>();
+        numbers.add(value);
         List<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<List<? extends Number>> containsAllValues = ListX.notContainsAll(values);
-        assertTrue(containsAllValues.test(numbers));
+        Predicate<List<? extends Number>> notContainsAllValues = ListX.notContainsAll(values);
+        assertFalse(notContainsAllValues.test(numbers));
     }
 
     @Test
@@ -617,10 +619,11 @@ public class ListXTest {
     public void checkNotEquals() {
         int value = 28;
         List<Number> numbers = new ArrayList<>();
+        numbers.add(value);
         List<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<List<? extends Number>> equalsToValues = ListX.notEqualsTo(values);
-        assertTrue(equalsToValues.test(numbers));
+        Predicate<List<? extends Number>> notEqualsToValues = ListX.notEqualsTo(values);
+        assertFalse(notEqualsToValues.test(numbers));
     }
 
     @Test
