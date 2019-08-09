@@ -17,6 +17,7 @@
 package io.github.alexengrig.lambdax.function;
 
 import java.util.Comparator;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -40,6 +41,10 @@ import java.util.function.Predicate;
      *
      * @param other an object for compare
      * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see io.github.alexengrig.lambdax.function.PredicateI#less(Object, Comparator)
+     * @see java.util.Comparator#comparing(Function)
+     * @see java.lang.Comparable#compareTo(Object)
      * @since 0.2.0
      */
     default Predicate<T> less(R other) {
@@ -53,6 +58,10 @@ import java.util.function.Predicate;
      *
      * @param other an object for compare
      * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see io.github.alexengrig.lambdax.function.PredicateI#greater(Object, Comparator)
+     * @see java.util.Comparator#comparing(Function)
+     * @see java.lang.Comparable#compareTo(Object)
      * @since 0.2.0
      */
     default Predicate<T> greater(R other) {
@@ -67,6 +76,10 @@ import java.util.function.Predicate;
      *
      * @param other an object for compare
      * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see io.github.alexengrig.lambdax.function.PredicateI#lessOrEqual(Object, Comparator)
+     * @see java.util.Comparator#comparing(Function)
+     * @see java.lang.Comparable#compareTo(Object)
      * @since 0.2.0
      */
     default Predicate<T> lessOrEqual(R other) {
@@ -81,6 +94,10 @@ import java.util.function.Predicate;
      *
      * @param other an object for compare
      * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see io.github.alexengrig.lambdax.function.PredicateI#greaterOrEqual(Object, Comparator)
+     * @see java.util.Comparator#comparing(Function)
+     * @see java.lang.Comparable#compareTo(Object)
      * @since 0.2.0
      */
     default Predicate<T> greaterOrEqual(R other) {
