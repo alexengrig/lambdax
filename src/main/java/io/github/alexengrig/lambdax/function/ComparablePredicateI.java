@@ -45,10 +45,11 @@ import java.util.function.Predicate;
      * @see io.github.alexengrig.lambdax.function.PredicateI#less(Object, Comparator)
      * @see java.util.Comparator#comparing(Function)
      * @see java.lang.Comparable#compareTo(Object)
+     * @see java.util.Comparator#reversed()
      * @since 0.2.0
      */
     default Predicate<T> less(R other) {
-        return less(other, Comparator.comparing(other::compareTo));
+        return less(other, Comparator.comparing(other::compareTo).reversed());
     }
 
     /**
@@ -62,10 +63,11 @@ import java.util.function.Predicate;
      * @see io.github.alexengrig.lambdax.function.PredicateI#greater(Object, Comparator)
      * @see java.util.Comparator#comparing(Function)
      * @see java.lang.Comparable#compareTo(Object)
+     * @see java.util.Comparator#reversed()
      * @since 0.2.0
      */
     default Predicate<T> greater(R other) {
-        return greater(other, Comparator.comparing(other::compareTo));
+        return greater(other, Comparator.comparing(other::compareTo).reversed());
     }
 
     /**
@@ -80,10 +82,11 @@ import java.util.function.Predicate;
      * @see io.github.alexengrig.lambdax.function.PredicateI#lessOrEqual(Object, Comparator)
      * @see java.util.Comparator#comparing(Function)
      * @see java.lang.Comparable#compareTo(Object)
+     * @see java.util.Comparator#reversed()
      * @since 0.2.0
      */
     default Predicate<T> lessOrEqual(R other) {
-        return lessOrEqual(other, Comparator.comparing(other::compareTo));
+        return lessOrEqual(other, Comparator.comparing(other::compareTo).reversed());
     }
 
     /**
@@ -98,9 +101,10 @@ import java.util.function.Predicate;
      * @see io.github.alexengrig.lambdax.function.PredicateI#greaterOrEqual(Object, Comparator)
      * @see java.util.Comparator#comparing(Function)
      * @see java.lang.Comparable#compareTo(Object)
+     * @see java.util.Comparator#reversed()
      * @since 0.2.0
      */
     default Predicate<T> greaterOrEqual(R other) {
-        return greaterOrEqual(other, Comparator.comparing(other::compareTo));
+        return greaterOrEqual(other, Comparator.comparing(other::compareTo).reversed());
     }
 }
