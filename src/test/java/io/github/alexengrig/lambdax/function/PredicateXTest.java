@@ -22,6 +22,7 @@ import io.github.alexengrig.lambdax.example.Item;
 import io.github.alexengrig.lambdax.example.Pack;
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import static org.junit.Assert.assertFalse;
@@ -51,6 +52,16 @@ public class PredicateXTest {
     }
 
     @Test
+    public void checkLessWithComparator() {
+        String value = "Coca-Cola";
+        Box box = new Box(new Pack(new Item(value)));
+        Pack pack = new Pack(new Item("Pepsi"));
+        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+                .less(pack, Comparator.comparing(p -> p.getItem().getName()));
+        assertTrue(lessPepsi.test(box));
+    }
+
+    @Test
     public void checkLess() {
         String value = "Coca-Cola";
         Box box = new Box(new Pack(new Item(value)));
@@ -59,6 +70,16 @@ public class PredicateXTest {
                 .map(Item::getName)
                 .less("Pepsi");
         assertTrue(lessPepsi.test(box));
+    }
+
+    @Test
+    public void checkGreaterWithComparator() {
+        String value = "Schweppes";
+        Box box = new Box(new Pack(new Item(value)));
+        Pack pack = new Pack(new Item("Dr Pepper"));
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
+                .greater(pack, Comparator.comparing(p -> p.getItem().getName()));
+        assertTrue(greaterCocaCola.test(box));
     }
 
     @Test
