@@ -17,7 +17,9 @@
 package io.github.alexengrig.lambdax.function;
 
 import io.github.alexengrig.lambdax.example.Box;
+import io.github.alexengrig.lambdax.example.Holder;
 import io.github.alexengrig.lambdax.example.Item;
+import io.github.alexengrig.lambdax.example.Pack;
 import org.junit.Test;
 
 import java.util.function.Predicate;
@@ -29,48 +31,66 @@ public class PredicateXTest {
     @Test
     public void checkChecker() {
         String value = "Coca-Cola";
-        Box box = new Box(new Item(value));
-        Predicate<Box> isEmptyItemName = PredicateX.of(Box::getItem).map(Item::getName).check(String::isEmpty);
-        assertFalse(isEmptyItemName.test(box));
+        Holder<Box> boxHolder = new Holder<>(new Box(new Pack(new Item(value))));
+        Predicate<Holder<Box>> isEmptyItemName = PredicateX.of(Holder<Box>::get)
+                .map(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .check(String::isEmpty);
+        assertFalse(isEmptyItemName.test(boxHolder));
     }
 
     @Test
     public void checkEqual() {
         String value = "Coca-Cola";
-        Box box = new Box(new Item(value));
-        Predicate<Box> equalsCocaCola = PredicateX.of(Box::getItem).map(Item::getName).equal(value);
-        assertTrue(equalsCocaCola.test(box));
+        Pack pack = new Pack(new Item(value));
+        Predicate<Pack> equalsCocaCola = PredicateX.of(Pack::getItem)
+                .map(Item::getName)
+                .equal(value);
+        assertTrue(equalsCocaCola.test(pack));
     }
 
     @Test
     public void checkLess() {
         String value = "Coca-Cola";
-        Box box = new Box(new Item(value));
-        Predicate<Box> lessPepsi = PredicateX.of(Box::getItem).map(Item::getName).less("Pepsi");
+        Box box = new Box(new Pack(new Item(value)));
+        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .less("Pepsi");
         assertTrue(lessPepsi.test(box));
     }
 
     @Test
     public void checkGreater() {
         String value = "Schweppes";
-        Box box = new Box(new Item(value));
-        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getItem).map(Item::getName).greater("Dr Pepper");
+        Box box = new Box(new Pack(new Item(value)));
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .greater("Dr Pepper");
         assertTrue(greaterCocaCola.test(box));
     }
 
     @Test
     public void checkLessOrEqual() {
         String value = "Fanta";
-        Box box = new Box(new Item(value));
-        Predicate<Box> lessPepsi = PredicateX.of(Box::getItem).map(Item::getName).lessOrEqual("Mirinda");
+        Box box = new Box(new Pack(new Item(value)));
+        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .lessOrEqual("Mirinda");
         assertTrue(lessPepsi.test(box));
     }
 
     @Test
     public void checkGreaterOrEqual() {
         String value = "Sprite";
-        Box box = new Box(new Item(value));
-        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getItem).map(Item::getName).greaterOrEqual("7 Up");
+        Box box = new Box(new Pack(new Item(value)));
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .greaterOrEqual("7 Up");
         assertTrue(greaterCocaCola.test(box));
     }
 }

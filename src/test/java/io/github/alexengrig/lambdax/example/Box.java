@@ -17,16 +17,13 @@
 package io.github.alexengrig.lambdax.example;
 
 public class Box {
-    private Item item;
+    private Pack pack;
 
-    public Box() {
+    public Box(Pack pack) {
+        this.pack = pack;
     }
 
-    public Box(Item item) {
-        this.item = item;
-    }
-
-    public Item getItem() {
-        return item;
+    public Pack getPack() {
+        return pack;
     }
 }
