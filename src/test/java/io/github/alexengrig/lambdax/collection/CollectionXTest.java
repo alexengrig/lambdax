@@ -362,8 +362,9 @@ public class CollectionXTest {
     public void checkNotContains() {
         int value = 16;
         Collection<Number> numbers = new ArrayList<>();
+        numbers.add(value);
         Predicate<Collection<? extends Number>> containsValue = CollectionX.notContains(value);
-        assertTrue(containsValue.test(numbers));
+        assertFalse(containsValue.test(numbers));
     }
 
     @Test
