@@ -17,7 +17,6 @@
 package io.github.alexengrig.lambdax.function;
 
 import java.util.Comparator;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
