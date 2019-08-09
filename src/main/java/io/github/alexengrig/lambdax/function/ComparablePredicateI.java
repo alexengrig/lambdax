@@ -42,7 +42,7 @@ import java.util.function.Predicate;
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
      * @see io.github.alexengrig.lambdax.function.PredicateI#less(Object, Comparator)
-     * @see java.util.Comparator#comparing(Function)
+     * @see java.util.Comparator#comparing(java.util.function.Function)
      * @see java.lang.Comparable#compareTo(Object)
      * @see java.util.Comparator#reversed()
      * @since 0.2.0
@@ -60,7 +60,7 @@ import java.util.function.Predicate;
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
      * @see io.github.alexengrig.lambdax.function.PredicateI#greater(Object, Comparator)
-     * @see java.util.Comparator#comparing(Function)
+     * @see java.util.Comparator#comparing(java.util.function.Function)
      * @see java.lang.Comparable#compareTo(Object)
      * @see java.util.Comparator#reversed()
      * @since 0.2.0
@@ -79,7 +79,7 @@ import java.util.function.Predicate;
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
      * @see io.github.alexengrig.lambdax.function.PredicateI#lessOrEqual(Object, Comparator)
-     * @see java.util.Comparator#comparing(Function)
+     * @see java.util.Comparator#comparing(java.util.function.Function)
      * @see java.lang.Comparable#compareTo(Object)
      * @see java.util.Comparator#reversed()
      * @since 0.2.0
@@ -98,7 +98,7 @@ import java.util.function.Predicate;
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
      * @see io.github.alexengrig.lambdax.function.PredicateI#greaterOrEqual(Object, Comparator)
-     * @see java.util.Comparator#comparing(Function)
+     * @see java.util.Comparator#comparing(java.util.function.Function)
      * @see java.lang.Comparable#compareTo(Object)
      * @see java.util.Comparator#reversed()
      * @since 0.2.0
