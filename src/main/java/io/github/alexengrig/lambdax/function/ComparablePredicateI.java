@@ -71,7 +71,7 @@ import java.util.function.Predicate;
     /**
      * <p>
      * Returns the {@link java.util.function.Predicate} that checks if the input object is less than or
-     * equal to the other object.
+     * equals to the other object.
      * </p>
      *
      * @param other an object for compare
@@ -89,7 +89,7 @@ import java.util.function.Predicate;
     /**
      * <p>
      * Returns the {@link java.util.function.Predicate} that checks if the input object is greater than or
-     * equal to the other object.
+     * equals to the other object.
      * </p>
      *
      * @param other an object for compare
