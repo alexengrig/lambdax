@@ -362,9 +362,8 @@ public class SetXTest {
     public void checkNotContains() {
         int value = 16;
         Set<Number> numbers = new HashSet<>();
-        numbers.add(value);
         Predicate<Set<? extends Number>> notContainsValue = SetX.notContains(value);
-        assertFalse(notContainsValue.test(numbers));
+        assertTrue(notContainsValue.test(numbers));
     }
 
     @Test(expected = NullPointerException.class)
@@ -382,11 +381,10 @@ public class SetXTest {
     public void checkNotContainsAll() {
         int value = 17;
         Set<Number> numbers = new HashSet<>();
-        numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
         Predicate<Set<? extends Number>> notContainsAllValues = SetX.notContainsAll(values);
-        assertFalse(notContainsAllValues.test(numbers));
+        assertTrue(notContainsAllValues.test(numbers));
     }
 
     @Test(expected = NullPointerException.class)
