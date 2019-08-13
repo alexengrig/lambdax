@@ -107,4 +107,4 @@ Others snippets are available in [The Central Repository](https://search.maven.o
 
 ## License
 
-This project is licensed under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+This project is [licensed](LICENSE) under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
