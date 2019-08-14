@@ -17,6 +17,7 @@
 package io.github.alexengrig.lambdax.function;
 
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * <p>This utility class contains useful lambdas for {@link java.util.function.Predicate}.</p>
@@ -37,6 +38,18 @@ public final class PredicateX {
      * @since 0.2.0
      */
     private PredicateX() {
+    }
+
+    /**
+     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
+     *
+     * @param <T> a type of the input to the predicate
+     * @return The {@link java.util.function.Predicate} that always returns {@code true}
+     * @see java.util.function.Predicate
+     * @since 0.2.0
+     */
+    public static <T> Predicate<T> truth() {
+        return t -> true;
     }
 
     /**
