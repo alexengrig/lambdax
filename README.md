@@ -27,7 +27,7 @@ This library contains utility classes with useful lambdas.
 *Lambda***X** provides the following:
 
 *   Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
-*   Writing code in chaining style.
+*   Writing code in [chaining](https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md#chained-method-calls) style.
 
 ## Examples
 
