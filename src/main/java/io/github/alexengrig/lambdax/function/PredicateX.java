@@ -65,6 +65,22 @@ public final class PredicateX {
     }
 
     /**
+     * <p>Returns the {@link java.util.function.Predicate} that is the negation of the supplied predicate.</p>
+     * <p>Like in JDK 11.</p>
+     *
+     * @param <T>       a type of the input to the predicate
+     * @param predicate a supplied predicate to negate
+     * @return The {@link java.util.function.Predicate} that negates the results of the supplied predicate
+     * @see java.util.function.Predicate
+     * @see java.util.function.Predicate#negate
+     * @since 0.2.0
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Predicate<T> not(Predicate<? super T> predicate) {
+        return (Predicate<T>) predicate.negate();
+    }
+
+    /**
      * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB} with the mapper.</p>
      *
      * @param mapper a function of map the input
