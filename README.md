@@ -11,7 +11,7 @@ Perfect Java 8 Lambdas.
 [![Build Status](https://travis-ci.com/alexengrig/lambdax.svg?branch=master)](https://travis-ci.com/alexengrig/lambdax)
 [![codecov](https://codecov.io/gh/alexengrig/lambdax/branch/master/graph/badge.svg)](https://codecov.io/gh/alexengrig/lambdax)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrig/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexengrig/lambdax.svg)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexengrig/lambdax.svg)](https://github.com/alexengrig/lambdax/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 This library contains utility classes with useful lambdas.
@@ -27,7 +27,7 @@ This library contains utility classes with useful lambdas.
 *Lambda***X** provides the following:
 
 *   Writing code in [declarative](https://en.wikipedia.org/wiki/Declarative_programming) style.
-*   Writing code in chaining style.
+*   Writing code in [chaining](https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md#chained-method-calls) style.
 
 ## Examples
 
