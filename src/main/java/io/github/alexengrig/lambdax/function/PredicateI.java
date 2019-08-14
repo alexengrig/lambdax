@@ -35,7 +35,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
  * @since 0.2.0
  */
-/* package */interface PredicateI<T, R> {
+public interface PredicateI<T, R> {
     /**
      * <p>
      * Returns the {@link io.github.alexengrig.lambdax.function.PredicateI} with the new mapper for

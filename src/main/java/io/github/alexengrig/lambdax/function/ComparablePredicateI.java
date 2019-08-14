@@ -32,7 +32,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateI
  * @since 0.2.0
  */
-/* package */interface ComparablePredicateI<T, R extends Comparable<R>> extends PredicateI<T, R> {
+public interface ComparablePredicateI<T, R extends Comparable<R>> extends PredicateI<T, R> {
     /**
      * <p>
      * Returns the {@link java.util.function.Predicate} that checks if the input object is less than the other object.
