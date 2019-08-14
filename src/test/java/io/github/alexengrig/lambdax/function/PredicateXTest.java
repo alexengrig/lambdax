@@ -33,6 +33,11 @@ import static org.junit.Assert.assertTrue;
 
 public class PredicateXTest {
     @Test
+    public void checkTruth() {
+        assertTrue(PredicateX.truth().test(null));
+    }
+
+    @Test
     public void checkChecker() {
         String value = "Coca-Cola";
         Holder<Box> boxHolder = new Holder<>(new Box(new Pack(new Item(value))));
