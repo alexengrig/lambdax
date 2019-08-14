@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax.example;
+package io.github.alexengrig.lambdax.function;
 
-public final class Holder<T> {
-    private T t;
+import java.util.function.Function;
 
-    public Holder(T t) {
-        this.t = t;
-    }
-
-    public T get() {
-        return t;
-    }
+/**
+ * <p>Represents a function that accepts one argument and produces a comparable result.</p>
+ *
+ * @param <T> the type of the input to the function
+ * @param <R> the type of the comparable result of the function
+ * @author Grig Alex
+ * @version 0.2.0
+ * @see java.lang.Comparable
+ * @see java.util.function.Function
+ * @since 0.2.0
+ */
+@FunctionalInterface
+public interface ComparableResultFunction<T, R extends Comparable<R>> extends Function<T, R> {
 }

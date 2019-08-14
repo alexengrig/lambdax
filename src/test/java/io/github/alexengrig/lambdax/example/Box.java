@@ -16,14 +16,14 @@
 
 package io.github.alexengrig.lambdax.example;
 
-public final class Holder<T> {
-    private T t;
+public class Box {
+    private Pack pack;
 
-    public Holder(T t) {
-        this.t = t;
+    public Box(Pack pack) {
+        this.pack = pack;
     }
 
-    public T get() {
-        return t;
+    public Pack getPack() {
+        return pack;
     }
 }

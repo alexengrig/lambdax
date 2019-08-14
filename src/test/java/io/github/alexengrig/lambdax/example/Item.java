@@ -16,14 +16,24 @@
 
 package io.github.alexengrig.lambdax.example;
 
-public final class Holder<T> {
-    private T t;
+import java.util.Objects;
 
-    public Holder(T t) {
-        this.t = t;
+public class Item implements Comparable<Item> {
+    private String name;
+
+    private Item() {
     }
 
-    public T get() {
-        return t;
+    public Item(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return Objects.compare(name, item.name, String::compareTo);
     }
 }
