@@ -38,6 +38,11 @@ public class PredicateXTest {
     }
 
     @Test
+    public void checkLie() {
+        assertFalse(PredicateX.lie().test(null));
+    }
+
+    @Test
     public void checkChecker() {
         String value = "Coca-Cola";
         Holder<Box> boxHolder = new Holder<>(new Box(new Pack(new Item(value))));

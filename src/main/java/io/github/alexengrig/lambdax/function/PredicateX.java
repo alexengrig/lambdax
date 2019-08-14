@@ -53,6 +53,18 @@ public final class PredicateX {
     }
 
     /**
+     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; false.</p>
+     *
+     * @param <T> a type of the input to the predicate
+     * @return The {@link java.util.function.Predicate} that always returns {@code false}
+     * @see java.util.function.Predicate
+     * @since 0.2.0
+     */
+    public static <T> Predicate<T> lie() {
+        return t -> false;
+    }
+
+    /**
      * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB} with the mapper.</p>
      *
      * @param mapper a function of map the input
