@@ -72,7 +72,7 @@ Insert the value into `Collection` if it does not contain it:
 // LambdaX
     Optional.of(holder)
             .map(Holder::get)
-            .filter(CollectionX.contains(value).negate())
+            .filter(CollectionX.notContains(value))
             .ifPresent(CollectionX.onlyAdd(value));
 ```
 
