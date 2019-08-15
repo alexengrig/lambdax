@@ -141,24 +141,24 @@ public class PredicateXTest {
 
     @Test
     public void checkLessWithComparator() {
-        String value = "Coca-Cola";
+        String value = "Pepsi";
         Box box = new Box(new Pack(new Item(value)));
-        Pack pack = new Pack(new Item("Pepsi"));
+        Pack pack = new Pack(new Item("Coca-Cola"));
         Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
                 .less(pack, Comparator.comparing(p -> p.getItem().getName()));
-        assertTrue(lessPepsi.test(box));
+        assertFalse(lessPepsi.test(box));
     }
 
     @Test
     public void checkLessWithComparatorChaining() {
-        String value = "Coca-Cola";
+        String value = "Pepsi";
         Box box = new Box(new Pack(new Item(value)));
-        Pack pack = new Pack(new Item("Pepsi"));
+        Pack pack = new Pack(new Item("Coca-Cola"));
         List<Box> list = Stream.of(box)
                 .filter(PredicateX.of(Box::getPack)
                         .less(pack, Comparator.comparing(p -> p.getItem().getName())))
                 .collect(Collectors.toList());
-        assertFalse(list.isEmpty());
+        assertTrue(list.isEmpty());
     }
 
     @Test
@@ -187,24 +187,24 @@ public class PredicateXTest {
 
     @Test
     public void checkGreaterWithComparator() {
-        String value = "Schweppes";
+        String value = "Dr Pepper";
         Box box = new Box(new Pack(new Item(value)));
-        Pack pack = new Pack(new Item("Dr Pepper"));
+        Pack pack = new Pack(new Item("Schweppes"));
         Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
                 .greater(pack, Comparator.comparing(p -> p.getItem().getName()));
-        assertTrue(greaterCocaCola.test(box));
+        assertFalse(greaterCocaCola.test(box));
     }
 
     @Test
     public void checkGreaterWithComparatorChaining() {
-        String value = "Schweppes";
+        String value = "Dr Pepper";
         Box box = new Box(new Pack(new Item(value)));
-        Pack pack = new Pack(new Item("Dr Pepper"));
+        Pack pack = new Pack(new Item("Schweppes"));
         List<Box> list = Stream.of(box)
                 .filter(PredicateX.of(Box::getPack)
                         .greater(pack, Comparator.comparing(p -> p.getItem().getName())))
                 .collect(Collectors.toList());
-        assertFalse(list.isEmpty());
+        assertTrue(list.isEmpty());
     }
 
     @Test
