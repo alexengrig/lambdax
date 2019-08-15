@@ -26,4 +26,8 @@ public class Box {
     public Pack getPack() {
         return pack;
     }
+
+    public boolean isEmpty() {
+        return pack == null;
+    }
 }

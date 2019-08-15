@@ -81,6 +81,19 @@ public final class PredicateX {
     }
 
     /**
+     * <p>Returns the same {@link java.util.function.Predicate} as passed to the method.</p>
+     *
+     * @param checker a predicate
+     * @param <T>     a type of the input to the predicate
+     * @return The same {@link java.util.function.Predicate} - checker
+     * @see java.util.function.Predicate
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Predicate<T> from(Predicate<? super T> checker) {
+        return (Predicate<T>) checker;
+    }
+
+    /**
      * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB} with the mapper.</p>
      *
      * @param mapper a function of map the input
