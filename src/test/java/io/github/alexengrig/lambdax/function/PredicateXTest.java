@@ -69,6 +69,50 @@ public class PredicateXTest {
     }
 
     @Test
+    public void checkIsNull() {
+        String value = "Monster Energy";
+        Pack pack = new Pack(new Item(value));
+        Predicate<Pack> isNullItemName = PredicateX.of(Pack::getItem)
+                .map(Item::getName)
+                .isNull();
+        assertFalse(isNullItemName.test(pack));
+    }
+
+    @Test
+    public void checkIsNullChaining() {
+        String value = "Monster Energy";
+        Pack pack = new Pack(new Item(value));
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.of(Pack::getItem)
+                        .map(Item::getName)
+                        .isNull())
+                .collect(Collectors.toList());
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
+    public void checkNonNull() {
+        String value = "Red Bull";
+        Pack pack = new Pack(new Item(value));
+        Predicate<Pack> nonNullItemName = PredicateX.of(Pack::getItem)
+                .map(Item::getName)
+                .nonNull();
+        assertTrue(nonNullItemName.test(pack));
+    }
+
+    @Test
+    public void checkNonNullChaining() {
+        String value = "Red Bull";
+        Pack pack = new Pack(new Item(value));
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.of(Pack::getItem)
+                        .map(Item::getName)
+                        .nonNull())
+                .collect(Collectors.toList());
+        assertFalse(list.isEmpty());
+    }
+
+    @Test
     public void checkEqual() {
         String value = "Coca-Cola";
         Pack pack = new Pack(new Item(value));
