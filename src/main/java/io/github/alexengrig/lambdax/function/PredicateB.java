@@ -123,6 +123,38 @@ import java.util.function.Predicate;
 
     /**
      * <p>
+     * Returns the {@link java.util.function.Predicate} that checks the mapper result is {@code null}.
+     * </p>
+     *
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see java.util.Objects#isNull(Object)
+     * @see java.util.function.Function#apply(Object)
+     * @since 0.2.0
+     */
+    @Override
+    public Predicate<T> isNull() {
+        return t -> Objects.isNull(function.apply(t));
+    }
+
+    /**
+     * <p>
+     * Returns the {@link java.util.function.Predicate} that checks the mapper result is not {@code null}.
+     * </p>
+     *
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see java.util.Objects#nonNull(Object)
+     * @see java.util.function.Function#apply(Object)
+     * @since 0.2.0
+     */
+    @Override
+    public Predicate<T> nonNull() {
+        return t -> Objects.nonNull(function.apply(t));
+    }
+
+    /**
+     * <p>
      * Returns the {@link java.util.function.Predicate} that checks if the input object is equals to the other object.
      * </p>
      *

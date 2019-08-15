@@ -81,6 +81,28 @@ public interface PredicateI<T, R> {
 
     /**
      * <p>
+     * Returns the {@link java.util.function.Predicate} that checks the mapper result is {@code null}.
+     * </p>
+     *
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @since 0.2.0
+     */
+    Predicate<T> isNull();
+
+    /**
+     * <p>
+     * Returns the {@link java.util.function.Predicate} that checks the mapper result is not {@code null}.
+     * </p>
+     *
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @since 0.2.0
+     */
+    Predicate<T> nonNull();
+
+    /**
+     * <p>
      * Returns the {@link java.util.function.Predicate} that checks if the input object is equals to the other object.
      * </p>
      *
