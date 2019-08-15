@@ -1,5 +1,19 @@
 # *Lambda*X changes
 
+## 0.2.0
+
+Create the function package
+
+*   [[#49](../../issues/49)] Create PredicateX#not for negate predicates *(like JDK 11 - Predicate#not)*
+*   [[#59](../../issues/59)] Create PredicateX#truth for the permanent true result
+*   [[#60](../../issues/60)] Create PredicateX#lie for the permanent false result
+*   [[#61](../../issues/61)] Create mappable predicate
+    *   [[#62](../../issues/62)] Create isNull and nonNull methods
+*   [[#68](../../issues/68)] Add the chaining link *(to README.md)*
+*   [[#69](../../issues/69)] Fix coverage *(collection package)*
+*   [[#76](../../issues/76)] Create PredicateX#from
+*   [[#77](../../issues/77)] Fix coverage in PredicateB
+
 ## 0.1.3
 
 *   [[#58](../../issues/58)] Fix JavaDoc version
