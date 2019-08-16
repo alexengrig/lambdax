@@ -4,7 +4,7 @@
 
 # *Lambda*X 0.2.0
 
-Improving Java 8 Lambdas.
+Useful Java 8 Lambdas.
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.alexengrig/lambdax.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.alexengrig%22%20AND%20a:%22lambdax%22)
 [![Javadocs](https://www.javadoc.io/badge/io.github.alexengrig/lambdax.svg)](https://www.javadoc.io/doc/io.github.alexengrig/lambdax)
