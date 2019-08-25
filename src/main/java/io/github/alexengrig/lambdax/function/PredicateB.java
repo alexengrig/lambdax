@@ -37,7 +37,7 @@ import java.util.function.Predicate;
  */
 /* package */class PredicateB<T, R> implements PredicateI<T, R> {
     /**
-     * <p>The value for compare with the comparator result</p>
+     * <p>The value for compare with the comparator result.</p>
      *
      * @see java.util.Comparator#compare(Object, Object)
      * @since 0.2.0
