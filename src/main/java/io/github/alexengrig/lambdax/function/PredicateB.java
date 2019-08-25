@@ -80,7 +80,7 @@ import java.util.function.Predicate;
      */
     @Override
     public <V> PredicateI<T, V> map(Function<R, V> mapper) {
-        return new PredicateB<>(function.andThen(mapper));
+        return new PredicateB<>(function.andThen(FunctionX.ofNullable(mapper)));
     }
 
     /**
@@ -101,7 +101,7 @@ import java.util.function.Predicate;
      */
     @Override
     public <V extends Comparable<V>> ComparablePredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
-        return new ComparablePredicateB<>(function.andThen(mapper));
+        return new ComparablePredicateB<>(function.andThen(FunctionX.ofNullable(mapper)));
     }
 
     /**
@@ -118,7 +118,10 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> check(Predicate<R> checker) {
-        return t -> checker.test(function.apply(t));
+        return t -> {
+            R value = function.apply(t);
+            return value != null && checker.test(value);
+        };
     }
 
     /**
@@ -187,7 +190,10 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> less(R other, Comparator<R> comparator) {
-        return t -> comparator.compare(function.apply(t), other) < ZERO;
+        return t -> {
+            R value = function.apply(t);
+            return value != null && comparator.compare(value, other) < ZERO;
+        };
     }
 
     /**
@@ -207,6 +213,9 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> greater(R other, Comparator<R> comparator) {
-        return t -> comparator.compare(function.apply(t), other) > ZERO;
+        return t -> {
+            R value = function.apply(t);
+            return value != null && comparator.compare(value, other) > ZERO;
+        };
     }
 }
