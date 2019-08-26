@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -71,7 +72,7 @@ public class PredicateXTest {
                 .map(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
-                .check(String::isEmpty);
+                .check(Objects::isNull);
         assertFalse(isEmptyItemName.test(boxHolder));
     }
 
