@@ -65,7 +65,7 @@ public class PredicateXTest {
     }
 
     @Test
-    public void checkCheckNullable() {
+    public void checkCheckerNullable() {
         Holder<Box> boxHolder = new Holder<>(null);
         Predicate<Holder<Box>> isEmptyItemName = PredicateX.of(Holder<Box>::get)
                 .map(Box::getPack)
