@@ -25,7 +25,7 @@
  * </pre>
  *
  * @author Grig Alex
- * @version 0.2.0
+ * @version 0.2.1
  * @since 0.2.0
  */
 package io.github.alexengrig.lambdax.function;
