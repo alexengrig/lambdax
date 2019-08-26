@@ -80,7 +80,7 @@ import java.util.function.Predicate;
      */
     @Override
     public <V> PredicateI<T, V> map(Function<R, V> mapper) {
-        return new PredicateB<>(function.andThen(FunctionX.ofNullable(mapper)));
+        return new PredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
     }
 
     /**
@@ -101,7 +101,7 @@ import java.util.function.Predicate;
      */
     @Override
     public <V extends Comparable<V>> ComparablePredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
-        return new ComparablePredicateB<>(function.andThen(FunctionX.ofNullable(mapper)));
+        return new ComparablePredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
     }
 
     /**
