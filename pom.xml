@@ -39,6 +39,12 @@
 
     <developers>
         <developer>
+          <id>alexengrig</id>
+          <roles>
+            <role>owner</role>
+            <role>architect</role>
+            <role>developer</role>
+          </roles>
             <name>Grig Alex</name>
             <email>alexengrigdev@gmail.com</email>
         </developer>
