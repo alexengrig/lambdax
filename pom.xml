@@ -22,7 +22,7 @@
 
     <groupId>io.github.alexengrig</groupId>
     <artifactId>lambdax</artifactId>
-  <version>0.2.0</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
 
     <name>LambdaX</name>
@@ -39,12 +39,12 @@
 
     <developers>
         <developer>
-          <id>alexengrig</id>
-          <roles>
-            <role>owner</role>
-            <role>architect</role>
-            <role>developer</role>
-          </roles>
+            <id>alexengrig</id>
+            <roles>
+                <role>owner</role>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
             <name>Grig Alex</name>
             <email>alexengrigdev@gmail.com</email>
         </developer>
@@ -148,18 +148,21 @@
                 <version>0.8.4</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
                 </executions>
+            </plugin>
+            <!--    Coveralls    -->
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                    <repoToken>92193mXH45iM9lOWRKa86bdFvCkRgMlaM</repoToken>
+                </configuration>
             </plugin>
         </plugins>
     </build>
