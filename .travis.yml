@@ -4,5 +4,5 @@ jdk:
 install:
   - mvn install -Dgpg.skip=true -B -V
 after_success:
-  - mvn clean test jacoco:report coveralls:report
+  - mvn clean test jacoco:report coveralls:report -DrepoToken=$COVERALLS_TOKEN
   - bash <(curl -s https://codecov.io/bash)
