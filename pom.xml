@@ -164,6 +164,25 @@
                     <repoToken>92193mXH45iM9lOWRKa86bdFvCkRgMlaM</repoToken>
                 </configuration>
             </plugin>
+            <!--    Codacy Maven    -->
+            <plugin>
+                <groupId>com.gavinmogan</groupId>
+                <artifactId>codacy-maven-plugin</artifactId>
+                <version>1.0.3</version>
+                <configuration>
+                    <coverageReportFile>${project.reporting.outputDirectory}/jacoco.xml</coverageReportFile>
+                    <failOnMissingReportFile>false</failOnMissingReportFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>post-test</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>coverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
