@@ -1,6 +1,4 @@
-<a href="https://alexengrig.github.io/lambdax">
-  <img src="logo/lambdax-preview.png" title="LambdaX" alt="LambdaX logo">
-</a>
+[![LambdaX logo](logo/lambdax-preview.png "LambdaX")](https://alexengrig.github.io/lambdax)
 
 # *Lambda*X 0.2.0
 
