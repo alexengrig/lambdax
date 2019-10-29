@@ -93,7 +93,7 @@ implementation 'io.github.alexengrig:lambdax:0.2.0'
 
 ### Others
 
-Others snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.2.0/jar).
+Other snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.2.0/jar).
 
 ## License
 
