@@ -46,6 +46,8 @@ Create the function package
 
 ## 0.1.0
 
+Create the collection package 
+
 *   [[#1](../../issues/1)] Create CollectionX
 *   [[#3](../../issues/3)] Create MapX
 *   [[#4](../../issues/4)] Create ListX
