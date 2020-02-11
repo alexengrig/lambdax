@@ -126,4 +126,18 @@ public final class PredicateX {
     public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
         return new ComparablePredicateB<>(mapper);
     }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
+        return new OptionalPredicateB<>(mapper);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(ComparableResultFunction<T, R> mapper) {
+        return new ComparableOptionalPredicateB<>(mapper);
+    }
 }
