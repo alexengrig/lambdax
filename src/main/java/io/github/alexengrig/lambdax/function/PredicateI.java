@@ -17,6 +17,7 @@
 package io.github.alexengrig.lambdax.function;
 
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -68,6 +69,16 @@ public interface PredicateI<T, R> {
     <V extends Comparable<V>> ComparablePredicateI<T, V> map(ComparableResultFunction<R, V> mapper);
 
     /**
+     * TODO: Add JavaDoc
+     */
+    <V> OptionalPredicateI<T, V> mapToNullable(Function<R, V> mapper);
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> mapToNullable(ComparableResultFunction<R, V> mapper);
+
+    /**
      * <p>
      * Returns the {@link java.util.function.Predicate} that checks the mapper result via the checker.
      * </p>
@@ -88,7 +99,9 @@ public interface PredicateI<T, R> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    Predicate<T> isNull();
+    default Predicate<T> isNull() {
+        return check(Objects::isNull);
+    }
 
     /**
      * <p>
@@ -99,7 +112,9 @@ public interface PredicateI<T, R> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    Predicate<T> nonNull();
+    default Predicate<T> nonNull() {
+        return check(Objects::nonNull);
+    }
 
     /**
      * <p>
@@ -111,7 +126,9 @@ public interface PredicateI<T, R> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    Predicate<T> equal(R other);
+    default Predicate<T> equal(R other) {
+        return check(other::equals);
+    }
 
     /**
      * <p>
@@ -126,7 +143,9 @@ public interface PredicateI<T, R> {
      * @see java.util.Comparator
      * @since 0.2.0
      */
-    Predicate<T> less(R other, Comparator<R> comparator);
+    default Predicate<T> less(R other, Comparator<R> comparator) {
+        return check(r -> comparator.compare(r, other) < 0);
+    }
 
     /**
      * <p>
@@ -141,7 +160,9 @@ public interface PredicateI<T, R> {
      * @see java.util.Comparator
      * @since 0.2.0
      */
-    Predicate<T> greater(R other, Comparator<R> comparator);
+    default Predicate<T> greater(R other, Comparator<R> comparator) {
+        return check(r -> comparator.compare(r, other) > 0);
+    }
 
     /**
      * <p>
@@ -160,7 +181,7 @@ public interface PredicateI<T, R> {
      * @since 0.2.0
      */
     default Predicate<T> lessOrEqual(R other, Comparator<R> comparator) {
-        return less(other, comparator).or(equal(other));
+        return check(r -> comparator.compare(r, other) <= 0);
     }
 
     /**
@@ -180,6 +201,6 @@ public interface PredicateI<T, R> {
      * @since 0.2.0
      */
     default Predicate<T> greaterOrEqual(R other, Comparator<R> comparator) {
-        return greater(other, comparator).or(equal(other));
+        return check(r -> comparator.compare(r, other) >= 0);
     }
 }
