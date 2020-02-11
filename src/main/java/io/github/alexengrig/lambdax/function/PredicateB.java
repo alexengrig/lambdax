@@ -37,14 +37,6 @@ import java.util.function.Predicate;
  */
 /* package */class PredicateB<T, R> implements PredicateI<T, R> {
     /**
-     * <p>The value for compare with the comparator result.</p>
-     *
-     * @see java.util.Comparator#compare(Object, Object)
-     * @since 0.2.0
-     */
-    private final static int ZERO = 0;
-
-    /**
      * <p>The mapper of the input to the predicate.</p>
      *
      * @see java.util.function.Function
@@ -80,7 +72,7 @@ import java.util.function.Predicate;
      */
     @Override
     public <V> PredicateI<T, V> map(Function<R, V> mapper) {
-        return new PredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
+        return new PredicateB<>(function.andThen(mapper));
     }
 
     /**
@@ -101,27 +93,23 @@ import java.util.function.Predicate;
      */
     @Override
     public <V extends Comparable<V>> ComparablePredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
-        return new ComparablePredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
+        return new ComparablePredicateB<>(function.andThen(mapper));
     }
 
     /**
-     * <p>
-     * Returns the {@link java.util.function.Predicate} that checks the mapper result via the checker.
-     * </p>
-     *
-     * @param checker a predicate for check the mapper result
-     * @return The {@link java.util.function.Predicate} with compare
-     * @see java.util.function.Predicate
-     * @see java.util.function.Predicate#test(Object)
-     * @see java.util.function.Function#apply(Object)
-     * @since 0.2.0
+     * TODO: Add JavaDoc
      */
     @Override
-    public Predicate<T> check(Predicate<R> checker) {
-        return t -> {
-            R value = function.apply(t);
-            return value != null && checker.test(value);
-        };
+    public <V> OptionalPredicateI<T, V> mapToNullable(Function<R, V> mapper) {
+        return new OptionalPredicateB<>(function.andThen(mapper));
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> mapToNullable(ComparableResultFunction<R, V> mapper) {
+        return new ComparableOptionalPredicateB<>(function.andThen(mapper));
     }
 
     /**
@@ -158,6 +146,23 @@ import java.util.function.Predicate;
 
     /**
      * <p>
+     * Returns the {@link java.util.function.Predicate} that checks the mapper result via the checker.
+     * </p>
+     *
+     * @param checker a predicate for check the mapper result
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @see java.util.function.Predicate#test(Object)
+     * @see java.util.function.Function#apply(Object)
+     * @since 0.2.0
+     */
+    @Override
+    public Predicate<T> check(Predicate<R> checker) {
+        return t -> checker.test(function.apply(t));
+    }
+
+    /**
+     * <p>
      * Returns the {@link java.util.function.Predicate} that checks if the input object is equals to the other object.
      * </p>
      *
@@ -190,10 +195,7 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> less(R other, Comparator<R> comparator) {
-        return t -> {
-            R value = function.apply(t);
-            return value != null && comparator.compare(value, other) < ZERO;
-        };
+        return t -> comparator.compare(function.apply(t), other) < 0;
     }
 
     /**
@@ -213,9 +215,6 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> greater(R other, Comparator<R> comparator) {
-        return t -> {
-            R value = function.apply(t);
-            return value != null && comparator.compare(value, other) > ZERO;
-        };
+        return t -> comparator.compare(function.apply(t), other) > 0;
     }
 }
