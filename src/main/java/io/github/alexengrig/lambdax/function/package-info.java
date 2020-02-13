@@ -15,7 +15,8 @@
  */
 
 /**
- * <p>This package contains utility classes with useful lambdas for functions.</p>
+ * <p>This package contains utility classes with useful lambdas for
+ * functions.</p>
  *
  * <p>The following name suffixes are used:</p>
  * <pre>
