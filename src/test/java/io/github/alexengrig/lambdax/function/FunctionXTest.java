@@ -16,24 +16,25 @@
 
 package io.github.alexengrig.lambdax.function;
 
-import org.junit.Test;
-
-import java.util.function.Function;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class FunctionXTest {
-    @Test
-    public void checkNullSafe() {
-        Function<Object, String> nullSafetyFunction = FunctionX.nullSafe(t -> "GitHub");
-        assertNull(nullSafetyFunction.apply(null));
-    }
+import java.util.function.Function;
+import org.junit.Test;
 
-    @Test
-    public void checkNullSafeNullable() {
-        String value = "GitHub";
-        Function<Object, String> nullSafetyFunction = FunctionX.nullSafe(t -> value);
-        assertEquals(value, nullSafetyFunction.apply("GitLab"));
-    }
+public class FunctionXTest {
+  @Test
+  public void checkNullSafe() {
+    Function<Object, String> nullSafetyFunction =
+        FunctionX.nullSafe(t -> "GitHub");
+    assertNull(nullSafetyFunction.apply(null));
+  }
+
+  @Test
+  public void checkNullSafeNullable() {
+    String value = "GitHub";
+    Function<Object, String> nullSafetyFunction =
+        FunctionX.nullSafe(t -> value);
+    assertEquals(value, nullSafetyFunction.apply("GitLab"));
+  }
 }

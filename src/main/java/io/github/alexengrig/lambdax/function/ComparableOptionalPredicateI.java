@@ -18,20 +18,23 @@ package io.github.alexengrig.lambdax.function;
 
 import java.util.Comparator;
 
-public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extends OptionalPredicateI<T, R> {
-    default ResultI<T> less(R other) {
-        return less(other, Comparator.comparing(other::compareTo).reversed());
-    }
+public interface ComparableOptionalPredicateI<T, R extends Comparable<R>>
+    extends OptionalPredicateI<T, R> {
+  default ResultI<T> less(R other) {
+    return less(other, Comparator.comparing(other::compareTo).reversed());
+  }
 
-    default ResultI<T> greater(R other) {
-        return greater(other, Comparator.comparing(other::compareTo).reversed());
-    }
+  default ResultI<T> greater(R other) {
+    return greater(other, Comparator.comparing(other::compareTo).reversed());
+  }
 
-    default ResultI<T> lessOrEqual(R other) {
-        return lessOrEqual(other, Comparator.comparing(other::compareTo).reversed());
-    }
+  default ResultI<T> lessOrEqual(R other) {
+    return lessOrEqual(other,
+                       Comparator.comparing(other::compareTo).reversed());
+  }
 
-    default ResultI<T> greaterOrEqual(R other) {
-        return greaterOrEqual(other, Comparator.comparing(other::compareTo).reversed());
-    }
+  default ResultI<T> greaterOrEqual(R other) {
+    return greaterOrEqual(other,
+                          Comparator.comparing(other::compareTo).reversed());
+  }
 }
