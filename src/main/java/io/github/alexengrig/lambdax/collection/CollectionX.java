@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import java.util.function.Predicate;
  * <p>This utility class contains useful lambdas for {@link java.util.Collection}.</p>
  *
  * @author Grig Alex
- * @version 0.1.2
+ * @version 0.2.1
  * @see java.util.Collection
  * @see java.util.function.Consumer
  * @see java.util.function.Function
@@ -49,7 +49,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? extends E>> contains(E item) {
+    public static <E> Predicate<Collection<E>> contains(E item) {
         return c -> c.contains(item);
     }
 
@@ -64,7 +64,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? extends E>> containsAll(Collection<? extends E> all) {
+    public static <E> Predicate<Collection<E>> containsAll(Collection<? extends E> all) {
         return c -> c.containsAll(all);
     }
 
@@ -79,7 +79,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Collection<? extends E>> notContains(E item) {
+    public static <E> Predicate<Collection<E>> notContains(E item) {
         return c -> !c.contains(item);
     }
 
@@ -94,7 +94,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Collection<? extends E>> notContainsAll(Collection<? extends E> all) {
+    public static <E> Predicate<Collection<E>> notContainsAll(Collection<? extends E> all) {
         return c -> !c.containsAll(all);
     }
 
@@ -109,7 +109,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? super E>> add(E item) {
+    public static <E> Predicate<Collection<E>> add(E item) {
         return c -> c.add(item);
     }
 
@@ -124,7 +124,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? super E>> addAll(Collection<? extends E> all) {
+    public static <E> Predicate<Collection<E>> addAll(Collection<? extends E> all) {
         return c -> c.addAll(all);
     }
 
@@ -139,7 +139,7 @@ public final class CollectionX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Collection<? super E>> onlyAdd(E item) {
+    public static <E> Consumer<Collection<E>> onlyAdd(E item) {
         return c -> c.add(item);
     }
 
@@ -154,7 +154,7 @@ public final class CollectionX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Collection<? super E>> onlyAddAll(Collection<? extends E> all) {
+    public static <E> Consumer<Collection<E>> onlyAddAll(Collection<? extends E> all) {
         return c -> c.addAll(all);
     }
 
@@ -169,7 +169,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? super E>> remove(E item) {
+    public static <E> Predicate<Collection<E>> remove(E item) {
         return c -> c.remove(item);
     }
 
@@ -184,7 +184,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? super E>> removeAll(Collection<? extends E> all) {
+    public static <E> Predicate<Collection<E>> removeAll(Collection<? extends E> all) {
         return c -> c.removeAll(all);
     }
 
@@ -199,7 +199,7 @@ public final class CollectionX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Collection<? super E>> onlyRemove(E item) {
+    public static <E> Consumer<Collection<E>> onlyRemove(E item) {
         return c -> c.remove(item);
     }
 
@@ -214,7 +214,7 @@ public final class CollectionX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Collection<? super E>> onlyRemoveAll(Collection<? extends E> all) {
+    public static <E> Consumer<Collection<E>> onlyRemoveAll(Collection<? extends E> all) {
         return c -> c.removeAll(all);
     }
 
@@ -229,7 +229,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? super E>> retainAll(Collection<? extends E> all) {
+    public static <E> Predicate<Collection<E>> retainAll(Collection<? extends E> all) {
         return c -> c.retainAll(all);
     }
 
@@ -244,7 +244,7 @@ public final class CollectionX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Collection<? super E>> onlyRetainAll(Collection<? extends E> all) {
+    public static <E> Consumer<Collection<E>> onlyRetainAll(Collection<? extends E> all) {
         return c -> c.retainAll(all);
     }
 
@@ -259,7 +259,7 @@ public final class CollectionX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<Collection<? extends E>, E[]> toArray(E[] array) {
+    public static <E> Function<Collection<E>, E[]> toArray(E[] array) {
         return c -> c.toArray(array);
     }
 
@@ -276,7 +276,7 @@ public final class CollectionX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<Collection<? extends E>, E[]> toArray(IntFunction<? extends E[]> generator) {
+    public static <E> Function<Collection<E>, E[]> toArray(IntFunction<? extends E[]> generator) {
         return c -> c.toArray(generator.apply(0));
     }
 
@@ -291,7 +291,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Collection<? extends E>> equalsTo(Object other) {
+    public static <E> Predicate<Collection<E>> equalsTo(Object other) {
         return c -> c.equals(other);
     }
 
@@ -306,7 +306,7 @@ public final class CollectionX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Collection<? extends E>> notEqualsTo(Object other) {
+    public static <E> Predicate<Collection<E>> notEqualsTo(Object other) {
         return c -> !c.equals(other);
     }
 }

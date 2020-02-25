@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ public class CollectionXTest {
         int value = 1;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Predicate<Collection<? extends Number>> containsValue = CollectionX.contains(value);
+        Predicate<Collection<Number>> containsValue = CollectionX.contains(value);
         assertTrue(containsValue.test(numbers));
     }
 
@@ -56,7 +56,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? extends Number>> containsAllValues = CollectionX.containsAll(values);
+        Predicate<Collection<Number>> containsAllValues = CollectionX.containsAll(values);
         assertTrue(containsAllValues.test(numbers));
     }
 
@@ -77,7 +77,7 @@ public class CollectionXTest {
     public void checkAdd() {
         int value = 3;
         Collection<Number> numbers = new ArrayList<>();
-        Predicate<Collection<? super Number>> addValue = CollectionX.add(value);
+        Predicate<Collection<Number>> addValue = CollectionX.add(value);
         assertTrue(addValue.test(numbers));
     }
 
@@ -97,7 +97,7 @@ public class CollectionXTest {
         Collection<Number> numbers = new ArrayList<>();
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? super Number>> addAllValues = CollectionX.addAll(values);
+        Predicate<Collection<Number>> addAllValues = CollectionX.addAll(values);
         assertTrue(addAllValues.test(numbers));
     }
 
@@ -117,7 +117,7 @@ public class CollectionXTest {
     public void checkOnlyAdd() {
         int value = 5;
         Collection<Number> numbers = new ArrayList<>();
-        Consumer<Collection<? super Number>> onlyAddValue = CollectionX.onlyAdd(value);
+        Consumer<Collection<Number>> onlyAddValue = CollectionX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -138,7 +138,7 @@ public class CollectionXTest {
         Collection<Number> numbers = new ArrayList<>();
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Consumer<Collection<? super Number>> onlyAddAllValues = CollectionX.onlyAddAll(values);
+        Consumer<Collection<Number>> onlyAddAllValues = CollectionX.onlyAddAll(values);
         onlyAddAllValues.accept(numbers);
         assertTrue(numbers.containsAll(values));
     }
@@ -160,7 +160,7 @@ public class CollectionXTest {
         int value = 7;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Predicate<Collection<? super Integer>> removeValue = CollectionX.remove(value);
+        Predicate<Collection<Number>> removeValue = CollectionX.remove(value);
         assertTrue(removeValue.test(numbers));
     }
 
@@ -182,7 +182,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? super Number>> removeAllValues = CollectionX.removeAll(values);
+        Predicate<Collection<Number>> removeAllValues = CollectionX.removeAll(values);
         assertTrue(removeAllValues.test(numbers));
     }
 
@@ -204,7 +204,7 @@ public class CollectionXTest {
         int value = 9;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Consumer<Collection<? super Integer>> onlyRemoveValue = CollectionX.onlyRemove(value);
+        Consumer<Collection<Number>> onlyRemoveValue = CollectionX.onlyRemove(value);
         onlyRemoveValue.accept(numbers);
         assertFalse(numbers.contains(value));
     }
@@ -227,7 +227,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Consumer<Collection<? super Number>> onlyRemoveAllValues = CollectionX.onlyRemoveAll(values);
+        Consumer<Collection<Number>> onlyRemoveAllValues = CollectionX.onlyRemoveAll(values);
         onlyRemoveAllValues.accept(numbers);
         assertFalse(numbers.containsAll(values));
     }
@@ -252,7 +252,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? super Number>> retainAllValues = CollectionX.retainAll(values);
+        Predicate<Collection<Number>> retainAllValues = CollectionX.retainAll(values);
         assertFalse(retainAllValues.test(numbers));
     }
 
@@ -276,7 +276,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Consumer<Collection<? super Number>> onlyRetainAllValues = CollectionX.onlyRetainAll(values);
+        Consumer<Collection<Number>> onlyRetainAllValues = CollectionX.onlyRetainAll(values);
         onlyRetainAllValues.accept(numbers);
         assertTrue(numbers.containsAll(values));
     }
@@ -299,7 +299,7 @@ public class CollectionXTest {
         int value = 13;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Function<Collection<? extends Number>, ? extends Number[]> toIntegerArray = CollectionX.toArray(new Integer[0]);
+        Function<Collection<Number>, Number[]> toIntegerArray = CollectionX.toArray(new Integer[0]);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
     }
 
@@ -319,7 +319,7 @@ public class CollectionXTest {
         int value = 14;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Function<Collection<? extends Number>, ? extends Number[]> toIntegerArray = CollectionX.toArray(Integer[]::new);
+        Function<Collection<Number>, Number[]> toIntegerArray = CollectionX.toArray(Integer[]::new);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
     }
 
@@ -341,7 +341,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? extends Number>> equalsToValues = CollectionX.equalsTo(values);
+        Predicate<Collection<Number>> equalsToValues = CollectionX.equalsTo(values);
         assertTrue(equalsToValues.test(numbers));
     }
 
@@ -363,7 +363,7 @@ public class CollectionXTest {
         int value = 16;
         Collection<Number> numbers = new ArrayList<>();
         numbers.add(value);
-        Predicate<Collection<? extends Number>> notContainsValue = CollectionX.notContains(value);
+        Predicate<Collection<Number>> notContainsValue = CollectionX.notContains(value);
         assertFalse(notContainsValue.test(numbers));
     }
 
@@ -384,7 +384,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? extends Number>> notContainsAllValues = CollectionX.notContainsAll(values);
+        Predicate<Collection<Number>> notContainsAllValues = CollectionX.notContainsAll(values);
         assertFalse(notContainsAllValues.test(numbers));
     }
 
@@ -407,7 +407,7 @@ public class CollectionXTest {
         numbers.add(value);
         Collection<Integer> values = new ArrayList<>();
         values.add(value);
-        Predicate<Collection<? extends Number>> notEqualsToValues = CollectionX.notEqualsTo(values);
+        Predicate<Collection<Number>> notEqualsToValues = CollectionX.notEqualsTo(values);
         assertFalse(notEqualsToValues.test(numbers));
     }
 

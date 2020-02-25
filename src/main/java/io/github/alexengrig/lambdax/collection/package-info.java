@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 /**
  * <p>This package contains utility classes with useful lambdas for major collection interfaces.</p>
  *
- * @version 0.1.3
+ * @version 0.2.1
  * @author Grig Alex
  * @since 0.1.0
  */
