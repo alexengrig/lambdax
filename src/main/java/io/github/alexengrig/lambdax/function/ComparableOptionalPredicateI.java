@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,23 +18,35 @@ package io.github.alexengrig.lambdax.function;
 
 import java.util.Comparator;
 
-public interface ComparableOptionalPredicateI<T, R extends Comparable<R>>
-    extends OptionalPredicateI<T, R> {
-  default ResultI<T> less(R other) {
-    return less(other, Comparator.comparing(other::compareTo).reversed());
-  }
+/**
+ * TODO: Add JavaDoc
+ */
+public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extends OptionalPredicateI<T, R> {
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> less(R other) {
+        return less(other, Comparator.comparing(other::compareTo).reversed());
+    }
 
-  default ResultI<T> greater(R other) {
-    return greater(other, Comparator.comparing(other::compareTo).reversed());
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> greater(R other) {
+        return greater(other, Comparator.comparing(other::compareTo).reversed());
+    }
 
-  default ResultI<T> lessOrEqual(R other) {
-    return lessOrEqual(other,
-                       Comparator.comparing(other::compareTo).reversed());
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> lessOrEqual(R other) {
+        return lessOrEqual(other, Comparator.comparing(other::compareTo).reversed());
+    }
 
-  default ResultI<T> greaterOrEqual(R other) {
-    return greaterOrEqual(other,
-                          Comparator.comparing(other::compareTo).reversed());
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> greaterOrEqual(R other) {
+        return greaterOrEqual(other, Comparator.comparing(other::compareTo).reversed());
+    }
 }
