@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class QueueXTest {
     public void checkAdd() {
         int value = 1;
         Queue<Number> numbers = new ArrayDeque<>();
-        Predicate<Queue<? super Number>> addValue = QueueX.add(value);
+        Predicate<Queue<Number>> addValue = QueueX.add(value);
         assertTrue(addValue.test(numbers));
     }
 
@@ -50,7 +50,7 @@ public class QueueXTest {
     public void checkOnlyAdd() {
         int value = 2;
         Queue<Number> numbers = new ArrayDeque<>();
-        Consumer<Queue<? super Number>> onlyAddValue = QueueX.onlyAdd(value);
+        Consumer<Queue<Number>> onlyAddValue = QueueX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -69,7 +69,7 @@ public class QueueXTest {
     public void checkOffer() {
         int value = 3;
         Queue<Number> numbers = new ArrayDeque<>();
-        Predicate<Queue<? super Number>> offerValue = QueueX.offer(value);
+        Predicate<Queue<Number>> offerValue = QueueX.offer(value);
         assertTrue(offerValue.test(numbers));
     }
 
@@ -87,7 +87,7 @@ public class QueueXTest {
     public void checkOnlyOffer() {
         int value = 4;
         Queue<Number> numbers = new ArrayDeque<>();
-        Consumer<Queue<? super Number>> onlyOfferValue = QueueX.onlyOffer(value);
+        Consumer<Queue<Number>> onlyOfferValue = QueueX.onlyOffer(value);
         onlyOfferValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
