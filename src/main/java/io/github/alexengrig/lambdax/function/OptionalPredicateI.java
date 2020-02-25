@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,87 +25,67 @@ import java.util.function.Predicate;
  * TODO: Add JavaDoc
  */
 public interface OptionalPredicateI<T, R> {
-  /**
-   * TODO: Add JavaDoc
-   */
-  <V> OptionalPredicateI<T, V> map(Function<R, V> mapper);
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  <V extends Comparable<V>> ComparableOptionalPredicateI<T, V>
-  map(ComparableResultFunction<R, V> mapper);
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  ResultI<T> check(Predicate<R> checker);
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default Predicate<T> isNull() { return check(Objects::isNull).orTruth(); }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default Predicate<T> nonNull() { return check(Objects::nonNull).orLie(); }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default ResultI<T> equal(R other) { return check(other::equals); }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default ResultI<T> less(R other, Comparator<R> comparator) {
-    return check(r -> comparator.compare(r, other) < 0);
-  }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default ResultI<T> greater(R other, Comparator<R> comparator) {
-    return check(r -> comparator.compare(r, other) > 0);
-  }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default ResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
-    return check(r -> comparator.compare(r, other) <= 0);
-  }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  default ResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
-    return check(r -> comparator.compare(r, other) >= 0);
-  }
-
-  /**
-   * TODO: Add JavaDoc
-   */
-  interface ResultI<T> {
     /**
      * TODO: Add JavaDoc
      */
-    Predicate<T> orElse(Predicate<T> checker);
+    <V> OptionalPredicateI<T, V> map(Function<R, V> mapper);
 
     /**
      * TODO: Add JavaDoc
      */
-    default Predicate<T> orElse(boolean check) { return orElse(t -> check); }
+    <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> map(ComparableResultFunction<R, V> mapper);
 
     /**
      * TODO: Add JavaDoc
      */
-    default Predicate<T> orTruth() { return orElse(PredicateX.truth()); }
+    OptionalPredicateResultI<T> check(Predicate<R> checker);
 
     /**
      * TODO: Add JavaDoc
      */
-    default Predicate<T> orLie() { return orElse(PredicateX.lie()); }
-  }
+    default Predicate<T> isNull() {
+        return check(Objects::isNull).orTruth();
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    default Predicate<T> nonNull() {
+        return check(Objects::nonNull).orLie();
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> equal(R other) {
+        return check(other::equals);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> less(R other, Comparator<R> comparator) {
+        return check(r -> comparator.compare(r, other) < 0);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> greater(R other, Comparator<R> comparator) {
+        return check(r -> comparator.compare(r, other) > 0);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
+        return check(r -> comparator.compare(r, other) <= 0);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    default OptionalPredicateResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
+        return check(r -> comparator.compare(r, other) >= 0);
+    }
 }
