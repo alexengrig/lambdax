@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,95 +24,97 @@ import java.util.function.Predicate;
  * TODO: Add JavaDoc
  */
 /* package */ class OptionalPredicateB<T, R>
-    implements OptionalPredicateI<T, R> {
-  /**
-   * TODO: Add JavaDoc
-   */
-  protected final Function<T, R> function;
+        implements OptionalPredicateI<T, R> {
+    /**
+     * TODO: Add JavaDoc
+     */
+    protected final Function<T, R> function;
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  /* package */ OptionalPredicateB(Function<T, R> mapper) { function = mapper; }
+    /**
+     * TODO: Add JavaDoc
+     */
+    /* package */ OptionalPredicateB(Function<T, R> mapper) {
+        function = mapper;
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public <V> OptionalPredicateI<T, V> map(Function<R, V> mapper) {
-    return new OptionalPredicateB<>(function.andThen(mapper));
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public <V> OptionalPredicateI<T, V> map(Function<R, V> mapper) {
+        return new OptionalPredicateB<>(function.andThen(mapper));
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V>
-  map(ComparableResultFunction<R, V> mapper) {
-    return new ComparableOptionalPredicateB<>(function.andThen(mapper));
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V>
+    map(ComparableResultFunction<R, V> mapper) {
+        return new ComparableOptionalPredicateB<>(function.andThen(mapper));
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public Predicate<T> isNull() {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public Predicate<T> isNull() {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public Predicate<T> nonNull() {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public Predicate<T> nonNull() {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public ResultI<T> check(Predicate<R> checker) {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public ResultI<T> check(Predicate<R> checker) {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public ResultI<T> equal(R other) {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public ResultI<T> equal(R other) {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public ResultI<T> less(R other, Comparator<R> comparator) {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public ResultI<T> less(R other, Comparator<R> comparator) {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public ResultI<T> greater(R other, Comparator<R> comparator) {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public ResultI<T> greater(R other, Comparator<R> comparator) {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public ResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public ResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
+        return null; // TODO: Add implementation
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  @Override
-  public ResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
-    return null; // TODO: Add implementation
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public ResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
+        return null; // TODO: Add implementation
+    }
 }
