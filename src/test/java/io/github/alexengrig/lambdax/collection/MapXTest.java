@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ public class MapXTest {
         String value = "one";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Predicate<Map<? extends Number, ? extends CharSequence>> containsKey = MapX.containsKey(key);
+        Predicate<Map<Number, CharSequence>> containsKey = MapX.containsKey(key);
         assertTrue(containsKey.test(numberWords));
     }
 
@@ -57,7 +57,7 @@ public class MapXTest {
         String value = "two";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Predicate<Map<? extends Number, ? extends CharSequence>> containsValue = MapX.containsValue(value);
+        Predicate<Map<Number, CharSequence>> containsValue = MapX.containsValue(value);
         assertTrue(containsValue.test(numberWords));
     }
 
@@ -79,7 +79,7 @@ public class MapXTest {
         String value = "three";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Function<Map<? extends Number, ? extends CharSequence>, CharSequence> getByKey = MapX.get(key);
+        Function<Map<Number, CharSequence>, CharSequence> getByKey = MapX.get(key);
         assertEquals(value, getByKey.apply(numberWords));
     }
 
@@ -101,7 +101,7 @@ public class MapXTest {
         String value = "four";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Function<Map<? super Number, ? super CharSequence>, ? super CharSequence> putKeyAndValue = MapX.put(key, value);
+        Function<Map<Number, CharSequence>, CharSequence> putKeyAndValue = MapX.put(key, value);
         assertEquals(value, putKeyAndValue.apply(numberWords));
     }
 
@@ -123,7 +123,7 @@ public class MapXTest {
         Map<Number, CharSequence> numberWords = new HashMap<>();
         Map<Integer, String> values = new HashMap<>();
         values.put(key, value);
-        Consumer<Map<? super Number, ? super CharSequence>> putAllValues = MapX.putAll(values);
+        Consumer<Map<Number, CharSequence>> putAllValues = MapX.putAll(values);
         putAllValues.accept(numberWords);
         assertTrue(numberWords.containsKey(key));
     }
@@ -147,7 +147,7 @@ public class MapXTest {
         int key = 6;
         String value = "six";
         Map<Number, CharSequence> numberWords = new HashMap<>();
-        Consumer<Map<? super Number, ? super CharSequence>> onlyPutKeyAndValue = MapX.onlyPut(key, value);
+        Consumer<Map<Number, CharSequence>> onlyPutKeyAndValue = MapX.onlyPut(key, value);
         onlyPutKeyAndValue.accept(numberWords);
         assertTrue(numberWords.containsKey(key));
     }
@@ -170,7 +170,7 @@ public class MapXTest {
         String value = "seven";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Function<Map<? extends Number, ? extends CharSequence>, ? extends CharSequence> removeByKey = MapX.remove(key);
+        Function<Map<Number, CharSequence>, CharSequence> removeByKey = MapX.remove(key);
         assertEquals(value, removeByKey.apply(numberWords));
     }
 
@@ -192,7 +192,7 @@ public class MapXTest {
         String value = "eight";
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
-        Consumer<Map<? extends Number, ? extends CharSequence>> onlyRemoveByKey = MapX.onlyRemove(key);
+        Consumer<Map<Number, CharSequence>> onlyRemoveByKey = MapX.onlyRemove(key);
         onlyRemoveByKey.accept(numberWords);
         assertFalse(numberWords.containsKey(key));
     }
@@ -218,7 +218,7 @@ public class MapXTest {
         numberWords.put(key, value);
         Map<Integer, String> values = new HashMap<>();
         values.put(key, value);
-        Predicate<Map<? super Number, ? super CharSequence>> equalsToValues = MapX.equalsTo(values);
+        Predicate<Map<Number, CharSequence>> equalsToValues = MapX.equalsTo(values);
         assertTrue(equalsToValues.test(numberWords));
     }
 
@@ -243,7 +243,7 @@ public class MapXTest {
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
         numberWords.remove(key);
-        Predicate<Map<? extends Number, ? extends CharSequence>> notContainsKey = MapX.notContainsKey(key);
+        Predicate<Map<Number, CharSequence>> notContainsKey = MapX.notContainsKey(key);
         assertTrue(notContainsKey.test(numberWords));
     }
 
@@ -266,7 +266,7 @@ public class MapXTest {
         Map<Number, CharSequence> numberWords = new HashMap<>();
         numberWords.put(key, value);
         numberWords.remove(key);
-        Predicate<Map<? extends Number, ? extends CharSequence>> notContainsValue = MapX.notContainsValue(value);
+        Predicate<Map<Number, CharSequence>> notContainsValue = MapX.notContainsValue(value);
         assertTrue(notContainsValue.test(numberWords));
     }
 
@@ -290,7 +290,7 @@ public class MapXTest {
         numberWords.put(key, value);
         Map<Integer, String> values = new HashMap<>();
         values.put(key, value);
-        Predicate<Map<? super Number, ? super CharSequence>> notEqualsToValues = MapX.notEqualsTo(values);
+        Predicate<Map<Number, CharSequence>> notEqualsToValues = MapX.notEqualsTo(values);
         assertFalse(notEqualsToValues.test(numberWords));
     }
 

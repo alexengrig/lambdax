@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ public class SetXTest {
         int value = 1;
         Set<Number> numbers = new HashSet<>();
         numbers.add(value);
-        Predicate<Set<? extends Number>> containsValue = SetX.contains(value);
+        Predicate<Set<Number>> containsValue = SetX.contains(value);
         assertTrue(containsValue.test(numbers));
     }
 
@@ -56,7 +56,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? extends Number>> containsAllValues = SetX.containsAll(values);
+        Predicate<Set<Number>> containsAllValues = SetX.containsAll(values);
         assertTrue(containsAllValues.test(numbers));
     }
 
@@ -77,7 +77,7 @@ public class SetXTest {
     public void checkAdd() {
         int value = 3;
         Set<Number> numbers = new HashSet<>();
-        Predicate<Set<? super Number>> addValue = SetX.add(value);
+        Predicate<Set<Number>> addValue = SetX.add(value);
         assertTrue(addValue.test(numbers));
     }
 
@@ -97,7 +97,7 @@ public class SetXTest {
         Set<Number> numbers = new HashSet<>();
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? super Number>> addAllValues = SetX.addAll(values);
+        Predicate<Set<Number>> addAllValues = SetX.addAll(values);
         assertTrue(addAllValues.test(numbers));
     }
 
@@ -117,7 +117,7 @@ public class SetXTest {
     public void checkOnlyAdd() {
         int value = 5;
         Set<Number> numbers = new HashSet<>();
-        Consumer<Set<? super Number>> onlyAddValue = SetX.onlyAdd(value);
+        Consumer<Set<Number>> onlyAddValue = SetX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -138,7 +138,7 @@ public class SetXTest {
         Set<Number> numbers = new HashSet<>();
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Consumer<Set<? super Number>> onlyAddAllValues = SetX.onlyAddAll(values);
+        Consumer<Set<Number>> onlyAddAllValues = SetX.onlyAddAll(values);
         onlyAddAllValues.accept(numbers);
         assertTrue(numbers.containsAll(values));
     }
@@ -160,7 +160,7 @@ public class SetXTest {
         int value = 7;
         Set<Number> numbers = new HashSet<>();
         numbers.add(value);
-        Predicate<Set<? super Number>> removeValue = SetX.remove(value);
+        Predicate<Set<Number>> removeValue = SetX.remove(value);
         assertTrue(removeValue.test(numbers));
     }
 
@@ -182,7 +182,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? super Number>> removeAllValues = SetX.removeAll(values);
+        Predicate<Set<Number>> removeAllValues = SetX.removeAll(values);
         assertTrue(removeAllValues.test(numbers));
     }
 
@@ -204,7 +204,7 @@ public class SetXTest {
         int value = 9;
         Set<Number> numbers = new HashSet<>();
         numbers.add(value);
-        Consumer<Set<? super Number>> onlyRemoveValue = SetX.onlyRemove(value);
+        Consumer<Set<Number>> onlyRemoveValue = SetX.onlyRemove(value);
         onlyRemoveValue.accept(numbers);
         assertFalse(numbers.contains(value));
     }
@@ -227,7 +227,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Consumer<Set<? super Number>> removeAllValues = SetX.onlyRemoveAll(values);
+        Consumer<Set<Number>> removeAllValues = SetX.onlyRemoveAll(values);
         removeAllValues.accept(numbers);
         assertFalse(numbers.containsAll(values));
     }
@@ -252,7 +252,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? super Number>> retainAllValues = SetX.retainAll(values);
+        Predicate<Set<Number>> retainAllValues = SetX.retainAll(values);
         assertFalse(retainAllValues.test(numbers));
     }
 
@@ -276,7 +276,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Consumer<Set<? super Number>> onlyRetainAllValues = SetX.onlyRetainAll(values);
+        Consumer<Set<Number>> onlyRetainAllValues = SetX.onlyRetainAll(values);
         onlyRetainAllValues.accept(numbers);
         assertTrue(numbers.containsAll(values));
     }
@@ -299,7 +299,7 @@ public class SetXTest {
         int value = 13;
         Set<Number> numbers = new HashSet<>();
         numbers.add(value);
-        Function<Set<? extends Number>, ? extends Number[]> toIntegerArray = SetX.toArray(new Integer[0]);
+        Function<Set<Number>, Number[]> toIntegerArray = SetX.toArray(new Integer[0]);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
     }
 
@@ -319,7 +319,7 @@ public class SetXTest {
         int value = 14;
         Set<Number> numbers = new HashSet<>();
         numbers.add(value);
-        Function<Set<? extends Number>, ? extends Number[]> toIntegerArray = SetX.toArray(Integer[]::new);
+        Function<Set<Number>, Number[]> toIntegerArray = SetX.toArray(Integer[]::new);
         assertArrayEquals(new Integer[]{value}, toIntegerArray.apply(numbers));
     }
 
@@ -341,7 +341,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? extends Number>> equalsToValues = SetX.equalsTo(values);
+        Predicate<Set<Number>> equalsToValues = SetX.equalsTo(values);
         assertTrue(equalsToValues.test(numbers));
     }
 
@@ -362,7 +362,7 @@ public class SetXTest {
     public void checkNotContains() {
         int value = 16;
         Set<Number> numbers = new HashSet<>();
-        Predicate<Set<? extends Number>> notContainsValue = SetX.notContains(value);
+        Predicate<Set<Number>> notContainsValue = SetX.notContains(value);
         assertTrue(notContainsValue.test(numbers));
     }
 
@@ -383,7 +383,7 @@ public class SetXTest {
         Set<Number> numbers = new HashSet<>();
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? extends Number>> notContainsAllValues = SetX.notContainsAll(values);
+        Predicate<Set<Number>> notContainsAllValues = SetX.notContainsAll(values);
         assertTrue(notContainsAllValues.test(numbers));
     }
 
@@ -407,7 +407,7 @@ public class SetXTest {
         numbers.add(value);
         Set<Integer> values = new HashSet<>();
         values.add(value);
-        Predicate<Set<? extends Number>> notEqualsToValues = SetX.notEqualsTo(values);
+        Predicate<Set<Number>> notEqualsToValues = SetX.notEqualsTo(values);
         assertFalse(notEqualsToValues.test(numbers));
     }
 

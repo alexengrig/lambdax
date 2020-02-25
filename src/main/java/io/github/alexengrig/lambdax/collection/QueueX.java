@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.util.function.Predicate;
  * This utility class contains useful lambdas for {@link java.util.Queue}.
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.2.1
  * @see java.util.Queue
  * @see java.util.function.Consumer
  * @see java.util.function.Predicate
@@ -45,7 +45,7 @@ public final class QueueX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Queue<? super E>> add(E item) {
+    public static <E> Predicate<Queue<E>> add(E item) {
         return q -> q.add(item);
     }
 
@@ -60,7 +60,7 @@ public final class QueueX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Queue<? super E>> onlyAdd(E item) {
+    public static <E> Consumer<Queue<E>> onlyAdd(E item) {
         return q -> q.add(item);
     }
 
@@ -75,7 +75,7 @@ public final class QueueX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Queue<? super E>> offer(E item) {
+    public static <E> Predicate<Queue<E>> offer(E item) {
         return q -> q.offer(item);
     }
 
@@ -90,7 +90,7 @@ public final class QueueX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Queue<? super E>> onlyOffer(E item) {
+    public static <E> Consumer<Queue<E>> onlyOffer(E item) {
         return q -> q.offer(item);
     }
 }

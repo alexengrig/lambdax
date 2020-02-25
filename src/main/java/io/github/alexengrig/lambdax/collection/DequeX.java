@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.util.function.Predicate;
  * <p>This utility class contains useful lambdas for {@link java.util.Deque}.</p>
  *
  * @author Grig Alex
- * @version 0.1.2
+ * @version 0.2.1
  * @see java.util.Deque
  * @see java.util.function.Consumer
  * @see java.util.function.Predicate
@@ -45,7 +45,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> contains(E item) {
+    public static <E> Predicate<Deque<E>> contains(E item) {
         return d -> d.contains(item);
     }
 
@@ -60,7 +60,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Deque<? super E>> notContains(E item) {
+    public static <E> Predicate<Deque<E>> notContains(E item) {
         return d -> !d.contains(item);
     }
 
@@ -75,7 +75,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> add(E item) {
+    public static <E> Predicate<Deque<E>> add(E item) {
         return d -> d.add(item);
     }
 
@@ -90,7 +90,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyAdd(E item) {
+    public static <E> Consumer<Deque<E>> onlyAdd(E item) {
         return d -> d.add(item);
     }
 
@@ -105,7 +105,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> addFirst(E item) {
+    public static <E> Consumer<Deque<E>> addFirst(E item) {
         return d -> d.addFirst(item);
     }
 
@@ -120,7 +120,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> addLast(E item) {
+    public static <E> Consumer<Deque<E>> addLast(E item) {
         return d -> d.addLast(item);
     }
 
@@ -135,7 +135,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> offer(E item) {
+    public static <E> Predicate<Deque<E>> offer(E item) {
         return d -> d.offer(item);
     }
 
@@ -150,7 +150,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyOffer(E item) {
+    public static <E> Consumer<Deque<E>> onlyOffer(E item) {
         return d -> d.offer(item);
     }
 
@@ -165,7 +165,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> offerFirst(E item) {
+    public static <E> Predicate<Deque<E>> offerFirst(E item) {
         return d -> d.offerFirst(item);
     }
 
@@ -180,7 +180,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyOfferFirst(E item) {
+    public static <E> Consumer<Deque<E>> onlyOfferFirst(E item) {
         return d -> d.offerFirst(item);
     }
 
@@ -195,7 +195,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> offerLast(E item) {
+    public static <E> Predicate<Deque<E>> offerLast(E item) {
         return d -> d.offerLast(item);
     }
 
@@ -210,7 +210,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyOfferLast(E item) {
+    public static <E> Consumer<Deque<E>> onlyOfferLast(E item) {
         return d -> d.offerLast(item);
     }
 
@@ -225,7 +225,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> push(E item) {
+    public static <E> Consumer<Deque<E>> push(E item) {
         return d -> d.push(item);
     }
 
@@ -240,7 +240,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> remove(E item) {
+    public static <E> Predicate<Deque<E>> remove(E item) {
         return d -> d.remove(item);
     }
 
@@ -255,7 +255,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyRemove(E item) {
+    public static <E> Consumer<Deque<E>> onlyRemove(E item) {
         return d -> d.remove(item);
     }
 
@@ -270,7 +270,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> removeFirstOccurrence(E item) {
+    public static <E> Predicate<Deque<E>> removeFirstOccurrence(E item) {
         return d -> d.removeFirstOccurrence(item);
     }
 
@@ -285,7 +285,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyRemoveFirstOccurrence(E item) {
+    public static <E> Consumer<Deque<E>> onlyRemoveFirstOccurrence(E item) {
         return d -> d.removeFirstOccurrence(item);
     }
 
@@ -300,7 +300,7 @@ public final class DequeX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Deque<? super E>> removeLastOccurrence(E item) {
+    public static <E> Predicate<Deque<E>> removeLastOccurrence(E item) {
         return d -> d.removeLastOccurrence(item);
     }
 
@@ -315,7 +315,7 @@ public final class DequeX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Deque<? super E>> onlyRemoveLastOccurrence(E item) {
+    public static <E> Consumer<Deque<E>> onlyRemoveLastOccurrence(E item) {
         return d -> d.removeLastOccurrence(item);
     }
 }

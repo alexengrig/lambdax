@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LambdaX contributors
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import java.util.function.*;
  * <p>This utility class contains useful lambdas for {@link java.util.List}.</p>
  *
  * @author Grig Alex
- * @version 0.1.2
+ * @version 0.2.1
  * @see java.util.Collection
  * @see java.util.List
  * @see java.util.Comparator
@@ -52,7 +52,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? extends E>> contains(E item) {
+    public static <E> Predicate<List<E>> contains(E item) {
         return l -> l.contains(item);
     }
 
@@ -67,7 +67,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? extends E>> containsAll(Collection<? extends E> all) {
+    public static <E> Predicate<List<E>> containsAll(Collection<? extends E> all) {
         return l -> l.containsAll(all);
     }
 
@@ -82,7 +82,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<List<? extends E>> notContains(E item) {
+    public static <E> Predicate<List<E>> notContains(E item) {
         return l -> !l.contains(item);
     }
 
@@ -97,7 +97,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<List<? extends E>> notContainsAll(Collection<? extends E> all) {
+    public static <E> Predicate<List<E>> notContainsAll(Collection<? extends E> all) {
         return l -> !l.containsAll(all);
     }
 
@@ -113,9 +113,8 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    @SuppressWarnings("unchecked")
-    public static <E> Function<List<? super E>, E> set(int i, E item) {
-        return l -> (E) l.set(i, item);
+    public static <E> Function<List<E>, E> set(int i, E item) {
+        return l -> l.set(i, item);
     }
 
     /**
@@ -129,7 +128,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? extends E>, E> get(int i) {
+    public static <E> Function<List<E>, E> get(int i) {
         return l -> l.get(i);
     }
 
@@ -144,7 +143,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? super E>, Integer> indexOf(E item) {
+    public static <E> Function<List<E>, Integer> indexOf(E item) {
         return l -> l.indexOf(item);
     }
 
@@ -159,7 +158,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? super E>, Integer> lastIndexOf(E item) {
+    public static <E> Function<List<E>, Integer> lastIndexOf(E item) {
         return l -> l.lastIndexOf(item);
     }
 
@@ -174,7 +173,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? super E>> add(E item) {
+    public static <E> Predicate<List<E>> add(E item) {
         return l -> l.add(item);
     }
 
@@ -190,7 +189,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> add(int i, E item) {
+    public static <E> Consumer<List<E>> add(int i, E item) {
         return l -> l.add(i, item);
     }
 
@@ -205,7 +204,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? super E>> addAll(Collection<? extends E> all) {
+    public static <E> Predicate<List<E>> addAll(Collection<? extends E> all) {
         return l -> l.addAll(all);
     }
 
@@ -221,7 +220,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? super E>> addAll(int i, Collection<? extends E> all) {
+    public static <E> Predicate<List<E>> addAll(int i, Collection<? extends E> all) {
         return l -> l.addAll(i, all);
     }
 
@@ -236,7 +235,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> onlyAdd(E item) {
+    public static <E> Consumer<List<E>> onlyAdd(E item) {
         return l -> l.add(item);
     }
 
@@ -251,7 +250,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> onlyAddAll(Collection<? extends E> all) {
+    public static <E> Consumer<List<E>> onlyAddAll(Collection<? extends E> all) {
         return l -> l.addAll(all);
     }
 
@@ -267,7 +266,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> onlyAddAll(int i, Collection<? extends E> all) {
+    public static <E> Consumer<List<E>> onlyAddAll(int i, Collection<? extends E> all) {
         return l -> l.addAll(i, all);
     }
 
@@ -282,7 +281,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? super E>> remove(E item) {
+    public static <E> Predicate<List<E>> remove(E item) {
         return l -> l.remove(item);
     }
 
@@ -297,7 +296,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? super E>> removeAll(Collection<? extends E> all) {
+    public static <E> Predicate<List<E>> removeAll(Collection<? extends E> all) {
         return l -> l.removeAll(all);
     }
 
@@ -312,7 +311,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> onlyRemove(E item) {
+    public static <E> Consumer<List<E>> onlyRemove(E item) {
         return l -> l.remove(item);
     }
 
@@ -327,7 +326,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> onlyRemoveAll(Collection<? extends E> all) {
+    public static <E> Consumer<List<E>> onlyRemoveAll(Collection<? extends E> all) {
         return l -> l.removeAll(all);
     }
 
@@ -342,7 +341,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? super E>> retainAll(Collection<? extends E> all) {
+    public static <E> Predicate<List<E>> retainAll(Collection<? extends E> all) {
         return l -> l.retainAll(all);
     }
 
@@ -357,7 +356,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? super E>> onlyRetainAll(Collection<? extends E> all) {
+    public static <E> Consumer<List<E>> onlyRetainAll(Collection<? extends E> all) {
         return l -> l.retainAll(all);
     }
 
@@ -387,7 +386,7 @@ public final class ListX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<List<? extends E>> sort(Comparator<? super E> comparator) {
+    public static <E> Consumer<List<E>> sort(Comparator<? super E> comparator) {
         return l -> l.sort(comparator);
     }
 
@@ -402,7 +401,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? extends E>, E[]> toArray(E[] array) {
+    public static <E> Function<List<E>, E[]> toArray(E[] array) {
         return c -> c.toArray(array);
     }
 
@@ -419,7 +418,7 @@ public final class ListX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<List<? extends E>, E[]> toArray(IntFunction<? extends E[]> generator) {
+    public static <E> Function<List<E>, E[]> toArray(IntFunction<? extends E[]> generator) {
         return c -> c.toArray(generator.apply(0));
     }
 
@@ -450,7 +449,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<List<? extends E>> equalsTo(Object other) {
+    public static <E> Predicate<List<E>> equalsTo(Object other) {
         return l -> l.equals(other);
     }
 
@@ -465,7 +464,7 @@ public final class ListX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<List<? extends E>> notEqualsTo(Object other) {
+    public static <E> Predicate<List<E>> notEqualsTo(Object other) {
         return l -> !l.equals(other);
     }
 }
