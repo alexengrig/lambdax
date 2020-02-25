@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ public class DequeXTest {
         int value = 1;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Predicate<Deque<? super Number>> containsValue = DequeX.contains(value);
+        Predicate<Deque<Number>> containsValue = DequeX.contains(value);
         assertTrue(containsValue.test(numbers));
     }
 
@@ -52,7 +52,7 @@ public class DequeXTest {
     public void checkAdd() {
         int value = 2;
         Deque<Number> numbers = new ArrayDeque<>();
-        Predicate<Deque<? super Number>> addValue = DequeX.add(value);
+        Predicate<Deque<Number>> addValue = DequeX.add(value);
         assertTrue(addValue.test(numbers));
     }
 
@@ -70,7 +70,7 @@ public class DequeXTest {
     public void checkOnlyAdd() {
         int value = 3;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> onlyAddValue = DequeX.onlyAdd(value);
+        Consumer<Deque<Number>> onlyAddValue = DequeX.onlyAdd(value);
         onlyAddValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -89,7 +89,7 @@ public class DequeXTest {
     public void checkAddFirst() {
         int value = 4;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> addValueToStart = DequeX.addFirst(value);
+        Consumer<Deque<Number>> addValueToStart = DequeX.addFirst(value);
         addValueToStart.accept(numbers);
         assertEquals(value, numbers.getFirst());
     }
@@ -108,7 +108,7 @@ public class DequeXTest {
     public void checkAddLast() {
         int value = 5;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> addValueToEnd = DequeX.addLast(value);
+        Consumer<Deque<Number>> addValueToEnd = DequeX.addLast(value);
         addValueToEnd.accept(numbers);
         assertEquals(value, numbers.getLast());
     }
@@ -127,7 +127,7 @@ public class DequeXTest {
     public void checkOffer() {
         int value = 6;
         Deque<Number> numbers = new ArrayDeque<>();
-        Predicate<Deque<? super Number>> offerValue = DequeX.offer(value);
+        Predicate<Deque<Number>> offerValue = DequeX.offer(value);
         assertTrue(offerValue.test(numbers));
     }
 
@@ -145,7 +145,7 @@ public class DequeXTest {
     public void checkOnlyOffer() {
         int value = 7;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> onlyOfferValue = DequeX.onlyOffer(value);
+        Consumer<Deque<Number>> onlyOfferValue = DequeX.onlyOffer(value);
         onlyOfferValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -164,7 +164,7 @@ public class DequeXTest {
     public void checkOfferFirst() {
         int value = 8;
         Deque<Number> numbers = new ArrayDeque<>();
-        Predicate<Deque<? super Number>> offerValueToStart = DequeX.offerFirst(value);
+        Predicate<Deque<Number>> offerValueToStart = DequeX.offerFirst(value);
         assertTrue(offerValueToStart.test(numbers));
     }
 
@@ -182,7 +182,7 @@ public class DequeXTest {
     public void checkOnlyOfferFirst() {
         int value = 9;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> onlyOfferValueToStart = DequeX.onlyOfferFirst(value);
+        Consumer<Deque<Number>> onlyOfferValueToStart = DequeX.onlyOfferFirst(value);
         onlyOfferValueToStart.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -201,7 +201,7 @@ public class DequeXTest {
     public void checkOfferLast() {
         int value = 10;
         Deque<Number> numbers = new ArrayDeque<>();
-        Predicate<Deque<? super Number>> offerValueToEnd = DequeX.offerLast(value);
+        Predicate<Deque<Number>> offerValueToEnd = DequeX.offerLast(value);
         assertTrue(offerValueToEnd.test(numbers));
     }
 
@@ -219,7 +219,7 @@ public class DequeXTest {
     public void checkOnlyOfferLast() {
         int value = 11;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> onlyOfferValueToEnd = DequeX.onlyOfferLast(value);
+        Consumer<Deque<Number>> onlyOfferValueToEnd = DequeX.onlyOfferLast(value);
         onlyOfferValueToEnd.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -238,7 +238,7 @@ public class DequeXTest {
     public void checkPush() {
         int value = 12;
         Deque<Number> numbers = new ArrayDeque<>();
-        Consumer<Deque<? super Number>> pushValue = DequeX.push(value);
+        Consumer<Deque<Number>> pushValue = DequeX.push(value);
         pushValue.accept(numbers);
         assertTrue(numbers.contains(value));
     }
@@ -258,7 +258,7 @@ public class DequeXTest {
         int value = 13;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Predicate<Deque<? super Number>> removeValue = DequeX.remove(value);
+        Predicate<Deque<Number>> removeValue = DequeX.remove(value);
         assertTrue(removeValue.test(numbers));
     }
 
@@ -278,7 +278,7 @@ public class DequeXTest {
         int value = 14;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Consumer<Deque<? super Number>> onlyRemoveValue = DequeX.onlyRemove(value);
+        Consumer<Deque<Number>> onlyRemoveValue = DequeX.onlyRemove(value);
         onlyRemoveValue.accept(numbers);
         assertFalse(numbers.contains(value));
     }
@@ -299,7 +299,7 @@ public class DequeXTest {
         int value = 15;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Predicate<Deque<? super Number>> removeFirstOccurrenceValue = DequeX.removeFirstOccurrence(value);
+        Predicate<Deque<Number>> removeFirstOccurrenceValue = DequeX.removeFirstOccurrence(value);
         assertTrue(removeFirstOccurrenceValue.test(numbers));
     }
 
@@ -319,7 +319,7 @@ public class DequeXTest {
         int value = 16;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Consumer<Deque<? super Number>> onlyRemoveFirstOccurrenceValue = DequeX.onlyRemoveFirstOccurrence(value);
+        Consumer<Deque<Number>> onlyRemoveFirstOccurrenceValue = DequeX.onlyRemoveFirstOccurrence(value);
         onlyRemoveFirstOccurrenceValue.accept(numbers);
         assertFalse(numbers.contains(value));
     }
@@ -340,7 +340,7 @@ public class DequeXTest {
         int value = 17;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Predicate<Deque<? super Integer>> removeLastOccurrenceValue = DequeX.removeLastOccurrence(value);
+        Predicate<Deque<Number>> removeLastOccurrenceValue = DequeX.removeLastOccurrence(value);
         assertTrue(removeLastOccurrenceValue.test(numbers));
     }
 
@@ -360,7 +360,7 @@ public class DequeXTest {
         int value = 18;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Consumer<Deque<? super Integer>> onlyRemoveLastOccurrenceValue = DequeX.onlyRemoveLastOccurrence(value);
+        Consumer<Deque<Number>> onlyRemoveLastOccurrenceValue = DequeX.onlyRemoveLastOccurrence(value);
         onlyRemoveLastOccurrenceValue.accept(numbers);
         assertFalse(numbers.contains(value));
     }
@@ -381,7 +381,7 @@ public class DequeXTest {
         int value = 18;
         Deque<Number> numbers = new ArrayDeque<>();
         numbers.add(value);
-        Predicate<Deque<? super Number>> containsValue = DequeX.notContains(value);
+        Predicate<Deque<Number>> containsValue = DequeX.notContains(value);
         assertFalse(containsValue.test(numbers));
     }
 
