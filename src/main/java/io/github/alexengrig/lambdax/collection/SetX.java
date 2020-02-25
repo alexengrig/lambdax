@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import java.util.function.Predicate;
  * <p>This utility class contains useful lambdas for {@link java.util.Set}.</p>
  *
  * @author Grig Alex
- * @version 0.1.2
+ * @version 0.2.1
  * @see java.util.Collection
  * @see java.util.Set
  * @see java.util.function.Consumer
@@ -51,7 +51,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? extends E>> contains(E item) {
+    public static <E> Predicate<Set<E>> contains(E item) {
         return s -> s.contains(item);
     }
 
@@ -66,7 +66,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? extends E>> containsAll(Collection<? extends E> all) {
+    public static <E> Predicate<Set<E>> containsAll(Collection<? extends E> all) {
         return s -> s.containsAll(all);
     }
 
@@ -81,7 +81,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Set<? extends E>> notContains(E item) {
+    public static <E> Predicate<Set<E>> notContains(E item) {
         return s -> !s.contains(item);
     }
 
@@ -96,7 +96,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Set<? extends E>> notContainsAll(Collection<? extends E> all) {
+    public static <E> Predicate<Set<E>> notContainsAll(Collection<? extends E> all) {
         return s -> !s.containsAll(all);
     }
 
@@ -111,7 +111,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? super E>> add(E item) {
+    public static <E> Predicate<Set<E>> add(E item) {
         return s -> s.add(item);
     }
 
@@ -126,7 +126,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? super E>> addAll(Collection<? extends E> all) {
+    public static <E> Predicate<Set<E>> addAll(Collection<? extends E> all) {
         return s -> s.addAll(all);
     }
 
@@ -141,7 +141,7 @@ public final class SetX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Set<? super E>> onlyAdd(E item) {
+    public static <E> Consumer<Set<E>> onlyAdd(E item) {
         return s -> s.add(item);
     }
 
@@ -156,7 +156,7 @@ public final class SetX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Set<? super E>> onlyAddAll(Collection<? extends E> all) {
+    public static <E> Consumer<Set<E>> onlyAddAll(Collection<? extends E> all) {
         return s -> s.addAll(all);
     }
 
@@ -171,7 +171,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? super E>> remove(E item) {
+    public static <E> Predicate<Set<E>> remove(E item) {
         return s -> s.remove(item);
     }
 
@@ -186,7 +186,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? super E>> removeAll(Collection<? extends E> all) {
+    public static <E> Predicate<Set<E>> removeAll(Collection<? extends E> all) {
         return s -> s.removeAll(all);
     }
 
@@ -201,7 +201,7 @@ public final class SetX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Set<? super E>> onlyRemove(E item) {
+    public static <E> Consumer<Set<E>> onlyRemove(E item) {
         return s -> s.remove(item);
     }
 
@@ -216,7 +216,7 @@ public final class SetX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Set<? super E>> onlyRemoveAll(Collection<? extends E> all) {
+    public static <E> Consumer<Set<E>> onlyRemoveAll(Collection<? extends E> all) {
         return s -> s.removeAll(all);
     }
 
@@ -231,7 +231,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? super E>> retainAll(Collection<? extends E> all) {
+    public static <E> Predicate<Set<E>> retainAll(Collection<? extends E> all) {
         return s -> s.retainAll(all);
     }
 
@@ -246,7 +246,7 @@ public final class SetX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <E> Consumer<Set<? super E>> onlyRetainAll(Collection<? extends E> all) {
+    public static <E> Consumer<Set<E>> onlyRetainAll(Collection<? extends E> all) {
         return s -> s.retainAll(all);
     }
 
@@ -261,7 +261,7 @@ public final class SetX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<Set<? extends E>, E[]> toArray(E[] array) {
+    public static <E> Function<Set<E>, E[]> toArray(E[] array) {
         return c -> c.toArray(array);
     }
 
@@ -278,7 +278,7 @@ public final class SetX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <E> Function<Set<? extends E>, E[]> toArray(IntFunction<? extends E[]> generator) {
+    public static <E> Function<Set<E>, E[]> toArray(IntFunction<? extends E[]> generator) {
         return c -> c.toArray(generator.apply(0));
     }
 
@@ -293,7 +293,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <E> Predicate<Set<? extends E>> equalsTo(Object other) {
+    public static <E> Predicate<Set<E>> equalsTo(Object other) {
         return c -> c.equals(other);
     }
 
@@ -308,7 +308,7 @@ public final class SetX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <E> Predicate<Set<? extends E>> notEqualsTo(Object other) {
+    public static <E> Predicate<Set<E>> notEqualsTo(Object other) {
         return c -> !c.equals(other);
     }
 }
