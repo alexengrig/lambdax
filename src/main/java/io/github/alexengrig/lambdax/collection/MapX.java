@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import java.util.function.Predicate;
  * <p>This utility class contains useful lambdas for {@link java.util.Map}.</p>
  *
  * @author Grig Alex
- * @version 0.1.2
+ * @version 0.2.1
  * @see java.util.Map
  * @see java.util.function.Consumer
  * @see java.util.function.Function
@@ -48,7 +48,7 @@ public final class MapX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <K, V> Predicate<Map<? extends K, ? extends V>> containsKey(K key) {
+    public static <K, V> Predicate<Map<K, V>> containsKey(K key) {
         return map -> map.containsKey(key);
     }
 
@@ -64,7 +64,7 @@ public final class MapX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <K, V> Predicate<Map<? extends K, ? extends V>> notContainsKey(K key) {
+    public static <K, V> Predicate<Map<K, V>> notContainsKey(K key) {
         return map -> !map.containsKey(key);
     }
 
@@ -80,7 +80,7 @@ public final class MapX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <K, V> Predicate<Map<? extends K, ? extends V>> containsValue(V value) {
+    public static <K, V> Predicate<Map<K, V>> containsValue(V value) {
         return map -> map.containsValue(value);
     }
 
@@ -96,7 +96,7 @@ public final class MapX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <K, V> Predicate<Map<? extends K, ? extends V>> notContainsValue(V value) {
+    public static <K, V> Predicate<Map<K, V>> notContainsValue(V value) {
         return map -> !map.containsValue(value);
     }
 
@@ -112,7 +112,7 @@ public final class MapX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <K, V> Function<Map<? extends K, ? extends V>, V> get(K key) {
+    public static <K, V> Function<Map<K, V>, V> get(K key) {
         return map -> map.get(key);
     }
 
@@ -129,9 +129,8 @@ public final class MapX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    @SuppressWarnings("unchecked")
-    public static <K, V> Function<Map<? super K, ? super V>, V> put(K key, V value) {
-        return map -> (V) map.put(key, value);
+    public static <K, V> Function<Map<K, V>, V> put(K key, V value) {
+        return map -> map.put(key, value);
     }
 
     /**
@@ -146,7 +145,7 @@ public final class MapX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <K, V> Consumer<Map<? super K, ? super V>> putAll(Map<? extends K, ? extends V> all) {
+    public static <K, V> Consumer<Map<K, V>> putAll(Map<? extends K, ? extends V> all) {
         return map -> map.putAll(all);
     }
 
@@ -163,7 +162,7 @@ public final class MapX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <K, V> Consumer<Map<? super K, ? super V>> onlyPut(K key, V value) {
+    public static <K, V> Consumer<Map<K, V>> onlyPut(K key, V value) {
         return map -> map.put(key, value);
     }
 
@@ -179,7 +178,7 @@ public final class MapX {
      * @see java.util.function.Function
      * @since 0.1.0
      */
-    public static <K, V> Function<Map<? extends K, ? extends V>, V> remove(K key) {
+    public static <K, V> Function<Map<K, V>, V> remove(K key) {
         return map -> map.remove(key);
     }
 
@@ -195,7 +194,7 @@ public final class MapX {
      * @see java.util.function.Consumer
      * @since 0.1.0
      */
-    public static <K, V> Consumer<Map<? extends K, ? extends V>> onlyRemove(K key) {
+    public static <K, V> Consumer<Map<K, V>> onlyRemove(K key) {
         return map -> map.remove(key);
     }
 
@@ -211,7 +210,7 @@ public final class MapX {
      * @see java.util.function.Predicate
      * @since 0.1.0
      */
-    public static <K, V> Predicate<Map<? super K, ? super V>> equalsTo(Object other) {
+    public static <K, V> Predicate<Map<K, V>> equalsTo(Object other) {
         return map -> map.equals(other);
     }
 
@@ -227,7 +226,7 @@ public final class MapX {
      * @see java.util.function.Predicate
      * @since 0.1.2
      */
-    public static <K, V> Predicate<Map<? super K, ? super V>> notEqualsTo(Object other) {
+    public static <K, V> Predicate<Map<K, V>> notEqualsTo(Object other) {
         return map -> !map.equals(other);
     }
 }
