@@ -68,11 +68,12 @@ public class PredicateXTest {
     @Test
     public void checkCheckerNullable() {
         Holder<Box> boxHolder = new Holder<>(null);
-        Predicate<Holder<Box>> isEmptyItemName = PredicateX.of(Holder<Box>::get)
+        Predicate<Holder<Box>> isEmptyItemName = PredicateX.ofNullable(Holder<Box>::get)
                 .map(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
-                .check(Objects::isNull);
+                .check(Objects::isNull)
+                .orLie();
         assertFalse(isEmptyItemName.test(boxHolder));
     }
 
@@ -94,11 +95,12 @@ public class PredicateXTest {
     public void checkCheckerNullableChaining() {
         Holder<Box> boxHolder = new Holder<>(null);
         List<Holder<Box>> list = Stream.of(boxHolder)
-                .filter(PredicateX.of(Holder<Box>::get)
+                .filter(PredicateX.ofNullable(Holder<Box>::get)
                         .map(Box::getPack)
                         .map(Pack::getItem)
                         .map(Item::getName)
-                        .check(String::isEmpty))
+                        .check(String::isEmpty)
+                        .orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
@@ -107,16 +109,14 @@ public class PredicateXTest {
     public void checkIsNull() {
         String value = "Monster Energy";
         Pack pack = new Pack(new Item(value));
-        Predicate<Pack> isNullItemName =
-                PredicateX.of(Pack::getItem).map(Item::getName).isNull();
+        Predicate<Pack> isNullItemName = PredicateX.of(Pack::getItem).map(Item::getName).isNull();
         assertFalse(isNullItemName.test(pack));
     }
 
     @Test
     public void checkIsNullNullable() {
         Pack pack = new Pack(null);
-        Predicate<Pack> isNullItemName =
-                PredicateX.of(Pack::getItem).map(Item::getName).isNull();
+        Predicate<Pack> isNullItemName = PredicateX.ofNullable(Pack::getItem).map(Item::getName).isNull();
         assertTrue(isNullItemName.test(pack));
     }
 
@@ -124,20 +124,18 @@ public class PredicateXTest {
     public void checkIsNullChaining() {
         String value = "Monster Energy";
         Pack pack = new Pack(new Item(value));
-        List<Pack> list =
-                Stream.of(pack)
-                        .filter(PredicateX.of(Pack::getItem).map(Item::getName).isNull())
-                        .collect(Collectors.toList());
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.of(Pack::getItem).map(Item::getName).isNull())
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
     @Test
     public void checkIsNullNullableChaining() {
         Pack pack = new Pack(null);
-        List<Pack> list =
-                Stream.of(pack)
-                        .filter(PredicateX.of(Pack::getItem).map(Item::getName).isNull())
-                        .collect(Collectors.toList());
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.ofNullable(Pack::getItem).map(Item::getName).isNull())
+                .collect(Collectors.toList());
         assertFalse(list.isEmpty());
     }
 
@@ -145,16 +143,14 @@ public class PredicateXTest {
     public void checkNonNull() {
         String value = "Red Bull";
         Pack pack = new Pack(new Item(value));
-        Predicate<Pack> nonNullItemName =
-                PredicateX.of(Pack::getItem).map(Item::getName).nonNull();
+        Predicate<Pack> nonNullItemName = PredicateX.of(Pack::getItem).map(Item::getName).nonNull();
         assertTrue(nonNullItemName.test(pack));
     }
 
     @Test
     public void checkNonNullNullable() {
         Pack pack = new Pack(null);
-        Predicate<Pack> nonNullItemName =
-                PredicateX.of(Pack::getItem).map(Item::getName).nonNull();
+        Predicate<Pack> nonNullItemName = PredicateX.ofNullable(Pack::getItem).map(Item::getName).nonNull();
         assertFalse(nonNullItemName.test(pack));
     }
 
@@ -162,20 +158,18 @@ public class PredicateXTest {
     public void checkNonNullChaining() {
         String value = "Red Bull";
         Pack pack = new Pack(new Item(value));
-        List<Pack> list =
-                Stream.of(pack)
-                        .filter(PredicateX.of(Pack::getItem).map(Item::getName).nonNull())
-                        .collect(Collectors.toList());
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.of(Pack::getItem).map(Item::getName).nonNull())
+                .collect(Collectors.toList());
         assertFalse(list.isEmpty());
     }
 
     @Test
     public void checkNonNullNullableChaining() {
         Pack pack = new Pack(null);
-        List<Pack> list =
-                Stream.of(pack)
-                        .filter(PredicateX.of(Pack::getItem).map(Item::getName).nonNull())
-                        .collect(Collectors.toList());
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.ofNullable(Pack::getItem).map(Item::getName).nonNull())
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
@@ -183,8 +177,7 @@ public class PredicateXTest {
     public void checkEqual() {
         String value = "Coca-Cola";
         Pack pack = new Pack(new Item(value));
-        Predicate<Pack> equalsCocaCola =
-                PredicateX.of(Pack::getItem).map(Item::getName).equal(value);
+        Predicate<Pack> equalsCocaCola = PredicateX.of(Pack::getItem).map(Item::getName).equal(value);
         assertTrue(equalsCocaCola.test(pack));
     }
 
@@ -192,8 +185,7 @@ public class PredicateXTest {
     public void checkEqualNullable() {
         String value = "Coca-Cola";
         Pack pack = new Pack(null);
-        Predicate<Pack> equalsCocaCola =
-                PredicateX.of(Pack::getItem).map(Item::getName).equal(value);
+        Predicate<Pack> equalsCocaCola = PredicateX.ofNullable(Pack::getItem).map(Item::getName).equal(value).orLie();
         assertFalse(equalsCocaCola.test(pack));
     }
 
@@ -201,11 +193,9 @@ public class PredicateXTest {
     public void checkEqualChaining() {
         String value = "Coca-Cola";
         Pack pack = new Pack(new Item(value));
-        List<Pack> list =
-                Stream.of(pack)
-                        .filter(
-                                PredicateX.of(Pack::getItem).map(Item::getName).equal(value))
-                        .collect(Collectors.toList());
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.ofNullable(Pack::getItem).map(Item::getName).equal(value).orTruth())
+                .collect(Collectors.toList());
         assertFalse(list.isEmpty());
     }
 
@@ -213,11 +203,9 @@ public class PredicateXTest {
     public void checkEqualNullableChaining() {
         String value = "Coca-Cola";
         Pack pack = new Pack(null);
-        List<Pack> list =
-                Stream.of(pack)
-                        .filter(
-                                PredicateX.of(Pack::getItem).map(Item::getName).equal(value))
-                        .collect(Collectors.toList());
+        List<Pack> list = Stream.of(pack)
+                .filter(PredicateX.ofNullable(Pack::getItem).map(Item::getName).equal(value).orLie())
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
@@ -226,9 +214,8 @@ public class PredicateXTest {
         String value = "Pepsi";
         Box box = new Box(new Pack(new Item(value)));
         Pack pack = new Pack(new Item("Coca-Cola"));
-        Predicate<Box> lessPepsi =
-                PredicateX.of(Box::getPack)
-                        .less(pack, Comparator.comparing(p -> p.getItem().getName()));
+        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+                .less(pack, Comparator.comparing(p -> p.getItem().getName()));
         assertFalse(lessPepsi.test(box));
     }
 
@@ -236,9 +223,9 @@ public class PredicateXTest {
     public void checkLessNullableWithComparator() {
         Box box = new Box(null);
         Pack pack = new Pack(new Item("Coca-Cola"));
-        Predicate<Box> lessPepsi =
-                PredicateX.of(Box::getPack)
-                        .less(pack, Comparator.comparing(p -> p.getItem().getName()));
+        Predicate<Box> lessPepsi = PredicateX.ofNullable(Box::getPack)
+                .less(pack, Comparator.comparing(p -> p.getItem().getName()))
+                .orLie();
         assertFalse(lessPepsi.test(box));
     }
 
@@ -247,12 +234,9 @@ public class PredicateXTest {
         String value = "Pepsi";
         Box box = new Box(new Pack(new Item(value)));
         Pack pack = new Pack(new Item("Coca-Cola"));
-        List<Box> list =
-                Stream.of(box)
-                        .filter(PredicateX.of(Box::getPack)
-                                .less(pack,
-                                        Comparator.comparing(p -> p.getItem().getName())))
-                        .collect(Collectors.toList());
+        List<Box> list = Stream.of(box)
+                .filter(PredicateX.of(Box::getPack).less(pack, Comparator.comparing(p -> p.getItem().getName())))
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
@@ -260,12 +244,11 @@ public class PredicateXTest {
     public void checkLessNullableWithComparatorChaining() {
         Box box = new Box(null);
         Pack pack = new Pack(new Item("Coca-Cola"));
-        List<Box> list =
-                Stream.of(box)
-                        .filter(PredicateX.of(Box::getPack)
-                                .less(pack,
-                                        Comparator.comparing(p -> p.getItem().getName())))
-                        .collect(Collectors.toList());
+        List<Box> list = Stream.of(box)
+                .filter(PredicateX.ofNullable(Box::getPack)
+                        .less(pack, Comparator.comparing(p -> p.getItem().getName()))
+                        .orLie())
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
@@ -283,10 +266,11 @@ public class PredicateXTest {
     @Test
     public void checkLessNullable() {
         Box box = new Box(null);
-        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+        Predicate<Box> lessPepsi = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
-                .less("Pepsi");
+                .less("Pepsi")
+                .orLie();
         assertFalse(lessPepsi.test(box));
     }
 
@@ -307,10 +291,11 @@ public class PredicateXTest {
     public void checkLessNullableChaining() {
         Box box = new Box(null);
         List<Box> list = Stream.of(box)
-                .filter(PredicateX.of(Box::getPack)
+                .filter(PredicateX.ofNullable(Box::getPack)
                         .map(Pack::getItem)
                         .map(Item::getName)
-                        .less("Pepsi"))
+                        .less("Pepsi")
+                        .orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
@@ -320,9 +305,8 @@ public class PredicateXTest {
         String value = "Dr Pepper";
         Box box = new Box(new Pack(new Item(value)));
         Pack pack = new Pack(new Item("Schweppes"));
-        Predicate<Box> greaterCocaCola =
-                PredicateX.of(Box::getPack)
-                        .greater(pack, Comparator.comparing(p -> p.getItem().getName()));
+        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
+                .greater(pack, Comparator.comparing(p -> p.getItem().getName()));
         assertFalse(greaterCocaCola.test(box));
     }
 
@@ -330,9 +314,9 @@ public class PredicateXTest {
     public void checkGreaterNullableWithComparator() {
         Box box = new Box(null);
         Pack pack = new Pack(new Item("Schweppes"));
-        Predicate<Box> greaterCocaCola =
-                PredicateX.of(Box::getPack)
-                        .greater(pack, Comparator.comparing(p -> p.getItem().getName()));
+        Predicate<Box> greaterCocaCola = PredicateX.ofNullable(Box::getPack)
+                .greater(pack, Comparator.comparing(p -> p.getItem().getName()))
+                .orLie();
         assertFalse(greaterCocaCola.test(box));
     }
 
@@ -341,12 +325,9 @@ public class PredicateXTest {
         String value = "Dr Pepper";
         Box box = new Box(new Pack(new Item(value)));
         Pack pack = new Pack(new Item("Schweppes"));
-        List<Box> list =
-                Stream.of(box)
-                        .filter(PredicateX.of(Box::getPack)
-                                .greater(pack, Comparator.comparing(
-                                        p -> p.getItem().getName())))
-                        .collect(Collectors.toList());
+        List<Box> list = Stream.of(box)
+                .filter(PredicateX.of(Box::getPack).greater(pack, Comparator.comparing(p -> p.getItem().getName())))
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
@@ -354,12 +335,11 @@ public class PredicateXTest {
     public void checkGreaterNullableWithComparatorChaining() {
         Box box = new Box(null);
         Pack pack = new Pack(new Item("Schweppes"));
-        List<Box> list =
-                Stream.of(box)
-                        .filter(PredicateX.of(Box::getPack)
-                                .greater(pack, Comparator.comparing(
-                                        p -> p.getItem().getName())))
-                        .collect(Collectors.toList());
+        List<Box> list = Stream.of(box)
+                .filter(PredicateX.ofNullable(Box::getPack)
+                        .greater(pack, Comparator.comparing(p -> p.getItem().getName()))
+                        .orLie())
+                .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
 
@@ -377,10 +357,11 @@ public class PredicateXTest {
     @Test
     public void checkGreaterNullable() {
         Box box = new Box(null);
-        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
+        Predicate<Box> greaterCocaCola = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
-                .greater("Dr Pepper");
+                .greater("Dr Pepper")
+                .orLie();
         assertFalse(greaterCocaCola.test(box));
     }
 
@@ -401,10 +382,11 @@ public class PredicateXTest {
     public void checkGreaterNullableChaining() {
         Box box = new Box(null);
         List<Box> list = Stream.of(box)
-                .filter(PredicateX.of(Box::getPack)
+                .filter(PredicateX.ofNullable(Box::getPack)
                         .map(Pack::getItem)
                         .map(Item::getName)
-                        .greater("Dr Pepper"))
+                        .greater("Dr Pepper")
+                        .orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
@@ -423,10 +405,11 @@ public class PredicateXTest {
     @Test
     public void checkLessOrEqualNullable() {
         Box box = new Box(null);
-        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+        Predicate<Box> lessPepsi = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
-                .lessOrEqual("Mirinda");
+                .lessOrEqual("Mirinda")
+                .orLie();
         assertFalse(lessPepsi.test(box));
     }
 
@@ -447,10 +430,11 @@ public class PredicateXTest {
     public void checkLessOrEqualNullableChaining() {
         Box box = new Box(null);
         List<Box> list = Stream.of(box)
-                .filter(PredicateX.of(Box::getPack)
+                .filter(PredicateX.ofNullable(Box::getPack)
                         .map(Pack::getItem)
                         .map(Item::getName)
-                        .lessOrEqual("Mirinda"))
+                        .lessOrEqual("Mirinda")
+                        .orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
@@ -469,10 +453,11 @@ public class PredicateXTest {
     @Test
     public void checkGreaterOrEqualNullable() {
         Box box = new Box(null);
-        Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
+        Predicate<Box> greaterCocaCola = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
-                .greaterOrEqual("7 Up");
+                .greaterOrEqual("7 Up")
+                .orLie();
         assertFalse(greaterCocaCola.test(box));
     }
 
@@ -493,10 +478,11 @@ public class PredicateXTest {
     public void checkGreaterOrEqualNullableChaining() {
         Box box = new Box(null);
         List<Box> list = Stream.of(box)
-                .filter(PredicateX.of(Box::getPack)
+                .filter(PredicateX.ofNullable(Box::getPack)
                         .map(Pack::getItem)
                         .map(Item::getName)
-                        .greaterOrEqual("7 Up"))
+                        .greaterOrEqual("7 Up")
+                        .orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
