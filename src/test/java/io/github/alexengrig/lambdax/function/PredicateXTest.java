@@ -393,6 +393,14 @@ public class PredicateXTest {
 
     @Test
     public void checkLessOrEqual() {
+        Holder<Box> holder = new Holder<>(new Box(null));
+        Predicate<Holder<Box>> lessOrEqual = PredicateX.of(Holder<Box>::get)
+                .lessOrEqual(new Box(null), (o1, o2) -> 0);
+        assertTrue(lessOrEqual.test(holder));
+    }
+
+    @Test
+    public void checkLessOrEqualComparable() {
         Box box = new Box(new Pack(new Item("Fanta")));
         Predicate<Box> lessOrEqual = PredicateX.of(Box::getPack)
                 .map(Pack::getItem)
@@ -452,6 +460,14 @@ public class PredicateXTest {
 
     @Test
     public void checkGreaterOrEqual() {
+        Holder<Box> holder = new Holder<>(new Box(null));
+        Predicate<Holder<Box>> greaterCocaCola = PredicateX.of(Holder<Box>::get)
+                .greaterOrEqual(new Box(null), (o1, o2) -> 0);
+        assertTrue(greaterCocaCola.test(holder));
+    }
+
+    @Test
+    public void checkGreaterOrEqualComparable() {
         String value = "Sprite";
         Box box = new Box(new Pack(new Item(value)));
         Predicate<Box> greaterCocaCola = PredicateX.of(Box::getPack)
