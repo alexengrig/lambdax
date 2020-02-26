@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package io.github.alexengrig.lambdax.example;
 
 import io.github.alexengrig.lambdax.collection.CollectionX;
 import io.github.alexengrig.lambdax.collection.MapX;
+import io.github.alexengrig.lambdax.entity.Holder;
 import org.junit.Before;
 import org.junit.Test;
 

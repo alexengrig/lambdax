@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,20 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax.example;
+package io.github.alexengrig.lambdax.entity;
 
-import java.util.Objects;
+public class Box {
+    private Pack pack;
 
-public class Item implements Comparable<Item> {
-    private String name;
-
-    private Item() {
+    public Box(Pack pack) {
+        this.pack = pack;
     }
 
-    public Item(String name) {
-        this.name = name;
+    public Pack getPack() {
+        return pack;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int compareTo(Item item) {
-        return Objects.compare(name, item.name, String::compareTo);
+    public boolean isEmpty() {
+        return pack == null;
     }
 }

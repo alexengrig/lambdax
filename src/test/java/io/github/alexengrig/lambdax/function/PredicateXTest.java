@@ -16,10 +16,10 @@
 
 package io.github.alexengrig.lambdax.function;
 
-import io.github.alexengrig.lambdax.example.Box;
-import io.github.alexengrig.lambdax.example.Holder;
-import io.github.alexengrig.lambdax.example.Item;
-import io.github.alexengrig.lambdax.example.Pack;
+import io.github.alexengrig.lambdax.entity.Box;
+import io.github.alexengrig.lambdax.entity.Holder;
+import io.github.alexengrig.lambdax.entity.Item;
+import io.github.alexengrig.lambdax.entity.Pack;
 import org.junit.Test;
 
 import java.util.Comparator;

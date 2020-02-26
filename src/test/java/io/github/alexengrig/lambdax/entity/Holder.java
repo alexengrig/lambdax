@@ -25,7 +25,7 @@ public class Holder<T> {
         this.value = value;
     }
 
-    public T getValue() {
+    public T get() {
         return value;
     }
 

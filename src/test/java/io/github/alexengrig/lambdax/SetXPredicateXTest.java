@@ -41,7 +41,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetContains() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.contains(1)))
                 .isPresent());
     }
@@ -49,7 +49,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetContainsAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.containsAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -57,7 +57,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetNotContains() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.notContains(1)))
                 .isPresent());
     }
@@ -65,7 +65,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetNotContainsAll() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.notContainsAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -73,7 +73,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetAdd() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.add(1)))
                 .isPresent());
     }
@@ -81,7 +81,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetAddAll() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.addAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -89,7 +89,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetRemove() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.remove(1)))
                 .isPresent());
     }
@@ -97,7 +97,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetRemoveAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.removeAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -105,7 +105,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetRetainAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.removeAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -113,7 +113,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetEqualsTo() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.equalsTo(Collections.emptySet())))
                 .isPresent());
     }
@@ -121,7 +121,7 @@ public class SetXPredicateXTest {
     @Test
     public void checkSetNotEqualsTo() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Set<Integer>>::getValue)
+                .filter(PredicateX.of(Holder<Set<Integer>>::get)
                         .check(SetX.notEqualsTo(Collections.emptySet())))
                 .isPresent());
     }
