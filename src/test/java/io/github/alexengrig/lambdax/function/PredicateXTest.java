@@ -504,10 +504,50 @@ public class PredicateXTest {
     }
 
     @Test
-    public void checkNullableOrElseBoolean() {
+    public void checkOrElseBoolean() {
+        assertTrue(PredicateX.ofNullable(Box::getPack)
+                .check(Objects::nonNull)
+                .orElse(false)
+                .test(new Box(new Pack(null))));
+    }
+
+    @Test
+    public void checkOrElseBooleanNullable() {
         assertTrue(PredicateX.ofNullable(Box::getPack)
                 .check(Objects::nonNull)
                 .orElse(true)
+                .test(new Box(null)));
+    }
+
+    @Test
+    public void checkOrElse() {
+        assertTrue(PredicateX.ofNullable(Box::getPack)
+                .check(Objects::nonNull)
+                .orElse(t -> false)
+                .test(new Box(new Pack(null))));
+    }
+
+    @Test
+    public void checkOrElseNullable() {
+        assertTrue(PredicateX.ofNullable(Box::getPack)
+                .check(Objects::nonNull)
+                .orElse(t -> true)
+                .test(new Box(null)));
+    }
+
+    @Test
+    public void checkOrLie() {
+        assertTrue(PredicateX.ofNullable(Box::getPack)
+                .check(Objects::nonNull)
+                .orLie()
+                .test(new Box(new Pack(null))));
+    }
+
+    @Test
+    public void checkOrLieNullable() {
+        assertFalse(PredicateX.ofNullable(Box::getPack)
+                .check(Objects::isNull)
+                .orLie()
                 .test(new Box(null)));
     }
 }
