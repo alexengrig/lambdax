@@ -229,4 +229,20 @@ import java.util.function.Predicate;
     public Predicate<T> greater(R other, Comparator<R> comparator) {
         return t -> comparator.compare(function.apply(t), other) > 0;
     }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public Predicate<T> lessOrEqual(R other, Comparator<R> comparator) {
+        return t -> comparator.compare(function.apply(t), other) <= 0;
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public Predicate<T> greaterOrEqual(R other, Comparator<R> comparator) {
+        return t -> comparator.compare(function.apply(t), other) >= 0;
+    }
 }
