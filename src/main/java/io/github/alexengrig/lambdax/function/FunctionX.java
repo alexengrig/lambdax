@@ -19,15 +19,15 @@ package io.github.alexengrig.lambdax.function;
 import java.util.function.Function;
 
 /**
- * <p>This utility class contains useful lambdas for {@link
- * java.util.function.Function}.</p>
+ * <p>This utility class contains useful lambdas
+ * for {@link java.util.function.Function}.</p>
  *
  * @author Grig Alex
  * @version 0.2.1
  * @see java.util.function.Function
  * @since 0.2.1
  */
-public class FunctionX {
+public final class FunctionX {
     /**
      * <p>The private constructor.</p>
      *
