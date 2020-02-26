@@ -153,7 +153,7 @@ public interface PredicateI<T, R> {
      * @since 0.2.0
      */
     default Predicate<T> less(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) < 0);
+        return check(r -> Objects.compare(r, other, comparator) < 0);
     }
 
     /**
@@ -171,7 +171,7 @@ public interface PredicateI<T, R> {
      * @since 0.2.0
      */
     default Predicate<T> greater(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) > 0);
+        return check(r -> Objects.compare(r, other, comparator) > 0);
     }
 
     /**
@@ -193,7 +193,7 @@ public interface PredicateI<T, R> {
      * @since 0.2.0
      */
     default Predicate<T> lessOrEqual(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) <= 0);
+        return check(r -> Objects.compare(r, other, comparator) <= 0);
     }
 
     /**
@@ -215,6 +215,6 @@ public interface PredicateI<T, R> {
      * @since 0.2.0
      */
     default Predicate<T> greaterOrEqual(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) >= 0);
+        return check(r -> Objects.compare(r, other, comparator) >= 0);
     }
 }

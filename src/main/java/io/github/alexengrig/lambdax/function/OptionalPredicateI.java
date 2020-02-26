@@ -65,27 +65,27 @@ public interface OptionalPredicateI<T, R> {
      * TODO: Add JavaDoc
      */
     default OptionalPredicateResultI<T> less(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) < 0);
+        return check(r -> Objects.compare(r, other, comparator) < 0);
     }
 
     /**
      * TODO: Add JavaDoc
      */
     default OptionalPredicateResultI<T> greater(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) > 0);
+        return check(r -> Objects.compare(r, other, comparator) > 0);
     }
 
     /**
      * TODO: Add JavaDoc
      */
     default OptionalPredicateResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) <= 0);
+        return check(r -> Objects.compare(r, other, comparator) <= 0);
     }
 
     /**
      * TODO: Add JavaDoc
      */
     default OptionalPredicateResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) >= 0);
+        return check(r -> Objects.compare(r, other, comparator) >= 0);
     }
 }

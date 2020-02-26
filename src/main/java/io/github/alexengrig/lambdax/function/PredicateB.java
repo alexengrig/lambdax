@@ -36,7 +36,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateI
  * @since 0.2.0
  */
-/* package */ class PredicateB<T, R> implements PredicateI<T, R> {
+/* package */class PredicateB<T, R> implements PredicateI<T, R> {
     /**
      * <p>The mapper of the input to the predicate.</p>
      *
@@ -52,7 +52,7 @@ import java.util.function.Predicate;
      * @see java.util.function.Function
      * @since 0.2.0
      */
-    /* package */ PredicateB(Function<T, R> mapper) {
+    /* package */PredicateB(Function<T, R> mapper) {
         function = mapper;
     }
 
@@ -206,7 +206,7 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> less(R other, Comparator<R> comparator) {
-        return t -> comparator.compare(function.apply(t), other) < 0;
+        return t -> Objects.compare(function.apply(t), other, comparator) < 0;
     }
 
     /**
@@ -227,7 +227,7 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> greater(R other, Comparator<R> comparator) {
-        return t -> comparator.compare(function.apply(t), other) > 0;
+        return t -> Objects.compare(function.apply(t), other, comparator) > 0;
     }
 
     /**
@@ -235,7 +235,7 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> lessOrEqual(R other, Comparator<R> comparator) {
-        return t -> comparator.compare(function.apply(t), other) <= 0;
+        return t -> Objects.compare(function.apply(t), other, comparator) <= 0;
     }
 
     /**
@@ -243,6 +243,6 @@ import java.util.function.Predicate;
      */
     @Override
     public Predicate<T> greaterOrEqual(R other, Comparator<R> comparator) {
-        return t -> comparator.compare(function.apply(t), other) >= 0;
+        return t -> Objects.compare(function.apply(t), other, comparator) >= 0;
     }
 }

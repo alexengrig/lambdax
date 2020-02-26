@@ -16,6 +16,8 @@
 
 package io.github.alexengrig.lambdax.function;
 
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -57,5 +59,37 @@ import java.util.function.Predicate;
     @Override
     public OptionalPredicateResultI<T> check(Predicate<R> checker) {
         return new OptionalPredicateResultB<>(function, checker);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public OptionalPredicateResultI<T> less(R other) {
+        return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) < 0);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public OptionalPredicateResultI<T> greater(R other) {
+        return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) > 0);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public OptionalPredicateResultI<T> lessOrEqual(R other) {
+        return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) <= 0);
+    }
+
+    /**
+     * TODO: Add JavaDoc
+     */
+    @Override
+    public OptionalPredicateResultI<T> greaterOrEqual(R other) {
+        return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) >= 0);
     }
 }
