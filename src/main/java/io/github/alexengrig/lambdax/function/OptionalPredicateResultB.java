@@ -19,24 +19,26 @@ package io.github.alexengrig.lambdax.function;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-/* package */class OptionalPredicateResultB<T, V> implements OptionalPredicateResultI<T> {
-    private final Function<T, V> function;
-    private final Predicate<V> predicate;
+/* package */ class OptionalPredicateResultB<T, V>
+    implements OptionalPredicateResultI<T> {
+  private final Function<T, V> function;
+  private final Predicate<V> predicate;
 
-    /* package */OptionalPredicateResultB(Function<T, V> function, Predicate<V> predicate) {
-        this.function = function;
-        this.predicate = predicate;
-    }
+  /* package */ OptionalPredicateResultB(Function<T, V> function,
+                                         Predicate<V> predicate) {
+    this.function = function;
+    this.predicate = predicate;
+  }
 
-    @Override
-    public Predicate<T> orElse(Predicate<T> checker) {
-        return t -> {
-            V value = function.apply(t);
-            if (value != null) {
-                return predicate.test(value);
-            } else {
-                return checker.test(t);
-            }
-        };
-    }
+  @Override
+  public Predicate<T> orElse(Predicate<T> checker) {
+    return t -> {
+      V value = function.apply(t);
+      if (value != null) {
+        return predicate.test(value);
+      } else {
+        return checker.test(t);
+      }
+    };
+  }
 }

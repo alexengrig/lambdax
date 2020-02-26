@@ -22,41 +22,42 @@ import java.util.function.Predicate;
 /**
  * TODO: Add JavaDoc
  */
-/* package */class OptionalPredicateB<T, R>
-        implements OptionalPredicateI<T, R> {
-    /**
-     * TODO: Add JavaDoc
-     */
-    protected final Function<T, R> function;
+/* package */ class OptionalPredicateB<T, R>
+    implements OptionalPredicateI<T, R> {
+  /**
+   * TODO: Add JavaDoc
+   */
+  protected final Function<T, R> function;
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    /* package */OptionalPredicateB(Function<T, R> mapper) {
-        function = mapper;
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  /* package */ OptionalPredicateB(Function<T, R> mapper) { function = mapper; }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    @Override
-    public <V> OptionalPredicateI<T, V> map(Function<R, V> mapper) {
-        return new OptionalPredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  @Override
+  public <V> OptionalPredicateI<T, V> map(Function<R, V> mapper) {
+    return new OptionalPredicateB<>(
+        function.andThen(FunctionX.nullSafe(mapper)));
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    @Override
-    public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
-        return new ComparableOptionalPredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  @Override
+  public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V>
+  map(ComparableResultFunction<R, V> mapper) {
+    return new ComparableOptionalPredicateB<>(
+        function.andThen(FunctionX.nullSafe(mapper)));
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    @Override
-    public OptionalPredicateResultI<T> check(Predicate<R> checker) {
-        return new OptionalPredicateResultB<>(function, checker);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  @Override
+  public OptionalPredicateResultI<T> check(Predicate<R> checker) {
+    return new OptionalPredicateResultB<>(function, checker);
+  }
 }

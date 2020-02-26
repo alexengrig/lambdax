@@ -16,113 +16,119 @@
 
 package io.github.alexengrig.lambdax;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import io.github.alexengrig.lambdax.collection.CollectionX;
 import io.github.alexengrig.lambdax.entity.Holder;
 import io.github.alexengrig.lambdax.function.PredicateX;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 public class CollectionXPredicateXTest {
-    protected Holder<Collection<Integer>> holder;
+  protected Holder<Collection<Integer>> holder;
 
-    @Before
-    public void before() {
-        holder = new Holder<>(new ArrayList<>());
-    }
+  @Before
+  public void before() {
+    holder = new Holder<>(new ArrayList<>());
+  }
 
-    @Test
-    public void checkCollectionContains() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.contains(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionContains() {
+    assertFalse(Optional.of(holder)
+                    .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                                .check(CollectionX.contains(1)))
+                    .isPresent());
+  }
 
-    @Test
-    public void checkCollectionContainsAll() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.containsAll(Collections.singleton(1))))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionContainsAll() {
+    assertFalse(Optional.of(holder)
+                    .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                                .check(CollectionX.containsAll(
+                                    Collections.singleton(1))))
+                    .isPresent());
+  }
 
-    @Test
-    public void checkCollectionNotContains() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.notContains(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionNotContains() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                               .check(CollectionX.notContains(1)))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkCollectionNotContainsAll() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.notContainsAll(Collections.singleton(1))))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionNotContainsAll() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                               .check(CollectionX.notContainsAll(
+                                   Collections.singleton(1))))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkCollectionAdd() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.add(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionAdd() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                               .check(CollectionX.add(1)))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkCollectionAddAll() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+  @Test
+  public void checkCollectionAddAll() {
+    assertTrue(
+        Optional.of(holder)
+            .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
                         .check(CollectionX.addAll(Collections.singleton(1))))
-                .isPresent());
-    }
+            .isPresent());
+  }
 
-    @Test
-    public void checkCollectionRemove() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.remove(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionRemove() {
+    assertFalse(Optional.of(holder)
+                    .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                                .check(CollectionX.remove(1)))
+                    .isPresent());
+  }
 
-    @Test
-    public void checkCollectionRemoveAll() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+  @Test
+  public void checkCollectionRemoveAll() {
+    assertFalse(
+        Optional.of(holder)
+            .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
                         .check(CollectionX.removeAll(Collections.singleton(1))))
-                .isPresent());
-    }
+            .isPresent());
+  }
 
-    @Test
-    public void checkCollectionRetainAll() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+  @Test
+  public void checkCollectionRetainAll() {
+    assertFalse(
+        Optional.of(holder)
+            .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
                         .check(CollectionX.retainAll(Collections.singleton(1))))
-                .isPresent());
-    }
+            .isPresent());
+  }
 
-    @Test
-    public void checkCollectionEqualsTo() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+  @Test
+  public void checkCollectionEqualsTo() {
+    assertTrue(
+        Optional.of(holder)
+            .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
                         .check(CollectionX.equalsTo(Collections.emptyList())))
-                .isPresent());
-    }
+            .isPresent());
+  }
 
-    @Test
-    public void checkCollectionNotEqualsTo() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
-                        .check(CollectionX.notEqualsTo(Collections.emptyList())))
-                .isPresent());
-    }
+  @Test
+  public void checkCollectionNotEqualsTo() {
+    assertFalse(Optional.of(holder)
+                    .filter(PredicateX.of(Holder<Collection<Integer>>::getValue)
+                                .check(CollectionX.notEqualsTo(
+                                    Collections.emptyList())))
+                    .isPresent());
+  }
 }

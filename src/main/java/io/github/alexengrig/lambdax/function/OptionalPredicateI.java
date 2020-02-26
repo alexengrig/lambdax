@@ -25,67 +25,67 @@ import java.util.function.Predicate;
  * TODO: Add JavaDoc
  */
 public interface OptionalPredicateI<T, R> {
-    /**
-     * TODO: Add JavaDoc
-     */
-    <V> OptionalPredicateI<T, V> map(Function<R, V> mapper);
+  /**
+   * TODO: Add JavaDoc
+   */
+  <V> OptionalPredicateI<T, V> map(Function<R, V> mapper);
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> map(ComparableResultFunction<R, V> mapper);
+  /**
+   * TODO: Add JavaDoc
+   */
+  <V extends Comparable<V>> ComparableOptionalPredicateI<T, V>
+  map(ComparableResultFunction<R, V> mapper);
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    OptionalPredicateResultI<T> check(Predicate<R> checker);
+  /**
+   * TODO: Add JavaDoc
+   */
+  OptionalPredicateResultI<T> check(Predicate<R> checker);
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default Predicate<T> isNull() {
-        return check(Objects::isNull).orTruth();
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default Predicate<T> isNull() { return check(Objects::isNull).orTruth(); }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default Predicate<T> nonNull() {
-        return check(Objects::nonNull).orLie();
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default Predicate<T> nonNull() { return check(Objects::nonNull).orLie(); }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> equal(R other) {
-        return check(other::equals);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> equal(R other) {
+    return check(other::equals);
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> less(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) < 0);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> less(R other, Comparator<R> comparator) {
+    return check(r -> comparator.compare(r, other) < 0);
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> greater(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) > 0);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> greater(R other,
+                                              Comparator<R> comparator) {
+    return check(r -> comparator.compare(r, other) > 0);
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) <= 0);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> lessOrEqual(R other,
+                                                  Comparator<R> comparator) {
+    return check(r -> comparator.compare(r, other) <= 0);
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
-        return check(r -> comparator.compare(r, other) >= 0);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> greaterOrEqual(R other,
+                                                     Comparator<R> comparator) {
+    return check(r -> comparator.compare(r, other) >= 0);
+  }
 }

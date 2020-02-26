@@ -16,39 +16,38 @@
 
 package io.github.alexengrig.lambdax;
 
+import static org.junit.Assert.assertTrue;
+
 import io.github.alexengrig.lambdax.collection.QueueX;
 import io.github.alexengrig.lambdax.entity.Holder;
 import io.github.alexengrig.lambdax.function.PredicateX;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.ArrayDeque;
 import java.util.Optional;
 import java.util.Queue;
-
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 public class QueueXPredicateXTest {
-    protected Holder<Queue<Integer>> holder;
+  protected Holder<Queue<Integer>> holder;
 
-    @Before
-    public void before() {
-        holder = new Holder<>(new ArrayDeque<>());
-    }
+  @Before
+  public void before() {
+    holder = new Holder<>(new ArrayDeque<>());
+  }
 
-    @Test
-    public void checkQueueAdd() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Queue<Integer>>::getValue)
-                        .check(QueueX.add(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkQueueAdd() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Queue<Integer>>::getValue)
+                               .check(QueueX.add(1)))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkQueueOffer() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Queue<Integer>>::getValue)
-                        .check(QueueX.offer(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkQueueOffer() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Queue<Integer>>::getValue)
+                               .check(QueueX.offer(1)))
+                   .isPresent());
+  }
 }

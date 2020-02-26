@@ -21,32 +21,35 @@ import java.util.Comparator;
 /**
  * TODO: Add JavaDoc
  */
-public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extends OptionalPredicateI<T, R> {
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> less(R other) {
-        return less(other, Comparator.comparing(other::compareTo).reversed());
-    }
+public interface ComparableOptionalPredicateI<T, R extends Comparable<R>>
+    extends OptionalPredicateI<T, R> {
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> less(R other) {
+    return less(other, Comparator.comparing(other::compareTo).reversed());
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> greater(R other) {
-        return greater(other, Comparator.comparing(other::compareTo).reversed());
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> greater(R other) {
+    return greater(other, Comparator.comparing(other::compareTo).reversed());
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> lessOrEqual(R other) {
-        return lessOrEqual(other, Comparator.comparing(other::compareTo).reversed());
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> lessOrEqual(R other) {
+    return lessOrEqual(other,
+                       Comparator.comparing(other::compareTo).reversed());
+  }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default OptionalPredicateResultI<T> greaterOrEqual(R other) {
-        return greaterOrEqual(other, Comparator.comparing(other::compareTo).reversed());
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default OptionalPredicateResultI<T> greaterOrEqual(R other) {
+    return greaterOrEqual(other,
+                          Comparator.comparing(other::compareTo).reversed());
+  }
 }
