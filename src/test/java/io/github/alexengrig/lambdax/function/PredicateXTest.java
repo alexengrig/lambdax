@@ -502,4 +502,12 @@ public class PredicateXTest {
                 .isNull()
                 .test(new Box(new Pack(null))));
     }
+
+    @Test
+    public void checkNullableOrElseBoolean() {
+        assertTrue(PredicateX.ofNullable(Box::getPack)
+                .check(Objects::nonNull)
+                .orElse(true)
+                .test(new Box(null)));
+    }
 }
