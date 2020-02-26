@@ -33,115 +33,120 @@ import java.util.function.Predicate;
  * @since 0.2.0
  */
 public final class PredicateX {
-  /**
-   * <p>The private constructor.</p>
-   *
-   * @since 0.2.0
-   */
-  private PredicateX() {}
+    /**
+     * <p>The private constructor.</p>
+     *
+     * @since 0.2.0
+     */
+    private PredicateX() {
+    }
 
-  /**
-   * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
-   *
-   * @param <T> a type of the input to the predicate
-   * @return The {@link java.util.function.Predicate} that always returns {@code
-   *     true}
-   * @see java.util.function.Predicate
-   * @since 0.2.0
-   */
-  public static <T> Predicate<T> truth() { return t -> true; }
+    /**
+     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
+     *
+     * @param <T> a type of the input to the predicate
+     * @return The {@link java.util.function.Predicate} that always returns {@code
+     * true}
+     * @see java.util.function.Predicate
+     * @since 0.2.0
+     */
+    public static <T> Predicate<T> truth() {
+        return t -> true;
+    }
 
-  /**
-   * <p>Returns the {@link java.util.function.Predicate}: t -&gt; false.</p>
-   *
-   * @param <T> a type of the input to the predicate
-   * @return The {@link java.util.function.Predicate} that always returns {@code
-   *     false}
-   * @see java.util.function.Predicate
-   * @since 0.2.0
-   */
-  public static <T> Predicate<T> lie() { return t -> false; }
+    /**
+     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; false.</p>
+     *
+     * @param <T> a type of the input to the predicate
+     * @return The {@link java.util.function.Predicate} that always returns {@code
+     * false}
+     * @see java.util.function.Predicate
+     * @since 0.2.0
+     */
+    public static <T> Predicate<T> lie() {
+        return t -> false;
+    }
 
-  /**
-   * <p>Returns the {@link java.util.function.Predicate} that is the negation of
-   * the supplied predicate.</p> <p>Like in JDK 11.</p>
-   *
-   * @param <T>       a type of the input to the predicate
-   * @param predicate a supplied predicate to negate
-   * @return The {@link java.util.function.Predicate} that negates the results
-   *     of the supplied predicate
-   * @see java.util.function.Predicate
-   * @see java.util.function.Predicate#negate
-   * @since 0.2.0
-   */
-  @SuppressWarnings("unchecked")
-  public static <T> Predicate<T> not(Predicate<? super T> predicate) {
-    return (Predicate<T>)predicate.negate();
-  }
+    /**
+     * <p>Returns the {@link java.util.function.Predicate} that is the negation of
+     * the supplied predicate.</p> <p>Like in JDK 11.</p>
+     *
+     * @param <T>       a type of the input to the predicate
+     * @param predicate a supplied predicate to negate
+     * @return The {@link java.util.function.Predicate} that negates the results
+     * of the supplied predicate
+     * @see java.util.function.Predicate
+     * @see java.util.function.Predicate#negate
+     * @since 0.2.0
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Predicate<T> not(Predicate<? super T> predicate) {
+        return (Predicate<T>) predicate.negate();
+    }
 
-  /**
-   * <p>Returns the same {@link java.util.function.Predicate} as passed to the
-   * method.</p>
-   *
-   * @param checker a predicate
-   * @param <T>     a type of the input to the predicate
-   * @return The same {@link java.util.function.Predicate} - checker
-   * @see java.util.function.Predicate
-   */
-  @SuppressWarnings("unchecked")
-  public static <T> Predicate<T> from(Predicate<? super T> checker) {
-    return (Predicate<T>)checker;
-  }
+    /**
+     * <p>Returns the same {@link java.util.function.Predicate} as passed to the
+     * method.</p>
+     *
+     * @param checker a predicate
+     * @param <T>     a type of the input to the predicate
+     * @return The same {@link java.util.function.Predicate} - checker
+     * @see java.util.function.Predicate
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Predicate<T> from(Predicate<? super T> checker) {
+        return (Predicate<T>) checker;
+    }
 
-  /**
-   * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
-   * with the mapper.</p>
-   *
-   * @param mapper a function of map the input
-   * @param <T>    a type of the input to the predicate
-   * @param <R>    a type of the mapper result
-   * @return The {@link io.github.alexengrig.lambdax.function.PredicateI}
-   * @see io.github.alexengrig.lambdax.function.PredicateI
-   * @see java.util.function.Function
-   * @see io.github.alexengrig.lambdax.function.PredicateB
-   * @since 0.2.0
-   */
-  public static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
-    return new PredicateB<>(mapper);
-  }
+    /**
+     * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
+     * with the mapper.</p>
+     *
+     * @param mapper a function of map the input
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a type of the mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.PredicateI}
+     * @see io.github.alexengrig.lambdax.function.PredicateI
+     * @see java.util.function.Function
+     * @see io.github.alexengrig.lambdax.function.PredicateB
+     * @since 0.2.0
+     */
+    public static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
+        return new PredicateB<>(mapper);
+    }
 
-  /**
-   * <p>Returns the {@link
-   * io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
-   * with comparable result.</p>
-   *
-   * @param mapper a function of map the input to comparable result
-   * @param <T>    a type of the input to the predicate
-   * @param <R>    a comparable type of the mapper result
-   * @return The {@link
-   *     io.github.alexengrig.lambdax.function.ComparablePredicateI}
-   * @see java.lang.Comparable
-   * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
-   * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-   * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
-   * @since 0.2.0
-   */
-  public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
-    return new ComparablePredicateB<>(mapper);
-  }
+    /**
+     * <p>Returns the {@link
+     * io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
+     * with comparable result.</p>
+     *
+     * @param mapper a function of map the input to comparable result
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a comparable type of the mapper result
+     * @return The {@link
+     * io.github.alexengrig.lambdax.function.ComparablePredicateI}
+     * @see java.lang.Comparable
+     * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
+     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
+     * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
+     * @since 0.2.0
+     */
+    public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
+        return new ComparablePredicateB<>(mapper);
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
-    return new OptionalPredicateB<>(mapper);
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
+        return new OptionalPredicateB<>(mapper);
+    }
 
-  /**
-   * TODO: Add JavaDoc
-   */
-  public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
-          ComparableResultFunction<T, R> mapper) {
-    return new ComparableOptionalPredicateB<>(mapper);
-  }
+    /**
+     * TODO: Add JavaDoc
+     */
+    public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
+            ComparableResultFunction<T, R> mapper) {
+        return new ComparableOptionalPredicateB<>(mapper);
+    }
 }
