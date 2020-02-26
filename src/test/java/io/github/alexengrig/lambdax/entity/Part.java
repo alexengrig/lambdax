@@ -16,31 +16,5 @@
 
 package io.github.alexengrig.lambdax.entity;
 
-import java.util.Objects;
-
-public class Item implements Comparable<Item> {
-    private final String name;
-    private final Part part;
-
-    public Item(String name) {
-        this(name, null);
-    }
-
-    public Item(String name, Part part) {
-        this.name = name;
-        this.part = part;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Part getPart() {
-        return part;
-    }
-
-    @Override
-    public int compareTo(Item item) {
-        return Objects.compare(name, item.name, String::compareTo);
-    }
+public class Part {
 }
