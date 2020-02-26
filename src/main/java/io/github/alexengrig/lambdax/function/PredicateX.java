@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,24 +126,22 @@ public final class PredicateX {
    * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
    * @since 0.2.0
    */
-  public static <T, R extends Comparable<R>> ComparablePredicateI<T, R>
-  of(ComparableResultFunction<T, R> mapper) {
+  public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
     return new ComparablePredicateB<>(mapper);
   }
 
   /**
    * TODO: Add JavaDoc
    */
-  public static <T, R> OptionalPredicateI<T, R>
-  ofNullable(Function<T, R> mapper) {
+  public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
     return new OptionalPredicateB<>(mapper);
   }
 
   /**
    * TODO: Add JavaDoc
    */
-  public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R>
-  ofNullable(ComparableResultFunction<T, R> mapper) {
+  public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
+          ComparableResultFunction<T, R> mapper) {
     return new ComparableOptionalPredicateB<>(mapper);
   }
 }
