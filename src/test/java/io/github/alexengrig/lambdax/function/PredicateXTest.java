@@ -393,24 +393,35 @@ public class PredicateXTest {
 
     @Test
     public void checkLessOrEqual() {
-        String value = "Fanta";
-        Box box = new Box(new Pack(new Item(value)));
-        Predicate<Box> lessPepsi = PredicateX.of(Box::getPack)
+        Box box = new Box(new Pack(new Item("Fanta")));
+        Predicate<Box> lessOrEqual = PredicateX.of(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
                 .lessOrEqual("Mirinda");
-        assertTrue(lessPepsi.test(box));
+        assertTrue(lessOrEqual.test(box));
     }
 
     @Test
     public void checkLessOrEqualNullable() {
         Box box = new Box(null);
-        Predicate<Box> lessPepsi = PredicateX.ofNullable(Box::getPack)
+        Predicate<Box> lessOrEqual = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
                 .map(Item::getName)
                 .lessOrEqual("Mirinda")
                 .orLie();
-        assertFalse(lessPepsi.test(box));
+        assertFalse(lessOrEqual.test(box));
+    }
+
+    @Test
+    public void checkLessOrEqualNotNullable() {
+        String name = "Mirinda";
+        Box box = new Box(new Pack(new Item(name)));
+        Predicate<Box> lessOrEqual = PredicateX.ofNullable(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .lessOrEqual(name)
+                .orLie();
+        assertTrue(lessOrEqual.test(box));
     }
 
     @Test
@@ -462,6 +473,18 @@ public class PredicateXTest {
     }
 
     @Test
+    public void checkGreaterOrEqualNotNullable() {
+        String name = "7 Up";
+        Box box = new Box(new Pack(new Item(name)));
+        Predicate<Box> greaterCocaCola = PredicateX.ofNullable(Box::getPack)
+                .map(Pack::getItem)
+                .map(Item::getName)
+                .greaterOrEqual(name)
+                .orLie();
+        assertTrue(greaterCocaCola.test(box));
+    }
+
+    @Test
     public void checkGreaterOrEqualChaining() {
         String value = "Sprite";
         Box box = new Box(new Pack(new Item(value)));
@@ -485,6 +508,14 @@ public class PredicateXTest {
                         .orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
+    }
+
+    @Test
+    public void checkMapNullable() {
+        assertTrue(PredicateX.ofNullable(Pack::getItem)
+                .map(Item::getPart)
+                .isNull()
+                .test(new Pack(new Item(null))));
     }
 
     @Test
