@@ -19,21 +19,16 @@ package io.github.alexengrig.lambdax.entity;
 import java.util.Objects;
 
 public class Item implements Comparable<Item> {
-    private String name;
+  private String name;
 
-    private Item() {
-    }
+  private Item() {}
 
-    public Item(String name) {
-        this.name = name;
-    }
+  public Item(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() { return name; }
 
-    @Override
-    public int compareTo(Item item) {
-        return Objects.compare(name, item.name, String::compareTo);
-    }
+  @Override
+  public int compareTo(Item item) {
+    return Objects.compare(name, item.name, String::compareTo);
+  }
 }

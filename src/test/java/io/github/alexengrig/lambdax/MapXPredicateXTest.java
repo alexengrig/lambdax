@@ -16,73 +16,73 @@
 
 package io.github.alexengrig.lambdax;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import io.github.alexengrig.lambdax.collection.MapX;
 import io.github.alexengrig.lambdax.entity.Holder;
 import io.github.alexengrig.lambdax.function.PredicateX;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 public class MapXPredicateXTest {
-    protected Holder<Map<Integer, Integer>> holder;
+  protected Holder<Map<Integer, Integer>> holder;
 
-    @Before
-    public void before() {
-        holder = new Holder<>(new HashMap<>());
-    }
+  @Before
+  public void before() {
+    holder = new Holder<>(new HashMap<>());
+  }
 
-    @Test
-    public void checkMapContainsKey() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
-                        .check(MapX.containsKey(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkMapContainsKey() {
+    assertFalse(Optional.of(holder)
+                    .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
+                                .check(MapX.containsKey(1)))
+                    .isPresent());
+  }
 
-    @Test
-    public void checkMapNotContainsKey() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
-                        .check(MapX.notContainsKey(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkMapNotContainsKey() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
+                               .check(MapX.notContainsKey(1)))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkMapContainsValue() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
-                        .check(MapX.containsValue(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkMapContainsValue() {
+    assertFalse(Optional.of(holder)
+                    .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
+                                .check(MapX.containsValue(1)))
+                    .isPresent());
+  }
 
-    @Test
-    public void checkMapNotContainsValue() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
-                        .check(MapX.notContainsValue(1)))
-                .isPresent());
-    }
+  @Test
+  public void checkMapNotContainsValue() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
+                               .check(MapX.notContainsValue(1)))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkMapEqualsTo() {
-        assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
-                        .check(MapX.equalsTo(Collections.emptyMap())))
-                .isPresent());
-    }
+  @Test
+  public void checkMapEqualsTo() {
+    assertTrue(Optional.of(holder)
+                   .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
+                               .check(MapX.equalsTo(Collections.emptyMap())))
+                   .isPresent());
+  }
 
-    @Test
-    public void checkMapNotEqualsTo() {
-        assertFalse(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
+  @Test
+  public void checkMapNotEqualsTo() {
+    assertFalse(
+        Optional.of(holder)
+            .filter(PredicateX.of(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.notEqualsTo(Collections.emptyMap())))
-                .isPresent());
-    }
+            .isPresent());
+  }
 }

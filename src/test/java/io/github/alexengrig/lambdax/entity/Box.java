@@ -17,17 +17,11 @@
 package io.github.alexengrig.lambdax.entity;
 
 public class Box {
-    private Pack pack;
+  private Pack pack;
 
-    public Box(Pack pack) {
-        this.pack = pack;
-    }
+  public Box(Pack pack) { this.pack = pack; }
 
-    public Pack getPack() {
-        return pack;
-    }
+  public Pack getPack() { return pack; }
 
-    public boolean isEmpty() {
-        return pack == null;
-    }
+  public boolean isEmpty() { return pack == null; }
 }

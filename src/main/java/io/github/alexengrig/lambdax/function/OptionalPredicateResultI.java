@@ -22,29 +22,23 @@ import java.util.function.Predicate;
  * TODO: Add JavaDoc
  */
 public interface OptionalPredicateResultI<T> {
-    /**
-     * TODO: Add JavaDoc
-     */
-    Predicate<T> orElse(Predicate<T> checker);
+  /**
+   * TODO: Add JavaDoc
+   */
+  Predicate<T> orElse(Predicate<T> checker);
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default Predicate<T> orElse(boolean check) {
-        return orElse(t -> check);
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default Predicate<T> orElse(boolean check) { return orElse(t -> check); }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default Predicate<T> orTruth() {
-        return orElse(PredicateX.truth());
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default Predicate<T> orTruth() { return orElse(PredicateX.truth()); }
 
-    /**
-     * TODO: Add JavaDoc
-     */
-    default Predicate<T> orLie() {
-        return orElse(PredicateX.lie());
-    }
+  /**
+   * TODO: Add JavaDoc
+   */
+  default Predicate<T> orLie() { return orElse(PredicateX.lie()); }
 }

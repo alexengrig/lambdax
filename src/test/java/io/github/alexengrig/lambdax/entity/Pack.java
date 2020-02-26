@@ -17,13 +17,9 @@
 package io.github.alexengrig.lambdax.entity;
 
 public class Pack {
-    private Item item;
+  private Item item;
 
-    public Pack(Item item) {
-        this.item = item;
-    }
+  public Pack(Item item) { this.item = item; }
 
-    public Item getItem() {
-        return item;
-    }
+  public Item getItem() { return item; }
 }

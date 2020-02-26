@@ -19,33 +19,30 @@ package io.github.alexengrig.lambdax.entity;
 import java.util.Objects;
 
 public class Holder<T> {
-    private final T value;
+  private final T value;
 
-    public Holder(T value) {
-        this.value = value;
-    }
+  public Holder(T value) { this.value = value; }
 
-    public T get() {
-        return value;
-    }
+  public T get() { return value; }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Holder<?> holder = (Holder<?>) o;
-        return Objects.equals(value, holder.value);
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    Holder<?> holder = (Holder<?>)o;
+    return Objects.equals(value, holder.value);
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(value);
+  }
 
-    @Override
-    public String toString() {
-        return "Holder{" +
-                "value=" + value +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Holder{"
+        + "value=" + value + '}';
+  }
 }

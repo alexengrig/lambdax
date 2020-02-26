@@ -16,5 +16,4 @@
 
 package io.github.alexengrig.lambdax.exception;
 
-public class ExpectedException extends RuntimeException {
-}
+public class ExpectedException extends RuntimeException {}
