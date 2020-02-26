@@ -486,4 +486,20 @@ public class PredicateXTest {
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }
+
+    @Test
+    public void checkMapToNullable() {
+        assertTrue(PredicateX.of(Holder<Box>::get)
+                .mapToNullable(Box::getPack)
+                .isNull()
+                .test(new Holder<>(new Box(null))));
+    }
+
+    @Test
+    public void checkMapToNullableWithComparable() {
+        assertTrue(PredicateX.of(Box::getPack)
+                .mapToNullable(Pack::getItem)
+                .isNull()
+                .test(new Box(new Pack(null))));
+    }
 }
