@@ -149,6 +149,13 @@ public class PredicateXTest {
 
     @Test
     public void checkNonNullNullable() {
+        Holder<Box> holder = new Holder<>(new Box(null));
+        Predicate<Holder<Box>> nonNullItemName = PredicateX.ofNullable(Holder<Box>::get).nonNull();
+        assertTrue(nonNullItemName.test(holder));
+    }
+
+    @Test
+    public void checkNonNullNullableComparable() {
         Pack pack = new Pack(null);
         Predicate<Pack> nonNullItemName = PredicateX.ofNullable(Pack::getItem).map(Item::getName).nonNull();
         assertFalse(nonNullItemName.test(pack));
@@ -183,6 +190,15 @@ public class PredicateXTest {
 
     @Test
     public void checkEqualNullable() {
+        Holder<Box> holder = new Holder<>(new Box(null));
+        Predicate<Holder<Box>> equal = PredicateX.ofNullable(Holder<Box>::get)
+                .equal(new Box(null))
+                .orTruth();
+        assertFalse(equal.test(holder));
+    }
+
+    @Test
+    public void checkEqualNullableComparable() {
         String value = "Coca-Cola";
         Pack pack = new Pack(null);
         Predicate<Pack> equalsCocaCola = PredicateX.ofNullable(Pack::getItem).map(Item::getName).equal(value).orLie();
@@ -411,6 +427,15 @@ public class PredicateXTest {
 
     @Test
     public void checkLessOrEqualNullable() {
+        Box box = new Box(new Pack(null));
+        Predicate<Box> lessOrEqual = PredicateX.ofNullable(Box::getPack)
+                .lessOrEqual(new Pack(null), (o1, o2) -> 0)
+                .orLie();
+        assertTrue(lessOrEqual.test(box));
+    }
+
+    @Test
+    public void checkLessOrEqualNullableComparable() {
         Box box = new Box(null);
         Predicate<Box> lessOrEqual = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
@@ -479,6 +504,15 @@ public class PredicateXTest {
 
     @Test
     public void checkGreaterOrEqualNullable() {
+        Box box = new Box(new Pack(null));
+        Predicate<Box> greaterCocaCola = PredicateX.ofNullable(Box::getPack)
+                .greaterOrEqual(new Pack(null), (o1, o2) -> 0)
+                .orLie();
+        assertTrue(greaterCocaCola.test(box));
+    }
+
+    @Test
+    public void checkGreaterOrEqualNullableComparable() {
         Box box = new Box(null);
         Predicate<Box> greaterCocaCola = PredicateX.ofNullable(Box::getPack)
                 .map(Pack::getItem)
