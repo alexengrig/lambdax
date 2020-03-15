@@ -19,30 +19,74 @@ package io.github.alexengrig.lambdax.function;
 import java.util.function.Predicate;
 
 /**
- * TODO: Add JavaDoc
+ * <p>This interface describes the useful mappable predicate with an optional result.</p>
+ *
+ * @param <T> the type of the input to the predicate
+ * @author Grig Alex
+ * @version 0.2.1
+ * @see java.util.function.Predicate
+ * @since 0.2.1
  */
 public interface OptionalPredicateResultI<T> {
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link java.util.function.Predicate} that
+     * if the mapper result is not {@code null}
+     * then checks it via the previous checker
+     * else checks the input value via the checker.
+     * </p>
+     *
+     * @param checker a predicate for check the initial value
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @since 0.2.1
      */
     Predicate<T> orElse(Predicate<T> checker);
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link java.util.function.Predicate} that
+     * if the mapper result is not {@code null}
+     * then checks it via the previous checker
+     * else return the check value.
+     * </p>
+     *
+     * @param check a check result if the mapper result is not {@code null}
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @since 0.2.1
      */
     default Predicate<T> orElse(boolean check) {
         return orElse(t -> check);
     }
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link java.util.function.Predicate} that
+     * if the mapper result is not {@code null}
+     * then checks it via the previous checker
+     * else return {@code true}.
+     * </p>
+     *
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @since 0.2.1
      */
     default Predicate<T> orTruth() {
         return orElse(PredicateX.truth());
     }
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link java.util.function.Predicate} that
+     * if the mapper result is not {@code null}
+     * then checks it via the previous checker
+     * else return {@code false}.
+     * </p>
+     *
+     * @return The {@link java.util.function.Predicate} with compare
+     * @see java.util.function.Predicate
+     * @since 0.2.1
      */
     default Predicate<T> orLie() {
         return orElse(PredicateX.lie());
