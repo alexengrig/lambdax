@@ -27,14 +27,15 @@ import java.util.function.Predicate;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper comparable result
  * @author Grig Alex
- * @version 0.2.0
+ * @version 0.2.1
  * @see java.lang.Comparable
  * @see java.util.function.Function
  * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
  * @see io.github.alexengrig.lambdax.function.PredicateB
  * @since 0.2.0
  */
-/* package */final class ComparablePredicateB<T, R extends Comparable<R>> extends PredicateB<T, R>
+/* package */final class ComparablePredicateB<T, R extends Comparable<R>>
+        extends PredicateB<T, R>
         implements ComparablePredicateI<T, R> {
     /**
      * <p>The constructor with the mapper.</p>
@@ -48,7 +49,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> less(R other) {
@@ -56,7 +57,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> greater(R other) {
@@ -64,7 +65,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> lessOrEqual(R other) {
@@ -72,7 +73,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> greaterOrEqual(R other) {
