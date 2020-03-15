@@ -136,14 +136,39 @@ public final class PredicateX {
     }
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.OptionalPredicateB} with
+     * the mapper.
+     * </p>
+     *
+     * @param mapper a function of map the input
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a type of the optional mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI}
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateB
+     * @see java.util.function.Function
+     * @since 0.2.1
      */
     public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
         return new OptionalPredicateB<>(mapper);
     }
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB} with
+     * the mapper with comparable optional result.
+     * </p>
+     *
+     * @param mapper a function of map the input to comparable optional result
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a comparable type of the optional mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI}
+     * @see java.lang.Comparable
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB
+     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
+     * @since 0.2.1
      */
     public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
             ComparableResultFunction<T, R> mapper) {
