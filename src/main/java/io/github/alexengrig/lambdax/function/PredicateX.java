@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import java.util.function.Predicate;
  * <p>This utility class contains useful lambdas for {@link java.util.function.Predicate}.</p>
  *
  * @author Grig Alex
- * @version 0.2.0
+ * @version 0.2.1
  * @see java.util.function.Function
  * @see java.util.function.Predicate
  * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
@@ -44,7 +44,8 @@ public final class PredicateX {
      * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
      *
      * @param <T> a type of the input to the predicate
-     * @return The {@link java.util.function.Predicate} that always returns {@code true}
+     * @return The {@link java.util.function.Predicate} that always returns {@code
+     * true}
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
@@ -56,7 +57,8 @@ public final class PredicateX {
      * <p>Returns the {@link java.util.function.Predicate}: t -&gt; false.</p>
      *
      * @param <T> a type of the input to the predicate
-     * @return The {@link java.util.function.Predicate} that always returns {@code false}
+     * @return The {@link java.util.function.Predicate} that always returns {@code
+     * false}
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
@@ -65,12 +67,13 @@ public final class PredicateX {
     }
 
     /**
-     * <p>Returns the {@link java.util.function.Predicate} that is the negation of the supplied predicate.</p>
-     * <p>Like in JDK 11.</p>
+     * <p>Returns the {@link java.util.function.Predicate} that is the negation of
+     * the supplied predicate.</p> <p>Like in JDK 11.</p>
      *
      * @param <T>       a type of the input to the predicate
      * @param predicate a supplied predicate to negate
-     * @return The {@link java.util.function.Predicate} that negates the results of the supplied predicate
+     * @return The {@link java.util.function.Predicate} that negates the results
+     * of the supplied predicate
      * @see java.util.function.Predicate
      * @see java.util.function.Predicate#negate
      * @since 0.2.0
@@ -81,7 +84,8 @@ public final class PredicateX {
     }
 
     /**
-     * <p>Returns the same {@link java.util.function.Predicate} as passed to the method.</p>
+     * <p>Returns the same {@link java.util.function.Predicate} as passed to the
+     * method.</p>
      *
      * @param checker a predicate
      * @param <T>     a type of the input to the predicate
@@ -94,7 +98,8 @@ public final class PredicateX {
     }
 
     /**
-     * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB} with the mapper.</p>
+     * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
+     * with the mapper.</p>
      *
      * @param mapper a function of map the input
      * @param <T>    a type of the input to the predicate
@@ -110,13 +115,15 @@ public final class PredicateX {
     }
 
     /**
-     * <p>Returns the {@link io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
+     * <p>Returns the {@link
+     * io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
      * with comparable result.</p>
      *
      * @param mapper a function of map the input to comparable result
      * @param <T>    a type of the input to the predicate
      * @param <R>    a comparable type of the mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.ComparablePredicateI}
+     * @return The {@link
+     * io.github.alexengrig.lambdax.function.ComparablePredicateI}
      * @see java.lang.Comparable
      * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
      * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
@@ -125,5 +132,45 @@ public final class PredicateX {
      */
     public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
         return new ComparablePredicateB<>(mapper);
+    }
+
+    /**
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.OptionalPredicateB} with
+     * the mapper.
+     * </p>
+     *
+     * @param mapper a function of map the input
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a type of the optional mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI}
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateB
+     * @see java.util.function.Function
+     * @since 0.2.1
+     */
+    public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
+        return new OptionalPredicateB<>(mapper);
+    }
+
+    /**
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB} with
+     * the mapper with comparable optional result.
+     * </p>
+     *
+     * @param mapper a function of map the input to comparable optional result
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a comparable type of the optional mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI}
+     * @see java.lang.Comparable
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB
+     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
+     * @since 0.2.1
+     */
+    public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
+            ComparableResultFunction<T, R> mapper) {
+        return new ComparableOptionalPredicateB<>(mapper);
     }
 }

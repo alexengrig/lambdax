@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,7 @@
  * limitations under the License.
  */
 
-/**
- * <p>This package contains utility classes with useful lambdas for
- * functions.</p>
- *
- * <p>The following name suffixes are used:</p>
- * <pre>
- * X - a utility class.
- * I - an interface.
- * B - a base implementation of interface.
- * </pre>
- *
- * @author Grig Alex
- * @version 0.2.1
- * @since 0.2.0
- */
-package io.github.alexengrig.lambdax.function;
+package io.github.alexengrig.lambdax.entity;
+
+public class Part {
+}
