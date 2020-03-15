@@ -20,7 +20,9 @@ This library contains utility classes with useful lambdas.
 
 ## Examples
 
-Get the value from `Map` and print it on the console:
+### Collection
+
+*   Get the value from `Map` and print it on the console:
 
 ```java
     Map<Integer, String> map = new HashMap<>();
@@ -42,7 +44,7 @@ Get the value from `Map` and print it on the console:
              .ifPresent(System.out::println);
 ```
 
-Insert the value into `Collection` if it does not contain it:
+*   Insert the value into `Collection` if it does not contain it:
 
 ```java
     Collection<Integer> numbers = new ArrayList<>();
@@ -63,6 +65,33 @@ Insert the value into `Collection` if it does not contain it:
             .map(Holder::get)
             .filter(CollectionX.notContains(value))
             .ifPresent(CollectionX.onlyAdd(value));
+```
+
+### Predicate
+
+*   Filter holders by name (not null safe):
+
+```java
+List<Holder<Item>> filterByName(List<Holder<Item>> list) {
+    return list.stream()
+            .filter(PredicateX.of(Holder<Item>::get)
+                    .map(Item::getName) // NPE if item is null
+                    .equal("Item name"))
+            .collect(Collectors.toList());
+}
+```
+
+and null safe variant:
+
+```java
+List<Holder<Item>> filterByExistingName(List<Holder<Item>> list) {
+    return list.stream()
+            .filter(PredicateX.ofNullable(Holder<Item>::get)
+                    .map(Item::getName)
+                    .equal("Item name")
+                    .orLie()) // return false if item or item name is null
+            .collect(Collectors.toList());
+}
 ```
 
 ## Installation
