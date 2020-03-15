@@ -22,23 +22,28 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * TODO: Add JavaDoc
+ * {@inheritDoc}
+ *
+ * @author Grig Alex
+ * @version 0.2.1
+ * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
+ * @since 0.2.1
  */
 /* package */class OptionalPredicateB<T, R> implements OptionalPredicateI<T, R> {
     /**
-     * TODO: Add JavaDoc
+     * @since 0.2.1
      */
     protected final Function<T, R> function;
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     /* package */OptionalPredicateB(Function<T, R> mapper) {
         function = mapper;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public <V> OptionalPredicateI<T, V> map(Function<R, V> mapper) {
@@ -46,7 +51,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
@@ -54,7 +59,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public OptionalPredicateResultI<T> check(Predicate<R> checker) {
@@ -62,7 +67,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> isNull() {
@@ -70,7 +75,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> nonNull() {
@@ -78,7 +83,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public OptionalPredicateResultI<T> equal(R other) {
@@ -86,7 +91,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public OptionalPredicateResultI<T> less(R other, Comparator<R> comparator) {
@@ -94,7 +99,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public OptionalPredicateResultI<T> greater(R other, Comparator<R> comparator) {
@@ -102,7 +107,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public OptionalPredicateResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
@@ -110,7 +115,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public OptionalPredicateResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
