@@ -21,43 +21,77 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * {@inheritDoc}
+ *
+ * @author Grig Alex
+ * @version 0.2.1
+ * @since 0.2.1
+ */
 /* package */class ComparableOptionalPredicateB<T, R extends Comparable<R>> implements ComparableOptionalPredicateI<T, R> {
+    /**
+     * @since 0.2.1
+     */
     protected final Function<T, R> function;
 
+    /**
+     * @since 0.2.1
+     */
     /* package */ComparableOptionalPredicateB(Function<T, R> mapper) {
         function = mapper;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> OptionalPredicateI<T, V> map(Function<R, V> mapper) {
         return new OptionalPredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> map(ComparableResultFunction<R, V> mapper) {
         return new ComparableOptionalPredicateB<>(function.andThen(FunctionX.nullSafe(mapper)));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public OptionalPredicateResultI<T> check(Predicate<R> checker) {
         return new OptionalPredicateResultB<>(function, checker);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public OptionalPredicateResultI<T> less(R other) {
         return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) < 0);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public OptionalPredicateResultI<T> greater(R other) {
         return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) > 0);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public OptionalPredicateResultI<T> lessOrEqual(R other) {
         return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) <= 0);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public OptionalPredicateResultI<T> greaterOrEqual(R other) {
         return new OptionalPredicateResultB<>(function, r -> Objects.compare(r, other, Comparator.naturalOrder()) >= 0);
