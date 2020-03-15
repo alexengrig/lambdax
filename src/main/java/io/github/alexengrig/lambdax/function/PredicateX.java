@@ -20,11 +20,10 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * <p>This utility class contains useful lambdas for {@link
- * java.util.function.Predicate}.</p>
+ * <p>This utility class contains useful lambdas for {@link java.util.function.Predicate}.</p>
  *
  * @author Grig Alex
- * @version 0.2.0
+ * @version 0.2.1
  * @see java.util.function.Function
  * @see java.util.function.Predicate
  * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
