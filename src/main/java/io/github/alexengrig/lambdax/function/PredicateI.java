@@ -27,7 +27,7 @@ import java.util.function.Predicate;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper result
  * @author Grig Alex
- * @version 0.2.0
+ * @version 0.2.1
  * @see java.lang.Comparable
  * @see java.util.Comparator
  * @see java.util.function.Function
@@ -73,12 +73,34 @@ public interface PredicateI<T, R> {
     <V extends Comparable<V>> ComparablePredicateI<T, V> map(ComparableResultFunction<R, V> mapper);
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.OptionalPredicateI} with
+     * the new mapper for the input to the predicate.
+     * </p>
+     *
+     * @param mapper a function of map the input
+     * @param <V>    a new type of the mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI} with the new mapper
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
+     * @see java.util.function.Function
+     * @since 0.2.1
      */
     <V> OptionalPredicateI<T, V> mapToNullable(Function<R, V> mapper);
 
     /**
-     * TODO: Add JavaDoc
+     * <p>
+     * Returns the {@link
+     * io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI} with the new
+     * mapper with comparable result for the input to the predicate.
+     * </p>
+     *
+     * @param mapper a function of map the input to the comparable result
+     * @param <V>    a new comparable type of the mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI} with the new mapper
+     * @see java.lang.Comparable
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
+     * @since 0.2.1
      */
     <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> mapToNullable(ComparableResultFunction<R, V> mapper);
 
