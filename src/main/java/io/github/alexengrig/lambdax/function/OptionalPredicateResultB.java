@@ -20,21 +20,26 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * TODO: Add JavaDoc
+ * {@inheritDoc}
+ *
+ * @author Grig Alex
+ * @version 0.2.1
+ * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
+ * @since 0.2.1
  */
 /* package */class OptionalPredicateResultB<T, V> implements OptionalPredicateResultI<T> {
     /**
-     * TODO: Add JavaDoc
+     * @since 0.2.1
      */
     protected final Function<T, V> function;
 
     /**
-     * TODO: Add JavaDoc
+     * @since 0.2.1
      */
     protected final Predicate<V> predicate;
 
     /**
-     * TODO: Add JavaDoc
+     * @since 0.2.1
      */
     /* package */OptionalPredicateResultB(Function<T, V> function, Predicate<V> predicate) {
         this.function = function;
@@ -42,7 +47,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> orElse(Predicate<T> checker) {
@@ -57,7 +62,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> orElse(boolean check) {
@@ -72,7 +77,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> orTruth() {
@@ -87,7 +92,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> orLie() {
