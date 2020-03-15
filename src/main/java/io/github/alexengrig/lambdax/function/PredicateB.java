@@ -102,7 +102,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public <V> OptionalPredicateI<T, V> mapToNullable(Function<R, V> mapper) {
@@ -110,7 +110,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> mapToNullable(
@@ -231,7 +231,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> lessOrEqual(R other, Comparator<R> comparator) {
@@ -239,7 +239,7 @@ import java.util.function.Predicate;
     }
 
     /**
-     * TODO: Add JavaDoc
+     * {@inheritDoc}
      */
     @Override
     public Predicate<T> greaterOrEqual(R other, Comparator<R> comparator) {
