@@ -25,7 +25,7 @@ import java.util.function.Predicate;
  * <p>This utility class contains useful lambdas for {@link java.util.Map}.</p>
  *
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.util.Map
  * @see java.util.function.Consumer
  * @see java.util.function.Function

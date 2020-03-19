@@ -23,23 +23,23 @@ import java.util.function.Predicate;
  * {@inheritDoc}
  *
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
- * @since 0.2.1
+ * @since 0.3.0
  */
 /* package */class OptionalPredicateResultB<T, V> implements OptionalPredicateResultI<T> {
     /**
-     * @since 0.2.1
+     * @since 0.3.0
      */
     protected final Function<T, V> function;
 
     /**
-     * @since 0.2.1
+     * @since 0.3.0
      */
     protected final Predicate<V> predicate;
 
     /**
-     * @since 0.2.1
+     * @since 0.3.0
      */
     /* package */OptionalPredicateResultB(Function<T, V> function, Predicate<V> predicate) {
         this.function = function;

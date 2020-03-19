@@ -25,17 +25,17 @@ import java.util.function.Predicate;
  * {@inheritDoc}
  *
  * @author Grig Alex
- * @version 0.2.1
- * @since 0.2.1
+ * @version 0.3.0
+ * @since 0.3.0
  */
 /* package */class ComparableOptionalPredicateB<T, R extends Comparable<R>> implements ComparableOptionalPredicateI<T, R> {
     /**
-     * @since 0.2.1
+     * @since 0.3.0
      */
     protected final Function<T, R> function;
 
     /**
-     * @since 0.2.1
+     * @since 0.3.0
      */
     /* package */ComparableOptionalPredicateB(Function<T, R> mapper) {
         function = mapper;

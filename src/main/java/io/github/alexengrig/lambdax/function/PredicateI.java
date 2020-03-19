@@ -27,7 +27,7 @@ import java.util.function.Predicate;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper result
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.lang.Comparable
  * @see java.util.Comparator
  * @see java.util.function.Function
@@ -83,7 +83,7 @@ public interface PredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI} with the new mapper
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
      * @see java.util.function.Function
-     * @since 0.2.1
+     * @since 0.3.0
      */
     <V> OptionalPredicateI<T, V> mapToNullable(Function<R, V> mapper);
 
@@ -100,7 +100,7 @@ public interface PredicateI<T, R> {
      * @see java.lang.Comparable
      * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
      * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-     * @since 0.2.1
+     * @since 0.3.0
      */
     <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> mapToNullable(ComparableResultFunction<R, V> mapper);
 

@@ -1,6 +1,6 @@
 # *Lambda*X changes
 
-## 0.2.1
+## 0.3.0
 
 *   [[#86](../../issues/86)] Create PredicateX#ofNullable with null safe mappable predicate
     *   Create FunctionX#nullSafe for null safe function

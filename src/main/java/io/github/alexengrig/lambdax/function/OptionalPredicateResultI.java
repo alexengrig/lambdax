@@ -23,9 +23,9 @@ import java.util.function.Predicate;
  *
  * @param <T> the type of the input to the predicate
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.util.function.Predicate
- * @since 0.2.1
+ * @since 0.3.0
  */
 public interface OptionalPredicateResultI<T> {
     /**
@@ -39,7 +39,7 @@ public interface OptionalPredicateResultI<T> {
      * @param checker a predicate for check the initial value
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     Predicate<T> orElse(Predicate<T> checker);
 
@@ -54,7 +54,7 @@ public interface OptionalPredicateResultI<T> {
      * @param check a check result if the mapper result is not {@code null}
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default Predicate<T> orElse(boolean check) {
         return orElse(t -> check);
@@ -70,7 +70,7 @@ public interface OptionalPredicateResultI<T> {
      *
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default Predicate<T> orTruth() {
         return orElse(PredicateX.truth());
@@ -86,7 +86,7 @@ public interface OptionalPredicateResultI<T> {
      *
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default Predicate<T> orLie() {
         return orElse(PredicateX.lie());

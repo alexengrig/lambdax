@@ -25,13 +25,13 @@ import java.util.function.Predicate;
  * {@inheritDoc}
  *
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
- * @since 0.2.1
+ * @since 0.3.0
  */
 /* package */class OptionalPredicateB<T, R> implements OptionalPredicateI<T, R> {
     /**
-     * @since 0.2.1
+     * @since 0.3.0
      */
     protected final Function<T, R> function;
 

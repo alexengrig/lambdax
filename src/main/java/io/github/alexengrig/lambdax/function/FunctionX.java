@@ -23,15 +23,15 @@ import java.util.function.Function;
  * for {@link java.util.function.Function}.</p>
  *
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.util.function.Function
- * @since 0.2.1
+ * @since 0.3.0
  */
 public final class FunctionX {
     /**
      * <p>The private constructor.</p>
      *
-     * @since 0.2.1
+     * @since 0.3.0
      */
     private FunctionX() {
     }
@@ -48,7 +48,7 @@ public final class FunctionX {
      * value
      * @see java.util.function.Function
      * @see java.util.function.Function#apply(Object)
-     * @since 0.2.1
+     * @since 0.3.0
      */
     public static <T, R> Function<T, R> nullSafe(Function<? super T, ? extends R> function) {
         return t -> t == null ? null : function.apply(t);

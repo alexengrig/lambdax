@@ -27,7 +27,7 @@ import java.util.function.Predicate;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper result
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.util.Comparator
  * @see java.util.Objects
  * @see java.util.function.Function
@@ -103,7 +103,7 @@ import java.util.function.Predicate;
     /**
      * {@inheritDoc}
      *
-     * @since 0.2.1
+     * @since 0.3.0
      */
     @Override
     public <V> OptionalPredicateI<T, V> mapToNullable(Function<R, V> mapper) {
@@ -112,7 +112,8 @@ import java.util.function.Predicate;
 
     /**
      * {@inheritDoc}
-     * @since 0.2.1
+     *
+     * @since 0.3.0
      */
     @Override
     public <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> mapToNullable(
@@ -234,7 +235,8 @@ import java.util.function.Predicate;
 
     /**
      * {@inheritDoc}
-     * @since 0.2.1
+     *
+     * @since 0.3.0
      */
     @Override
     public Predicate<T> lessOrEqual(R other, Comparator<R> comparator) {
@@ -243,7 +245,8 @@ import java.util.function.Predicate;
 
     /**
      * {@inheritDoc}
-     * @since 0.2.1
+     *
+     * @since 0.3.0
      */
     @Override
     public Predicate<T> greaterOrEqual(R other, Comparator<R> comparator) {
