@@ -24,12 +24,12 @@ import java.util.Comparator;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper comparable result
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.lang.Comparable
  * @see java.util.Comparator
  * @see java.util.function.Predicate
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
- * @since 0.2.1
+ * @since 0.3.0
  */
 public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extends OptionalPredicateI<T, R> {
     /**
@@ -42,7 +42,7 @@ public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extend
      * @param other an object for compare
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> less(R other) {
         return less(other, Comparator.comparing(other::compareTo).reversed());
@@ -58,7 +58,7 @@ public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extend
      * @param other an object for compare
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> greater(R other) {
         return greater(other, Comparator.comparing(other::compareTo).reversed());
@@ -74,7 +74,7 @@ public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extend
      * @param other an object for compare
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> lessOrEqual(R other) {
         return lessOrEqual(other, Comparator.comparing(other::compareTo).reversed());
@@ -91,7 +91,7 @@ public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extend
      * @param other an object for compare
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> greaterOrEqual(R other) {
         return greaterOrEqual(other, Comparator.comparing(other::compareTo).reversed());

@@ -1,10 +1,11 @@
 # *Lambda*X changes
 
-## 0.2.1
+## 0.3.0
 
 *   [[#86](../../issues/86)] Create PredicateX#ofNullable with null safe mappable predicate
     *   Create FunctionX#nullSafe for null safe function
 *   [[#92](../../issues/92)|[#89](../../issues/89)] Remove wildcards from collection
+*   [[#96](../../issues/96)] Add logic operations to PredicateX
 
 ## 0.2.0
 

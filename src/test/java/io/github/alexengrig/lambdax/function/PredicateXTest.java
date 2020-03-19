@@ -29,23 +29,173 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static io.github.alexengrig.lambdax.function.PredicateX.*;
+import static org.junit.Assert.*;
 
 public class PredicateXTest {
+    private final Predicate<?> failPredicate = t -> {
+        fail("Fail predicate");
+        return false;
+    };
+
     @Test
     public void checkTruth() {
-        assertTrue(PredicateX.truth().test(null));
+        assertTrue(truth().test(null));
     }
 
     @Test
     public void checkLie() {
-        assertFalse(PredicateX.lie().test(null));
+        assertFalse(lie().test(null));
     }
 
     @Test
     public void checkNegate() {
-        assertFalse(PredicateX.not(PredicateX.truth()).test(null));
+        assertFalse(not(truth()).test(null));
+        assertTrue(not(lie()).test(null));
+    }
+
+    @Test
+    public void checkAnd() {
+        assertFalse(and(lie(), lie()).test(null));
+        assertFalse(and(lie(), truth()).test(null));
+        assertFalse(and(truth(), lie()).test(null));
+        assertTrue(and(truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkAndWithVarargs() {
+        assertFalse(and(lie(), lie(), lie()).test(null));
+        assertFalse(and(lie(), lie(), truth()).test(null));
+        assertFalse(and(lie(), truth(), lie()).test(null));
+        assertFalse(and(lie(), truth(), truth()).test(null));
+        assertFalse(and(truth(), lie(), lie()).test(null));
+        assertFalse(and(truth(), lie(), truth()).test(null));
+        assertFalse(and(truth(), truth(), lie()).test(null));
+        assertTrue(and(truth(), truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkLazyAnd() {
+        assertFalse(and(lie(), failPredicate).test(null));
+        assertFalse(and(truth(), lie(), failPredicate).test(null));
+    }
+
+    @Test
+    public void checkOr() {
+        assertFalse(or(lie(), lie()).test(null));
+        assertTrue(or(lie(), truth()).test(null));
+        assertTrue(or(truth(), lie()).test(null));
+        assertTrue(or(truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkOrWithVarargs() {
+        assertFalse(or(lie(), lie(), lie()).test(null));
+        assertTrue(or(lie(), lie(), truth()).test(null));
+        assertTrue(or(lie(), truth(), lie()).test(null));
+        assertTrue(or(lie(), truth(), truth()).test(null));
+        assertTrue(or(truth(), lie(), lie()).test(null));
+        assertTrue(or(truth(), lie(), truth()).test(null));
+        assertTrue(or(truth(), truth(), lie()).test(null));
+        assertTrue(or(truth(), truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkLazyOr() {
+        assertTrue(or(truth(), failPredicate).test(null));
+        assertTrue(or(lie(), truth(), failPredicate).test(null));
+    }
+
+    @Test
+    public void checkXor() {
+        assertFalse(xor(lie(), lie()).test(null));
+        assertTrue(xor(lie(), truth()).test(null));
+        assertTrue(xor(truth(), lie()).test(null));
+        assertFalse(xor(truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkXorWithVarargs() {
+        assertFalse(xor(lie(), lie(), lie()).test(null));
+        assertTrue(xor(lie(), lie(), truth()).test(null));
+        assertTrue(xor(lie(), truth(), lie()).test(null));
+        assertFalse(xor(lie(), truth(), truth()).test(null));
+        assertTrue(xor(truth(), lie(), lie()).test(null));
+        assertFalse(xor(truth(), lie(), truth()).test(null));
+        assertFalse(xor(truth(), truth(), lie()).test(null));
+        assertTrue(xor(truth(), truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkNand() {
+        assertTrue(nand(lie(), lie()).test(null));
+        assertTrue(nand(lie(), truth()).test(null));
+        assertTrue(nand(truth(), lie()).test(null));
+        assertFalse(nand(truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkNandWithVarargs() {
+        assertTrue(nand(lie(), lie(), lie()).test(null));
+        assertFalse(nand(lie(), lie(), truth()).test(null));
+        assertTrue(nand(lie(), truth(), lie()).test(null));
+        assertFalse(nand(lie(), truth(), truth()).test(null));
+        assertTrue(nand(truth(), lie(), lie()).test(null));
+        assertFalse(nand(truth(), lie(), truth()).test(null));
+        assertTrue(nand(truth(), truth(), lie()).test(null));
+        assertTrue(nand(truth(), truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkLazyNand() {
+        assertTrue(nand(lie(), failPredicate).test(null));
+        assertTrue(nand(truth(), truth(), failPredicate).test(null));
+    }
+
+    @Test
+    public void checkNor() {
+        assertTrue(nor(lie(), lie()).test(null));
+        assertFalse(nor(lie(), truth()).test(null));
+        assertFalse(nor(truth(), lie()).test(null));
+        assertFalse(nor(truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkNorWithVarargs() {
+        assertFalse(nor(lie(), lie(), lie()).test(null));
+        assertFalse(nor(lie(), lie(), truth()).test(null));
+        assertTrue(nor(lie(), truth(), lie()).test(null));
+        assertFalse(nor(lie(), truth(), truth()).test(null));
+        assertTrue(nor(truth(), lie(), lie()).test(null));
+        assertFalse(nor(truth(), lie(), truth()).test(null));
+        assertTrue(nor(truth(), truth(), lie()).test(null));
+        assertFalse(nor(truth(), truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkLazyNor() {
+        assertFalse(nor(truth(), failPredicate).test(null));
+        assertFalse(nor(lie(), lie(), failPredicate).test(null));
+    }
+
+    @Test
+    public void checkXnor() {
+        assertTrue(xnor(lie(), lie()).test(null));
+        assertFalse(xnor(lie(), truth()).test(null));
+        assertFalse(xnor(truth(), lie()).test(null));
+        assertTrue(xnor(truth(), truth()).test(null));
+    }
+
+    @Test
+    public void checkXnorWithVarargs() {
+        assertFalse(xnor(lie(), lie(), lie()).test(null));
+        assertTrue(xnor(lie(), lie(), truth()).test(null));
+        assertTrue(xnor(lie(), truth(), lie()).test(null));
+        assertFalse(xnor(lie(), truth(), truth()).test(null));
+        assertTrue(xnor(truth(), lie(), lie()).test(null));
+        assertFalse(xnor(truth(), lie(), truth()).test(null));
+        assertFalse(xnor(truth(), truth(), lie()).test(null));
+        assertTrue(xnor(truth(), truth(), truth()).test(null));
     }
 
     @Test

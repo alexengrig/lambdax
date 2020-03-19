@@ -27,7 +27,7 @@ import java.util.function.Predicate;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper result
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.lang.Comparable
  * @see java.util.Comparator
  * @see java.util.function.Function
@@ -35,7 +35,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
  * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
- * @since 0.2.1
+ * @since 0.3.0
  */
 public interface OptionalPredicateI<T, R> {
     /**
@@ -49,7 +49,7 @@ public interface OptionalPredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI} with the new mapper
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
      * @see java.util.function.Function
-     * @since 0.2.1
+     * @since 0.3.0
      */
     <V> OptionalPredicateI<T, V> map(Function<R, V> mapper);
 
@@ -66,7 +66,7 @@ public interface OptionalPredicateI<T, R> {
      * @see java.lang.Comparable
      * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
      * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-     * @since 0.2.1
+     * @since 0.3.0
      */
     <V extends Comparable<V>> ComparableOptionalPredicateI<T, V> map(ComparableResultFunction<R, V> mapper);
 
@@ -81,7 +81,7 @@ public interface OptionalPredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with the checker
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     OptionalPredicateResultI<T> check(Predicate<R> checker);
 
@@ -93,7 +93,7 @@ public interface OptionalPredicateI<T, R> {
      *
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default Predicate<T> isNull() {
         return check(Objects::isNull).orTruth();
@@ -107,7 +107,7 @@ public interface OptionalPredicateI<T, R> {
      *
      * @return The {@link java.util.function.Predicate} with compare
      * @see java.util.function.Predicate
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default Predicate<T> nonNull() {
         return check(Objects::nonNull).orLie();
@@ -123,7 +123,7 @@ public interface OptionalPredicateI<T, R> {
      * @param other an object for compare
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> equal(R other) {
         return check(other::equals);
@@ -142,7 +142,7 @@ public interface OptionalPredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
      * @see java.util.Comparator
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> less(R other, Comparator<R> comparator) {
         return check(r -> Objects.compare(r, other, comparator) < 0);
@@ -161,7 +161,7 @@ public interface OptionalPredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
      * @see java.util.Comparator
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> greater(R other, Comparator<R> comparator) {
         return check(r -> Objects.compare(r, other, comparator) > 0);
@@ -180,7 +180,7 @@ public interface OptionalPredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
      * @see java.util.Comparator
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> lessOrEqual(R other, Comparator<R> comparator) {
         return check(r -> Objects.compare(r, other, comparator) <= 0);
@@ -199,7 +199,7 @@ public interface OptionalPredicateI<T, R> {
      * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateResultI} with compare
      * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
      * @see java.util.Comparator
-     * @since 0.2.1
+     * @since 0.3.0
      */
     default OptionalPredicateResultI<T> greaterOrEqual(R other, Comparator<R> comparator) {
         return check(r -> Objects.compare(r, other, comparator) >= 0);

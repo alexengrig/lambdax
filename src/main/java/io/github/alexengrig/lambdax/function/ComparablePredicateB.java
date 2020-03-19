@@ -27,7 +27,7 @@ import java.util.function.Predicate;
  * @param <T> the type of the input to the predicate
  * @param <R> the type of the mapper comparable result
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @see java.lang.Comparable
  * @see java.util.function.Function
  * @see io.github.alexengrig.lambdax.function.ComparablePredicateI

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
  * </pre>
  *
  * @author Grig Alex
- * @version 0.2.1
+ * @version 0.3.0
  * @since 0.2.0
  */
 package io.github.alexengrig.lambdax.function;
