@@ -20,11 +20,37 @@ import io.github.alexengrig.lambdax.collection.DequeX;
 import org.junit.Test;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.function.Supplier;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class OptionalXTest {
+    @Test
+    public void checkOfValue() {
+        Object o = new Object();
+        assertTrue(OptionalX.of(o).isPresent());
+        o = null;
+        //noinspection ConstantConditions
+        assertFalse(OptionalX.of(o).isPresent());
+    }
+
+    @Test
+    public void checkOfSupplier() {
+        final Supplier<Object> o = Object::new;
+        assertTrue(OptionalX.of(o).isPresent());
+    }
+
+    @Test
+    public void checkPeek() {
+        final Object expect = new Object();
+        final ArrayList<Object> list = new ArrayList<>();
+        final Object actual = OptionalX.peek(list::add).apply(expect);
+        assertEquals(expect, actual);
+        assertTrue(list.contains(expect));
+    }
+
     @Test
     public void checkOfAndPeek() {
         int value = 1;
@@ -34,5 +60,4 @@ public class OptionalXTest {
                 .orElseThrow(IllegalStateException::new);
         assertEquals(value, actual);
     }
-
 }

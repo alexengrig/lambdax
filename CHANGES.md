@@ -1,5 +1,10 @@
 # *Lambda*X changes
 
+## 0.4.0
+
+*   [[#101](../../issues/101)] Create left, right, center, compose and pipe of FunctionX
+*   [[#99](../../issues/99)] Create OptionalX#of for nullable object
+
 ## 0.3.0
 
 *   [[#86](../../issues/86)] Create PredicateX#ofNullable with null safe mappable predicate
