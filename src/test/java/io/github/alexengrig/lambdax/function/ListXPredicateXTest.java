@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax;
+package io.github.alexengrig.lambdax.function;
 
 import io.github.alexengrig.lambdax.collection.ListX;
 import io.github.alexengrig.lambdax.entity.Holder;
