@@ -25,7 +25,7 @@ import java.util.function.UnaryOperator;
  * This utility class contains useful lambdas for {@link java.util.Optional}.
  *
  * @author Grig Alex
- * @version 0.1.1
+ * @version 0.4.0
  * @see java.util.Optional
  * @see java.util.function.Consumer
  * @see java.util.function.Supplier
@@ -34,6 +34,19 @@ import java.util.function.UnaryOperator;
  */
 public final class OptionalX {
     private OptionalX() {
+    }
+
+    /**
+     * Returns an {@link java.util.Optional} describing the value.
+     *
+     * @param value a value is passed as the argument to {@link java.util.Optional#ofNullable(Object)}
+     * @param <T>   a type of {@link java.util.Optional} value
+     * @return an {@link java.util.Optional} with the value
+     * @see java.util.Optional#ofNullable(Object)
+     * @since 0.4.0
+     */
+    public static <T> Optional<T> of(T value) {
+        return Optional.ofNullable(value);
     }
 
     /**
@@ -56,8 +69,8 @@ public final class OptionalX {
     }
 
     /**
-     * <p>Returns an {@link java.util.function.UnaryOperator}
-     * that execute the action ({@link java.util.function.Consumer}) for a value and return it.</p>
+     * Returns an {@link java.util.function.UnaryOperator}
+     * that execute the action ({@link java.util.function.Consumer}) for a value and return it.
      *
      * @param action a {@link java.util.function.Consumer} that execute an action on a value
      * @param <T>    a type of the operand and result of the operator
