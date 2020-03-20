@@ -56,31 +56,201 @@ public final class FunctionX {
         return t -> t == null ? null : function.apply(t);
     }
 
-    public static <T, U, R> Function<U, R> left(BiFunction<? super T, ? super U, ? extends R> function, T t) {
+    /**
+     * Returns a curried function that passes the value to the function as the first input
+     * and expects a value for the second input of the function:
+     * <pre>
+     *
+     * (function, t) -&gt; u -&gt; function.apply(t, u)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param t        a value for the first input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code t} to the {@code function} as the first input
+     * and expects a value for the second input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, R> Function<U, R> left(
+            BiFunction<? super T, ? super U, ? extends R> function,
+            T t) {
         return (U u) -> function.apply(t, u);
     }
 
-    public static <T, U, R> Function<T, R> right(BiFunction<? super T, ? super U, ? extends R> function, U u) {
+    /**
+     * Returns a curried function that passes the value to the function as the second input
+     * and expects a value for the first input of the function:
+     * <pre>
+     *
+     * (function, u) -&gt; t -&gt; function.apply(t, u)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param u        a value for the second input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code u} to the {@code function} as the second input
+     * and expects a value for the first input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, R> Function<T, R> right(
+            BiFunction<? super T, ? super U, ? extends R> function,
+            U u) {
         return (T t) -> function.apply(t, u);
     }
 
-    public static <T, U, S, R> BiFunction<U, S, R> left(TerFunction<? super T, ? super U, S, R> function, T t) {
+    /**
+     * Returns a curried function that passes the value to the function as the first input
+     * and expects two values for the second input and the third input of the function:
+     * <pre>
+     *
+     * (function, t) -&gt; (u, s) -&gt; function.apply(t, u, s)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param t        a value for the first input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <S>      the type of the third input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code t} to the {@code function} as the first input
+     * and expects two values for the second input and the third input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, S, R> BiFunction<U, S, R> left(
+            TerFunction<? super T, ? super U, ? super S, ? extends R> function,
+            T t) {
         return (U u, S s) -> function.apply(t, u, s);
     }
 
-    public static <T, U, S, R> Function<S, R> left(TerFunction<? super T, ? super U, ? super S, R> function, T t, U u) {
-        return (S s) -> function.apply(t, u, s);
-    }
-
-    public static <T, U, S, R> BiFunction<T, U, R> right(TerFunction<? super T, ? super U, ? super S, R> function, S s) {
+    /**
+     * Returns a curried function that passes the value to the function as the third input
+     * and expects two values for the first input and the second input of the function:
+     * <pre>
+     *
+     * (function, s) -&gt; (t, u) -&gt; function.apply(t, u, s)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param s        a value for the third input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <S>      the type of the third input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code s} to the {@code function} as the third input
+     * and expects two values for the first input and the second input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, S, R> BiFunction<T, U, R> right(
+            TerFunction<? super T, ? super U, ? super S, ? extends R> function,
+            S s) {
         return (T t, U u) -> function.apply(t, u, s);
     }
 
-    public static <T, U, S, R> Function<T, R> right(TerFunction<? super T, ? super U, ? super S, R> function, U u, S s) {
+    /**
+     * Returns a curried function that passes the values to the function as the first input and the second input
+     * and expects a value for the third input of the function:
+     * <pre>
+     *
+     * (function, t, u) -&gt; s -&gt; function.apply(t, u, s)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param t        a value for the first input of the {@code function}
+     * @param u        a value for the second input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <S>      the type of the third input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code t} and the {@code u} to the {@code function} as the first input and the second input
+     * and expects a value for the third input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, S, R> Function<S, R> left(
+            TerFunction<? super T, ? super U, ? super S, ? extends R> function,
+            T t,
+            U u) {
+        return (S s) -> function.apply(t, u, s);
+    }
+
+    /**
+     * Returns a curried function that passes the values to the function as the second input and the third input
+     * and expects a value for the third input of the function:
+     * <pre>
+     *
+     * (function, u, s) -&gt; t -&gt; function.apply(t, u, s)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param u        a value for the second input of the {@code function}
+     * @param s        a value for the third input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <S>      the type of the third input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code u} and the {@code s} to the {@code function} as the second input and the third input
+     * and expects a value for the first input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, S, R> Function<T, R> right(
+            TerFunction<? super T, ? super U, ? super S, ? extends R> function,
+            U u,
+            S s) {
         return (T t) -> function.apply(t, u, s);
     }
 
-    public static <T, U, S, R> BiFunction<T, S, R> center(TerFunction<? super T, ? super U, ? super S, R> function, U u) {
+    /**
+     * Returns a curried function that passes the value to the function as the second input
+     * and expects two values for the first input and the third input of the function:
+     * <pre>
+     *
+     * (function, u) -&gt; (t, s) -&gt; function.apply(t, u, s)
+     * </pre>
+     * If evaluation of either function throws an exception, it is relayed to
+     * the caller of the composed function.
+     *
+     * @param function a function for currying
+     * @param u        a value for the second input of the {@code function}
+     * @param <T>      the type of the first input to the {@code function}
+     * @param <U>      the type of the second input to the {@code function}
+     * @param <S>      the type of the third input to the {@code function}
+     * @param <R>      the type of output of the {@code function}
+     * @return a curried function
+     * that passes the {@code u} to the {@code function} as the second input
+     * and expects two values for the first input and the third input of the {@code function}
+     * @see java.util.function.Function
+     * @since 0.4.0
+     */
+    public static <T, U, S, R> BiFunction<T, S, R> center(
+            TerFunction<? super T, ? super U, ? super S, ? extends R> function,
+            U u) {
         return (T t, S s) -> function.apply(t, u, s);
     }
 
@@ -92,15 +262,14 @@ public final class FunctionX {
      * @param ta  a 1st function
      * @param ar  a 2nd function
      * @param <T> the type of the input to the {@code ta} function
-     * @param <A> the type of the input to the {@code ab} function
-     * @param <B> the type of the input to the {@code ar} function
+     * @param <A> the type of the input to the {@code ar} function
      * @param <R> the type of output of the {@code ar} function, and of the composed function
      * @return a composed from left to right function that applies all the passed functions
      * @see java.util.function.Function#andThen(java.util.function.Function)
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
-    public static <T, A, B, R> Function<T, R> pipe(
+    public static <T, A, R> Function<T, R> pipe(
             Function<? super T, ? extends A> ta, Function<? super A, ? extends R> ar) {
         return ((Function<T, A>) ta)
                 .andThen(ar);

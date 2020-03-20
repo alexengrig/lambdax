@@ -18,6 +18,7 @@ package io.github.alexengrig.lambdax.function;
 
 import org.junit.Test;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
@@ -41,6 +42,9 @@ public class FunctionXTest {
     private final Function<String, String> concat15 = s -> s + ".15.";
     private final Function<String, String> concat16 = s -> s + ".16.";
 
+    private final BiFunction<String, String, String> biConcat = (l, r) -> l + r;
+    private final TerFunction<String, String, String, String> terConcat = (l, c, r) -> l + c + r;
+
     @Test
     public void checkNullSafe() {
         String value = "GitHub";
@@ -54,6 +58,62 @@ public class FunctionXTest {
         Function<Object, String> nullSafetyFunction =
                 FunctionX.nullSafe(t -> "GitHub");
         assertNull(nullSafetyFunction.apply(null));
+    }
+
+    @Test
+    public void checkBiLeft() {
+        final String expected = ".1..2.";
+        final Function<String, String> concat1 = FunctionX.left(biConcat, ".1.");
+        final String actual = concat1.apply(".2.");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkBiRight() {
+        final String expected = ".1..2.";
+        final Function<String, String> concat2 = FunctionX.right(biConcat, ".2.");
+        final String actual = concat2.apply(".1.");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkTerLeft() {
+        final String expected = ".1..2..3.";
+        final BiFunction<String, String, String> concat1 = FunctionX.left(terConcat, ".1.");
+        final String actual = concat1.apply(".2.", ".3.");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkTerRight() {
+        final String expected = ".1..2..3.";
+        final BiFunction<String, String, String> concat3 = FunctionX.right(terConcat, ".3.");
+        final String actual = concat3.apply(".1.", ".2.");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkTerLeft2() {
+        final String expected = ".1..2..3.";
+        final Function<String, String> concat1And2 = FunctionX.left(terConcat, ".1.", ".2.");
+        final String actual = concat1And2.apply(".3.");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkTerRight2() {
+        final String expected = ".1..2..3.";
+        final Function<String, String> concat2And3 = FunctionX.right(terConcat, ".2.", ".3.");
+        final String actual = concat2And3.apply(".1.");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkCenter() {
+        final String expected = ".1..2..3.";
+        final BiFunction<String, String, String> concat2 = FunctionX.center(terConcat, ".2.");
+        final String actual = concat2.apply(".1.", ".3.");
+        assertEquals(expected, actual);
     }
 
     @Test
