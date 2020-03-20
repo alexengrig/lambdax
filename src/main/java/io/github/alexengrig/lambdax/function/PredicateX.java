@@ -159,7 +159,7 @@ public final class PredicateX {
      * @param first  a predicate that will be logically-ORed with the {@code second}
      * @param second a predicate that will be logically-ORed with the {@code first}
      * @param others predicates that will be logically-ORed with previous result
-     *               starting from the result of the {@code first} and the {@code first}
+     *               starting from the result of the {@code first} and the {@code second}
      * @return a composed predicate that represents the short-circuiting logical
      * OR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
@@ -199,7 +199,7 @@ public final class PredicateX {
      * @param first  a predicate that will be logically-XORed with the {@code second}
      * @param second a predicate that will be logically-XORed with the {@code first}
      * @param others predicates that will be logically-XORed with previous result
-     *               starting from the result of the {@code first} and the {@code first}
+     *               starting from the result of the {@code first} and the {@code second}
      * @return a composed predicate that represents the short-circuiting logical
      * XOR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
@@ -243,7 +243,7 @@ public final class PredicateX {
      * @param first  a predicate that will be logically-NANDed with the {@code second}
      * @param second a predicate that will be logically-NANDed with the {@code first}
      * @param others predicates that will be logically-NANDed with previous result
-     *               starting from the result of the {@code first} and the {@code first}
+     *               starting from the result of the {@code first} and the {@code second}
      * @return a composed predicate that represents the short-circuiting logical
      * NAND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
@@ -288,7 +288,7 @@ public final class PredicateX {
      * @param first  a predicate that will be logically-NORed with the {@code second}
      * @param second a predicate that will be logically-NORed with the {@code first}
      * @param others predicates that will be logically-NORed with previous result
-     *               starting from the result of the {@code first} and the {@code first}
+     *               starting from the result of the {@code first} and the {@code second}
      * @return a composed predicate that represents the short-circuiting logical
      * NOR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
@@ -321,12 +321,13 @@ public final class PredicateX {
     }
 
     /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * XNOR of first predicate and second predicate.
+     * Returns a composed predicate that represents a short-circuiting logical XNOR of predicates.
      *
      * @param <T>    the type of arguments to the predicate
      * @param first  a predicate that will be logically-XNORed with the {@code second}
      * @param second a predicate that will be logically-XNORed with the {@code first}
+     * @param others predicates that will be logically-XNORed with previous result
+     *               starting from the result of the {@code first} and the {@code second}
      * @return a composed predicate that represents the short-circuiting logical
      * XNOR of the {@code first} predicate and the {@code second} predicate
      * @see java.util.function.Predicate
