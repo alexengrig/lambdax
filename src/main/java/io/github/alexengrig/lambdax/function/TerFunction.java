@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-/**
- * <p>This library contains utility classes with useful lambdas.</p>
- *
- * @version 0.4.0
- * @author Grig Alex
- * @since 0.1.0
- */
-package io.github.alexengrig.lambdax;
+package io.github.alexengrig.lambdax.function;
+
+@FunctionalInterface
+public interface TerFunction<T, U, S, R> {
+    R apply(T t, U u, S s);
+}

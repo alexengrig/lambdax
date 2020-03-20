@@ -25,8 +25,8 @@
  * B - a base implementation of interface.
  * </pre>
  *
+ * @version 0.4.0
  * @author Grig Alex
- * @version 0.3.0
  * @since 0.2.0
  */
 package io.github.alexengrig.lambdax.function;
