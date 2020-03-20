@@ -3,7 +3,7 @@
 ## 0.4.0
 
 *   [[#101](../../issues/101)] Create left, right, center, compose and pipe of FunctionX
-*   [[#88](../../issues/88)] Create OptionalX#of for nullable object
+*   [[#99](../../issues/99)] Create OptionalX#of for nullable object
 
 ## 0.3.0
 
