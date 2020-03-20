@@ -43,17 +43,17 @@ public class FunctionXTest {
 
     @Test
     public void checkNullSafe() {
-        Function<Object, String> nullSafetyFunction =
-                FunctionX.nullSafe(t -> "GitHub");
-        assertNull(nullSafetyFunction.apply(null));
-    }
-
-    @Test
-    public void checkNullSafeNullable() {
         String value = "GitHub";
         Function<Object, String> nullSafetyFunction =
                 FunctionX.nullSafe(t -> value);
         assertEquals(value, nullSafetyFunction.apply("GitLab"));
+    }
+
+    @Test
+    public void checkNullSafeNullable() {
+        Function<Object, String> nullSafetyFunction =
+                FunctionX.nullSafe(t -> "GitHub");
+        assertNull(nullSafetyFunction.apply(null));
     }
 
     @Test
