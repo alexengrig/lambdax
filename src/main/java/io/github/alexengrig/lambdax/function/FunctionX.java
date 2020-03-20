@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.function;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
@@ -53,6 +54,34 @@ public final class FunctionX {
      */
     public static <T, R> Function<T, R> nullSafe(Function<? super T, ? extends R> function) {
         return t -> t == null ? null : function.apply(t);
+    }
+
+    public static <T, U, R> Function<U, R> left(BiFunction<? super T, ? super U, ? extends R> function, T t) {
+        return (U u) -> function.apply(t, u);
+    }
+
+    public static <T, U, R> Function<T, R> right(BiFunction<? super T, ? super U, ? extends R> function, U u) {
+        return (T t) -> function.apply(t, u);
+    }
+
+    public static <T, U, S, R> BiFunction<U, S, R> left(TerFunction<? super T, ? super U, S, R> function, T t) {
+        return (U u, S s) -> function.apply(t, u, s);
+    }
+
+    public static <T, U, S, R> Function<S, R> left(TerFunction<? super T, ? super U, ? super S, R> function, T t, U u) {
+        return (S s) -> function.apply(t, u, s);
+    }
+
+    public static <T, U, S, R> BiFunction<T, U, R> right(TerFunction<? super T, ? super U, ? super S, R> function, S s) {
+        return (T t, U u) -> function.apply(t, u, s);
+    }
+
+    public static <T, U, S, R> Function<T, R> right(TerFunction<? super T, ? super U, ? super S, R> function, U u, S s) {
+        return (T t) -> function.apply(t, u, s);
+    }
+
+    public static <T, U, S, R> BiFunction<T, S, R> center(TerFunction<? super T, ? super U, ? super S, R> function, U u) {
+        return (T t, S s) -> function.apply(t, u, s);
     }
 
     /**
