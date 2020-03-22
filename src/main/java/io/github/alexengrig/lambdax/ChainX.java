@@ -16,6 +16,8 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.function.OptionalResultFunction;
+
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,47 +28,127 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
- * Chainer.
+ * A value container which may manipulate its value.
+ * <p>All methods, except {@link #mutate(Consumer)}, are pure functions.
  *
+ * @param <T> the type of value
  * @author Grig Alex
- * @version 0.5.0
- * @since 0.5.0
+ * @version 0.4.0
+ * @see java.util.Optional
+ * @see java.util.stream.Stream
+ * @since 0.4.0
  */
-public class ChainX<T> implements Supplier<T> {
+public class ChainX<T> {
+    /**
+     * Common instance for {@code empty()}.
+     *
+     * @see io.github.alexengrig.lambdax.ChainX#empty()
+     * @since 0.4.0
+     */
     protected static final ChainX<?> EMPTY = new ChainX<>();
 
+    /**
+     * Stored value.
+     *
+     * @since 0.4.0
+     */
     protected final T value;
 
+    /**
+     * Constructs an empty instance.
+     *
+     * @since 0.4.0
+     */
     protected ChainX() {
         this.value = null;
     }
 
+    /**
+     * Constructs an instance with the stored value.
+     *
+     * @param value the value to store
+     * @since 0.4.0
+     */
     protected ChainX(T value) {
         this.value = value;
     }
 
+    /**
+     * Returns an empty {@code ChainX} instance with value is {@code null}.
+     *
+     * @param <T> the type of value
+     * @return An empty {@code ChainX}
+     * @since 0.4.0
+     */
     @SuppressWarnings("unchecked")
     public static <T> ChainX<T> empty() {
         return (ChainX<T>) EMPTY;
     }
 
+    /**
+     * Returns an {@code ChainX} storing the given nullable value.
+     *
+     * @param value the nullable value to store
+     * @param <T>   the type of the {@code value}
+     * @return A {@code ChainX} with the {@code value}
+     * @since 0.4.0
+     */
     public static <T> ChainX<T> of(T value) {
         return new ChainX<>(value);
     }
 
+    /**
+     * Returns an {@code ChainX} storing the nullable obtained value from the value producer.
+     *
+     * @param producer the producer of the nullable value to store
+     * @param <T>      the type of the nullable obtained value from the {@code producer}
+     * @return A {@code ChainX} with the nullable obtained value from {@code producer}
+     * @since 0.4.0
+     */
     public static <T> ChainX<T> of(Supplier<? extends T> producer) {
         return new ChainX<>(producer.get());
     }
 
+
+    /**
+     * Returns an {@code ChainX} storing the nullable obtained value from the {@code Optional}.
+     *
+     * @param optional the {@code Optional} of the nullable value to store
+     * @param <T>      the type of the nullable obtained value from the {@code optional}
+     * @return A {@code ChainX} with the nullable obtained value from {@code optional}
+     * @since 0.4.0
+     */
     @SuppressWarnings({"unchecked", "OptionalUsedAsFieldOrParameterType"})
-    public static <T> ChainX<T> ofOptional(Optional<? extends T> optional) {
+    public static <T> ChainX<T> of(Optional<? extends T> optional) {
         return (ChainX<T>) optional.map(ChainX::new).orElseGet(ChainX::empty);
     }
 
+    /**
+     * Returns the stored value.
+     *
+     * @return The stored value
+     * @since 0.4.0
+     */
+    public T get() {
+        return value;
+    }
+
+    /**
+     * If a value is {@code null}, returns {@code true}, otherwise {@code false}.
+     *
+     * @return {@code true} if a value is {@code null}, otherwise {@code false}
+     * @since 0.4.0
+     */
     public boolean isNull() {
         return value == null;
     }
 
+    /**
+     * If a value is not {@code null}, returns {@code true}, otherwise {@code false}.
+     *
+     * @return {@code true} if a value is not {@code null}, otherwise {@code false}
+     * @since 0.4.0
+     */
     public boolean nonNull() {
         return value != null;
     }
@@ -76,6 +158,13 @@ public class ChainX<T> implements Supplier<T> {
             return this;
         }
         return empty();
+    }
+
+    public ChainX<T> mutate(Consumer<? super T> mutator) {
+        if (nonNull()) {
+            mutator.accept(value);
+        }
+        return this;
     }
 
     public <R> ChainX<R> map(Function<? super T, ? extends R> mapper) {
@@ -94,7 +183,7 @@ public class ChainX<T> implements Supplier<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public <R> ChainX<R> flatMapOptional(Function<? super T, ? extends Optional<? extends R>> mapper) {
+    public <R> ChainX<R> flatMap(OptionalResultFunction<? super T, ? extends R> mapper) {
         if (nonNull()) {
             final Optional<R> optional = (Optional<R>) mapper.apply(value);
             return optional.map(ChainX::of).orElseGet(ChainX::empty);
@@ -102,19 +191,12 @@ public class ChainX<T> implements Supplier<T> {
         return empty();
     }
 
-    public ChainX<T> mutate(Consumer<? super T> mutator) {
-        if (nonNull()) {
-            mutator.accept(value);
+    @SuppressWarnings("unchecked")
+    public ChainX<T> or(ChainX<? extends T> chain) {
+        if (isNull()) {
+            return (ChainX<T>) chain;
         }
         return this;
-    }
-
-    public Optional<T> optional() {
-        return nonNull() ? Optional.of(value) : Optional.empty();
-    }
-
-    public Stream<T> stream() {
-        return nonNull() ? Stream.of(value) : Stream.empty();
     }
 
     @SuppressWarnings("unchecked")
@@ -123,6 +205,14 @@ public class ChainX<T> implements Supplier<T> {
             return (ChainX<T>) producer.get();
         }
         return this;
+    }
+
+    public Stream<T> stream() {
+        return nonNull() ? Stream.of(value) : Stream.empty();
+    }
+
+    public Optional<T> optional() {
+        return nonNull() ? Optional.of(value) : Optional.empty();
     }
 
     public T orElse(T other) {
@@ -152,11 +242,6 @@ public class ChainX<T> implements Supplier<T> {
             return value;
         }
         throw producer.get();
-    }
-
-    @Override
-    public T get() {
-        return value;
     }
 
     @Override
