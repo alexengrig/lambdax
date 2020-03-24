@@ -139,7 +139,7 @@ public class ChainX<T> {
      * @return {@code true} if a value is {@code null}, otherwise {@code false}
      * @since 0.4.0
      */
-    public boolean isNull() {
+    public final boolean isNull() {
         return value == null;
     }
 
@@ -149,7 +149,7 @@ public class ChainX<T> {
      * @return {@code true} if a value is not {@code null}, otherwise {@code false}
      * @since 0.4.0
      */
-    public boolean nonNull() {
+    public final boolean nonNull() {
         return value != null;
     }
 
