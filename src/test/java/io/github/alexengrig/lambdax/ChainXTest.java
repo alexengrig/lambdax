@@ -24,7 +24,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 import static org.junit.Assert.*;
 
@@ -183,8 +182,8 @@ public class ChainXTest {
 
     @Test(expected = NoSuchElementException.class)
     public void checkOrElseThrowSupplier() {
-        assertNotNull(ChainX.of("").orElseThrow((Supplier<AssertionError>) AssertionError::new));
-        ChainX.empty().orElseThrow((Supplier<NoSuchElementException>) NoSuchElementException::new);
+        assertNotNull(ChainX.of("").orElseThrowGet(AssertionError::new));
+        ChainX.empty().orElseThrowGet(NoSuchElementException::new);
     }
 
     @Test

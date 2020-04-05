@@ -340,7 +340,7 @@ public class ChainX<T> {
         throw throwable;
     }
 
-    public <X extends Throwable> T orElseThrow(Supplier<? extends X> producer) throws X {
+    public <X extends Throwable> T orElseThrowGet(Supplier<? extends X> producer) throws X {
         if (nonNull()) {
             return value;
         }
