@@ -1,6 +1,21 @@
+/*
+ * Copyright 2019 - 2020 Alexengrig Dev.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.github.alexengrig.lambdax;
 
-import io.github.alexengrig.lambdax.function.OptionalResultFunction;
 import io.github.alexengrig.lambdax.function.PredicateX;
 import org.junit.Test;
 
@@ -29,7 +44,7 @@ public class ChainXTest {
         fail("Fail chain function");
         return ChainX.empty();
     };
-    private final OptionalResultFunction<String, String> failOptionalFunction = t -> {
+    private final Function<String, Optional<String>> failOptionalFunction = t -> {
         fail("Fail optional function");
         return Optional.empty();
     };
@@ -86,7 +101,7 @@ public class ChainXTest {
     public void checkFlatMap() {
         ChainX<String> chain = ChainX.of("");
         assertFalse(chain.isNull());
-        chain = chain.flatMap((String s) -> ChainX.of(s + "1"));
+        chain = chain.flatMap(s -> ChainX.of(s + "1"));
         assertFalse(chain.isNull());
         chain = chain.filter(String::isEmpty);
         assertTrue(chain.isNull());
@@ -98,11 +113,11 @@ public class ChainXTest {
     public void checkFlatMapOptional() {
         ChainX<String> chain = ChainX.of("");
         assertFalse(chain.isNull());
-        chain = chain.flatMap((String s) -> Optional.of(s + "1"));
+        chain = chain.flatMapOptional(s -> Optional.of(s + "1"));
         assertFalse(chain.isNull());
         chain = chain.filter(String::isEmpty);
         assertTrue(chain.isNull());
-        chain = chain.flatMap(failOptionalFunction);
+        chain = chain.flatMapOptional(failOptionalFunction);
         assertTrue(chain.isNull());
     }
 

@@ -16,8 +16,6 @@
 
 package io.github.alexengrig.lambdax;
 
-import io.github.alexengrig.lambdax.function.OptionalResultFunction;
-
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,12 +230,12 @@ public class ChainX<T> {
      * @param <R>    the type of value of the {@link java.util.Optional} returned by the mapping function
      * @return the result of applying a {@link java.util.Optional}-bearing mapping
      * function to the value of this {@code ChainX}, if a value is not {@code null}, otherwise an empty {@code ChainX}
-     * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
+     * @see java.util.function.Function
      * @see java.util.Optional
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
-    public <R> ChainX<R> flatMap(OptionalResultFunction<? super T, ? extends R> mapper) {
+    public <R> ChainX<R> flatMapOptional(Function<? super T, ? extends Optional<? extends R>> mapper) {
         if (nonNull()) {
             final Optional<R> optional = (Optional<R>) mapper.apply(value);
             return optional.map(ChainX::of).orElseGet(ChainX::empty);
