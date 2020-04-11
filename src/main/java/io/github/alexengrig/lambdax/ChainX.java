@@ -73,6 +73,8 @@ public class ChainX<T> {
         this.value = value;
     }
 
+//    Create
+
     /**
      * Returns an empty {@code ChainX} instance with value is {@code null}.
      *
@@ -126,6 +128,8 @@ public class ChainX<T> {
                 .map(ChainX::new).orElseGet(ChainX::empty);
     }
 
+//    Check
+
     /**
      * If a value is {@code null}, returns {@code true}, otherwise {@code false}.
      *
@@ -145,6 +149,8 @@ public class ChainX<T> {
     public final boolean nonNull() {
         return value != null;
     }
+
+//    Flow
 
     /**
      * If a value is not {@code null},
@@ -253,6 +259,8 @@ public class ChainX<T> {
         return empty();
     }
 
+//    Try
+
     public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper) {
         if (nonNull()) {
@@ -345,6 +353,8 @@ public class ChainX<T> {
         return empty();
     }
 
+//    Or
+
     /**
      * If a value is not {@code null},
      * returns this {@code ChainX} storing the value,
@@ -384,6 +394,8 @@ public class ChainX<T> {
         return this;
     }
 
+//    Value
+
     /**
      * If a value is not {@code null},
      * returns a sequential {@link Stream} containing only that value,
@@ -422,6 +434,8 @@ public class ChainX<T> {
         return value;
     }
 
+//    Or else
+
     /**
      * Return the value if not {@code null}, otherwise return {@code other}.
      *
@@ -446,7 +460,6 @@ public class ChainX<T> {
     public T orElseGet(Supplier<? extends T> producer) {
         return nonNull() ? value : producer.get();
     }
-
 
     /**
      * Return the value if not {@code null},
@@ -502,6 +515,8 @@ public class ChainX<T> {
         throw producer.get();
     }
 
+//    If
+
     /**
      * Invoke the specified runnable if value is {@code null},
      * otherwise do nothing.
@@ -531,6 +546,8 @@ public class ChainX<T> {
             consumer.accept(value);
         }
     }
+
+//    Object
 
     /**
      * Compare by value.
