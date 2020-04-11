@@ -398,6 +398,18 @@ public class ChainX<T> {
         throw producer.get();
     }
 
+    public void ifNull(Runnable runnable) {
+        if (isNull()) {
+            runnable.run();
+        }
+    }
+
+    public void ifNonNull(Consumer<T> consumer) {
+        if (nonNull()) {
+            consumer.accept(value);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
