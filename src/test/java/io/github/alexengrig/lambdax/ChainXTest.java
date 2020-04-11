@@ -34,9 +34,7 @@ public class ChainXTest {
         fail("Fail predicate");
         return false;
     };
-    private final Consumer<String[]> failConsumer = t -> {
-        fail("Fail consumer");
-    };
+    private final Consumer<String[]> failConsumer = t -> fail("Fail consumer");
     private final Function<String, String> failFunction = t -> {
         fail("Fail function");
         return t;
