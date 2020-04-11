@@ -17,7 +17,11 @@
 package io.github.alexengrig.lambdax.example;
 
 import io.github.alexengrig.lambdax.ChainX;
+import io.github.alexengrig.lambdax.function.ThrowableFunction;
 import org.junit.Test;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static org.junit.Assert.*;
 
@@ -33,5 +37,40 @@ public class ChainExampleTest {
         assertEquals(string.length(), holder[0]);
         assertTrue(chain.nonNull());
         assertNotNull(chain.get());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void tryMap() {
+        final ThrowableFunction<String, String, IndexOutOfBoundsException> mapper = s -> s.substring(-1);
+        final IndexOutOfBoundsException[] holder = new IndexOutOfBoundsException[1];
+        final Consumer<IndexOutOfBoundsException> catcher = e -> holder[0] = e;
+        final String expected = "expected";
+        assertEquals(expected, ChainX.of("string").tryMap(mapper, catcher, expected).get());
+        assertNotNull(holder[0]);
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void tryMapOrNull() {
+        final ThrowableFunction<String, String, IndexOutOfBoundsException> mapper = s -> s.substring(-1);
+        assertTrue(ChainX.of("string").tryMapOrEmpty(mapper).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void tryMapOrDefault() {
+        final ThrowableFunction<String, String, IndexOutOfBoundsException> mapper = s -> s.substring(-1);
+        final String expected = "expected";
+        assertEquals(expected, ChainX.of("string").tryMapOrElse(mapper, expected).get());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void tryMapOrCatch() {
+        final ThrowableFunction<String, String, IndexOutOfBoundsException> mapper = s -> s.substring(-1);
+        final String expected = "expected";
+        final Function<IndexOutOfBoundsException, String> catcher = e -> expected;
+        assertEquals(expected, ChainX.of("string").tryMapOrCatch(mapper, catcher).get());
     }
 }
