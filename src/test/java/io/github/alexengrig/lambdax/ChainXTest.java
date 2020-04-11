@@ -21,7 +21,6 @@ import io.github.alexengrig.lambdax.function.PredicateX;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -168,22 +167,22 @@ public class ChainXTest {
         assertNotNull(ChainX.empty().orElseGet(() -> ""));
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = ExpectedException.class)
     public void checkOrElseThrow() {
         assertNotNull(ChainX.of("").orElseThrow());
         ChainX.empty().orElseThrow();
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = ExpectedException.class)
     public void checkOrElseThrowObject() {
         assertNotNull(ChainX.of("").orElseThrow(new AssertionError()));
-        ChainX.empty().orElseThrow(new NoSuchElementException());
+        ChainX.empty().orElseThrow(new ExpectedException());
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = ExpectedException.class)
     public void checkOrElseThrowSupplier() {
         assertNotNull(ChainX.of("").orElseThrowGet(AssertionError::new));
-        ChainX.empty().orElseThrowGet(NoSuchElementException::new);
+        ChainX.empty().orElseThrowGet(ExpectedException::new);
     }
 
     @Test(expected = ExpectedException.class)
