@@ -318,14 +318,41 @@ public class ChainX<T> {
         return value;
     }
 
+    /**
+     * Return the value if not {@code null}, otherwise return {@code other}.
+     *
+     * @param other the value to be returned if the value is {@code null}, may be null
+     * @return the value, if not {@code null}, otherwise {@code other}
+     * @since 0.4.0
+     */
     public T orElse(T other) {
         return nonNull() ? value : other;
     }
 
+    /**
+     * Return the value if not {@code null},
+     * otherwise invoke {@code other} and return the result of that invocation.
+     *
+     * @param producer a {@code Supplier} whose result is returned if the value is {@code null}
+     * @return the value if not {@code null}, otherwise the result of {@code producer.get()}
+     * @throws NullPointerException if value is {@code null} and {@code producer} is {@code null}
+     * @see java.util.function.Supplier
+     * @since 0.4.0
+     */
     public T orElseGet(Supplier<? extends T> producer) {
         return nonNull() ? value : producer.get();
     }
 
+
+    /**
+     * Return the value if not {@code null},
+     * otherwise throws NoSuchElementException.
+     *
+     * @return the non-{@code null} stored value
+     * @throws NoSuchElementException if value is {@code null}
+     * @see java.util.NoSuchElementException
+     * @since 0.4.0
+     */
     public T orElseThrow() {
         if (nonNull()) {
             return value;
@@ -333,6 +360,17 @@ public class ChainX<T> {
         throw new NoSuchElementException("Value is null");
     }
 
+    /**
+     * Return the value if not {@code null},
+     * otherwise throws an exception.
+     *
+     * @param throwable the exception to be thrown
+     * @param <X>       the type of the exception to be thrown
+     * @return the non-{@code null} stored value
+     * @throws X if value is {@code null}
+     * @see java.lang.Throwable
+     * @since 0.4.0
+     */
     public <X extends Throwable> T orElseThrow(X throwable) throws X {
         if (nonNull()) {
             return value;
@@ -340,6 +378,19 @@ public class ChainX<T> {
         throw throwable;
     }
 
+    /**
+     * Return the value if not {@code null},
+     * otherwise throws an exception produced by the exception supplying function.
+     *
+     * @param producer the supplying function that produces an exception to be thrown
+     * @param <X>      the type of the exception to be thrown
+     * @return the non-{@code null} stored value
+     * @throws X                    if value is {@code null}
+     * @throws NullPointerException if value is {@code null} and {@code producer} is {@code null}
+     * @see java.lang.Throwable
+     * @see java.util.function.Supplier
+     * @since 0.4.0
+     */
     public <X extends Throwable> T orElseThrowGet(Supplier<? extends X> producer) throws X {
         if (nonNull()) {
             return value;
