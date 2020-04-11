@@ -16,6 +16,8 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.function.ThrowableFunction;
+
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
@@ -247,6 +249,53 @@ public class ChainX<T> {
         if (nonNull()) {
             final Optional<R> optional = (Optional<R>) mapper.apply(value);
             return optional.map(ChainX::of).orElseGet(ChainX::empty);
+        }
+        return empty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryMap(ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Consumer<? super X> catcher, R other) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+                return of(other);
+            }
+        }
+        return empty();
+    }
+
+    public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(ThrowableFunction<? super T, ? extends R, ? extends X> mapper) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable ignore) {
+                return empty();
+            }
+        }
+        return empty();
+    }
+
+    public <R, X extends Throwable> ChainX<R> tryMapOrElse(ThrowableFunction<? super T, ? extends R, ? extends X> mapper, R other) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable ignore) {
+                return of(other);
+            }
+        }
+        return empty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryMapOrCatch(ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Function<? super X, ? extends R> catcher) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable throwable) {
+                return of(catcher.apply((X) throwable));
+            }
         }
         return empty();
     }
