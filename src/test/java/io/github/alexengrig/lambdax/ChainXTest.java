@@ -16,7 +16,9 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.exception.ExpectedException;
 import io.github.alexengrig.lambdax.function.PredicateX;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
@@ -184,6 +186,22 @@ public class ChainXTest {
     public void checkOrElseThrowSupplier() {
         assertNotNull(ChainX.of("").orElseThrowGet(AssertionError::new));
         ChainX.empty().orElseThrowGet(NoSuchElementException::new);
+    }
+
+    @Test(expected = ExpectedException.class)
+    public void checkIfNull() {
+        ChainX.of("").ifNull(Assert::fail);
+        ChainX.empty().ifNull(() -> {
+            throw new ExpectedException();
+        });
+    }
+
+    @Test(expected = ExpectedException.class)
+    public void checkIfNonNull() {
+        ChainX.empty().ifNonNull(o -> fail());
+        ChainX.of("").ifNonNull(o -> {
+            throw new ExpectedException();
+        });
     }
 
     @Test
