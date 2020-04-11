@@ -20,6 +20,18 @@ This library contains utility classes with useful lambdas.
 
 ## Examples
 
+### Chain
+
+*   Data flow:
+
+```java
+    int integer = ChainX.of("some string")
+            .map(String::length)
+            .filter(length -> length > 0)
+            .mutate(length -> holder[0] = length)
+            .orElse(-1);
+```
+
 ### Collection
 
 *   Get the value from `Map` and print it on the console:
