@@ -154,8 +154,8 @@ public class ChainX<T> {
      * @return a {@code ChainX} storing the value of this
      * {@code ChainX}, if a value is not {@code null} and the value matches the
      * given predicate, otherwise an empty {@code ChainX}
-     * @see java.util.function.Predicate
      * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null}
+     * @see java.util.function.Predicate
      * @since 0.4.0
      */
     public ChainX<T> filter(Predicate<? super T> predicate) {
@@ -216,8 +216,8 @@ public class ChainX<T> {
      * @param <R>    the type of value of the {@code ChainX} returned by the mapping function
      * @return the result of applying a {@code ChainX}-bearing mapping
      * function to the value of this {@code ChainX}, if a value is not {@code null}, otherwise an empty {@code ChainX}
-     * @see java.util.function.Function
      * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
+     * @see java.util.function.Function
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
@@ -237,9 +237,9 @@ public class ChainX<T> {
      * @param <R>    the type of value of the {@link java.util.Optional} returned by the mapping function
      * @return the result of applying a {@link java.util.Optional}-bearing mapping
      * function to the value of this {@code ChainX}, if a value is not {@code null}, otherwise an empty {@code ChainX}
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
      * @see java.util.function.Function
      * @see java.util.Optional
-     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
@@ -438,6 +438,12 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * Compare by value.
+     *
+     * @param o the object to compare
+     * @since 0.4.0
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -450,11 +456,22 @@ public class ChainX<T> {
         return Objects.equals(value, other.value);
     }
 
+    /**
+     * Calculate by value.
+     *
+     * @since 0.4.0
+     */
     @Override
     public int hashCode() {
         return Objects.hashCode(this.value);
     }
 
+    /**
+     * Returns a non-empty string representation of this ChainX.
+     *
+     * @return the string representation of this instance
+     * @since 0.4.0
+     */
     @Override
     public String toString() {
         return nonNull() ? "ChainX[" + value + "]" : "ChainX.empty";
