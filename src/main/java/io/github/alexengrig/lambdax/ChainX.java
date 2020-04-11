@@ -18,6 +18,7 @@ package io.github.alexengrig.lambdax;
 
 import io.github.alexengrig.lambdax.function.ThrowableConsumer;
 import io.github.alexengrig.lambdax.function.ThrowableFunction;
+import io.github.alexengrig.lambdax.function.ThrowablePredicate;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -261,6 +262,121 @@ public class ChainX<T> {
     }
 
 //    Try
+
+    public <X extends Throwable> ChainX<T> tryFilterOrLie(ThrowablePredicate<? super T, ? super X> predicate) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable ignore) {
+            return empty();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryFilterOrLie(
+            ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable throwable) {
+            catcher.accept((X) throwable);
+            return empty();
+        }
+    }
+
+    public <X extends Throwable> ChainX<T> tryFilterOrTruth(ThrowablePredicate<? super T, ? super X> predicate) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable ignore) {
+            return this;
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryFilterOrTruth(
+            ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable throwable) {
+            catcher.accept((X) throwable);
+            return this;
+        }
+    }
+
+    public <X extends Throwable> ChainX<T> tryFilterOrElse(
+            ThrowablePredicate<? super T, ? super X> predicate, boolean result) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable ignore) {
+            if (result) {
+                return this;
+            }
+            return empty();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryFilterOrElse(
+            ThrowablePredicate<? super T, ? super X> predicate, boolean result, Consumer<? super X> catcher) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable throwable) {
+            catcher.accept((X) throwable);
+            if (result) {
+                return this;
+            }
+            return empty();
+        }
+    }
+
+    public <X extends Throwable> ChainX<T> tryFilterOrGet(
+            ThrowablePredicate<? super T, ? super X> predicate, Supplier<Boolean> producer) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable ignore) {
+            if (producer.get()) {
+                return this;
+            }
+            return empty();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryFilterOrGet(
+            ThrowablePredicate<? super T, ? super X> predicate, Supplier<Boolean> producer,
+            Consumer<? super X> catcher) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable throwable) {
+            catcher.accept((X) throwable);
+            if (producer.get()) {
+                return this;
+            }
+            return empty();
+        }
+    }
 
     public <X extends Throwable> ChainX<T> tryMutate(ThrowableConsumer<? super T, ? super X> mutator) {
         if (nonNull()) {
