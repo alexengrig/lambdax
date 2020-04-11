@@ -4,6 +4,7 @@
 
 *   [[#101](../../issues/101)] Create left, right, center, compose and pipe of FunctionX
 *   [[#99](../../issues/99)] Create OptionalX#of for nullable object
+*   [[#85](../../issues/85)] Create ChainX
 
 ## 0.3.0
 
