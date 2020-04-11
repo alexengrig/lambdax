@@ -149,6 +149,20 @@ public class ChainXTest {
     }
 
     @Test
+    public void checkTryMutate() {
+        assertTrue(ChainX.of("").tryMutate(t -> fail()).nonNull());
+        assertTrue(ChainX.<String>empty().tryMutate(t -> fail()).isNull());
+    }
+
+    @Test
+    public void checkTryMutateWithCatcher() {
+        final Ref<AssertionError> refAssertionError = new Ref<>();
+        assertTrue(ChainX.of("").tryMutate(t -> fail(), refAssertionError::set).nonNull());
+        assertNotNull(refAssertionError.get());
+        assertTrue(ChainX.<String>empty().tryMutate(t -> fail(), e -> fail()).isNull());
+    }
+
+    @Test
     public void checkTryMapOrEmptyWithCatcher() {
         final Ref<AssertionError> refAssertionError = new Ref<>(null);
         assertTrue(ChainX.of("").tryMapOrEmpty(failThrowableFunction, refAssertionError::set).isNull());
