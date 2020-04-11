@@ -101,6 +101,7 @@ public class ChainX<T> {
      * @param producer the producer of the nullable value to store
      * @param <T>      the type of the nullable obtained value from the {@code producer}
      * @return A {@code ChainX} with the nullable obtained value from {@code producer}
+     * @throws NullPointerException if {@code producer} is {@code null}
      * @since 0.4.0
      */
     public static <T> ChainX<T> of(Supplier<? extends T> producer) {
@@ -113,12 +114,14 @@ public class ChainX<T> {
      * @param optional the {@link java.util.Optional} of the nullable value to store
      * @param <T>      the type of the nullable obtained value from the {@link java.util.Optional}
      * @return A {@code ChainX} with the nullable obtained value from {@link java.util.Optional}
+     * @throws NullPointerException if {@code optional} is {@code null}
      * @see java.util.Optional
      * @since 0.4.0
      */
     @SuppressWarnings({"unchecked", "OptionalUsedAsFieldOrParameterType"})
     public static <T> ChainX<T> of(Optional<? extends T> optional) {
-        return (ChainX<T>) optional.map(ChainX::new).orElseGet(ChainX::empty);
+        return (ChainX<T>) Objects.requireNonNull(optional, "Passed Optional is null")
+                .map(ChainX::new).orElseGet(ChainX::empty);
     }
 
     /**
@@ -152,6 +155,7 @@ public class ChainX<T> {
      * {@code ChainX}, if a value is not {@code null} and the value matches the
      * given predicate, otherwise an empty {@code ChainX}
      * @see java.util.function.Predicate
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null}
      * @since 0.4.0
      */
     public ChainX<T> filter(Predicate<? super T> predicate) {
@@ -169,6 +173,7 @@ public class ChainX<T> {
      *
      * @param mutator the consumer function to accept to a value, if not {@code null}
      * @return this {@code ChainX} storing the updates value
+     * @throws NullPointerException if value is not {@code null} and {@code mutator} is {@code null}
      * @see java.util.function.Consumer
      * @since 0.4.0
      */
@@ -188,6 +193,7 @@ public class ChainX<T> {
      * @param <R>    the type of the value returned from the mapping function
      * @return a {@code ChainX} storing the result of applying a mapping
      * function to the value of this {@code ChainX}
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
      * @since 0.4.0
      */
     public <R> ChainX<R> map(Function<? super T, ? extends R> mapper) {
@@ -211,6 +217,7 @@ public class ChainX<T> {
      * @return the result of applying a {@code ChainX}-bearing mapping
      * function to the value of this {@code ChainX}, if a value is not {@code null}, otherwise an empty {@code ChainX}
      * @see java.util.function.Function
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
@@ -232,6 +239,7 @@ public class ChainX<T> {
      * function to the value of this {@code ChainX}, if a value is not {@code null}, otherwise an empty {@code ChainX}
      * @see java.util.function.Function
      * @see java.util.Optional
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
@@ -251,12 +259,13 @@ public class ChainX<T> {
      * @param chain the {@code ChainX} to be returned
      * @return returns this {@code ChainX} storing the value of this {@code ChainX},
      * if a value is not {@code null}, otherwise the given {@code ChainX}
+     * @throws NullPointerException if value is {@code null} and {@code chain} is {@code null}
      * @since 0.4.0
      */
     @SuppressWarnings("unchecked")
     public ChainX<T> or(ChainX<? extends T> chain) {
         if (isNull()) {
-            return (ChainX<T>) chain;
+            return (ChainX<T>) Objects.requireNonNull(chain, "Passed ChainX is null");
         }
         return this;
     }
@@ -269,6 +278,7 @@ public class ChainX<T> {
      * @param producer the supplying function that produces a {@code ChainX} to be returned
      * @return returns this {@code ChainX} storing the value of this {@code ChainX},
      * if a value is not {@code null}, otherwise a {@code ChainX} produced by the supplying function
+     * @throws NullPointerException if value is {@code null} and {@code producer} is {@code null}
      * @see java.util.function.Supplier
      * @since 0.4.0
      */
