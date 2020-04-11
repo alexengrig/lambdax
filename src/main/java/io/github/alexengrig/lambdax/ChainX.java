@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.function.ThrowableConsumer;
 import io.github.alexengrig.lambdax.function.ThrowableFunction;
 
 import java.util.NoSuchElementException;
@@ -260,6 +261,29 @@ public class ChainX<T> {
     }
 
 //    Try
+
+    public <X extends Throwable> ChainX<T> tryMutate(ThrowableConsumer<? super T, ? super X> mutator) {
+        if (nonNull()) {
+            try {
+                mutator.accept(value);
+            } catch (Throwable ignore) {
+            }
+        }
+        return this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryMutate(
+            ThrowableConsumer<? super T, ? super X> mutator, Consumer<? super X> catcher) {
+        if (nonNull()) {
+            try {
+                mutator.accept(value);
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+            }
+        }
+        return this;
+    }
 
     public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper) {
