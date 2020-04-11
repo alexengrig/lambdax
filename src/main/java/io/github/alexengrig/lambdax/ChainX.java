@@ -398,12 +398,30 @@ public class ChainX<T> {
         throw producer.get();
     }
 
+    /**
+     * Invoke the specified runnable if value is {@code null},
+     * otherwise do nothing.
+     *
+     * @param runnable block to be executed if value is {@code null}
+     * @throws NullPointerException if value is {@code null} and {@code runnable} is {@code null}
+     * @see java.lang.Runnable
+     * @since 0.4.0
+     */
     public void ifNull(Runnable runnable) {
         if (isNull()) {
             runnable.run();
         }
     }
 
+    /**
+     * Invoke the specified consumer with the value if not {@code null},
+     * otherwise do nothing.
+     *
+     * @param consumer block to be executed if value is not {@code null}
+     * @throws NullPointerException if value is not {@code null} and {@code consumer} is {@code null}
+     * @see java.util.function.Consumer
+     * @since 0.4.0
+     */
     public void ifNonNull(Consumer<T> consumer) {
         if (nonNull()) {
             consumer.accept(value);
