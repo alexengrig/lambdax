@@ -46,7 +46,7 @@ public class ChainExampleTest {
         final IndexOutOfBoundsException[] holder = new IndexOutOfBoundsException[1];
         final Consumer<IndexOutOfBoundsException> catcher = e -> holder[0] = e;
         final String expected = "expected";
-        assertEquals(expected, ChainX.of("string").tryMap(mapper, catcher, expected).get());
+        assertEquals(expected, ChainX.of("string").tryMapOrElse(mapper, expected, catcher).get());
         assertNotNull(holder[0]);
     }
 
