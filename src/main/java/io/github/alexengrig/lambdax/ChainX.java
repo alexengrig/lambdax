@@ -253,8 +253,47 @@ public class ChainX<T> {
         return empty();
     }
 
+    public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable ignore) {
+                return empty();
+            }
+        }
+        return empty();
+    }
+
     @SuppressWarnings("unchecked")
-    public <R, X extends Throwable> ChainX<R> tryMap(ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Consumer<? super X> catcher, R other) {
+    public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Consumer<? super X> catcher) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+                return empty();
+            }
+        }
+        return empty();
+    }
+
+    public <R, X extends Throwable> ChainX<R> tryMapOrElse(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper, R other) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable ignore) {
+                return of(other);
+            }
+        }
+        return empty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryMapOrElse(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper, R other, Consumer<? super X> catcher) {
         if (nonNull()) {
             try {
                 return of(mapper.apply(value));
@@ -266,30 +305,36 @@ public class ChainX<T> {
         return empty();
     }
 
-    public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(ThrowableFunction<? super T, ? extends R, ? extends X> mapper) {
+    public <R, X extends Throwable> ChainX<R> tryMapOrGet(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Supplier<? extends R> producer) {
         if (nonNull()) {
             try {
                 return of(mapper.apply(value));
             } catch (Throwable ignore) {
-                return empty();
-            }
-        }
-        return empty();
-    }
-
-    public <R, X extends Throwable> ChainX<R> tryMapOrElse(ThrowableFunction<? super T, ? extends R, ? extends X> mapper, R other) {
-        if (nonNull()) {
-            try {
-                return of(mapper.apply(value));
-            } catch (Throwable ignore) {
-                return of(other);
+                return of(producer.get());
             }
         }
         return empty();
     }
 
     @SuppressWarnings("unchecked")
-    public <R, X extends Throwable> ChainX<R> tryMapOrCatch(ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Function<? super X, ? extends R> catcher) {
+    public <R, X extends Throwable> ChainX<R> tryMapOrGet(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Supplier<? extends R> producer,
+            Consumer<? super X> catcher) {
+        if (nonNull()) {
+            try {
+                return of(mapper.apply(value));
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+                return of(producer.get());
+            }
+        }
+        return empty();
+    }
+
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryMapOrCatch(
+            ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Function<? super X, ? extends R> catcher) {
         if (nonNull()) {
             try {
                 return of(mapper.apply(value));
