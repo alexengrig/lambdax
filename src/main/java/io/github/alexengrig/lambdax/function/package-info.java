@@ -25,7 +25,7 @@
  * B - a base implementation of interface.
  * </pre>
  *
- * @version 0.4.0
+ * @version 0.5.0
  * @author Grig Alex
  * @since 0.2.0
  */
