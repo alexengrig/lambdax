@@ -266,32 +266,7 @@ public class ChainX<T> {
 
 //    Try
 
-    public <X extends Throwable> ChainX<T> tryFilterOrLie(ThrowablePredicate<? super T, ? super X> predicate) {
-        try {
-            if (isNull() || predicate.test(value)) {
-                return this;
-            }
-            return empty();
-        } catch (Throwable ignore) {
-            return empty();
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public <X extends Throwable> ChainX<T> tryFilterOrLie(
-            ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
-        try {
-            if (isNull() || predicate.test(value)) {
-                return this;
-            }
-            return empty();
-        } catch (Throwable throwable) {
-            catcher.accept((X) throwable);
-            return empty();
-        }
-    }
-
-    public <X extends Throwable> ChainX<T> tryFilterOrTruth(ThrowablePredicate<? super T, ? super X> predicate) {
+    public <X extends Throwable> ChainX<T> tryFilter(ThrowablePredicate<? super T, ? super X> predicate) {
         try {
             if (isNull() || predicate.test(value)) {
                 return this;
@@ -303,7 +278,7 @@ public class ChainX<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public <X extends Throwable> ChainX<T> tryFilterOrTruth(
+    public <X extends Throwable> ChainX<T> tryFilter(
             ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
         try {
             if (isNull() || predicate.test(value)) {
@@ -313,6 +288,31 @@ public class ChainX<T> {
         } catch (Throwable throwable) {
             catcher.accept((X) throwable);
             return this;
+        }
+    }
+
+    public <X extends Throwable> ChainX<T> tryFilterOrEmpty(ThrowablePredicate<? super T, ? super X> predicate) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable ignore) {
+            return empty();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryFilterOrEmpty(
+            ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable throwable) {
+            catcher.accept((X) throwable);
+            return empty();
         }
     }
 
