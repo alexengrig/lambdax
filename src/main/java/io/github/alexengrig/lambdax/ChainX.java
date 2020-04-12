@@ -35,7 +35,7 @@ import java.util.stream.Stream;
  *
  * @param <T> the type of value
  * @author Grig Alex
- * @version 0.4.0
+ * @version 0.5.0
  * @see java.util.Optional
  * @see java.util.stream.Stream
  * @since 0.4.0
