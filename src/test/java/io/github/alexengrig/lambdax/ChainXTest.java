@@ -140,12 +140,145 @@ public class ChainXTest {
     }
 
     @Test
-    public void checkTryMapOrEmpty() {
-        assertTrue(ChainX.of("").tryMapOrEmpty(failThrowableFunction).isNull());
-        assertTrue(ChainX.of("").tryMapOrEmpty(s -> {
-            throw new UnexpectedException();
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrLie() {
+        assertTrue(ChainX.of("string").tryFilterOrLie(String::isEmpty).isNull());
+        assertTrue(ChainX.of("").tryFilterOrLie(v -> v.substring(-1).isEmpty()).isNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrLie(v -> {
+            fail();
+            return true;
         }).isNull());
-        assertTrue(ChainX.<String>empty().tryMapOrEmpty(failThrowableFunction).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrLieWithCatcher() {
+        final Ref<IndexOutOfBoundsException> refIndexOutOfBoundsException = new Ref<>();
+        assertTrue(ChainX.of("string")
+                .tryFilterOrLie(String::isEmpty, refIndexOutOfBoundsException::set).isNull());
+        assertNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.of("")
+                .tryFilterOrLie(v -> v.substring(-1).isEmpty(), refIndexOutOfBoundsException::set).isNull());
+        assertNotNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.<String>empty().tryFilterOrLie(v -> {
+            fail();
+            return true;
+        }, e -> fail()).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrTruth() {
+        assertTrue(ChainX.of("string").tryFilterOrTruth(String::isEmpty).isNull());
+        assertTrue(ChainX.of("").tryFilterOrTruth(v -> v.substring(-1).isEmpty()).nonNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrTruth(v -> {
+            fail();
+            return true;
+        }).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrTruthWithCatcher() {
+        final Ref<IndexOutOfBoundsException> refIndexOutOfBoundsException = new Ref<>();
+        assertTrue(ChainX.of("string")
+                .tryFilterOrTruth(String::isEmpty, refIndexOutOfBoundsException::set).isNull());
+        assertNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.of("")
+                .tryFilterOrTruth(v -> v.substring(-1).isEmpty(), refIndexOutOfBoundsException::set).nonNull());
+        assertNotNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.<String>empty().tryFilterOrTruth(v -> {
+            fail();
+            return true;
+        }, e -> fail()).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrElse() {
+        assertTrue(ChainX.of("string").tryFilterOrElse(String::isEmpty, false).isNull());
+        assertTrue(ChainX.of("").tryFilterOrElse(v -> v.substring(-1).isEmpty(), false).isNull());
+        assertTrue(ChainX.of("").tryFilterOrElse(v -> v.substring(-1).isEmpty(), true).nonNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrElse(v -> {
+            fail();
+            return true;
+        }, false).isNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrElse(v -> {
+            fail();
+            return true;
+        }, true).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrElseWithCatcher() {
+        final Ref<IndexOutOfBoundsException> refIndexOutOfBoundsException = new Ref<>();
+        assertTrue(ChainX.of("string")
+                .tryFilterOrElse(String::isEmpty, false, refIndexOutOfBoundsException::set)
+                .isNull());
+        assertNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.of("")
+                .tryFilterOrElse(v -> v.substring(-1).isEmpty(), false, refIndexOutOfBoundsException::set)
+                .isNull());
+        assertNotNull(refIndexOutOfBoundsException.get());
+        refIndexOutOfBoundsException.nullify();
+        assertNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.of("")
+                .tryFilterOrElse(v -> v.substring(-1).isEmpty(), true, refIndexOutOfBoundsException::set)
+                .nonNull());
+        assertNotNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.<String>empty().tryFilterOrElse(v -> {
+            fail();
+            return true;
+        }, false, e -> fail()).isNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrElse(v -> {
+            fail();
+            return true;
+        }, true, e -> fail()).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrGet() {
+        assertTrue(ChainX.of("string").tryFilterOrGet(String::isEmpty, () -> false).isNull());
+        assertTrue(ChainX.of("").tryFilterOrGet(v -> v.substring(-1).isEmpty(), () -> false).isNull());
+        assertTrue(ChainX.of("").tryFilterOrGet(v -> v.substring(-1).isEmpty(), () -> true).nonNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrGet(v -> {
+            fail();
+            return true;
+        }, () -> false).isNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrGet(v -> {
+            fail();
+            return true;
+        }, () -> true).isNull());
+    }
+
+    @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrGetWithCatcher() {
+        final Ref<IndexOutOfBoundsException> refIndexOutOfBoundsException = new Ref<>();
+        assertTrue(ChainX.of("string")
+                .tryFilterOrGet(String::isEmpty, () -> false, refIndexOutOfBoundsException::set)
+                .isNull());
+        assertNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.of("")
+                .tryFilterOrGet(v -> v.substring(-1).isEmpty(), () -> false, refIndexOutOfBoundsException::set)
+                .isNull());
+        assertNotNull(refIndexOutOfBoundsException.get());
+        refIndexOutOfBoundsException.nullify();
+        assertNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.of("")
+                .tryFilterOrGet(v -> v.substring(-1).isEmpty(), () -> true, refIndexOutOfBoundsException::set)
+                .nonNull());
+        assertNotNull(refIndexOutOfBoundsException.get());
+        assertTrue(ChainX.<String>empty().tryFilterOrGet(v -> {
+            fail();
+            return true;
+        }, () -> false, e -> fail()).isNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrGet(v -> {
+            fail();
+            return true;
+        }, () -> true, e -> fail()).isNull());
     }
 
     @Test
@@ -160,6 +293,15 @@ public class ChainXTest {
         assertTrue(ChainX.of("").tryMutate(t -> fail(), refAssertionError::set).nonNull());
         assertNotNull(refAssertionError.get());
         assertTrue(ChainX.<String>empty().tryMutate(t -> fail(), e -> fail()).isNull());
+    }
+
+    @Test
+    public void checkTryMapOrEmpty() {
+        assertTrue(ChainX.of("").tryMapOrEmpty(failThrowableFunction).isNull());
+        assertTrue(ChainX.of("").tryMapOrEmpty(s -> {
+            throw new UnexpectedException();
+        }).isNull());
+        assertTrue(ChainX.<String>empty().tryMapOrEmpty(failThrowableFunction).isNull());
     }
 
     @Test
