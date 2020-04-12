@@ -17,7 +17,7 @@
 /**
  * <p>This library contains utility classes with useful lambdas.</p>
  *
- * @version 0.4.0
+ * @version 0.5.0
  * @author Grig Alex
  * @since 0.1.0
  */
