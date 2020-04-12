@@ -381,6 +381,22 @@ public class ChainX<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public <X extends Throwable> ChainX<T> tryFilterOrCatch(
+            ThrowablePredicate<? super T, ? super X> predicate, Predicate<? super X> catcher) {
+        try {
+            if (isNull() || predicate.test(value)) {
+                return this;
+            }
+            return empty();
+        } catch (Throwable throwable) {
+            if (catcher.test((X) throwable)) {
+                return this;
+            }
+            return empty();
+        }
+    }
+
     public <X extends Throwable> ChainX<T> tryMutate(ThrowableConsumer<? super T, ? super X> mutator) {
         if (nonNull()) {
             try {

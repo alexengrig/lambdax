@@ -282,6 +282,25 @@ public class ChainXTest {
     }
 
     @Test
+    @SuppressWarnings("ConstantConditions")
+    public void checkTryFilterOrCatch() {
+        assertTrue(ChainX.of("").tryFilterOrCatch(v -> v.substring(-1).isEmpty(), e -> true).nonNull());
+        assertTrue(ChainX.of("").tryFilterOrCatch(v -> v.substring(-1).isEmpty(), e -> false).isNull());
+        assertTrue(ChainX.of("string").tryFilterOrCatch(String::isEmpty, e -> {
+            fail();
+            return false;
+        }).isNull());
+        assertTrue(ChainX.of("").tryFilterOrCatch(String::isEmpty, e -> {
+            fail();
+            return false;
+        }).nonNull());
+        assertTrue(ChainX.<String>empty().tryFilterOrCatch(String::isEmpty, e -> {
+            fail();
+            return false;
+        }).isNull());
+    }
+
+    @Test
     public void checkTryMutate() {
         assertTrue(ChainX.of("").tryMutate(t -> fail()).nonNull());
         assertTrue(ChainX.<String>empty().tryMutate(t -> fail()).isNull());
