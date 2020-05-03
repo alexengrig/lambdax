@@ -158,15 +158,16 @@ public class ChainX<T> {
 //    Flow
 
     /**
-     * If a value is not {@code null},
+     * If the value is not {@code null},
      * and the value matches the given predicate,
-     * returns a {@code ChainX} storing the value,
+     * returns this {@code ChainX} storing the value,
      * otherwise returns an empty {@code ChainX}.
      *
      * @param predicate the predicate to apply to a value, if not {@code null}
-     * @return a {@code ChainX} storing the value of this
-     * {@code ChainX}, if a value is not {@code null} and the value matches the
-     * given predicate, otherwise an empty {@code ChainX}
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * otherwise an empty {@code ChainX}
      * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null}
      * @see java.util.function.Predicate
      * @since 0.4.0
@@ -266,6 +267,27 @@ public class ChainX<T> {
 
 //    Try
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * returns this {@code ChainX} storing the value.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception,
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null}
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     public <X extends Throwable> ChainX<T> tryFilter(ThrowablePredicate<? super T, ? super X> predicate) {
         try {
             if (isNull() || predicate.test(value)) {
@@ -277,6 +299,32 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * passes an exception to the given exception consumer and
+     * returns this {@code ChainX} storing the value.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param catcher   the consumer to accept to an exception,
+     *                  if {@code predicate} throws the exception
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null},
+     *                              or {@code cathcer} is {@code null}
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <X extends Throwable> ChainX<T> tryFilter(
             ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
@@ -291,6 +339,28 @@ public class ChainX<T> {
         }
     }
 
+
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * otherwise an empty {@code ChainX};
+     * an empty {@code ChainX} if {@code predicate} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null}
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     public <X extends Throwable> ChainX<T> tryFilterOrEmpty(ThrowablePredicate<? super T, ? super X> predicate) {
         try {
             if (isNull() || predicate.test(value)) {
@@ -302,6 +372,32 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * passes an exception to the given exception consumer and
+     * returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param catcher   the consumer to accept to an exception,
+     *                  if {@code predicate} throws the exception
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * otherwise an empty {@code ChainX};
+     * an empty {@code ChainX} if {@code predicate} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null},
+     *                              or {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <X extends Throwable> ChainX<T> tryFilterOrEmpty(
             ThrowablePredicate<? super T, ? super X> predicate, Consumer<? super X> catcher) {
@@ -316,6 +412,30 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception and {@code result} is {@code true},
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param result    the answer to the question "return this {@code ChainX} in case of exception?"
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception and
+     * {@code result} is {@code true},
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null}
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     public <X extends Throwable> ChainX<T> tryFilterOrElse(
             ThrowablePredicate<? super T, ? super X> predicate, boolean result) {
         try {
@@ -331,6 +451,36 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * passes an exception to given exception consumer,
+     * and if {@code result} is {@code true},
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param catcher   the consumer to accept to an exception,
+     *                  if {@code predicate} throws the exception
+     * @param result    the answer to the question "return this {@code ChainX} in case of exception?"
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception and
+     * {@code result} is {@code true},
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null},
+     *                              or {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <X extends Throwable> ChainX<T> tryFilterOrElse(
             ThrowablePredicate<? super T, ? super X> predicate, boolean result, Consumer<? super X> catcher) {
@@ -348,6 +498,34 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception and
+     * a value produced by the supplying function is {@code true},
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param producer  the supplying function that produces
+     *                  an answer to the question "return this {@code ChainX} in case of exception?"
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception and
+     * a value produced by {@code producer} is {@code true},
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null},
+     *                              or {@code predicate} throws an exception and {@code producer} is {@code null}
+     * @see java.util.function.Supplier
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     public <X extends Throwable> ChainX<T> tryFilterOrGet(
             ThrowablePredicate<? super T, ? super X> predicate, Supplier<Boolean> producer) {
         try {
@@ -363,6 +541,39 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * passes an exception to given exception consumer,
+     * and if a value produced by the supplying function is {@code true},
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param producer  the supplying function that produces
+     *                  an answer to the question "return this {@code ChainX} in case of exception?"
+     * @param catcher   the consumer to accept to an exception,
+     *                  if {@code predicate} throws the exception
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception and
+     * a value produced by {@code producer} is {@code true},
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null},
+     *                              or {@code predicate} throws an exception and,
+     *                              {@code producer} is {@code null} or {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see java.util.function.Supplier
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <X extends Throwable> ChainX<T> tryFilterOrGet(
             ThrowablePredicate<? super T, ? super X> predicate, Supplier<Boolean> producer,
@@ -381,6 +592,36 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * If the value is not {@code null},
+     * and the value matches the given predicate,
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the given predicate throws an exception,
+     * passes an exception to given exception predicate,
+     * and if the returning value is {@code true},
+     * returns this {@code ChainX} storing the value,
+     * otherwise returns an empty {@code ChainX}.
+     *
+     * @param predicate the predicate to apply to a value, if not {@code null}
+     * @param catcher   the predicate to accept to an exception,
+     *                  if {@code predicate} throws the exception and
+     *                  produces an answer to the question "return this {@code ChainX} in case of exception?"
+     * @param <X>       the type of exception
+     * @return this {@code ChainX} storing the value,
+     * if the value is not {@code null} and
+     * the value matches {@code predicate},
+     * or {@code predicate} throws an exception and
+     * a value produced by {@code catcher} is {@code true},
+     * otherwise an empty {@code ChainX};
+     * @throws NullPointerException if value is not {@code null} and {@code predicate} is {@code null},
+     *                              or {@code predicate} throws an exception and {@code catcher} is {@code null}
+     * @see java.util.function.Predicate
+     * @see io.github.alexengrig.lambdax.function.ThrowablePredicate
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <X extends Throwable> ChainX<T> tryFilterOrCatch(
             ThrowablePredicate<? super T, ? super X> predicate, Predicate<? super X> catcher) {
