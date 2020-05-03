@@ -699,6 +699,25 @@ public class ChainX<T> {
         return this;
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * returns an empty {@code ChainX}.
+     *
+     * @param mapper the mapping function to apply to a value, if not {@code null}
+     * @param <R>    the type of the value returned from the mapping function
+     * @param <X>    the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX}
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper) {
         if (nonNull()) {
@@ -711,6 +730,30 @@ public class ChainX<T> {
         return empty();
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * passes the exception to the given exception consumer and
+     * returns an empty {@code ChainX}.
+     *
+     * @param mapper  the mapping function to apply to a value, if not {@code null}
+     * @param catcher the consumer to accept to an exception,
+     *                if {@code mapper} throws the exception
+     * @param <R>     the type of the value returned from the mapping function
+     * @param <X>     the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX}
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <R, X extends Throwable> ChainX<R> tryMapOrEmpty(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Consumer<? super X> catcher) {
@@ -725,6 +768,28 @@ public class ChainX<T> {
         return empty();
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * returns a {@code ChainX} storing (as if by {@link #of}) the given value.
+     *
+     * @param mapper the mapping function to apply to a value, if not {@code null}
+     * @param other  the value in case of exception
+     * @param <R>    the type of the value returned from the mapping function
+     * @param <X>    the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX};
+     * a {@code ChainX} storing {@code other},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     public <R, X extends Throwable> ChainX<R> tryMapOrElse(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper, R other) {
         if (nonNull()) {
@@ -737,6 +802,33 @@ public class ChainX<T> {
         return empty();
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * passes the exception to the given exception consumer and
+     * returns a {@code ChainX} storing (as if by {@link #of}) the given value.
+     *
+     * @param mapper  the mapping function to apply to a value, if not {@code null}
+     * @param other   the value in case of exception
+     * @param catcher the consumer to accept to an exception,
+     *                if {@code mapper} throws the exception
+     * @param <R>     the type of the value returned from the mapping function
+     * @param <X>     the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX};
+     * a {@code ChainX} storing {@code other},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <R, X extends Throwable> ChainX<R> tryMapOrElse(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper, R other, Consumer<? super X> catcher) {
@@ -751,6 +843,30 @@ public class ChainX<T> {
         return empty();
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * returns a {@code ChainX} storing (as if by {@link #of}) a value produced by the given supplying function.
+     *
+     * @param mapper   the mapping function to apply to a value, if not {@code null}
+     * @param producer the supplying function that produces a value in case of exception
+     * @param <R>      the type of the value returned from the mapping function
+     * @param <X>      the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX};
+     * a {@code ChainX} storing a value produced by {@code producer},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and {@code producer} is {@code null}
+     * @see java.util.function.Supplier
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     public <R, X extends Throwable> ChainX<R> tryMapOrGet(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Supplier<? extends R> producer) {
         if (nonNull()) {
@@ -763,6 +879,35 @@ public class ChainX<T> {
         return empty();
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * passes the exception to the given exception consumer and
+     * returns a {@code ChainX} storing (as if by {@link #of}) a value produced by the given supplying function.
+     *
+     * @param mapper   the mapping function to apply to a value, if not {@code null}
+     * @param producer the supplying function that produces a value in case of exception
+     * @param catcher  the consumer to accept to an exception,
+     *                 if {@code mapper} throws the exception
+     * @param <R>      the type of the value returned from the mapping function
+     * @param <X>      the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX};
+     * a {@code ChainX} storing a value produced by {@code producer},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and,
+     *                              {@code producer} is {@code null} or {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see java.util.function.Supplier
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <R, X extends Throwable> ChainX<R> tryMapOrGet(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Supplier<? extends R> producer,
@@ -778,6 +923,33 @@ public class ChainX<T> {
         return empty();
     }
 
+    /**
+     * If a value is not {@code null},
+     * returns a {@code ChainX} storing (as if by {@link #of}) the result of applying
+     * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
+     *
+     * <p>
+     * If the give mapping function throws an exception,
+     * passes the exception to the given exception function and
+     * returns a {@code ChainX} storing (as if by {@link #of}) the returning value.
+     *
+     * @param mapper  the mapping function to apply to a value, if not {@code null}
+     * @param catcher the function to accept to an exception and
+     *                to return a value for {@code ChainX} storing,
+     *                if {@code mapper} throws the exception
+     * @param <R>     the type of the value returned from the mapping function
+     * @param <X>     the type of exception
+     * @return a {@code ChainX} storing the result of {@code mapper} to the value of this {@code ChainX},
+     * if the value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@code ChainX};
+     * a {@code ChainX} storing a value produced by {@code catcher},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and {@code catcher} is {@code null}
+     * @see java.util.function.Function
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <R, X extends Throwable> ChainX<R> tryMapOrCatch(
             ThrowableFunction<? super T, ? extends R, ? extends X> mapper, Function<? super X, ? extends R> catcher) {
