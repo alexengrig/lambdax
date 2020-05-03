@@ -638,6 +638,24 @@ public class ChainX<T> {
         }
     }
 
+    /**
+     * Returns this {@code ChainX},
+     * if a value is not {@code null}, the given consumer function updates the value.
+     *
+     * <p>
+     * If the given consumer function throws an exception,
+     * ignores the exception.
+     *
+     * <p>
+     * ATTENTION: This method mutates the value.
+     *
+     * @param mutator the consumer function to accept to a value, if not {@code null}
+     * @param <X>     the type of exception
+     * @return this {@code ChainX} storing the updates value
+     * @throws NullPointerException if value is not {@code null} and {@code mutator} is {@code null}
+     * @see io.github.alexengrig.lambdax.function.ThrowableConsumer
+     * @since 0.5.0
+     */
     public <X extends Throwable> ChainX<T> tryMutate(ThrowableConsumer<? super T, ? super X> mutator) {
         if (nonNull()) {
             try {
@@ -648,6 +666,26 @@ public class ChainX<T> {
         return this;
     }
 
+    /**
+     * Returns this {@code ChainX},
+     * if a value is not {@code null}, the given consumer function updates the value.
+     *
+     * <p>
+     * If the given consumer function throws an exception,
+     * passes the exception to the given exception consumer.
+     *
+     * <p>
+     * ATTENTION: This method mutates the value.
+     *
+     * @param mutator the consumer function to accept to a value, if not {@code null}
+     * @param <X>     the type of exception
+     * @return this {@code ChainX} storing the updates value
+     * @throws NullPointerException if value is not {@code null} and {@code mutator} is {@code null},
+     *                              or {@code mutator} throws an exception and {@code catcher} is {@code null}
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowableConsumer
+     * @since 0.5.0
+     */
     @SuppressWarnings("unchecked")
     public <X extends Throwable> ChainX<T> tryMutate(
             ThrowableConsumer<? super T, ? super X> mutator, Consumer<? super X> catcher) {
