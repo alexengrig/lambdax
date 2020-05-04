@@ -54,6 +54,10 @@ public class ChainXTest {
         fail("Fail throwable function");
         return t;
     };
+    private final ThrowableFunction<String, ChainX<String>, AssertionError> failChainThrowableFunction = t -> {
+        fail("Fail chain throwable function");
+        return ChainX.empty();
+    };
 
     @Test
     public void checkEmpty() {
@@ -402,6 +406,97 @@ public class ChainXTest {
         assertTrue(ChainX.<String>empty().tryMapOrCatch(failThrowableFunction, t -> {
             fail();
             return "unexpected";
+        }).isNull());
+    }
+
+    @Test
+    public void checkTryFlatMapOrEmpty() {
+        assertTrue(ChainX.of("").tryFlatMapOrEmpty(failChainThrowableFunction).isNull());
+        assertTrue(ChainX.of("").tryFlatMapOrEmpty(s -> {
+            throw new UnexpectedException();
+        }).isNull());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrEmpty(failChainThrowableFunction).isNull());
+    }
+
+    @Test
+    public void checkTryFlatMapOrEmptyWithCatcher() {
+        final Ref<AssertionError> refAssertionError = new Ref<>(null);
+        assertTrue(ChainX.of("").tryFlatMapOrEmpty(failChainThrowableFunction, refAssertionError::set).isNull());
+        assertNotNull(refAssertionError.get());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrEmpty(failChainThrowableFunction, e -> fail()).isNull());
+        final Ref<ExpectedException> refExpectedException = new Ref<>(null);
+        assertTrue(ChainX.of("").tryFlatMapOrEmpty(s -> {
+            throw new ExpectedException();
+        }, refExpectedException::set).isNull());
+        assertNotNull(refExpectedException.get());
+    }
+
+    @Test
+    public void checkTryFlatMapOrElse() {
+        final String expected = "expected";
+        assertEquals(expected, ChainX.of("").tryFlatMapOrElse(failChainThrowableFunction, ChainX.of(expected)).get());
+        assertEquals(expected, ChainX.of("").tryFlatMapOrElse(s -> {
+            throw new ExpectedException();
+        }, ChainX.of(expected)).get());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrElse(failChainThrowableFunction, ChainX.of(expected)).isNull());
+    }
+
+    @Test
+    public void checkTryFlatMapOrElseWithCatcher() {
+        final String expected = "expected";
+        final Ref<AssertionError> refAssertionError = new Ref<>();
+        assertEquals(expected, ChainX.of("")
+                .tryFlatMapOrElse(failChainThrowableFunction, ChainX.of(expected), refAssertionError::set).get());
+        assertNotNull(refAssertionError.get());
+        final Ref<ExpectedException> refExpectedException = new Ref<>();
+        assertEquals(expected, ChainX.of("").tryFlatMapOrElse(s -> {
+            throw new ExpectedException();
+        }, ChainX.of(expected), refExpectedException::set).get());
+        assertNotNull(refExpectedException.get());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrElse(failChainThrowableFunction, ChainX.of(expected), e -> fail()).isNull());
+    }
+
+    @Test
+    public void checkTryFlatMapOrGet() {
+        final String expected = "expected";
+        assertEquals(expected, ChainX.of("").tryFlatMapOrGet(failChainThrowableFunction, () -> ChainX.of(expected)).get());
+        assertEquals(expected, ChainX.of("").tryFlatMapOrGet(s -> {
+            throw new ExpectedException();
+        }, () -> ChainX.of(expected)).get());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrGet(failChainThrowableFunction, () -> {
+            fail();
+            return ChainX.of("unexpected");
+        }).isNull());
+    }
+
+    @Test
+    public void checkTryFlatMapOrGetWithCatcher() {
+        final String expected = "expected";
+        final Ref<AssertionError> refAssertionError = new Ref<>();
+        assertEquals(expected, ChainX.of("")
+                .tryFlatMapOrGet(failChainThrowableFunction, () -> ChainX.of(expected), refAssertionError::set).get());
+        assertNotNull(refAssertionError.get());
+        final Ref<ExpectedException> refExpectedException = new Ref<>();
+        assertEquals(expected, ChainX.of("").tryFlatMapOrGet(s -> {
+            throw new ExpectedException();
+        }, () -> ChainX.of(expected), refExpectedException::set).get());
+        assertNotNull(refExpectedException.get());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrGet(failChainThrowableFunction, () -> {
+            fail();
+            return ChainX.of("unexpected");
+        }, e -> fail()).isNull());
+    }
+
+    @Test
+    public void checkTryFlatMapOrCatch() {
+        final String expected = "expected";
+        assertEquals(expected, ChainX.of("").tryFlatMapOrCatch(failChainThrowableFunction, t -> ChainX.of(expected)).get());
+        assertEquals(expected, ChainX.of("").tryFlatMapOrCatch(s -> {
+            throw new ExpectedException();
+        }, t -> ChainX.of(expected)).get());
+        assertTrue(ChainX.<String>empty().tryFlatMapOrCatch(failChainThrowableFunction, t -> {
+            fail();
+            return ChainX.of("unexpected");
         }).isNull());
     }
 
