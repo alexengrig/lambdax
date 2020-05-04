@@ -265,7 +265,7 @@ public class ChainX<T> {
         return empty();
     }
 
-//    Try
+//    Try filter
 
     /**
      * If the value is not {@code null},
@@ -637,6 +637,8 @@ public class ChainX<T> {
         }
     }
 
+//    Try mutate
+
     /**
      * Returns this {@code ChainX},
      * if a value is not {@code null}, the given consumer function updates the value.
@@ -697,6 +699,8 @@ public class ChainX<T> {
         }
         return this;
     }
+
+//    Try map
 
     /**
      * If a value is not {@code null},
@@ -961,6 +965,8 @@ public class ChainX<T> {
         }
         return empty();
     }
+
+//    Try flatMap
 
     /**
      * If a value is not {@code null},
