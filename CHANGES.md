@@ -1,5 +1,9 @@
 # *Lambda*X changes
 
+## 0.5.0
+
+*   [[#87](../../issues/87)] Create tryXXX methods to ChainX
+
 ## 0.4.0
 
 *   [[#101](../../issues/101)] Create left, right, center, compose and pipe of FunctionX
