@@ -339,7 +339,6 @@ public class ChainX<T> {
         }
     }
 
-
     /**
      * If the value is not {@code null},
      * and the value matches the given predicate,
