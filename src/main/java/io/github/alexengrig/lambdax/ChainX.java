@@ -704,7 +704,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * returns an empty {@code ChainX}.
      *
      * @param mapper the mapping function to apply to a value, if not {@code null}
@@ -735,7 +735,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * passes the exception to the given exception consumer and
      * returns an empty {@code ChainX}.
      *
@@ -773,7 +773,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * returns a {@code ChainX} storing (as if by {@link #of}) the given value.
      *
      * @param mapper the mapping function to apply to a value, if not {@code null}
@@ -807,7 +807,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * passes the exception to the given exception consumer and
      * returns a {@code ChainX} storing (as if by {@link #of}) the given value.
      *
@@ -848,7 +848,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * returns a {@code ChainX} storing (as if by {@link #of}) a value produced by the given supplying function.
      *
      * @param mapper   the mapping function to apply to a value, if not {@code null}
@@ -884,7 +884,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * passes the exception to the given exception consumer and
      * returns a {@code ChainX} storing (as if by {@link #of}) a value produced by the given supplying function.
      *
@@ -928,7 +928,7 @@ public class ChainX<T> {
      * the given mapping function to the value, otherwise returns an empty {@code ChainX}.
      *
      * <p>
-     * If the give mapping function throws an exception,
+     * If the given mapping function throws an exception,
      * passes the exception to the given exception function and
      * returns a {@code ChainX} storing (as if by {@link #of}) the returning value.
      *
