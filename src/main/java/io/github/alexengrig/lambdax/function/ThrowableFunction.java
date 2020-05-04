@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 
-/**
- * <p>This package contains utility classes with useful lambdas for
- * functions.</p>
- *
- * <p>The following name suffixes are used:</p>
- * <pre>
- * X - a utility class.
- * I - an interface.
- * B - a base implementation of interface.
- * </pre>
- *
- * @version 0.5.0
- * @author Grig Alex
- * @since 0.2.0
- */
 package io.github.alexengrig.lambdax.function;
+
+@FunctionalInterface
+public interface ThrowableFunction<T, R, X extends Throwable> {
+    static <T, X extends Throwable> ThrowableFunction<T, T, X> identity() {
+        return t -> t;
+    }
+
+    R apply(T t) throws X;
+
+    default <V> ThrowableFunction<V, R, X> compose(ThrowableFunction<? super V, ? extends T, ? extends X> before) {
+        return v -> apply(before.apply(v));
+    }
+
+    default <V> ThrowableFunction<T, V, X> andThen(ThrowableFunction<? super R, ? extends V, ? extends X> after) {
+        return t -> after.apply(apply(t));
+    }
+}

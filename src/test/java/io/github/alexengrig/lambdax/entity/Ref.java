@@ -14,19 +14,27 @@
  * limitations under the License.
  */
 
-/**
- * <p>This package contains utility classes with useful lambdas for
- * functions.</p>
- *
- * <p>The following name suffixes are used:</p>
- * <pre>
- * X - a utility class.
- * I - an interface.
- * B - a base implementation of interface.
- * </pre>
- *
- * @version 0.5.0
- * @author Grig Alex
- * @since 0.2.0
- */
-package io.github.alexengrig.lambdax.function;
+package io.github.alexengrig.lambdax.entity;
+
+public class Ref<T> {
+    private T value;
+
+    public Ref() {
+    }
+
+    public Ref(T value) {
+        this.value = value;
+    }
+
+    public T get() {
+        return value;
+    }
+
+    public void set(T value) {
+        this.value = value;
+    }
+
+    public void nullify() {
+        value = null;
+    }
+}

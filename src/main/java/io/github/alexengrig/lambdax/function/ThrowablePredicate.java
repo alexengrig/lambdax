@@ -14,19 +14,26 @@
  * limitations under the License.
  */
 
-/**
- * <p>This package contains utility classes with useful lambdas for
- * functions.</p>
- *
- * <p>The following name suffixes are used:</p>
- * <pre>
- * X - a utility class.
- * I - an interface.
- * B - a base implementation of interface.
- * </pre>
- *
- * @version 0.5.0
- * @author Grig Alex
- * @since 0.2.0
- */
 package io.github.alexengrig.lambdax.function;
+
+import java.util.Objects;
+
+public interface ThrowablePredicate<T, X extends Throwable> {
+    static <T, X extends Throwable> ThrowablePredicate<T, X> isEqual(Object o) {
+        return o == null ? Objects::isNull : o::equals;
+    }
+
+    boolean test(T t) throws X;
+
+    default ThrowablePredicate<T, X> and(ThrowablePredicate<? super T, ? extends X> other) {
+        return t -> test(t) && other.test(t);
+    }
+
+    default ThrowablePredicate<T, X> negate() {
+        return t -> !test(t);
+    }
+
+    default ThrowablePredicate<T, X> or(ThrowablePredicate<? super T, ? extends X> other) {
+        return t -> test(t) || other.test(t);
+    }
+}

@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-/**
- * <p>This package contains utility classes with useful lambdas for
- * functions.</p>
- *
- * <p>The following name suffixes are used:</p>
- * <pre>
- * X - a utility class.
- * I - an interface.
- * B - a base implementation of interface.
- * </pre>
- *
- * @version 0.5.0
- * @author Grig Alex
- * @since 0.2.0
- */
 package io.github.alexengrig.lambdax.function;
+
+public interface ThrowableConsumer<T, X extends Throwable> {
+    void accept(T t) throws X;
+
+    default ThrowableConsumer<T, X> andThen(ThrowableConsumer<? super T, ? extends X> after) {
+        return t -> {
+            accept(t);
+            after.accept(t);
+        };
+    }
+}
