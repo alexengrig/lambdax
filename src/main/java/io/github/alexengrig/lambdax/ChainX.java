@@ -31,7 +31,9 @@ import java.util.stream.Stream;
 
 /**
  * A value container which may manipulate its value.
- * <p>All methods,
+ *
+ * <p>
+ * All methods,
  * except {@link #mutate(Consumer)},
  * {@link #tryMutate(ThrowableConsumer)} and {@link #tryMutate(ThrowableConsumer, Consumer)},
  * are pure functions.
