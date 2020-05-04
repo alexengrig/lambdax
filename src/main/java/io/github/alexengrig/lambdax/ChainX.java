@@ -1283,6 +1283,307 @@ public class ChainX<T> {
         return empty();
     }
 
+//    Try flatMapOptional
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * returns an empty {@link java.util.Optional}.
+     *
+     * @param mapper the mapping function to apply to a value, if not {@code null}
+     * @param <R>    the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>    the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional}
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null}
+     * @see java.util.Optional
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrEmpty(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper) {
+        if (nonNull()) {
+            try {
+                final Optional<R> optional = (Optional<R>) mapper.apply(value);
+                return ChainX.of(optional.orElse(null));
+            } catch (Throwable ignore) {
+                return empty();
+            }
+        }
+        return empty();
+    }
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * passes the exception to the given exception consumer and
+     * returns an empty {@link java.util.Optional}.
+     *
+     * @param mapper  the mapping function to apply to a value, if not {@code null}
+     * @param catcher the consumer to accept to an exception,
+     *                if {@code mapper} throws the exception
+     * @param <R>     the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>     the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional}
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and {@code catcher} is {@code null}
+     * @see java.util.Optional
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrEmpty(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper,
+            Consumer<? super X> catcher) {
+        if (nonNull()) {
+            try {
+                final Optional<R> optional = (Optional<R>) mapper.apply(value);
+                return ChainX.of(optional.orElse(null));
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+                return empty();
+            }
+        }
+        return empty();
+    }
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * returns the given {@link java.util.Optional}.
+     *
+     * @param mapper the mapping function to apply to a value, if not {@code null}
+     * @param other  the resulting {@link java.util.Optional} in case of exception
+     * @param <R>    the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>    the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional};
+     * {@code other}, if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and {@code other} is {@code null}
+     * @see java.util.Optional
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings({"unchecked", "OptionalUsedAsFieldOrParameterType"})
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrElse(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper, Optional<R> other) {
+        if (nonNull()) {
+            Optional<R> optional;
+            try {
+                optional = (Optional<R>) mapper.apply(value);
+            } catch (Throwable ignore) {
+                optional = Objects.requireNonNull(other, "The other Optional must not be null");
+            }
+            return ChainX.of(optional.orElse(null));
+        }
+        return empty();
+    }
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * passes the exception to the given exception consumer and
+     * returns the given {@link java.util.Optional}.
+     *
+     * @param mapper  the mapping function to apply to a value, if not {@code null}
+     * @param other   the resulting {@link java.util.Optional} in case of exception
+     * @param catcher the consumer to accept to an exception,
+     *                if {@code mapper} throws the exception
+     * @param <R>     the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>     the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional};
+     * {@code other}, if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and,
+     *                              {@code catcher} is {@code null} or {@code other} is {@code null}
+     * @see java.util.Optional
+     * @see java.util.function.Consumer
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings({"unchecked", "OptionalUsedAsFieldOrParameterType"})
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrElse(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper, Optional<R> other,
+            Consumer<? super X> catcher) {
+        if (nonNull()) {
+            Optional<R> optional;
+            try {
+                optional = (Optional<R>) mapper.apply(value);
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+                optional = Objects.requireNonNull(other, "The other Optional must not be null");
+            }
+            return ChainX.of(optional.orElse(null));
+        }
+        return empty();
+    }
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * returns a {@link java.util.Optional} produced by the given supplying function.
+     *
+     * @param mapper   the mapping function to apply to a value, if not {@code null}
+     * @param producer the supplying function that produces a {@link java.util.Optional} in case of exception
+     * @param <R>      the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>      the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional};
+     * a {@link java.util.Optional} produced by {@code producer},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and,
+     *                              {@code producer} is {@code null} or {@code producer} result is {@code null}
+     * @see java.util.Optional
+     * @see java.util.function.Supplier
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrGet(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper,
+            Supplier<? extends Optional<R>> producer) {
+        if (nonNull()) {
+            Optional<R> optional;
+            try {
+                optional = (Optional<R>) mapper.apply(value);
+            } catch (Throwable ignore) {
+                optional = Objects.requireNonNull(producer.get(), "The resulting Optional must not be null");
+            }
+            return ChainX.of(optional.orElse(null));
+        }
+        return empty();
+    }
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * passes the exception to the given exception consumer and
+     * returns a {@link java.util.Optional} produced by the given supplying function.
+     *
+     * @param mapper   the mapping function to apply to a value, if not {@code null}
+     * @param producer the supplying function that produces a {@link java.util.Optional} in case of exception
+     * @param catcher  the consumer to accept to an exception,
+     *                 if {@code mapper} throws the exception
+     * @param <R>      the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>      the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional};
+     * a {@link java.util.Optional} produced by {@code producer},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and, {@code catcher} is {@code null} or
+     *                              {@code producer} is {@code null} or {@code producer} result is {@code null}
+     * @see java.util.Optional
+     * @see java.util.function.Consumer
+     * @see java.util.function.Supplier
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrGet(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper,
+            Supplier<? extends Optional<R>> producer, Consumer<? super X> catcher) {
+        if (nonNull()) {
+            Optional<R> optional;
+            try {
+                optional = (Optional<R>) mapper.apply(value);
+            } catch (Throwable throwable) {
+                catcher.accept((X) throwable);
+                optional = Objects.requireNonNull(producer.get(), "The resulting Optional must not be null");
+            }
+            return ChainX.of(optional.orElse(null));
+        }
+        return empty();
+    }
+
+    /**
+     * If a value is not {@code null},
+     * returns the result of applying the given {@link java.util.Optional}-bearing mapping function to the value,
+     * otherwise returns an empty {@link java.util.Optional}.
+     *
+     * <p>
+     * If the given mapping function throws an exception,
+     * passes the exception to the given exception function and
+     * returns the returning {@link java.util.Optional}.
+     *
+     * @param mapper  the mapping function to apply to a value, if not {@code null}
+     * @param catcher the function to accept to an exception and
+     *                to return an {@link java.util.Optional},
+     *                if {@code mapper} throws the exception
+     * @param <R>     the type of value of the {@link java.util.Optional} returned by the mapping function
+     * @param <X>     the type of exception
+     * @return the result of applying a {@link java.util.Optional}-bearing mapping
+     * function to the value of this {@link java.util.Optional},
+     * if a value is not {@code null} and {@code mapper} does not throw an exception,
+     * otherwise an empty {@link java.util.Optional};
+     * a {@link java.util.Optional} produced by {@code catcher},
+     * if {@code mapper} throws an exception
+     * @throws NullPointerException if value is not {@code null} and {@code mapper} is {@code null},
+     *                              or {@code mapper} throws an exception and,
+     *                              {@code catcher} is {@code null} or {@code catcher} result is {@code null}
+     * @see java.util.Optional
+     * @see java.util.function.Function
+     * @see io.github.alexengrig.lambdax.function.ThrowableFunction
+     * @since 0.5.0
+     */
+    @SuppressWarnings("unchecked")
+    public <R, X extends Throwable> ChainX<R> tryFlatMapOptionalOrCatch(
+            ThrowableFunction<? super T, ? extends Optional<? extends R>, ? extends X> mapper,
+            Function<? super X, ? extends Optional<R>> catcher) {
+        if (nonNull()) {
+            Optional<R> optional;
+            try {
+                optional = (Optional<R>) mapper.apply(value);
+            } catch (Throwable throwable) {
+                optional = Objects.requireNonNull(catcher.apply((X) throwable), "The resulting Optional must not be null");
+            }
+            return ChainX.of(optional.orElse(null));
+        }
+        return empty();
+    }
+
 //    Or
 
     /**
