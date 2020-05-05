@@ -24,9 +24,9 @@ import java.util.function.Predicate;
  * This utility class contains useful lambdas for {@link java.lang.String}.
  *
  * @author Grig Alex
- * @version 0.999.0
+ * @version 0.5.0
  * @see java.lang.String
- * @since 0.999.0
+ * @since 0.5.0
  */
 public final class StringX {
     private StringX() {
@@ -44,7 +44,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#replaceFirst(String, String)} function
      * @see java.lang.String#replaceFirst(String, String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> replaceFirst(String regex, String replacement) {
         return s -> s.replaceFirst(regex, replacement);
@@ -62,7 +62,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#replaceAll(String, String)} function
      * @see java.lang.String#replaceAll(String, String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> replaceAll(String regex, String replacement) {
         return s -> s.replaceAll(regex, replacement);
@@ -80,7 +80,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function
      * @see java.lang.String#replace(CharSequence, CharSequence)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> replace(CharSequence target, CharSequence replacement) {
         return s -> s.replace(target, replacement);
@@ -97,7 +97,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#substring(int)} function
      * @see java.lang.String#substring(int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> substring(int beginIndex) {
         return s -> s.substring(beginIndex);
@@ -115,7 +115,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#substring(int, int)} function
      * @see java.lang.String#substring(int, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> substring(int beginIndex, int endIndex) {
         return s -> s.substring(beginIndex, endIndex);
@@ -132,7 +132,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#concat(String)} function
      * @see java.lang.String#concat(String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> concat(String str) {
         return s -> s.concat(str);
@@ -150,7 +150,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#replace(char, char)} function
      * @see java.lang.String#replace(char, char)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String> replace(char oldChar, char newChar) {
         return s -> s.replace(oldChar, newChar);
@@ -167,7 +167,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#split(String)} function
      * @see java.lang.String#split(String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String[]> split(String regex) {
         return s -> s.split(regex);
@@ -185,7 +185,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#split(String, int)} function
      * @see java.lang.String#split(String, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, String[]> split(String regex, int limit) {
         return s -> s.split(regex, limit);
@@ -203,7 +203,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#subSequence(int, int)} function
      * @see java.lang.String#subSequence(int, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, CharSequence> subSequence(int beginIndex, int endIndex) {
         return s -> s.subSequence(beginIndex, endIndex);
@@ -220,7 +220,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#charAt(int)} function
      * @see java.lang.String#charAt(int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Character> charAt(int index) {
         return s -> s.charAt(index);
@@ -237,7 +237,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#indexOf(int)} function
      * @see java.lang.String#indexOf(int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> indexOf(int ch) {
         return s -> s.indexOf(ch);
@@ -255,7 +255,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#indexOf(int, int)} function
      * @see java.lang.String#indexOf(int, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> indexOf(int ch, int fromIndex) {
         return s -> s.indexOf(ch, fromIndex);
@@ -272,7 +272,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#lastIndexOf(int)} function
      * @see java.lang.String#lastIndexOf(int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> lastIndexOf(int ch) {
         return s -> s.lastIndexOf(ch);
@@ -290,7 +290,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#lastIndexOf(int, int)} function
      * @see java.lang.String#lastIndexOf(int, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> lastIndexOf(int ch, int fromIndex) {
         return s -> s.lastIndexOf(ch, fromIndex);
@@ -307,7 +307,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#indexOf(String)} function
      * @see java.lang.String#indexOf(String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> indexOf(String str) {
         return s -> s.indexOf(str);
@@ -325,7 +325,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#indexOf(String, int)} function
      * @see java.lang.String#indexOf(String, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> indexOf(String str, int fromIndex) {
         return s -> s.indexOf(str, fromIndex);
@@ -342,7 +342,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#lastIndexOf(String)} function
      * @see java.lang.String#lastIndexOf(String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> lastIndexOf(String str) {
         return s -> s.lastIndexOf(str);
@@ -360,7 +360,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#lastIndexOf(String, int)} function
      * @see java.lang.String#lastIndexOf(String, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> lastIndexOf(String str, int fromIndex) {
         return s -> s.lastIndexOf(str, fromIndex);
@@ -377,7 +377,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#codePointAt(int)} function
      * @see java.lang.String#codePointAt(int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> codePointAt(int index) {
         return s -> s.codePointAt(index);
@@ -394,7 +394,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#codePointBefore(int)} function
      * @see java.lang.String#codePointBefore(int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> codePointBefore(int index) {
         return s -> s.codePointBefore(index);
@@ -412,7 +412,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#codePointCount(int, int)} function
      * @see java.lang.String#codePointCount(int, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> codePointCount(int beginIndex, int endIndex) {
         return s -> s.codePointCount(beginIndex, endIndex);
@@ -430,7 +430,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#offsetByCodePoints(int, int)} function
      * @see java.lang.String#offsetByCodePoints(int, int)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> offsetByCodePoints(int index, int codePointOffset) {
         return s -> s.offsetByCodePoints(index, codePointOffset);
@@ -447,7 +447,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#compareTo(String)} function
      * @see java.lang.String#compareTo(String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> compareTo(String other) {
         return s -> s.compareTo(other);
@@ -464,7 +464,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#compareToIgnoreCase(String)} function
      * @see java.lang.String#compareToIgnoreCase(String)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, Integer> compareToIgnoreCase(String other) {
         return s -> s.compareToIgnoreCase(other);
@@ -481,7 +481,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#getBytes(Charset)} function
      * @see java.lang.String#getBytes(Charset)
      * @see java.util.function.Function
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Function<String, byte[]> getBytes(Charset charset) {
         return s -> s.getBytes(charset);
@@ -498,7 +498,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#startsWith(String)} predicate
      * @see java.lang.String#startsWith(String)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> startsWith(String prefix) {
         return s -> s.startsWith(prefix);
@@ -516,7 +516,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#startsWith(String, int)} predicate
      * @see java.lang.String#startsWith(String, int)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> startsWith(String prefix, int offset) {
         return s -> s.startsWith(prefix, offset);
@@ -533,7 +533,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#endsWith(String)} predicate
      * @see java.lang.String#endsWith(String)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> endsWith(String suffix) {
         return s -> s.endsWith(suffix);
@@ -550,7 +550,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#contains(CharSequence)} predicate
      * @see java.lang.String#contains(CharSequence)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> contains(CharSequence cs) {
         return s -> s.contains(cs);
@@ -567,7 +567,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#matches(String)} predicate
      * @see java.lang.String#matches(String)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> matches(String regex) {
         return s -> s.matches(regex);
@@ -584,7 +584,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#contentEquals(StringBuffer)} predicate
      * @see java.lang.String#contentEquals(StringBuffer)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> contentEqualsTo(StringBuffer sb) {
         return s -> s.contentEquals(sb);
@@ -601,7 +601,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#contentEquals(CharSequence)} predicate
      * @see java.lang.String#contentEquals(CharSequence)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> contentEqualsTo(CharSequence cs) {
         return s -> s.contentEquals(cs);
@@ -618,7 +618,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#equalsIgnoreCase(String)} predicate
      * @see java.lang.String#equalsIgnoreCase(String)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> equalsIgnoreCaseTo(String other) {
         return s -> s.equalsIgnoreCase(other);
@@ -635,7 +635,7 @@ public final class StringX {
      * @return the carrying {@link java.lang.String#equals(Object)} predicate
      * @see java.lang.String#equals(Object)
      * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @since 0.5.0
      */
     public static Predicate<String> equalsTo(Object other) {
         return s -> s.equals(other);

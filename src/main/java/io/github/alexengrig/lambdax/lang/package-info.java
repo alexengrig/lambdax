@@ -24,8 +24,8 @@
  * X - an utility class.
  * </pre>
  *
- * @version 0.999.0
+ * @version 0.5.0
  * @author Grig Alex
- * @since 0.999.0
+ * @since 0.5.0
  */
 package io.github.alexengrig.lambdax.lang;
