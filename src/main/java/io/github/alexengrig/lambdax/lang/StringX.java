@@ -586,7 +586,7 @@ public final class StringX {
      * @see java.util.function.Predicate
      * @since 0.999.0
      */
-    public static Predicate<String> contentEquals(StringBuffer sb) {
+    public static Predicate<String> contentEqualsTo(StringBuffer sb) {
         return s -> s.contentEquals(sb);
     }
 
@@ -603,7 +603,7 @@ public final class StringX {
      * @see java.util.function.Predicate
      * @since 0.999.0
      */
-    public static Predicate<String> contentEquals(CharSequence cs) {
+    public static Predicate<String> contentEqualsTo(CharSequence cs) {
         return s -> s.contentEquals(cs);
     }
 

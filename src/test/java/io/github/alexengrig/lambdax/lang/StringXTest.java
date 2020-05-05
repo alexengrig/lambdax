@@ -209,13 +209,13 @@ public class StringXTest {
     }
 
     @Test
-    public void checkContentEqualsWithStringBuffer() {
-        equalResult(StringX.contentEquals(SB), s -> s.contentEquals(SB));
+    public void checkContentEqualsToWithStringBuffer() {
+        equalResult(StringX.contentEqualsTo(SB), s -> s.contentEquals(SB));
     }
 
     @Test
-    public void checkContentEqualsWithCharSequence() {
-        equalResult(StringX.contentEquals(STR), s -> s.contentEquals(STR));
+    public void checkContentEqualsToWithCharSequence() {
+        equalResult(StringX.contentEqualsTo(STR), s -> s.contentEquals(STR));
     }
 
     @Test
