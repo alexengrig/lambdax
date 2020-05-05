@@ -50,6 +50,14 @@ public final class StringX {
         return s -> s.replaceFirst(regex, replacement);
     }
 
+    public static Function<String, Function<String, String>> leftReplaceFirst(String regex) {
+        return replacement -> s -> s.replaceFirst(regex, replacement);
+    }
+
+    public static Function<String, Function<String, String>> rightReplaceFirst(String replacement) {
+        return regex -> s -> s.replaceFirst(regex, replacement);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#replaceAll(String, String)} function:
      *
@@ -68,6 +76,14 @@ public final class StringX {
         return s -> s.replaceAll(regex, replacement);
     }
 
+    public static Function<String, Function<String, String>> leftReplaceAll(String regex) {
+        return replacement -> s -> s.replaceAll(regex, replacement);
+    }
+
+    public static Function<String, Function<String, String>> rightReplaceAll(String replacement) {
+        return regex -> s -> s.replaceAll(regex, replacement);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function:
      *
@@ -84,6 +100,14 @@ public final class StringX {
      */
     public static Function<String, String> replace(CharSequence target, CharSequence replacement) {
         return s -> s.replace(target, replacement);
+    }
+
+    public static Function<String, Function<String, String>> leftReplace(CharSequence target) {
+        return replacement -> s -> s.replace(target, replacement);
+    }
+
+    public static Function<String, Function<String, String>> rightReplace(CharSequence replacement) {
+        return target -> s -> s.replace(target, replacement);
     }
 
     /**
@@ -121,6 +145,14 @@ public final class StringX {
         return s -> s.substring(beginIndex, endIndex);
     }
 
+    public static Function<Integer, Function<String, String>> leftSubstring(int beginIndex) {
+        return endIndex -> s -> s.substring(beginIndex, endIndex);
+    }
+
+    public static Function<Integer, Function<String, String>> rightSubstring(int endIndex) {
+        return beginIndex -> s -> s.substring(beginIndex, endIndex);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#concat(String)} function:
      *
@@ -154,6 +186,14 @@ public final class StringX {
      */
     public static Function<String, String> replace(char oldChar, char newChar) {
         return s -> s.replace(oldChar, newChar);
+    }
+
+    public static Function<Character, Function<String, String>> leftReplace(char oldChar) {
+        return newChar -> s -> s.replace(oldChar, newChar);
+    }
+
+    public static Function<Character, Function<String, String>> rightReplace(char newChar) {
+        return oldChar -> s -> s.replace(oldChar, newChar);
     }
 
     /**
@@ -191,6 +231,14 @@ public final class StringX {
         return s -> s.split(regex, limit);
     }
 
+    public static Function<Integer, Function<String, String[]>> leftSplit(String regex) {
+        return limit -> s -> s.split(regex, limit);
+    }
+
+    public static Function<String, Function<String, String[]>> rightSplit(int limit) {
+        return regex -> s -> s.split(regex, limit);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#subSequence(int, int)} function:
      *
@@ -207,6 +255,14 @@ public final class StringX {
      */
     public static Function<String, CharSequence> subSequence(int beginIndex, int endIndex) {
         return s -> s.subSequence(beginIndex, endIndex);
+    }
+
+    public static Function<Integer, Function<String, CharSequence>> leftSubSequence(int beginIndex) {
+        return endIndex -> s -> s.subSequence(beginIndex, endIndex);
+    }
+
+    public static Function<Integer, Function<String, CharSequence>> rightSubSequence(int endIndex) {
+        return beginIndex -> s -> s.subSequence(beginIndex, endIndex);
     }
 
     /**
@@ -261,6 +317,14 @@ public final class StringX {
         return s -> s.indexOf(ch, fromIndex);
     }
 
+    public static Function<Integer, Function<String, Integer>> leftIndexOf(int ch) {
+        return fromIndex -> s -> s.indexOf(ch, fromIndex);
+    }
+
+    public static Function<Integer, Function<String, Integer>> rightIndexOfChar(int fromIndex) {
+        return ch -> s -> s.indexOf(ch, fromIndex);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#lastIndexOf(int)} function:
      *
@@ -294,6 +358,14 @@ public final class StringX {
      */
     public static Function<String, Integer> lastIndexOf(int ch, int fromIndex) {
         return s -> s.lastIndexOf(ch, fromIndex);
+    }
+
+    public static Function<Integer, Function<String, Integer>> leftLastIndexOf(int ch) {
+        return fromIndex -> s -> s.lastIndexOf(ch, fromIndex);
+    }
+
+    public static Function<Integer, Function<String, Integer>> rightLastIndexOfChar(int fromIndex) {
+        return ch -> s -> s.lastIndexOf(ch, fromIndex);
     }
 
     /**
@@ -331,6 +403,14 @@ public final class StringX {
         return s -> s.indexOf(str, fromIndex);
     }
 
+    public static Function<Integer, Function<String, Integer>> leftIndexOf(String str) {
+        return fromIndex -> s -> s.indexOf(str, fromIndex);
+    }
+
+    public static Function<String, Function<String, Integer>> rightIndexOfString(int fromIndex) {
+        return str -> s -> s.indexOf(str, fromIndex);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#lastIndexOf(String)} function:
      *
@@ -364,6 +444,14 @@ public final class StringX {
      */
     public static Function<String, Integer> lastIndexOf(String str, int fromIndex) {
         return s -> s.lastIndexOf(str, fromIndex);
+    }
+
+    public static Function<Integer, Function<String, Integer>> leftLastIndexOf(String str) {
+        return fromIndex -> s -> s.lastIndexOf(str, fromIndex);
+    }
+
+    public static Function<String, Function<String, Integer>> rightLastIndexOfString(int fromIndex) {
+        return str -> s -> s.lastIndexOf(str, fromIndex);
     }
 
     /**
@@ -418,6 +506,14 @@ public final class StringX {
         return s -> s.codePointCount(beginIndex, endIndex);
     }
 
+    public static Function<Integer, Function<String, Integer>> leftCodePointCount(int beginIndex) {
+        return endIndex -> s -> s.codePointCount(beginIndex, endIndex);
+    }
+
+    public static Function<Integer, Function<String, Integer>> rightCodePointCount(int endIndex) {
+        return beginIndex -> s -> s.codePointCount(beginIndex, endIndex);
+    }
+
     /**
      * Returns the carrying {@link java.lang.String#offsetByCodePoints(int, int)} function:
      *
@@ -434,6 +530,14 @@ public final class StringX {
      */
     public static Function<String, Integer> offsetByCodePoints(int index, int codePointOffset) {
         return s -> s.offsetByCodePoints(index, codePointOffset);
+    }
+
+    public static Function<Integer, Function<String, Integer>> leftOffsetByCodePoints(int index) {
+        return codePointOffset -> s -> s.offsetByCodePoints(index, codePointOffset);
+    }
+
+    public static Function<Integer, Function<String, Integer>> rightOffsetByCodePoints(int codePointOffset) {
+        return index -> s -> s.offsetByCodePoints(index, codePointOffset);
     }
 
     /**
@@ -520,6 +624,14 @@ public final class StringX {
      */
     public static Predicate<String> startsWith(String prefix, int offset) {
         return s -> s.startsWith(prefix, offset);
+    }
+
+    public static Function<Integer, Predicate<String>> leftStartsWith(String prefix) {
+        return offset -> s -> s.startsWith(prefix, offset);
+    }
+
+    public static Function<String, Predicate<String>> rightStartsWith(int offset) {
+        return prefix -> s -> s.startsWith(prefix, offset);
     }
 
     /**
