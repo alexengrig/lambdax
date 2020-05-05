@@ -33,6 +33,66 @@ public final class StringX {
     }
 
     /**
+     * Returns the carrying {@link java.lang.String#concat(String)} function:
+     *
+     * <pre>
+     * s -&gt; s.concat(str)
+     * </pre>
+     *
+     * @param str the argument of {@link java.lang.String#concat(String)}
+     * @return the carrying {@link java.lang.String#concat(String)} function
+     * @see java.lang.String#concat(String)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
+    public static Function<String, String> concat(String str) {
+        return s -> s.concat(str);
+    }
+
+    /**
+     * Returns the carrying {@link java.lang.String#substring(int)} function:
+     *
+     * <pre>
+     * s -&gt; s.substring(beginIndex)
+     * </pre>
+     *
+     * @param beginIndex the argument of {@link java.lang.String#substring(int)}
+     * @return the carrying {@link java.lang.String#substring(int)} function
+     * @see java.lang.String#substring(int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
+    public static Function<String, String> substring(int beginIndex) {
+        return s -> s.substring(beginIndex);
+    }
+
+    /**
+     * Returns the carrying {@link java.lang.String#substring(int, int)} function:
+     *
+     * <pre>
+     * s -&gt; s.substring(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param beginIndex the first argument of {@link java.lang.String#substring(int, int)}
+     * @param endIndex   the second argument of {@link java.lang.String#substring(int, int)}
+     * @return the carrying {@link java.lang.String#substring(int, int)} function
+     * @see java.lang.String#substring(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
+    public static Function<String, String> substring(int beginIndex, int endIndex) {
+        return s -> s.substring(beginIndex, endIndex);
+    }
+
+    public static Function<Integer, Function<String, String>> leftSubstring(int beginIndex) {
+        return endIndex -> s -> s.substring(beginIndex, endIndex);
+    }
+
+    public static Function<Integer, Function<String, String>> rightSubstring(int endIndex) {
+        return beginIndex -> s -> s.substring(beginIndex, endIndex);
+    }
+
+    /**
      * Returns the carrying {@link java.lang.String#replaceFirst(String, String)} function:
      *
      * <pre>
@@ -108,66 +168,6 @@ public final class StringX {
 
     public static Function<String, Function<String, String>> rightReplace(CharSequence replacement) {
         return target -> s -> s.replace(target, replacement);
-    }
-
-    /**
-     * Returns the carrying {@link java.lang.String#substring(int)} function:
-     *
-     * <pre>
-     * s -&gt; s.substring(beginIndex)
-     * </pre>
-     *
-     * @param beginIndex the argument of {@link java.lang.String#substring(int)}
-     * @return the carrying {@link java.lang.String#substring(int)} function
-     * @see java.lang.String#substring(int)
-     * @see java.util.function.Function
-     * @since 0.5.0
-     */
-    public static Function<String, String> substring(int beginIndex) {
-        return s -> s.substring(beginIndex);
-    }
-
-    /**
-     * Returns the carrying {@link java.lang.String#substring(int, int)} function:
-     *
-     * <pre>
-     * s -&gt; s.substring(beginIndex, endIndex)
-     * </pre>
-     *
-     * @param beginIndex the first argument of {@link java.lang.String#substring(int, int)}
-     * @param endIndex   the second argument of {@link java.lang.String#substring(int, int)}
-     * @return the carrying {@link java.lang.String#substring(int, int)} function
-     * @see java.lang.String#substring(int, int)
-     * @see java.util.function.Function
-     * @since 0.5.0
-     */
-    public static Function<String, String> substring(int beginIndex, int endIndex) {
-        return s -> s.substring(beginIndex, endIndex);
-    }
-
-    public static Function<Integer, Function<String, String>> leftSubstring(int beginIndex) {
-        return endIndex -> s -> s.substring(beginIndex, endIndex);
-    }
-
-    public static Function<Integer, Function<String, String>> rightSubstring(int endIndex) {
-        return beginIndex -> s -> s.substring(beginIndex, endIndex);
-    }
-
-    /**
-     * Returns the carrying {@link java.lang.String#concat(String)} function:
-     *
-     * <pre>
-     * s -&gt; s.concat(str)
-     * </pre>
-     *
-     * @param str the argument of {@link java.lang.String#concat(String)}
-     * @return the carrying {@link java.lang.String#concat(String)} function
-     * @see java.lang.String#concat(String)
-     * @see java.util.function.Function
-     * @since 0.5.0
-     */
-    public static Function<String, String> concat(String str) {
-        return s -> s.concat(str);
     }
 
     /**
