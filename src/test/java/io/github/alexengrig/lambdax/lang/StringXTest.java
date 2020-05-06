@@ -19,6 +19,8 @@ package io.github.alexengrig.lambdax.lang;
 import org.junit.Test;
 
 import java.nio.charset.Charset;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -37,194 +39,227 @@ public class StringXTest {
     private static final StringBuffer SB = new StringBuffer(STR);
     private static final Charset CHARSET = Charset.defaultCharset();
 
-    private <R> void equalResult(Function<? super String, R> expected, Function<? super String, R> actual) {
-        assertEquals(expected.apply(STRING), actual.apply(STRING));
+    @SuppressWarnings("SameParameterValue")
+    private <T, R, V extends String> void doCheckEqualsFunctionResult(
+            Function<? super T, ? super R> expected, T first,
+            Function<? super T, ? extends Function<? super V, ? super R>> actual, V value) {
+        assertEquals(expected.apply(first), actual.apply(first).apply(value));
     }
 
-    private void equalResult(Predicate<? super String> expected, Predicate<? super String> actual) {
-        assertEquals(expected.test(STRING), actual.test(STRING));
+    @SuppressWarnings("SameParameterValue")
+    private <T, U, R, V extends String> void doCheckEqualsFunctionResult(
+            BiFunction<? super T, ? super U, ? super R> expected, T first, U second,
+            BiFunction<? super T, ? super U, ? extends Function<? super V, ? super R>> actual, V value) {
+        assertEquals(expected.apply(first, second), actual.apply(first, second).apply(value));
     }
 
-    private <R> void equalArrayResult(Function<? super String, R[]> expected, Function<? super String, R[]> actual) {
-        assertArrayEquals(expected.apply(STRING), actual.apply(STRING));
+    @SuppressWarnings("SameParameterValue")
+    private <T, R, V extends String> void doCheckEqualsFunctionArrayResult(
+            Function<? super T, R[]> expected, T first,
+            Function<? super T, ? extends Function<? super V, R[]>> actual, V value) {
+        assertArrayEquals(expected.apply(first), actual.apply(first).apply(value));
     }
 
-    private void equalByteArrayResult(Function<? super String, byte[]> expected, Function<? super String, byte[]> actual) {
-        assertArrayEquals(expected.apply(STRING), actual.apply(STRING));
+    @SuppressWarnings("SameParameterValue")
+    private <T, U, R, V extends String> void doCheckEqualsFunctionArrayResult(
+            BiFunction<? super T, ? super U, R[]> expected, T first, U second,
+            BiFunction<T, U, ? extends Function<? super V, R[]>> actual, V value) {
+        assertArrayEquals(expected.apply(first, second), actual.apply(first, second).apply(value));
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private <T, V extends String> void doCheckEqualsFunctionByteArrayResult(
+            Function<? super T, byte[]> expected, T first,
+            Function<? super T, ? extends Function<? super V, byte[]>> actual, V value) {
+        assertArrayEquals(expected.apply(first), actual.apply(first).apply(value));
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private <T, V extends String> void doCheckEqualsPredicateResult(
+            Predicate<? super T> expected, T first,
+            Function<? super T, ? extends Predicate<? super V>> actual, V value) {
+        assertEquals(expected.test(first), actual.apply(first).test(value));
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private <T, U, V extends String> void doCheckEqualsPredicateResult(
+            BiPredicate<? super T, ? super U> expected, T first, U second,
+            BiFunction<? super T, ? super U, ? extends Predicate<? super V>> actual, V value) {
+        assertEquals(expected.test(first, second), actual.apply(first, second).test(value));
     }
 
     @Test
     public void checkReplaceFirst() {
-        equalResult(StringX.replaceFirst(REGEX, REPLACEMENT), s -> s.replaceFirst(REGEX, REPLACEMENT));
+        doCheckEqualsFunctionResult(STRING::replaceFirst, REGEX, REPLACEMENT, StringX::replaceFirst, STRING);
     }
 
     @Test
     public void checkReplaceAll() {
-        equalResult(StringX.replaceAll(REGEX, REPLACEMENT), s -> s.replaceAll(REGEX, REPLACEMENT));
+        doCheckEqualsFunctionResult(STRING::replaceAll, REGEX, REPLACEMENT, StringX::replaceAll, STRING);
     }
 
     @Test
     public void checkReplaceWithChar() {
-        equalResult(StringX.replace(S, C), s -> s.replace(S, C));
+        doCheckEqualsFunctionResult(STRING::replace, S, C, StringX::replace, STRING);
     }
 
     @Test
     public void checkReplaceWithCharSequence() {
-        equalResult(StringX.replace(STR, REPLACEMENT), s -> s.replace(STR, REPLACEMENT));
+        doCheckEqualsFunctionResult(STRING::replace, STR, REPLACEMENT, StringX::replace, STRING);
     }
 
     @Test
     public void checkSubstring() {
-        equalResult(StringX.substring(ONE), s -> s.substring(ONE));
+        doCheckEqualsFunctionResult(STRING::substring, ONE, StringX::substring, STRING);
     }
 
     @Test
     public void checkSubstringWithEnd() {
-        equalResult(StringX.substring(ONE, THREE), s -> s.substring(ONE, THREE));
+        doCheckEqualsFunctionResult(STRING::substring, ONE, THREE, StringX::substring, STRING);
     }
 
     @Test
     public void checkConcat() {
-        equalResult(StringX.concat(STR), s -> s.concat(STR));
+        doCheckEqualsFunctionResult(STRING::concat, STR, StringX::concat, STRING);
     }
 
     @Test
     public void checkSplit() {
-        equalArrayResult(StringX.split(REGEX), s -> s.split(REGEX));
+        doCheckEqualsFunctionArrayResult(STRING::split, REGEX, StringX::split, STRING);
     }
 
     @Test
     public void checkSplitWithLimit() {
-        equalArrayResult(StringX.split(REGEX, ONE), s -> s.split(REGEX, ONE));
+        doCheckEqualsFunctionArrayResult(STRING::split, REGEX, ONE, StringX::split, STRING);
     }
 
     @Test
     public void checkSubSequence() {
-        equalResult(StringX.subSequence(ONE, THREE), s -> s.subSequence(ONE, THREE));
+        doCheckEqualsFunctionResult(STRING::subSequence, ONE, THREE, StringX::subSequence, STRING);
     }
 
     @Test
     public void checkCharAt() {
-        equalResult(StringX.charAt(ONE), s -> s.charAt(ONE));
+        doCheckEqualsFunctionResult(STRING::charAt, ONE, StringX::charAt, STRING);
     }
 
     @Test
     public void checkCharIndexOf() {
-        equalResult(StringX.indexOf(S), s -> s.indexOf(S));
+        doCheckEqualsFunctionResult(STRING::indexOf, S, StringX::indexOf, STRING);
     }
 
     @Test
     public void checkCharIndexOfWithIndex() {
-        equalResult(StringX.indexOf(S, ONE), s -> s.indexOf(S, ONE));
+        doCheckEqualsFunctionResult(STRING::indexOf, S, ONE, StringX::indexOf, STRING);
     }
 
     @Test
     public void checkCharLastIndexOf() {
-        equalResult(StringX.lastIndexOf(S), s -> s.lastIndexOf(S));
+        doCheckEqualsFunctionResult(STRING::lastIndexOf, S, StringX::lastIndexOf, STRING);
     }
 
     @Test
     public void checkCharLastIndexOfWithIndex() {
-        equalResult(StringX.lastIndexOf(S, ONE), s -> s.lastIndexOf(S, ONE));
+        doCheckEqualsFunctionResult(STRING::lastIndexOf, S, ONE, StringX::lastIndexOf, STRING);
     }
 
     @Test
     public void checkStringIndexOf() {
-        equalResult(StringX.indexOf(STR), s -> s.indexOf(STR));
+        doCheckEqualsFunctionResult(STRING::indexOf, STR, StringX::indexOf, STRING);
     }
 
     @Test
     public void checkStringIndexOfWithIndex() {
-        equalResult(StringX.indexOf(STR, ONE), s -> s.indexOf(STR, ONE));
+        doCheckEqualsFunctionResult(STRING::indexOf, STR, ONE, StringX::indexOf, STRING);
     }
 
     @Test
     public void checkStringLastIndexOf() {
-        equalResult(StringX.lastIndexOf(STR), s -> s.lastIndexOf(STR));
+        doCheckEqualsFunctionResult(STRING::lastIndexOf, STR, StringX::lastIndexOf, STRING);
     }
 
     @Test
     public void checkStringLastIndexOfWithIndex() {
-        equalResult(StringX.lastIndexOf(STR, ONE), s -> s.lastIndexOf(STR, ONE));
+        doCheckEqualsFunctionResult(STRING::lastIndexOf, STR, ONE, StringX::lastIndexOf, STRING);
     }
 
     @Test
     public void checkCodePointAt() {
-        equalResult(StringX.codePointAt(ONE), s -> s.codePointAt(ONE));
+        doCheckEqualsFunctionResult(STRING::codePointAt, ONE, StringX::codePointAt, STRING);
     }
 
     @Test
     public void checkCodePointBefore() {
-        equalResult(StringX.codePointBefore(ONE), s -> s.codePointBefore(ONE));
+        doCheckEqualsFunctionResult(STRING::codePointBefore, ONE, StringX::codePointBefore, STRING);
     }
 
     @Test
     public void checkCodePointCount() {
-        equalResult(StringX.codePointCount(ONE, THREE), s -> s.codePointCount(ONE, THREE));
+        doCheckEqualsFunctionResult(STRING::codePointCount, ONE, THREE, StringX::codePointCount, STRING);
     }
 
     @Test
     public void checkOffsetByCodePoints() {
-        equalResult(StringX.offsetByCodePoints(ONE, THREE), s -> s.offsetByCodePoints(ONE, THREE));
+        doCheckEqualsFunctionResult(STRING::offsetByCodePoints, ONE, THREE, StringX::offsetByCodePoints, STRING);
     }
 
     @Test
     public void checkCompareTo() {
-        equalResult(StringX.compareTo(STR), s -> s.compareTo(STR));
+        doCheckEqualsFunctionResult(STRING::compareTo, STR, StringX::compareTo, STRING);
     }
 
     @Test
     public void checkCompareToIgnoreCase() {
-        equalResult(StringX.compareToIgnoreCase(STR), s -> s.compareToIgnoreCase(STR));
+        doCheckEqualsFunctionResult(STRING::compareToIgnoreCase, STR, StringX::compareToIgnoreCase, STRING);
     }
 
     @Test
     public void checkGetBytes() {
-        equalByteArrayResult(StringX.getBytes(CHARSET), s -> s.getBytes(CHARSET));
+        doCheckEqualsFunctionByteArrayResult(STRING::getBytes, CHARSET, StringX::getBytes, STRING);
     }
 
     @Test
     public void checkStartsWith() {
-        equalResult(StringX.startsWith(STR), s -> s.startsWith(STR));
+        doCheckEqualsPredicateResult(STRING::startsWith, STR, StringX::startsWith, STRING);
     }
 
     @Test
     public void checkStartsWithIndex() {
-        equalResult(StringX.startsWith(STR, ONE), s -> s.startsWith(STR, ONE));
+        doCheckEqualsPredicateResult(STRING::startsWith, STR, ONE, StringX::startsWith, STRING);
     }
 
     @Test
     public void checkEndsWith() {
-        equalResult(StringX.endsWith(STR), s -> s.endsWith(STR));
+        doCheckEqualsPredicateResult(STRING::endsWith, STR, StringX::endsWith, STRING);
     }
 
     @Test
     public void checkContains() {
-        equalResult(StringX.contains(STR), s -> s.contains(STR));
+        doCheckEqualsPredicateResult(STRING::contains, STR, StringX::contains, STRING);
     }
 
     @Test
     public void checkMatches() {
-        equalResult(StringX.matches(REGEX), s -> s.matches(REGEX));
+        doCheckEqualsPredicateResult(STRING::matches, REGEX, StringX::matches, STRING);
     }
 
     @Test
     public void checkContentEqualsToWithStringBuffer() {
-        equalResult(StringX.contentEqualsTo(SB), s -> s.contentEquals(SB));
+        doCheckEqualsPredicateResult(STRING::contentEquals, SB, StringX::contentEqualsTo, STRING);
     }
 
     @Test
     public void checkContentEqualsToWithCharSequence() {
-        equalResult(StringX.contentEqualsTo(STR), s -> s.contentEquals(STR));
+        doCheckEqualsPredicateResult(STRING::contentEquals, STR, StringX::contentEqualsTo, STRING);
     }
 
     @Test
     public void checkEqualsIgnoreCaseTo() {
-        equalResult(StringX.equalsIgnoreCaseTo(STR), s -> s.equalsIgnoreCase(STR));
+        doCheckEqualsPredicateResult(STRING::equalsIgnoreCase, STR, StringX::equalsIgnoreCaseTo, STRING);
     }
 
     @Test
     public void checkEqualsTo() {
-        equalResult(StringX.equalsTo(STR), s -> s.equals(STR));
+        doCheckEqualsPredicateResult(STRING::equals, STR, StringX::equalsTo, STRING);
     }
 }
