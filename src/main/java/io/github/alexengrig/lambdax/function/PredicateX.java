@@ -424,4 +424,20 @@ public interface PredicateX<T> extends Predicate<T> {
             ComparableResultFunction<T, R> mapper) {
         return new ComparableOptionalPredicateB<>(mapper);
     }
+
+    default Predicate<T> xor(Predicate<? super T> other) {
+        return t -> test(t) ^ other.test(t);
+    }
+
+    default Predicate<T> nand(Predicate<? super T> other) {
+        return t -> !(test(t) && other.test(t));
+    }
+
+    default Predicate<T> nor(Predicate<? super T> other) {
+        return t -> !(test(t) || other.test(t));
+    }
+
+    default Predicate<T> xnor(Predicate<? super T> other) {
+        return t -> test(t) == other.test(t);
+    }
 }
