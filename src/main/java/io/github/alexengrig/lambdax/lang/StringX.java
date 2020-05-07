@@ -84,10 +84,36 @@ public final class StringX {
         return s -> s.substring(beginIndex, endIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#substring(int, int)} function:
+     *
+     * <pre>
+     * endIndex -&gt; s -&gt; s.substring(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param beginIndex the first argument of {@link java.lang.String#substring(int, int)}
+     * @return the left carrying {@link java.lang.String#substring(int, int)} function
+     * @see java.lang.String#substring(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, String>> leftSubstring(int beginIndex) {
         return endIndex -> s -> s.substring(beginIndex, endIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#substring(int, int)} function:
+     *
+     * <pre>
+     * beginIndex -&gt; s -&gt; s.substring(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param endIndex the second argument of {@link java.lang.String#substring(int, int)}
+     * @return the right carrying {@link java.lang.String#substring(int, int)} function
+     * @see java.lang.String#substring(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, String>> rightSubstring(int endIndex) {
         return beginIndex -> s -> s.substring(beginIndex, endIndex);
     }
@@ -110,10 +136,36 @@ public final class StringX {
         return s -> s.replaceFirst(regex, replacement);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#replaceFirst(String, String)} function:
+     *
+     * <pre>
+     * replacement -&gt; s -&gt; s.replaceFirst(regex, replacement)
+     * </pre>
+     *
+     * @param regex the first argument of {@link java.lang.String#replaceFirst(String, String)}
+     * @return the left carrying {@link java.lang.String#replaceFirst(String, String)} function
+     * @see java.lang.String#replaceFirst(String, String)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String>> leftReplaceFirst(String regex) {
         return replacement -> s -> s.replaceFirst(regex, replacement);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#replaceFirst(String, String)} function:
+     *
+     * <pre>
+     * regex -&gt; s -&gt; s.replaceFirst(regex, replacement)
+     * </pre>
+     *
+     * @param replacement the second argument of {@link java.lang.String#replaceFirst(String, String)}
+     * @return the right carrying {@link java.lang.String#replaceFirst(String, String)} function
+     * @see java.lang.String#replaceFirst(String, String)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String>> rightReplaceFirst(String replacement) {
         return regex -> s -> s.replaceFirst(regex, replacement);
     }
@@ -136,10 +188,36 @@ public final class StringX {
         return s -> s.replaceAll(regex, replacement);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#replaceAll(String, String)} function:
+     *
+     * <pre>
+     * replacement -&gt; s -&gt; s.replaceAll(regex, replacement)
+     * </pre>
+     *
+     * @param regex the first argument of {@link java.lang.String#replaceAll(String, String)}
+     * @return the left carrying {@link java.lang.String#replaceAll(String, String)} function
+     * @see java.lang.String#replaceAll(String, String)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String>> leftReplaceAll(String regex) {
         return replacement -> s -> s.replaceAll(regex, replacement);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#replaceAll(String, String)} function:
+     *
+     * <pre>
+     * regex -&gt; s -&gt; s.replaceAll(regex, replacement)
+     * </pre>
+     *
+     * @param replacement the second argument of {@link java.lang.String#replaceAll(String, String)}
+     * @return the right carrying {@link java.lang.String#replaceAll(String, String)} function
+     * @see java.lang.String#replaceAll(String, String)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String>> rightReplaceAll(String replacement) {
         return regex -> s -> s.replaceAll(regex, replacement);
     }
@@ -162,10 +240,36 @@ public final class StringX {
         return s -> s.replace(target, replacement);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function:
+     *
+     * <pre>
+     * replacement -&gt; s -&gt; s.replace(target, replacement)
+     * </pre>
+     *
+     * @param target the first argument of {@link java.lang.String#replace(CharSequence, CharSequence)}
+     * @return the left carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function
+     * @see java.lang.String#replace(CharSequence, CharSequence)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String>> leftReplace(CharSequence target) {
         return replacement -> s -> s.replace(target, replacement);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function:
+     *
+     * <pre>
+     * target -&gt; s -&gt; s.replace(target, replacement)
+     * </pre>
+     *
+     * @param replacement the second argument of {@link java.lang.String#replace(CharSequence, CharSequence)}
+     * @return the right carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function
+     * @see java.lang.String#replace(CharSequence, CharSequence)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String>> rightReplace(CharSequence replacement) {
         return target -> s -> s.replace(target, replacement);
     }
@@ -188,10 +292,36 @@ public final class StringX {
         return s -> s.replace(oldChar, newChar);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#replace(char, char)} function:
+     *
+     * <pre>
+     * newChar -&gt; s -&gt; s.replace(oldChar, newChar)
+     * </pre>
+     *
+     * @param oldChar the first argument of {@link java.lang.String#replace(char, char)}
+     * @return the left carrying {@link java.lang.String#replace(char, char)} function
+     * @see java.lang.String#replace(char, char)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Character, Function<String, String>> leftReplace(char oldChar) {
         return newChar -> s -> s.replace(oldChar, newChar);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#replace(char, char)} function:
+     *
+     * <pre>
+     * oldChar -&gt; s -&gt; s.replace(oldChar, newChar)
+     * </pre>
+     *
+     * @param newChar the second argument of {@link java.lang.String#replace(char, char)}
+     * @return the right carrying {@link java.lang.String#replace(char, char)} function
+     * @see java.lang.String#replace(char, char)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Character, Function<String, String>> rightReplace(char newChar) {
         return oldChar -> s -> s.replace(oldChar, newChar);
     }
@@ -231,10 +361,36 @@ public final class StringX {
         return s -> s.split(regex, limit);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#split(String, int)} function:
+     *
+     * <pre>
+     * limit -&gt; s -&gt; s.split(regex, limit)
+     * </pre>
+     *
+     * @param regex the first argument of {@link java.lang.String#split(String, int)}
+     * @return the left carrying {@link java.lang.String#split(String, int)} function
+     * @see java.lang.String#split(String, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, String[]>> leftSplit(String regex) {
         return limit -> s -> s.split(regex, limit);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#split(String, int)} function:
+     *
+     * <pre>
+     * regex -&gt; s -&gt; s.split(regex, limit)
+     * </pre>
+     *
+     * @param limit the second argument of {@link java.lang.String#split(String, int)}
+     * @return the right carrying {@link java.lang.String#split(String, int)} function
+     * @see java.lang.String#split(String, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, String[]>> rightSplit(int limit) {
         return regex -> s -> s.split(regex, limit);
     }
@@ -257,10 +413,36 @@ public final class StringX {
         return s -> s.subSequence(beginIndex, endIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#subSequence(int, int)} function:
+     *
+     * <pre>
+     * endIndex -&gt; s -&gt; s.subSequence(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param beginIndex the first argument of {@link java.lang.String#subSequence(int, int)}
+     * @return the left carrying {@link java.lang.String#subSequence(int, int)} function
+     * @see java.lang.String#subSequence(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, CharSequence>> leftSubSequence(int beginIndex) {
         return endIndex -> s -> s.subSequence(beginIndex, endIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#subSequence(int, int)} function:
+     *
+     * <pre>
+     * beginIndex -&gt; s -&gt; s.subSequence(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param endIndex the second argument of {@link java.lang.String#subSequence(int, int)}
+     * @return the right carrying {@link java.lang.String#subSequence(int, int)} function
+     * @see java.lang.String#subSequence(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, CharSequence>> rightSubSequence(int endIndex) {
         return beginIndex -> s -> s.subSequence(beginIndex, endIndex);
     }
@@ -317,10 +499,36 @@ public final class StringX {
         return s -> s.indexOf(ch, fromIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#indexOf(int, int)} function:
+     *
+     * <pre>
+     * fromIndex -&gt; s -&gt; s.indexOf(ch, fromIndex)
+     * </pre>
+     *
+     * @param ch the first argument of {@link java.lang.String#indexOf(int, int)}
+     * @return the left carrying {@link java.lang.String#indexOf(int, int)} function
+     * @see java.lang.String#indexOf(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> leftIndexOf(int ch) {
         return fromIndex -> s -> s.indexOf(ch, fromIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#indexOf(int, int)} function:
+     *
+     * <pre>
+     * ch -&gt; s -&gt; s.indexOf(ch, fromIndex)
+     * </pre>
+     *
+     * @param fromIndex the second argument of {@link java.lang.String#indexOf(int, int)}
+     * @return the right carrying {@link java.lang.String#indexOf(int, int)} function
+     * @see java.lang.String#indexOf(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> rightIndexOfChar(int fromIndex) {
         return ch -> s -> s.indexOf(ch, fromIndex);
     }
@@ -360,10 +568,36 @@ public final class StringX {
         return s -> s.lastIndexOf(ch, fromIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#lastIndexOf(int, int)} function:
+     *
+     * <pre>
+     * fromIndex -&gt; s -&gt; s.lastIndexOf(ch, fromIndex)
+     * </pre>
+     *
+     * @param ch the first argument of {@link java.lang.String#lastIndexOf(int, int)}
+     * @return the left carrying {@link java.lang.String#lastIndexOf(int, int)} function
+     * @see java.lang.String#lastIndexOf(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> leftLastIndexOf(int ch) {
         return fromIndex -> s -> s.lastIndexOf(ch, fromIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#lastIndexOf(int, int)} function:
+     *
+     * <pre>
+     * ch -&gt; s -&gt; s.lastIndexOf(ch, fromIndex)
+     * </pre>
+     *
+     * @param fromIndex the second argument of {@link java.lang.String#lastIndexOf(int, int)}
+     * @return the right carrying {@link java.lang.String#lastIndexOf(int, int)} function
+     * @see java.lang.String#lastIndexOf(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> rightLastIndexOfChar(int fromIndex) {
         return ch -> s -> s.lastIndexOf(ch, fromIndex);
     }
@@ -403,10 +637,36 @@ public final class StringX {
         return s -> s.indexOf(str, fromIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#indexOf(String, int)} function:
+     *
+     * <pre>
+     * fromIndex -&gt; s -&gt; s.indexOf(str, fromIndex)
+     * </pre>
+     *
+     * @param str the first argument of {@link java.lang.String#indexOf(String, int)}
+     * @return the left carrying {@link java.lang.String#indexOf(String, int)} function
+     * @see java.lang.String#indexOf(String, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> leftIndexOf(String str) {
         return fromIndex -> s -> s.indexOf(str, fromIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#indexOf(String, int)} function:
+     *
+     * <pre>
+     * str -&gt; s -&gt; s.indexOf(str, fromIndex)
+     * </pre>
+     *
+     * @param fromIndex the second argument of {@link java.lang.String#indexOf(String, int)}
+     * @return the right carrying {@link java.lang.String#indexOf(String, int)} function
+     * @see java.lang.String#indexOf(String, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, Integer>> rightIndexOfString(int fromIndex) {
         return str -> s -> s.indexOf(str, fromIndex);
     }
@@ -446,10 +706,36 @@ public final class StringX {
         return s -> s.lastIndexOf(str, fromIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#lastIndexOf(String, int)} function:
+     *
+     * <pre>
+     * fromIndex -&gt; s -&gt; s.lastIndexOf(str, fromIndex)
+     * </pre>
+     *
+     * @param str the first argument of {@link java.lang.String#lastIndexOf(String, int)}
+     * @return the left carrying {@link java.lang.String#lastIndexOf(String, int)} function
+     * @see java.lang.String#lastIndexOf(String, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> leftLastIndexOf(String str) {
         return fromIndex -> s -> s.lastIndexOf(str, fromIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#lastIndexOf(String, int)} function:
+     *
+     * <pre>
+     * str -&gt; s -&gt; s.lastIndexOf(str, fromIndex)
+     * </pre>
+     *
+     * @param fromIndex the second argument of {@link java.lang.String#lastIndexOf(String, int)}
+     * @return the right carrying {@link java.lang.String#lastIndexOf(String, int)} function
+     * @see java.lang.String#lastIndexOf(String, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<String, Function<String, Integer>> rightLastIndexOfString(int fromIndex) {
         return str -> s -> s.lastIndexOf(str, fromIndex);
     }
@@ -506,10 +792,36 @@ public final class StringX {
         return s -> s.codePointCount(beginIndex, endIndex);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#codePointCount(int, int)} function:
+     *
+     * <pre>
+     * endIndex -&gt; s -&gt; s.codePointCount(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param beginIndex the first argument of {@link java.lang.String#codePointCount(int, int)}
+     * @return the left carrying {@link java.lang.String#codePointCount(int, int)} function
+     * @see java.lang.String#codePointCount(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> leftCodePointCount(int beginIndex) {
         return endIndex -> s -> s.codePointCount(beginIndex, endIndex);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#codePointCount(int, int)} function:
+     *
+     * <pre>
+     * beginIndex -&gt; s -&gt; s.codePointCount(beginIndex, endIndex)
+     * </pre>
+     *
+     * @param endIndex the second argument of {@link java.lang.String#codePointCount(int, int)}
+     * @return the right carrying {@link java.lang.String#codePointCount(int, int)} function
+     * @see java.lang.String#codePointCount(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> rightCodePointCount(int endIndex) {
         return beginIndex -> s -> s.codePointCount(beginIndex, endIndex);
     }
@@ -532,10 +844,36 @@ public final class StringX {
         return s -> s.offsetByCodePoints(index, codePointOffset);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#offsetByCodePoints(int, int)} function:
+     *
+     * <pre>
+     * codePointOffset -&gt; s -&gt; s.offsetByCodePoints(index, codePointOffset)
+     * </pre>
+     *
+     * @param index the first argument of {@link java.lang.String#offsetByCodePoints(int, int)}
+     * @return the left carrying {@link java.lang.String#offsetByCodePoints(int, int)} function
+     * @see java.lang.String#offsetByCodePoints(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> leftOffsetByCodePoints(int index) {
         return codePointOffset -> s -> s.offsetByCodePoints(index, codePointOffset);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#offsetByCodePoints(int, int)} function:
+     *
+     * <pre>
+     * index -&gt; s -&gt; s.offsetByCodePoints(index, codePointOffset)
+     * </pre>
+     *
+     * @param codePointOffset the second argument of {@link java.lang.String#offsetByCodePoints(int, int)}
+     * @return the right carrying {@link java.lang.String#offsetByCodePoints(int, int)} function
+     * @see java.lang.String#offsetByCodePoints(int, int)
+     * @see java.util.function.Function
+     * @since 0.5.0
+     */
     public static Function<Integer, Function<String, Integer>> rightOffsetByCodePoints(int codePointOffset) {
         return index -> s -> s.offsetByCodePoints(index, codePointOffset);
     }
@@ -626,10 +964,36 @@ public final class StringX {
         return s -> s.startsWith(prefix, offset);
     }
 
+    /**
+     * Returns the left carrying {@link java.lang.String#startsWith(String, int)} predicate:
+     *
+     * <pre>
+     * offset -&gt; s -&gt; s.startsWith(prefix, offset)
+     * </pre>
+     *
+     * @param prefix the first argument of {@link java.lang.String#startsWith(String, int)}
+     * @return the left carrying {@link java.lang.String#startsWith(String, int)} predicate
+     * @see java.lang.String#startsWith(String, int)
+     * @see java.util.function.Predicate
+     * @since 0.5.0
+     */
     public static Function<Integer, Predicate<String>> leftStartsWith(String prefix) {
         return offset -> s -> s.startsWith(prefix, offset);
     }
 
+    /**
+     * Returns the right carrying {@link java.lang.String#startsWith(String, int)} predicate:
+     *
+     * <pre>
+     * prefix -&gt; s -&gt; s.startsWith(prefix, offset)
+     * </pre>
+     *
+     * @param offset the second argument of {@link java.lang.String#startsWith(String, int)}
+     * @return the right carrying {@link java.lang.String#startsWith(String, int)} predicate
+     * @see java.lang.String#startsWith(String, int)
+     * @see java.util.function.Predicate
+     * @since 0.5.0
+     */
     public static Function<String, Predicate<String>> rightStartsWith(int offset) {
         return prefix -> s -> s.startsWith(prefix, offset);
     }
