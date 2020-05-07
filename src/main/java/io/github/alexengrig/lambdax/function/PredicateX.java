@@ -31,15 +31,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateI
  * @since 0.2.0
  */
-public final class PredicateX {
-    /**
-     * <p>The private constructor.</p>
-     *
-     * @since 0.2.0
-     */
-    private PredicateX() {
-    }
-
+public interface PredicateX<T> extends Predicate<T> {
     /**
      * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
      *
