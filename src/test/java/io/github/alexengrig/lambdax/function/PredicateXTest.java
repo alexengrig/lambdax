@@ -33,7 +33,7 @@ import static io.github.alexengrig.lambdax.function.PredicateX.*;
 import static org.junit.Assert.*;
 
 public class PredicateXTest {
-    private final Predicate<?> failPredicate = t -> {
+    private final Predicate<Object> failPredicate = t -> {
         fail("Fail predicate");
         return false;
     };
