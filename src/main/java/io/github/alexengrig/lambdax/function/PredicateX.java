@@ -41,7 +41,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    public static <T> Predicate<T> truth() {
+    static <T> Predicate<T> truth() {
         return t -> true;
     }
 
@@ -54,7 +54,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    public static <T> Predicate<T> lie() {
+    static <T> Predicate<T> lie() {
         return t -> false;
     }
 
@@ -70,7 +70,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate#negate
      * @since 0.2.0
      */
-    public static <T> Predicate<T> not(Predicate<T> predicate) {
+    static <T> Predicate<T> not(Predicate<T> predicate) {
         return predicate.negate();
     }
 
@@ -90,7 +90,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate#and(java.util.function.Predicate)
      * @since 0.3.0
      */
-    public static <T> Predicate<T> and(Predicate<T> first, Predicate<T> second) {
+    static <T> Predicate<T> and(Predicate<T> first, Predicate<T> second) {
         return t -> first.test(t) && second.test(t);
     }
 
@@ -113,7 +113,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> and(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
+    static <T> Predicate<T> and(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
         Predicate<T> predicate = and(first, second);
         for (Predicate<T> other : others) {
             predicate = and(predicate, other);
@@ -137,7 +137,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate#or(java.util.function.Predicate)
      * @since 0.3.0
      */
-    public static <T> Predicate<T> or(Predicate<T> first, Predicate<T> second) {
+    static <T> Predicate<T> or(Predicate<T> first, Predicate<T> second) {
         return t -> first.test(t) || second.test(t);
     }
 
@@ -160,7 +160,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> or(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
+    static <T> Predicate<T> or(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
         Predicate<T> predicate = first.or(second);
         for (Predicate<T> other : others) {
             predicate = predicate.or(other);
@@ -180,7 +180,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    public static <T> Predicate<T> xor(Predicate<T> first, Predicate<T> second) {
+    static <T> Predicate<T> xor(Predicate<T> first, Predicate<T> second) {
         return t -> first.test(t) ^ second.test(t);
     }
 
@@ -199,7 +199,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> xor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
+    static <T> Predicate<T> xor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
         Predicate<T> predicate = xor(first, second);
         for (Predicate<T> other : others) {
             predicate = xor(predicate, other);
@@ -222,7 +222,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    public static <T> Predicate<T> nand(Predicate<T> first, Predicate<T> second) {
+    static <T> Predicate<T> nand(Predicate<T> first, Predicate<T> second) {
         return t -> !(first.test(t) && second.test(t));
     }
 
@@ -243,7 +243,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> nand(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
+    static <T> Predicate<T> nand(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
         Predicate<T> predicate = nand(first, second);
         for (Predicate<T> other : others) {
             predicate = nand(predicate, other);
@@ -266,7 +266,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    public static <T> Predicate<T> nor(Predicate<T> first, Predicate<T> second) {
+    static <T> Predicate<T> nor(Predicate<T> first, Predicate<T> second) {
         return t -> !(first.test(t) || second.test(t));
     }
 
@@ -288,7 +288,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> nor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
+    static <T> Predicate<T> nor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
         Predicate<T> predicate = nor(first, second);
         for (Predicate<T> other : others) {
             predicate = nor(predicate, other);
@@ -308,7 +308,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    public static <T> Predicate<T> xnor(Predicate<T> first, Predicate<T> second) {
+    static <T> Predicate<T> xnor(Predicate<T> first, Predicate<T> second) {
         return t -> first.test(t) == second.test(t);
     }
 
@@ -326,7 +326,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> xnor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
+    static <T> Predicate<T> xnor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
         Predicate<T> predicate = xnor(first, second);
         for (Predicate<T> other : others) {
             predicate = xnor(predicate, other);
@@ -344,7 +344,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      */
     @SuppressWarnings("unchecked")
-    public static <T> Predicate<T> from(Predicate<? super T> checker) {
+    static <T> Predicate<T> from(Predicate<? super T> checker) {
         return (Predicate<T>) checker;
     }
 
@@ -361,7 +361,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see io.github.alexengrig.lambdax.function.PredicateB
      * @since 0.2.0
      */
-    public static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
+    static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
         return new PredicateB<>(mapper);
     }
 
@@ -381,7 +381,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
      * @since 0.2.0
      */
-    public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
+    static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
         return new ComparablePredicateB<>(mapper);
     }
 
@@ -400,7 +400,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Function
      * @since 0.3.0
      */
-    public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
+    static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
         return new OptionalPredicateB<>(mapper);
     }
 
@@ -420,7 +420,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
      * @since 0.3.0
      */
-    public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
+    static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
             ComparableResultFunction<T, R> mapper) {
         return new ComparableOptionalPredicateB<>(mapper);
     }
