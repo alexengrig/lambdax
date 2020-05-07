@@ -3,6 +3,7 @@
 ## 0.5.0
 
 *   [[#87](../../issues/87)] Create tryXXX methods to ChainX
+*   [[#88](../../issues/88)] Create StringX
 
 ## 0.4.0
 
