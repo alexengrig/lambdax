@@ -18,7 +18,6 @@ package io.github.alexengrig.lambdax.function;
 
 import io.github.alexengrig.lambdax.collection.QueueX;
 import io.github.alexengrig.lambdax.entity.Holder;
-import io.github.alexengrig.lambdax.function.PredicateX;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +38,7 @@ public class QueueXPredicateXTest {
     @Test
     public void checkQueueAdd() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Queue<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Queue<Integer>>::get)
                         .check(QueueX.add(1)))
                 .isPresent());
     }
@@ -47,7 +46,7 @@ public class QueueXPredicateXTest {
     @Test
     public void checkQueueOffer() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.of(Holder<Queue<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Queue<Integer>>::get)
                         .check(QueueX.offer(1)))
                 .isPresent());
     }

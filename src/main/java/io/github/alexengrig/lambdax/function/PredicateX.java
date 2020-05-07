@@ -33,6 +33,83 @@ import java.util.function.Predicate;
  */
 public interface PredicateX<T> extends Predicate<T> {
     /**
+     * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
+     * with the mapper.</p>
+     *
+     * @param mapper a function of map the input
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a type of the mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.PredicateI}
+     * @see io.github.alexengrig.lambdax.function.PredicateI
+     * @see java.util.function.Function
+     * @see io.github.alexengrig.lambdax.function.PredicateB
+     * @since 0.2.0
+     */
+    static <T, R> PredicateI<T, R> chain(Function<T, R> mapper) {
+        return new PredicateB<>(mapper);
+    }
+
+    /**
+     * <p>Returns the {@link
+     * io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
+     * with comparable result.</p>
+     *
+     * @param mapper a function of map the input to comparable result
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a comparable type of the mapper result
+     * @return The {@link
+     * io.github.alexengrig.lambdax.function.ComparablePredicateI}
+     * @see java.lang.Comparable
+     * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
+     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
+     * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
+     * @since 0.2.0
+     */
+    static <T, R extends Comparable<R>> ComparablePredicateI<T, R> chain(ComparableResultFunction<T, R> mapper) {
+        return new ComparablePredicateB<>(mapper);
+    }
+
+    /**
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.OptionalPredicateB} with
+     * the mapper.
+     * </p>
+     *
+     * @param mapper a function of map the input
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a type of the optional mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI}
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.OptionalPredicateB
+     * @see java.util.function.Function
+     * @since 0.3.0
+     */
+    static <T, R> OptionalPredicateI<T, R> chainSafe(Function<T, R> mapper) {
+        return new OptionalPredicateB<>(mapper);
+    }
+
+    /**
+     * <p>
+     * Returns the {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB} with
+     * the mapper with comparable optional result.
+     * </p>
+     *
+     * @param mapper a function of map the input to comparable optional result
+     * @param <T>    a type of the input to the predicate
+     * @param <R>    a comparable type of the optional mapper result
+     * @return The {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI}
+     * @see java.lang.Comparable
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
+     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB
+     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
+     * @since 0.3.0
+     */
+    static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> chainSafe(
+            ComparableResultFunction<T, R> mapper) {
+        return new ComparableOptionalPredicateB<>(mapper);
+    }
+
+    /**
      * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
      *
      * @param <T> a type of the input to the predicate
@@ -347,83 +424,6 @@ public interface PredicateX<T> extends Predicate<T> {
     @SuppressWarnings("unchecked")
     static <T> Predicate<T> from(Predicate<? super T> checker) {
         return (Predicate<T>) checker;
-    }
-
-    /**
-     * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
-     * with the mapper.</p>
-     *
-     * @param mapper a function of map the input
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a type of the mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.PredicateI}
-     * @see io.github.alexengrig.lambdax.function.PredicateI
-     * @see java.util.function.Function
-     * @see io.github.alexengrig.lambdax.function.PredicateB
-     * @since 0.2.0
-     */
-    static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
-        return new PredicateB<>(mapper);
-    }
-
-    /**
-     * <p>Returns the {@link
-     * io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
-     * with comparable result.</p>
-     *
-     * @param mapper a function of map the input to comparable result
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a comparable type of the mapper result
-     * @return The {@link
-     * io.github.alexengrig.lambdax.function.ComparablePredicateI}
-     * @see java.lang.Comparable
-     * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
-     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-     * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
-     * @since 0.2.0
-     */
-    static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
-        return new ComparablePredicateB<>(mapper);
-    }
-
-    /**
-     * <p>
-     * Returns the {@link io.github.alexengrig.lambdax.function.OptionalPredicateB} with
-     * the mapper.
-     * </p>
-     *
-     * @param mapper a function of map the input
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a type of the optional mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI}
-     * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
-     * @see io.github.alexengrig.lambdax.function.OptionalPredicateB
-     * @see java.util.function.Function
-     * @since 0.3.0
-     */
-    static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
-        return new OptionalPredicateB<>(mapper);
-    }
-
-    /**
-     * <p>
-     * Returns the {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB} with
-     * the mapper with comparable optional result.
-     * </p>
-     *
-     * @param mapper a function of map the input to comparable optional result
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a comparable type of the optional mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI}
-     * @see java.lang.Comparable
-     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
-     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB
-     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-     * @since 0.3.0
-     */
-    static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
-            ComparableResultFunction<T, R> mapper) {
-        return new ComparableOptionalPredicateB<>(mapper);
     }
 
     default Predicate<T> xor(Predicate<? super T> other) {
