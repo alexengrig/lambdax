@@ -1051,8 +1051,8 @@ public final class StringX {
 
     /**
      * Returns the carrying {@link java.lang.String#contentEquals(StringBuffer)} predicate:
-     * <p>
-     * <pr @code
+     *
+     * <pre>{@code
      * s -&gt; s.contentEquals(sb)
      * }</pre>
      *
@@ -1069,7 +1069,7 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#contentEquals(CharSequence)} predicate:
      *
-     * <pre @code
+     * <pre>{@code
      * s -&gt; s.contentEquals(cs)
      * }</pre>
      *
