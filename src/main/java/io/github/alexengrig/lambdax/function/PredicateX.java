@@ -33,6 +33,20 @@ import java.util.function.Predicate;
  */
 public interface PredicateX<T> extends Predicate<T> {
     /**
+     * <p>Returns the same {@link java.util.function.Predicate} as passed to the
+     * method.</p>
+     *
+     * @param checker a predicate
+     * @param <T>     a type of the input to the predicate
+     * @return The same {@link java.util.function.Predicate} - checker
+     * @see java.util.function.Predicate
+     */
+    @SuppressWarnings("unchecked")
+    static <T> Predicate<T> of(Predicate<? super T> checker) {
+        return (Predicate<T>) checker;
+    }
+
+    /**
      * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
      * with the mapper.</p>
      *
@@ -410,20 +424,6 @@ public interface PredicateX<T> extends Predicate<T> {
             predicate = xnor(predicate, other);
         }
         return predicate;
-    }
-
-    /**
-     * <p>Returns the same {@link java.util.function.Predicate} as passed to the
-     * method.</p>
-     *
-     * @param checker a predicate
-     * @param <T>     a type of the input to the predicate
-     * @return The same {@link java.util.function.Predicate} - checker
-     * @see java.util.function.Predicate
-     */
-    @SuppressWarnings("unchecked")
-    static <T> Predicate<T> from(Predicate<? super T> checker) {
-        return (Predicate<T>) checker;
     }
 
     default Predicate<T> xor(Predicate<? super T> other) {

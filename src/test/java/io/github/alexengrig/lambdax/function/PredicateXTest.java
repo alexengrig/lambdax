@@ -200,7 +200,7 @@ public class PredicateXTest {
 
     @Test
     public void checkFrom() {
-        assertTrue(PredicateX.from(Box::isEmpty).test(new Box(null)));
+        assertTrue(PredicateX.of(Box::isEmpty).test(new Box(null)));
     }
 
     @Test
