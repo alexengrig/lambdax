@@ -35,9 +35,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#concat(String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.concat(str)
-     * </pre>
+     * }</pre>
      *
      * @param str the argument of {@link java.lang.String#concat(String)}
      * @return the carrying {@link java.lang.String#concat(String)} function
@@ -52,9 +52,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#substring(int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.substring(beginIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the argument of {@link java.lang.String#substring(int)}
      * @return the carrying {@link java.lang.String#substring(int)} function
@@ -69,9 +69,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#substring(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.substring(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the first argument of {@link java.lang.String#substring(int, int)}
      * @param endIndex   the second argument of {@link java.lang.String#substring(int, int)}
@@ -87,9 +87,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#substring(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * endIndex -&gt; s -&gt; s.substring(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the first argument of {@link java.lang.String#substring(int, int)}
      * @return the left carrying {@link java.lang.String#substring(int, int)} function
@@ -104,9 +104,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#substring(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * beginIndex -&gt; s -&gt; s.substring(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param endIndex the second argument of {@link java.lang.String#substring(int, int)}
      * @return the right carrying {@link java.lang.String#substring(int, int)} function
@@ -121,9 +121,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#replaceFirst(String, String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.replaceFirst(regex, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param regex       the first argument of {@link java.lang.String#replaceFirst(String, String)}
      * @param replacement the second argument of {@link java.lang.String#replaceFirst(String, String)}
@@ -139,9 +139,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#replaceFirst(String, String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * replacement -&gt; s -&gt; s.replaceFirst(regex, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param regex the first argument of {@link java.lang.String#replaceFirst(String, String)}
      * @return the left carrying {@link java.lang.String#replaceFirst(String, String)} function
@@ -156,9 +156,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#replaceFirst(String, String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * regex -&gt; s -&gt; s.replaceFirst(regex, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param replacement the second argument of {@link java.lang.String#replaceFirst(String, String)}
      * @return the right carrying {@link java.lang.String#replaceFirst(String, String)} function
@@ -173,9 +173,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#replaceAll(String, String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.replaceAll(regex, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param regex       the first argument of {@link java.lang.String#replaceAll(String, String)}
      * @param replacement the second argument of {@link java.lang.String#replaceAll(String, String)}
@@ -191,9 +191,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#replaceAll(String, String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * replacement -&gt; s -&gt; s.replaceAll(regex, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param regex the first argument of {@link java.lang.String#replaceAll(String, String)}
      * @return the left carrying {@link java.lang.String#replaceAll(String, String)} function
@@ -208,9 +208,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#replaceAll(String, String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * regex -&gt; s -&gt; s.replaceAll(regex, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param replacement the second argument of {@link java.lang.String#replaceAll(String, String)}
      * @return the right carrying {@link java.lang.String#replaceAll(String, String)} function
@@ -225,9 +225,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.replace(target, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param target      the first argument of {@link java.lang.String#replace(CharSequence, CharSequence)}
      * @param replacement the second argument of {@link java.lang.String#replace(CharSequence, CharSequence)}
@@ -243,9 +243,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function:
      *
-     * <pre>
+     * <pre>{@code
      * replacement -&gt; s -&gt; s.replace(target, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param target the first argument of {@link java.lang.String#replace(CharSequence, CharSequence)}
      * @return the left carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function
@@ -260,9 +260,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function:
      *
-     * <pre>
+     * <pre>{@code
      * target -&gt; s -&gt; s.replace(target, replacement)
-     * </pre>
+     * }</pre>
      *
      * @param replacement the second argument of {@link java.lang.String#replace(CharSequence, CharSequence)}
      * @return the right carrying {@link java.lang.String#replace(CharSequence, CharSequence)} function
@@ -277,9 +277,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#replace(char, char)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.replace(oldChar, newChar)
-     * </pre>
+     * }</pre>
      *
      * @param oldChar the first argument of {@link java.lang.String#replace(char, char)}
      * @param newChar the second argument of {@link java.lang.String#replace(char, char)}
@@ -295,9 +295,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#replace(char, char)} function:
      *
-     * <pre>
+     * <pre>{@code
      * newChar -&gt; s -&gt; s.replace(oldChar, newChar)
-     * </pre>
+     * }</pre>
      *
      * @param oldChar the first argument of {@link java.lang.String#replace(char, char)}
      * @return the left carrying {@link java.lang.String#replace(char, char)} function
@@ -312,9 +312,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#replace(char, char)} function:
      *
-     * <pre>
+     * <pre>{@code
      * oldChar -&gt; s -&gt; s.replace(oldChar, newChar)
-     * </pre>
+     * }</pre>
      *
      * @param newChar the second argument of {@link java.lang.String#replace(char, char)}
      * @return the right carrying {@link java.lang.String#replace(char, char)} function
@@ -329,9 +329,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#split(String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.split(regex)
-     * </pre>
+     * }</pre>
      *
      * @param regex the argument of {@link java.lang.String#split(String)}
      * @return the carrying {@link java.lang.String#split(String)} function
@@ -346,9 +346,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#split(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.split(regex, limit)
-     * </pre>
+     * }</pre>
      *
      * @param regex the first argument of {@link java.lang.String#split(String, int)}
      * @param limit the second argument of {@link java.lang.String#split(String, int)}
@@ -364,9 +364,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#split(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * limit -&gt; s -&gt; s.split(regex, limit)
-     * </pre>
+     * }</pre>
      *
      * @param regex the first argument of {@link java.lang.String#split(String, int)}
      * @return the left carrying {@link java.lang.String#split(String, int)} function
@@ -381,9 +381,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#split(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * regex -&gt; s -&gt; s.split(regex, limit)
-     * </pre>
+     * }</pre>
      *
      * @param limit the second argument of {@link java.lang.String#split(String, int)}
      * @return the right carrying {@link java.lang.String#split(String, int)} function
@@ -398,9 +398,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#subSequence(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.subSequence(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the first argument of {@link java.lang.String#subSequence(int, int)}
      * @param endIndex   the second argument of {@link java.lang.String#subSequence(int, int)}
@@ -416,9 +416,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#subSequence(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * endIndex -&gt; s -&gt; s.subSequence(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the first argument of {@link java.lang.String#subSequence(int, int)}
      * @return the left carrying {@link java.lang.String#subSequence(int, int)} function
@@ -433,9 +433,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#subSequence(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * beginIndex -&gt; s -&gt; s.subSequence(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param endIndex the second argument of {@link java.lang.String#subSequence(int, int)}
      * @return the right carrying {@link java.lang.String#subSequence(int, int)} function
@@ -450,9 +450,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#charAt(int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.charAt(index)
-     * </pre>
+     * }</pre>
      *
      * @param index the argument of {@link java.lang.String#charAt(int)}
      * @return the carrying {@link java.lang.String#charAt(int)} function
@@ -467,9 +467,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#indexOf(int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.indexOf(ch)
-     * </pre>
+     * }</pre>
      *
      * @param ch the argument of {@link java.lang.String#indexOf(int)}
      * @return the carrying {@link java.lang.String#indexOf(int)} function
@@ -484,9 +484,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#indexOf(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.indexOf(ch, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param ch        the first argument of {@link java.lang.String#indexOf(int, int)}
      * @param fromIndex the second argument of {@link java.lang.String#indexOf(int, int)}
@@ -502,9 +502,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#indexOf(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * fromIndex -&gt; s -&gt; s.indexOf(ch, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param ch the first argument of {@link java.lang.String#indexOf(int, int)}
      * @return the left carrying {@link java.lang.String#indexOf(int, int)} function
@@ -519,9 +519,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#indexOf(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * ch -&gt; s -&gt; s.indexOf(ch, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param fromIndex the second argument of {@link java.lang.String#indexOf(int, int)}
      * @return the right carrying {@link java.lang.String#indexOf(int, int)} function
@@ -536,9 +536,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#lastIndexOf(int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.lastIndexOf(ch)
-     * </pre>
+     * }</pre>
      *
      * @param ch the argument of {@link java.lang.String#lastIndexOf(int)}
      * @return the carrying {@link java.lang.String#lastIndexOf(int)} function
@@ -553,9 +553,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#lastIndexOf(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.lastIndexOf(ch, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param ch        the first argument of {@link java.lang.String#lastIndexOf(int, int)}
      * @param fromIndex the second argument of {@link java.lang.String#lastIndexOf(int, int)}
@@ -571,9 +571,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#lastIndexOf(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * fromIndex -&gt; s -&gt; s.lastIndexOf(ch, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param ch the first argument of {@link java.lang.String#lastIndexOf(int, int)}
      * @return the left carrying {@link java.lang.String#lastIndexOf(int, int)} function
@@ -588,9 +588,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#lastIndexOf(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * ch -&gt; s -&gt; s.lastIndexOf(ch, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param fromIndex the second argument of {@link java.lang.String#lastIndexOf(int, int)}
      * @return the right carrying {@link java.lang.String#lastIndexOf(int, int)} function
@@ -605,9 +605,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#indexOf(String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.indexOf(str)
-     * </pre>
+     * }</pre>
      *
      * @param str the argument of {@link java.lang.String#indexOf(String)}
      * @return the carrying {@link java.lang.String#indexOf(String)} function
@@ -622,9 +622,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#indexOf(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.indexOf(str, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param str       the first argument of {@link java.lang.String#indexOf(String, int)}
      * @param fromIndex the second argument of {@link java.lang.String#indexOf(String, int)}
@@ -640,9 +640,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#indexOf(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * fromIndex -&gt; s -&gt; s.indexOf(str, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param str the first argument of {@link java.lang.String#indexOf(String, int)}
      * @return the left carrying {@link java.lang.String#indexOf(String, int)} function
@@ -657,9 +657,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#indexOf(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * str -&gt; s -&gt; s.indexOf(str, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param fromIndex the second argument of {@link java.lang.String#indexOf(String, int)}
      * @return the right carrying {@link java.lang.String#indexOf(String, int)} function
@@ -674,9 +674,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#lastIndexOf(String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.lastIndexOf(str)
-     * </pre>
+     * }</pre>
      *
      * @param str the argument of {@link java.lang.String#lastIndexOf(String)}
      * @return the carrying {@link java.lang.String#lastIndexOf(String)} function
@@ -691,9 +691,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#lastIndexOf(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.lastIndexOf(str, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param str       the first argument of {@link java.lang.String#lastIndexOf(String, int)}
      * @param fromIndex the second argument of {@link java.lang.String#lastIndexOf(String, int)}
@@ -709,9 +709,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#lastIndexOf(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * fromIndex -&gt; s -&gt; s.lastIndexOf(str, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param str the first argument of {@link java.lang.String#lastIndexOf(String, int)}
      * @return the left carrying {@link java.lang.String#lastIndexOf(String, int)} function
@@ -726,9 +726,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#lastIndexOf(String, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * str -&gt; s -&gt; s.lastIndexOf(str, fromIndex)
-     * </pre>
+     * }</pre>
      *
      * @param fromIndex the second argument of {@link java.lang.String#lastIndexOf(String, int)}
      * @return the right carrying {@link java.lang.String#lastIndexOf(String, int)} function
@@ -743,9 +743,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#codePointAt(int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.codePointAt(index)
-     * </pre>
+     * }</pre>
      *
      * @param index the argument of {@link java.lang.String#codePointAt(int)}
      * @return the carrying {@link java.lang.String#codePointAt(int)} function
@@ -760,9 +760,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#codePointBefore(int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.codePointBefore(index)
-     * </pre>
+     * }</pre>
      *
      * @param index the argument of {@link java.lang.String#codePointBefore(int)}
      * @return the carrying {@link java.lang.String#codePointBefore(int)} function
@@ -777,9 +777,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#codePointCount(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.codePointCount(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the first argument of {@link java.lang.String#codePointCount(int, int)}
      * @param endIndex   the second argument of {@link java.lang.String#codePointCount(int, int)}
@@ -795,9 +795,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#codePointCount(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * endIndex -&gt; s -&gt; s.codePointCount(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param beginIndex the first argument of {@link java.lang.String#codePointCount(int, int)}
      * @return the left carrying {@link java.lang.String#codePointCount(int, int)} function
@@ -812,9 +812,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#codePointCount(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * beginIndex -&gt; s -&gt; s.codePointCount(beginIndex, endIndex)
-     * </pre>
+     * }</pre>
      *
      * @param endIndex the second argument of {@link java.lang.String#codePointCount(int, int)}
      * @return the right carrying {@link java.lang.String#codePointCount(int, int)} function
@@ -829,9 +829,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#offsetByCodePoints(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.offsetByCodePoints(index, codePointOffset)
-     * </pre>
+     * }</pre>
      *
      * @param index           the first argument of {@link java.lang.String#offsetByCodePoints(int, int)}
      * @param codePointOffset the second argument of {@link java.lang.String#offsetByCodePoints(int, int)}
@@ -847,9 +847,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#offsetByCodePoints(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * codePointOffset -&gt; s -&gt; s.offsetByCodePoints(index, codePointOffset)
-     * </pre>
+     * }</pre>
      *
      * @param index the first argument of {@link java.lang.String#offsetByCodePoints(int, int)}
      * @return the left carrying {@link java.lang.String#offsetByCodePoints(int, int)} function
@@ -864,9 +864,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#offsetByCodePoints(int, int)} function:
      *
-     * <pre>
+     * <pre>{@code
      * index -&gt; s -&gt; s.offsetByCodePoints(index, codePointOffset)
-     * </pre>
+     * }</pre>
      *
      * @param codePointOffset the second argument of {@link java.lang.String#offsetByCodePoints(int, int)}
      * @return the right carrying {@link java.lang.String#offsetByCodePoints(int, int)} function
@@ -881,9 +881,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#compareTo(String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.compareTo(other)
-     * </pre>
+     * }</pre>
      *
      * @param other the argument of {@link java.lang.String#compareTo(String)}
      * @return the carrying {@link java.lang.String#compareTo(String)} function
@@ -898,9 +898,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#compareToIgnoreCase(String)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.compareToIgnoreCase(other)
-     * </pre>
+     * }</pre>
      *
      * @param other the argument of {@link java.lang.String#compareToIgnoreCase(String)}
      * @return the carrying {@link java.lang.String#compareToIgnoreCase(String)} function
@@ -915,9 +915,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#getBytes(Charset)} function:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.getBytes(charset)
-     * </pre>
+     * }</pre>
      *
      * @param charset the argument of {@link java.lang.String#getBytes(Charset)}
      * @return the carrying {@link java.lang.String#getBytes(Charset)} function
@@ -932,9 +932,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#startsWith(String)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.startsWith(prefix)
-     * </pre>
+     * }</pre>
      *
      * @param prefix the argument of {@link java.lang.String#startsWith(String)}
      * @return the carrying {@link java.lang.String#startsWith(String)} predicate
@@ -949,9 +949,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#startsWith(String, int)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.startsWith(prefix, offset)
-     * </pre>
+     * }</pre>
      *
      * @param prefix the first argument of {@link java.lang.String#startsWith(String, int)}
      * @param offset the second argument of {@link java.lang.String#startsWith(String, int)}
@@ -967,9 +967,9 @@ public final class StringX {
     /**
      * Returns the left carrying {@link java.lang.String#startsWith(String, int)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * offset -&gt; s -&gt; s.startsWith(prefix, offset)
-     * </pre>
+     * }</pre>
      *
      * @param prefix the first argument of {@link java.lang.String#startsWith(String, int)}
      * @return the left carrying {@link java.lang.String#startsWith(String, int)} predicate
@@ -984,9 +984,9 @@ public final class StringX {
     /**
      * Returns the right carrying {@link java.lang.String#startsWith(String, int)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * prefix -&gt; s -&gt; s.startsWith(prefix, offset)
-     * </pre>
+     * }</pre>
      *
      * @param offset the second argument of {@link java.lang.String#startsWith(String, int)}
      * @return the right carrying {@link java.lang.String#startsWith(String, int)} predicate
@@ -1001,9 +1001,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#endsWith(String)} predicate:
      *
-     * <pre>
+     * <pre>{ @code
      * s -&gt; s.endsWith(suffix)
-     * </pre>
+     * }</pre>
      *
      * @param suffix the argument of {@link java.lang.String#endsWith(String)}
      * @return the carrying {@link java.lang.String#endsWith(String)} predicate
@@ -1018,9 +1018,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#contains(CharSequence)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.contains(cs)
-     * </pre>
+     * }</pre>
      *
      * @param cs the argument of {@link java.lang.String#contains(CharSequence)}
      * @return the carrying {@link java.lang.String#contains(CharSequence)} predicate
@@ -1035,9 +1035,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#matches(String)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.matches(regex)
-     * </pre>
+     * }</pre>
      *
      * @param regex the argument of {@link java.lang.String#matches(String)}
      * @return the carrying {@link java.lang.String#matches(String)} predicate
@@ -1051,10 +1051,10 @@ public final class StringX {
 
     /**
      * Returns the carrying {@link java.lang.String#contentEquals(StringBuffer)} predicate:
-     *
-     * <pre>
+     * <p>
+     * <pr @code
      * s -&gt; s.contentEquals(sb)
-     * </pre>
+     * }</pre>
      *
      * @param sb the argument of {@link java.lang.String#contentEquals(StringBuffer)}
      * @return the carrying {@link java.lang.String#contentEquals(StringBuffer)} predicate
@@ -1069,9 +1069,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#contentEquals(CharSequence)} predicate:
      *
-     * <pre>
+     * <pre @code
      * s -&gt; s.contentEquals(cs)
-     * </pre>
+     * }</pre>
      *
      * @param cs the argument of {@link java.lang.String#contentEquals(CharSequence)}
      * @return the carrying {@link java.lang.String#contentEquals(CharSequence)} predicate
@@ -1086,9 +1086,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#equalsIgnoreCase(String)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.equalsIgnoreCase(other)
-     * </pre>
+     * }</pre>
      *
      * @param other the argument of {@link java.lang.String#equalsIgnoreCase(String)}
      * @return the carrying {@link java.lang.String#equalsIgnoreCase(String)} predicate
@@ -1103,9 +1103,9 @@ public final class StringX {
     /**
      * Returns the carrying {@link java.lang.String#equals(Object)} predicate:
      *
-     * <pre>
+     * <pre>{@code
      * s -&gt; s.equals(other)
-     * </pre>
+     * }</pre>
      *
      * @param other the argument of {@link java.lang.String#equals(Object)}
      * @return the carrying {@link java.lang.String#equals(Object)} predicate
