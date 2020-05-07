@@ -681,6 +681,8 @@ public class ChainX<T> {
      * ATTENTION: This method mutates the value.
      *
      * @param mutator the consumer function to accept to a value, if not {@code null}
+     * @param catcher the consumer to accept to an exception,
+     *                if {@code mutator} throws the exception
      * @param <X>     the type of exception
      * @return this {@code ChainX} storing the updates value
      * @throws NullPointerException if value is not {@code null} and {@code mutator} is {@code null},
