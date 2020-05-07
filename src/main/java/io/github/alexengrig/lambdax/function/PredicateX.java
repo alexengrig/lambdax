@@ -33,17 +33,25 @@ import java.util.function.Predicate;
  */
 public interface PredicateX<T> extends Predicate<T> {
     /**
-     * <p>Returns the same {@link java.util.function.Predicate} as passed to the
-     * method.</p>
+     * Returns the same {@link java.util.function.Predicate} as passed to the method.
      *
-     * @param checker a predicate
-     * @param <T>     a type of the input to the predicate
-     * @return The same {@link java.util.function.Predicate} - checker
+     * <p>
+     * Usage example:
+     * <pre>{@code
+     * String::isEmpty.or("empty"::equals).test("string"); // impossible
+     *
+     * PredicateX.of(String::isEmpty).or("empty"::equals).test("string");
+     * }</pre>
+     *
+     * @param predicate a predicate
+     * @param <T>       the type of the input to the predicate
+     * @return the {@code predicate}
      * @see java.util.function.Predicate
+     * @since 0.999.0
      */
     @SuppressWarnings("unchecked")
-    static <T> Predicate<T> of(Predicate<? super T> checker) {
-        return (Predicate<T>) checker;
+    static <T> Predicate<T> of(Predicate<? super T> predicate) {
+        return (Predicate<T>) predicate;
     }
 
     /**
