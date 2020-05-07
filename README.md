@@ -1,6 +1,6 @@
 [![LambdaX logo](docs/images/header.png "LambdaX")](https://alexengrig.github.io/lambdax)
 
-# *Lambda*X 0.4.0 [![Maven Central](https://img.shields.io/maven-central/v/io.github.alexengrig/lambdax.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.alexengrig%22%20AND%20a:%22lambdax%22)[![Javadocs](https://www.javadoc.io/badge/io.github.alexengrig/lambdax.svg)](https://www.javadoc.io/doc/io.github.alexengrig/lambdax)[![GitHub](https://img.shields.io/github/license/alexengrig/lambdax?style=flat&&color=informational)](LICENSE)
+# *Lambda*X 0.5.0 [![Maven Central](https://img.shields.io/maven-central/v/io.github.alexengrig/lambdax.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.alexengrig%22%20AND%20a:%22lambdax%22)[![Javadocs](https://www.javadoc.io/badge/io.github.alexengrig/lambdax.svg)](https://www.javadoc.io/doc/io.github.alexengrig/lambdax)[![GitHub](https://img.shields.io/github/license/alexengrig/lambdax?style=flat&&color=informational)](LICENSE)
 [![Build Status](https://travis-ci.com/alexengrig/lambdax.svg?branch=master)](https://travis-ci.com/alexengrig/lambdax)[![codecov](https://codecov.io/gh/alexengrig/lambdax/branch/master/graph/badge.svg)](https://codecov.io/gh/alexengrig/lambdax)[![Coverage Status](https://coveralls.io/repos/github/alexengrig/lambdax/badge.svg)](https://coveralls.io/github/alexengrig/lambdax)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrig/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)[![BCH compliance](https://bettercodehub.com/edge/badge/alexengrig/lambdax?branch=master)](https://bettercodehub.com/)[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexengrig/lambdax.svg)](https://github.com/alexengrig/lambdax/releases)
 
 This library contains utility classes with useful lambdas.
@@ -120,7 +120,7 @@ Add this snippet to the pom.xml `dependencies` section:
 <dependency>
   <groupId>io.github.alexengrig</groupId>
   <artifactId>lambdax</artifactId>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
 </dependency>
 ```
 
@@ -129,12 +129,12 @@ Add this snippet to the pom.xml `dependencies` section:
 Add this snippet to the build.gradle `dependencies` section:
 
 ```groovy
-implementation 'io.github.alexengrig:lambdax:0.4.0'
+implementation 'io.github.alexengrig:lambdax:0.5.0'
 ```
 
 ### Others
 
-Other snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.4.0/jar).
+Other snippets are available in [The Central Repository](https://search.maven.org/artifact/io.github.alexengrig/lambdax/0.5.0/jar).
 
 ## License
 
