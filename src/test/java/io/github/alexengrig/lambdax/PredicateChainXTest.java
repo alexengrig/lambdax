@@ -18,24 +18,14 @@ package io.github.alexengrig.lambdax;
 
 import io.github.alexengrig.lambdax.entity.Gun;
 import io.github.alexengrig.lambdax.entity.Man;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.function.Predicate;
 
-public class PredicateChainXTest {
-    private static final Gun CROWBAR = new Gun("Crowbar", 5);
-    private static final Gun SNARK = new Gun("Snark", 10);
-    private static final Man GORDON_FREEMAN = new Man(CROWBAR);
-    private static final Man ZOMBIE = new Man(null);
-
-    public <T> void assertTrueByMethod(String method, Predicate<? super T> predicate, T subject) {
-        Assert.assertTrue("The PredicateChainX#" + method + " must return true", predicate.test(subject));
-    }
-
-    public <T> void assertFalseByMethod(String method, Predicate<? super T> predicate, T subject) {
-        Assert.assertFalse("The PredicateChainX#" + method + " must return false", predicate.test(subject));
+public class PredicateChainXTest extends PredicateTester implements Data {
+    public PredicateChainXTest() {
+        super("PredicateChainX");
     }
 
     @Test
