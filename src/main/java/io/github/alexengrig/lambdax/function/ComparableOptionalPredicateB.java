@@ -28,6 +28,7 @@ import java.util.function.Predicate;
  * @version 0.3.0
  * @since 0.3.0
  */
+@Deprecated
 /* package */class ComparableOptionalPredicateB<T, R extends Comparable<R>> implements ComparableOptionalPredicateI<T, R> {
     /**
      * @since 0.3.0

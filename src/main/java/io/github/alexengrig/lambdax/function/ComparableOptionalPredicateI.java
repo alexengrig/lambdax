@@ -31,6 +31,7 @@ import java.util.Comparator;
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
  * @since 0.3.0
  */
+@Deprecated
 public interface ComparableOptionalPredicateI<T, R extends Comparable<R>> extends OptionalPredicateI<T, R> {
     /**
      * <p>

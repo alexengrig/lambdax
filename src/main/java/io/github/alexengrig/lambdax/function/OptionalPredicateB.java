@@ -29,6 +29,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
  * @since 0.3.0
  */
+@Deprecated
 /* package */class OptionalPredicateB<T, R> implements OptionalPredicateI<T, R> {
     /**
      * @since 0.3.0

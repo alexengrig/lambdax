@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import java.util.function.Function;
  * @see java.util.function.Function
  * @since 0.2.0
  */
+@Deprecated
 @FunctionalInterface
 public interface ComparableResultFunction<T, R extends Comparable<R>> extends Function<T, R> {
 }

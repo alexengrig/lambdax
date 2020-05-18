@@ -27,6 +27,7 @@ import java.util.function.Predicate;
  * @see java.util.function.Predicate
  * @since 0.3.0
  */
+@Deprecated
 public interface OptionalPredicateResultI<T> {
     /**
      * <p>

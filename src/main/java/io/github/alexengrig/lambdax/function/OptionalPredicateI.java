@@ -37,6 +37,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.OptionalPredicateResultI
  * @since 0.3.0
  */
+@Deprecated
 public interface OptionalPredicateI<T, R> {
     /**
      * <p>
