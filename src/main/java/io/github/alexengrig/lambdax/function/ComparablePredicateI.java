@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateI
  * @since 0.2.0
  */
+@Deprecated
 public interface ComparablePredicateI<T, R extends Comparable<R>> extends PredicateI<T, R> {
     /**
      * <p>

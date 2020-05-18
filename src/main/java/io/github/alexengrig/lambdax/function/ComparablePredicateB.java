@@ -34,6 +34,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateB
  * @since 0.2.0
  */
+@Deprecated
 /* package */final class ComparablePredicateB<T, R extends Comparable<R>>
         extends PredicateB<T, R>
         implements ComparablePredicateI<T, R> {

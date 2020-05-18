@@ -36,6 +36,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
  * @since 0.2.0
  */
+@Deprecated
 public interface PredicateI<T, R> {
     /**
      * <p>

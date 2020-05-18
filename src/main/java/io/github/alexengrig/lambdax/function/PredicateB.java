@@ -35,6 +35,7 @@ import java.util.function.Predicate;
  * @see io.github.alexengrig.lambdax.function.PredicateI
  * @since 0.2.0
  */
+@Deprecated
 /* package */class PredicateB<T, R> implements PredicateI<T, R> {
     /**
      * <p>The mapper of the input to the predicate.</p>
