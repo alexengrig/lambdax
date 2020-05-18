@@ -36,4 +36,11 @@ public abstract class PredicateTester {
         String message = String.format("The %s#%s must return false", className, method);
         Assert.assertFalse(message, predicate.test(subject));
     }
+
+    protected <T> Predicate<T> failByMethod(String method) {
+        return t -> {
+            Assert.fail(String.format("This predicate should not be called for the %s#%s", className, method));
+            return false;
+        };
+    }
 }
