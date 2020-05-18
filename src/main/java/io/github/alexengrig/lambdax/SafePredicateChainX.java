@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.function.FunctionX;
 import io.github.alexengrig.lambdax.function.PredicateX;
 
 import java.util.Comparator;
@@ -39,7 +40,7 @@ public class SafePredicateChainX<T, R> {
 //    Flow
 
     public <V> SafePredicateChainX<T, V> map(Function<? super R, ? extends V> mapper) {
-        return of(function.andThen(mapper));
+        return of(function.andThen(FunctionX.nullSafe(mapper)));
     }
 
 //    Predicate
