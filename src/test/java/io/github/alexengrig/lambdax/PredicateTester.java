@@ -38,7 +38,7 @@ public abstract class PredicateTester {
         Assert.assertFalse(message, predicate.test(subject));
     }
 
-    protected <T> Predicate<T> failByMethod(String method) {
+    protected <T> Predicate<T> failPredicateByMethod(String method) {
         return t -> {
             Assert.fail(String.format("This predicate should not be called for the %s#%s", className, method));
             return false;
