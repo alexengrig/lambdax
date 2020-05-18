@@ -18,6 +18,7 @@ package io.github.alexengrig.lambdax;
 
 import io.github.alexengrig.lambdax.entity.Gun;
 import io.github.alexengrig.lambdax.entity.Man;
+import io.github.alexengrig.lambdax.function.PredicateX;
 import org.junit.Test;
 
 import java.util.Comparator;
@@ -144,7 +145,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Data {
             );
             assertTrueByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getDamage).greater(0).orElse(failByMethod(method)),
+                    of(Man::getGun).map(Gun::getDamage).greater(0).orElse(failPredicateByMethod(method)),
                     GORDON_FREEMAN
             );
         }
@@ -160,6 +161,21 @@ public class SafePredicateChainXTest extends PredicateTester implements Data {
             assertTrueByMethod(
                     method,
                     of(Man::getGun).map(Gun::getDamage).greater(0).orElse(false),
+                    GORDON_FREEMAN
+            );
+        }
+
+        @Test
+        public void checkOrElseWithSupplier() {
+            String method = "orElse(Supplier)";
+            assertTrueByMethod(
+                    method,
+                    of(Man::getGun).map(Gun::getName).equal("no-gun").orElse(PredicateX.truth()),
+                    ZOMBIE
+            );
+            assertTrueByMethod(
+                    method,
+                    of(Man::getGun).map(Gun::getDamage).greater(0).orElse(failSupplierByMethod(method)),
                     GORDON_FREEMAN
             );
         }
