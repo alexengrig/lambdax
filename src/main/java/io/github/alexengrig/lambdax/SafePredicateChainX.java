@@ -23,6 +23,7 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class SafePredicateChainX<T, R> {
     protected final Function<T, R> function;
@@ -123,6 +124,16 @@ public class SafePredicateChainX<T, R> {
                     return predicate.test(value);
                 }
                 return check;
+            };
+        }
+
+        public Predicate<T> orElse(Supplier<? extends Boolean> producer) {
+            return t -> {
+                R value = function.apply(t);
+                if (value != null) {
+                    return predicate.test(value);
+                }
+                return producer.get();
             };
         }
 
