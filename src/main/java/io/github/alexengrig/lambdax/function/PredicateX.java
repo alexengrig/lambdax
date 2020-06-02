@@ -139,7 +139,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    static <T> Predicate<T> truth() {
+    static <T> PredicateX<T> truth() {
         return t -> true;
     }
 
@@ -152,7 +152,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.2.0
      */
-    static <T> Predicate<T> lie() {
+    static <T> PredicateX<T> lie() {
         return t -> false;
     }
 
@@ -168,9 +168,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate#negate
      * @since 0.2.0
      */
-    @SuppressWarnings("unchecked")
-    static <T> Predicate<T> not(Predicate<? super T> predicate) {
-        return (Predicate<T>) predicate.negate();
+    static <T> PredicateX<T> not(Predicate<? super T> predicate) {
+        return of(predicate.negate());
     }
 
     /**
@@ -189,7 +188,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate#and(java.util.function.Predicate)
      * @since 0.3.0
      */
-    static <T> Predicate<T> and(Predicate<? super T> first, Predicate<? super T> second) {
+    static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> first.test(t) && second.test(t);
     }
 
@@ -212,8 +211,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> Predicate<T> and(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
-        Predicate<T> predicate = and(first, second);
+    static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+        PredicateX<T> predicate = and(first, second);
         for (Predicate<? super T> other : others) {
             predicate = and(predicate, other);
         }
@@ -236,7 +235,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate#or(java.util.function.Predicate)
      * @since 0.3.0
      */
-    static <T> Predicate<T> or(Predicate<? super T> first, Predicate<? super T> second) {
+    static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> first.test(t) || second.test(t);
     }
 
@@ -259,10 +258,10 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> Predicate<T> or(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
-        Predicate<T> predicate = or(first, second);
+    static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+        PredicateX<T> predicate = or(first, second);
         for (Predicate<? super T> other : others) {
-            predicate = predicate.or(other);
+            predicate = or(predicate, other);
         }
         return predicate;
     }
@@ -279,7 +278,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    static <T> Predicate<T> xor(Predicate<? super T> first, Predicate<? super T> second) {
+    static <T> PredicateX<T> xor(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> first.test(t) ^ second.test(t);
     }
 
@@ -298,8 +297,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> Predicate<T> xor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
-        Predicate<T> predicate = xor(first, second);
+    static <T> PredicateX<T> xor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+        PredicateX<T> predicate = xor(first, second);
         for (Predicate<? super T> other : others) {
             predicate = xor(predicate, other);
         }
@@ -321,7 +320,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    static <T> Predicate<T> nand(Predicate<? super T> first, Predicate<? super T> second) {
+    static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> !(first.test(t) && second.test(t));
     }
 
@@ -342,8 +341,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> Predicate<T> nand(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
-        Predicate<T> predicate = nand(first, second);
+    static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+        PredicateX<T> predicate = nand(first, second);
         for (Predicate<? super T> other : others) {
             predicate = nand(predicate, other);
         }
@@ -365,7 +364,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    static <T> Predicate<T> nor(Predicate<? super T> first, Predicate<? super T> second) {
+    static <T> PredicateX<T> nor(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> !(first.test(t) || second.test(t));
     }
 
@@ -387,8 +386,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> Predicate<T> nor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
-        Predicate<T> predicate = nor(first, second);
+    static <T> PredicateX<T> nor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+        PredicateX<T> predicate = nor(first, second);
         for (Predicate<? super T> other : others) {
             predicate = nor(predicate, other);
         }
@@ -407,7 +406,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    static <T> Predicate<T> xnor(Predicate<? super T> first, Predicate<? super T> second) {
+    static <T> PredicateX<T> xnor(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> first.test(t) == second.test(t);
     }
 
@@ -425,8 +424,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> Predicate<T> xnor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
-        Predicate<T> predicate = xnor(first, second);
+    static <T> PredicateX<T> xnor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+        PredicateX<T> predicate = xnor(first, second);
         for (Predicate<? super T> other : others) {
             predicate = xnor(predicate, other);
         }
