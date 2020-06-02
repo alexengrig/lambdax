@@ -39,7 +39,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeContains() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.contains(1)))
                 .isPresent());
     }
@@ -47,7 +47,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeNotContains() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.notContains(1)))
                 .isPresent());
     }
@@ -55,7 +55,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeAdd() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.add(1)))
                 .isPresent());
     }
@@ -63,7 +63,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeOffer() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.offer(1)))
                 .isPresent());
     }
@@ -71,7 +71,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeOfferFirst() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.offerFirst(1)))
                 .isPresent());
     }
@@ -79,7 +79,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeOfferLast() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.offerLast(1)))
                 .isPresent());
     }
@@ -87,7 +87,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeRemove() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.remove(1)))
                 .isPresent());
     }
@@ -95,7 +95,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeRemoveFirstOccurrence() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.removeFirstOccurrence(1)))
                 .isPresent());
     }
@@ -103,7 +103,7 @@ public class DequeXPredicateXTest {
     @Test
     public void checkDequeRemoveLastOccurrence() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<Deque<Integer>>::get)
+                .filter(PredicateX.chain(Holder<Deque<Integer>>::get)
                         .check(DequeX.removeLastOccurrence(1)))
                 .isPresent());
     }

@@ -40,7 +40,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListContains() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.contains(1)))
                 .isPresent());
     }
@@ -48,7 +48,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListContainsAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.containsAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -56,7 +56,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListNotContains() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.notContains(1)))
                 .isPresent());
     }
@@ -64,7 +64,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListNotContainsAll() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.notContainsAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -72,7 +72,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListAdd() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.add(1)))
                 .isPresent());
     }
@@ -80,7 +80,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListAddAll() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.addAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -88,7 +88,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListAddAllWithIndex() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.addAll(0, Collections.singleton(1))))
                 .isPresent());
     }
@@ -96,7 +96,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListRemove() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.remove(1)))
                 .isPresent());
     }
@@ -104,7 +104,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListRemoveAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.removeAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -112,7 +112,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListRetainAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.retainAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -120,7 +120,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListEqualsTo() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.equalsTo(Collections.singleton(1))))
                 .isPresent());
     }
@@ -128,7 +128,7 @@ public class ListXPredicateXTest {
     @Test
     public void checkListNotEqualsTo() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.old(Holder<List<Integer>>::get)
+                .filter(PredicateX.chain(Holder<List<Integer>>::get)
                         .check(ListX.notEqualsTo(Collections.singleton(1))))
                 .isPresent());
     }
