@@ -42,6 +42,10 @@ public class PredicateChainX<T, R> {
         return of(function.andThen(mapper));
     }
 
+    public <V> SafePredicateChainX<T, V> mapToSafe(Function<? super R, ? extends V> mapper) {
+        return SafePredicateChainX.of(function.andThen(mapper));
+    }
+
 //    Predicate
 
     public PredicateX<T> isNull() {
