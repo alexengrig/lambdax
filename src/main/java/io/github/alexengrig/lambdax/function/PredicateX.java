@@ -49,9 +49,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Predicate
      * @since 0.999.0
      */
-    @SuppressWarnings("unchecked")
-    static <T> Predicate<T> of(Predicate<? super T> predicate) {
-        return (Predicate<T>) predicate;
+    static <T> PredicateX<T> of(Predicate<? super T> predicate) {
+        return predicate::test;
     }
 
     /**
