@@ -432,19 +432,19 @@ public interface PredicateX<T> extends Predicate<T> {
         return predicate;
     }
 
-    default Predicate<T> xor(Predicate<? super T> other) {
+    default PredicateX<T> xor(Predicate<? super T> other) {
         return t -> test(t) ^ other.test(t);
     }
 
-    default Predicate<T> nand(Predicate<? super T> other) {
+    default PredicateX<T> nand(Predicate<? super T> other) {
         return t -> !(test(t) && other.test(t));
     }
 
-    default Predicate<T> nor(Predicate<? super T> other) {
+    default PredicateX<T> nor(Predicate<? super T> other) {
         return t -> !(test(t) || other.test(t));
     }
 
-    default Predicate<T> xnor(Predicate<? super T> other) {
+    default PredicateX<T> xnor(Predicate<? super T> other) {
         return t -> test(t) == other.test(t);
     }
 }
