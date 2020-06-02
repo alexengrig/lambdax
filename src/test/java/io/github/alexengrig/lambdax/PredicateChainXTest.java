@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.entity.Entities;
 import io.github.alexengrig.lambdax.entity.Gun;
 import io.github.alexengrig.lambdax.entity.Man;
 import org.junit.Test;
@@ -23,7 +24,7 @@ import org.junit.Test;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
-public class PredicateChainXTest extends PredicateTester implements Data {
+public class PredicateChainXTest extends PredicateTester implements Entities {
     public PredicateChainXTest() {
         super("PredicateChainX");
     }

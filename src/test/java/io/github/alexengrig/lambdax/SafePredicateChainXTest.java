@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax;
 
+import io.github.alexengrig.lambdax.entity.Entities;
 import io.github.alexengrig.lambdax.entity.Gun;
 import io.github.alexengrig.lambdax.entity.Man;
 import io.github.alexengrig.lambdax.function.PredicateX;
@@ -26,7 +27,7 @@ import java.util.function.Predicate;
 
 import static io.github.alexengrig.lambdax.SafePredicateChainX.of;
 
-public class SafePredicateChainXTest extends PredicateTester implements Data {
+public class SafePredicateChainXTest extends PredicateTester implements Entities {
     public SafePredicateChainXTest() {
         super("SafePredicateChainX");
     }
@@ -130,7 +131,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Data {
         );
     }
 
-    public static class Result extends PredicateTester implements Data {
+    public static class Result extends PredicateTester implements Entities {
         public Result() {
             super("SafePredicateChainX.Result");
         }

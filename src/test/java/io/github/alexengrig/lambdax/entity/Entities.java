@@ -14,12 +14,9 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax;
+package io.github.alexengrig.lambdax.entity;
 
-import io.github.alexengrig.lambdax.entity.Gun;
-import io.github.alexengrig.lambdax.entity.Man;
-
-public interface Data {
+public interface Entities {
     Gun CROWBAR = new Gun("Crowbar", 5);
     Gun SNARK = new Gun("Snark", 10);
     Man GORDON_FREEMAN = new Man(CROWBAR);
