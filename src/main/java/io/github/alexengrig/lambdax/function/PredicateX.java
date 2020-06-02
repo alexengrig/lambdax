@@ -222,11 +222,12 @@ public interface PredicateX<T> extends Predicate<T> {
      * AND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
      * @see java.util.function.Predicate#and(java.util.function.Predicate)
-     * @see io.github.alexengrig.lambdax.function.PredicateX#and(java.util.function.Predicate, java.util.function.Predicate)
+     * @see #and(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+    static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second,
+                                 Predicate<? super T>... others) {
         PredicateX<T> predicate = and(first, second);
         for (Predicate<? super T> other : others) {
             predicate = and(predicate, other);
@@ -269,11 +270,12 @@ public interface PredicateX<T> extends Predicate<T> {
      * OR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
      * @see java.util.function.Predicate#or(java.util.function.Predicate)
-     * @see io.github.alexengrig.lambdax.function.PredicateX#or(java.util.function.Predicate, java.util.function.Predicate)
+     * @see #or(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+    static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second,
+                                Predicate<? super T>... others) {
         PredicateX<T> predicate = or(first, second);
         for (Predicate<? super T> other : others) {
             predicate = or(predicate, other);
@@ -308,11 +310,12 @@ public interface PredicateX<T> extends Predicate<T> {
      * @return a composed predicate that represents the short-circuiting logical
      * XOR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
-     * @see io.github.alexengrig.lambdax.function.PredicateX#xor(java.util.function.Predicate, java.util.function.Predicate)
+     * @see #xor(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> PredicateX<T> xor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+    static <T> PredicateX<T> xor(Predicate<? super T> first, Predicate<? super T> second,
+                                 Predicate<? super T>... others) {
         PredicateX<T> predicate = xor(first, second);
         for (Predicate<? super T> other : others) {
             predicate = xor(predicate, other);
@@ -352,11 +355,12 @@ public interface PredicateX<T> extends Predicate<T> {
      * @return a composed predicate that represents the short-circuiting logical
      * NAND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
-     * @see io.github.alexengrig.lambdax.function.PredicateX#nand(java.util.function.Predicate, java.util.function.Predicate)
+     * @see #nand(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+    static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second,
+                                  Predicate<? super T>... others) {
         PredicateX<T> predicate = nand(first, second);
         for (Predicate<? super T> other : others) {
             predicate = nand(predicate, other);
@@ -397,11 +401,12 @@ public interface PredicateX<T> extends Predicate<T> {
      * @return a composed predicate that represents the short-circuiting logical
      * NOR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
-     * @see io.github.alexengrig.lambdax.function.PredicateX#nor(java.util.function.Predicate, java.util.function.Predicate)
+     * @see #nor(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> PredicateX<T> nor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+    static <T> PredicateX<T> nor(Predicate<? super T> first, Predicate<? super T> second,
+                                 Predicate<? super T>... others) {
         PredicateX<T> predicate = nor(first, second);
         for (Predicate<? super T> other : others) {
             predicate = nor(predicate, other);
@@ -439,7 +444,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     @SafeVarargs
-    static <T> PredicateX<T> xnor(Predicate<? super T> first, Predicate<? super T> second, Predicate<? super T>... others) {
+    static <T> PredicateX<T> xnor(Predicate<? super T> first, Predicate<? super T> second,
+                                  Predicate<? super T>... others) {
         PredicateX<T> predicate = xnor(first, second);
         for (Predicate<? super T> other : others) {
             predicate = xnor(predicate, other);
