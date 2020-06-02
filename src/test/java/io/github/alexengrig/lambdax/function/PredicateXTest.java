@@ -39,6 +39,26 @@ public class PredicateXTest {
     };
 
     @Test
+    public void checkXorOperation() {
+        assertTrue(truth().xor(lie()).test(null));
+    }
+
+    @Test
+    public void checkNandOperation() {
+        assertTrue(truth().nand(lie()).test(null));
+    }
+
+    @Test
+    public void checkNorOperation() {
+        assertFalse(truth().nor(lie()).test(null));
+    }
+
+    @Test
+    public void checkXnorOperation() {
+        assertFalse(truth().xnor(lie()).test(null));
+    }
+
+    @Test
     public void checkTruth() {
         assertTrue(truth().test(null));
     }
