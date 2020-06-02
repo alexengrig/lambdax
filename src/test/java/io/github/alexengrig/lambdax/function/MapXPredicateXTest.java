@@ -40,7 +40,7 @@ public class MapXPredicateXTest {
     @Test
     public void checkMapContainsKey() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Map<Integer, Integer>>::get)
+                .filter(PredicateX.old(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.containsKey(1)))
                 .isPresent());
     }
@@ -48,7 +48,7 @@ public class MapXPredicateXTest {
     @Test
     public void checkMapNotContainsKey() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Map<Integer, Integer>>::get)
+                .filter(PredicateX.old(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.notContainsKey(1)))
                 .isPresent());
     }
@@ -56,7 +56,7 @@ public class MapXPredicateXTest {
     @Test
     public void checkMapContainsValue() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Map<Integer, Integer>>::get)
+                .filter(PredicateX.old(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.containsValue(1)))
                 .isPresent());
     }
@@ -64,7 +64,7 @@ public class MapXPredicateXTest {
     @Test
     public void checkMapNotContainsValue() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Map<Integer, Integer>>::get)
+                .filter(PredicateX.old(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.notContainsValue(1)))
                 .isPresent());
     }
@@ -72,7 +72,7 @@ public class MapXPredicateXTest {
     @Test
     public void checkMapEqualsTo() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Map<Integer, Integer>>::get)
+                .filter(PredicateX.old(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.equalsTo(Collections.emptyMap())))
                 .isPresent());
     }
@@ -80,7 +80,7 @@ public class MapXPredicateXTest {
     @Test
     public void checkMapNotEqualsTo() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Map<Integer, Integer>>::get)
+                .filter(PredicateX.old(Holder<Map<Integer, Integer>>::get)
                         .check(MapX.notEqualsTo(Collections.emptyMap())))
                 .isPresent());
     }

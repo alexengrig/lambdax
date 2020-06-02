@@ -40,7 +40,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionContains() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.contains(1)))
                 .isPresent());
     }
@@ -48,7 +48,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionContainsAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.containsAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -56,7 +56,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionNotContains() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.notContains(1)))
                 .isPresent());
     }
@@ -64,7 +64,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionNotContainsAll() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.notContainsAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -72,7 +72,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionAdd() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.add(1)))
                 .isPresent());
     }
@@ -80,7 +80,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionAddAll() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.addAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -88,7 +88,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionRemove() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.remove(1)))
                 .isPresent());
     }
@@ -96,7 +96,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionRemoveAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.removeAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -104,7 +104,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionRetainAll() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.retainAll(Collections.singleton(1))))
                 .isPresent());
     }
@@ -112,7 +112,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionEqualsTo() {
         assertTrue(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.equalsTo(Collections.emptyList())))
                 .isPresent());
     }
@@ -120,7 +120,7 @@ public class CollectionXPredicateXTest {
     @Test
     public void checkCollectionNotEqualsTo() {
         assertFalse(Optional.of(holder)
-                .filter(PredicateX.chain(Holder<Collection<Integer>>::get)
+                .filter(PredicateX.old(Holder<Collection<Integer>>::get)
                         .check(CollectionX.notEqualsTo(Collections.emptyList())))
                 .isPresent());
     }

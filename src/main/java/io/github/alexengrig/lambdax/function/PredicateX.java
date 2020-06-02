@@ -66,7 +66,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see io.github.alexengrig.lambdax.function.PredicateB
      * @since 0.2.0
      */
-    static <T, R> PredicateI<T, R> chain(Function<T, R> mapper) {
+    @Deprecated
+    static <T, R> PredicateI<T, R> old(Function<T, R> mapper) {
         return new PredicateB<>(mapper);
     }
 
@@ -86,7 +87,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
      * @since 0.2.0
      */
-    static <T, R extends Comparable<R>> ComparablePredicateI<T, R> chain(ComparableResultFunction<T, R> mapper) {
+    @Deprecated
+    static <T, R extends Comparable<R>> ComparablePredicateI<T, R> old(ComparableResultFunction<T, R> mapper) {
         return new ComparablePredicateB<>(mapper);
     }
 
@@ -105,7 +107,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see java.util.function.Function
      * @since 0.3.0
      */
-    static <T, R> OptionalPredicateI<T, R> chainSafe(Function<T, R> mapper) {
+    @Deprecated
+    static <T, R> OptionalPredicateI<T, R> oldSafe(Function<T, R> mapper) {
         return new OptionalPredicateB<>(mapper);
     }
 
@@ -125,7 +128,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
      * @since 0.3.0
      */
-    static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> chainSafe(
+    @Deprecated
+    static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> oldSafe(
             ComparableResultFunction<T, R> mapper) {
         return new ComparableOptionalPredicateB<>(mapper);
     }
