@@ -16,6 +16,9 @@
 
 package io.github.alexengrig.lambdax.function;
 
+import io.github.alexengrig.lambdax.PredicateChainX;
+import io.github.alexengrig.lambdax.SafePredicateChainX;
+
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -51,6 +54,14 @@ public interface PredicateX<T> extends Predicate<T> {
      */
     static <T> PredicateX<T> of(Predicate<? super T> predicate) {
         return predicate::test;
+    }
+
+    static <T, R> PredicateChainX<T, R> chain(Function<T, R> mapper) {
+        return PredicateChainX.of(mapper);
+    }
+
+    static <T, R> SafePredicateChainX<T, R> chainSafe(Function<T, R> mapper) {
+        return SafePredicateChainX.of(mapper);
     }
 
     /**
