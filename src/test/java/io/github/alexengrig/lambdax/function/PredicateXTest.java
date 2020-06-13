@@ -174,7 +174,9 @@ public class PredicateXTest {
     @Test
     public void checkLazyNand() {
         assertTrue(nand(lie(), failPredicate).test(null));
+        assertTrue(nand(lie(), null).test(null));
         assertTrue(nand(truth(), truth(), failPredicate).test(null));
+        assertTrue(nand(truth(), lie(), truth(), null).test(null));
     }
 
     @Test

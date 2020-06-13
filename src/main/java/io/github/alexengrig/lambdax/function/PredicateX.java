@@ -250,20 +250,23 @@ public interface PredicateX<T> extends Predicate<T> {
     /**
      * Returns a composed predicate that represents a short-circuiting logical
      * NAND of first predicate and second predicate.
+     * <p>
      * When evaluating the composed predicate,
      * if first predicate is {@code false},
      * then second predicate is not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-NANDed with the {@code second}
-     * @param second a predicate that will be logically-NANDed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-NANDed with the {@code second}
+     * @param second the predicate that will be logically-NANDed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * NAND of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if any predicate is {@code null}
+     *                              or if {@code first} is {@code true} and {@code second} is {@code null}
      * @since 0.3.0
      */
     static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second) {
-        return t -> !(first.test(t) && second.test(t));
+        return t -> !(requireNonNull(first, "The first predicate must not be null").test(t)
+                && requireNonNull(second, "The second predicate must not be null").test(t));
     }
 
     /**
@@ -272,13 +275,13 @@ public interface PredicateX<T> extends Predicate<T> {
      * then those following predicates are not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-NANDed with the {@code second}
-     * @param second a predicate that will be logically-NANDed with the {@code first}
-     * @param others predicates that will be logically-NANDed with previous result
+     * @param first  the predicate that will be logically-NANDed with the {@code second}
+     * @param second the predicate that will be logically-NANDed with the {@code first}
+     * @param others the predicates that will be logically-NANDed with previous result
      *               starting from the result of the {@code first} and the {@code second}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * NAND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if any predicate is {@code null} and previous is {@code true}
      * @see #nand(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
