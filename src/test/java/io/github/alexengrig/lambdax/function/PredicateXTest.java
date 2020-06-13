@@ -126,7 +126,9 @@ public class PredicateXTest {
     @Test
     public void checkLazyOr() {
         assertTrue(or(truth(), failPredicate).test(null));
+        assertTrue(or(truth(), null).test(null));
         assertTrue(or(lie(), truth(), failPredicate).test(null));
+        assertTrue(or(lie(), lie(), truth(), null).test(null));
     }
 
     @Test

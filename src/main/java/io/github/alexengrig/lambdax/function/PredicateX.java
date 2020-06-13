@@ -158,38 +158,41 @@ public interface PredicateX<T> extends Predicate<T> {
     /**
      * Returns a composed predicate that represents a short-circuiting logical
      * OR of first predicate and second predicate.
+     * <p>
      * When evaluating the composed predicate,
      * if first predicate is {@code true},
      * then second predicate is not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ORed with the {@code second}
-     * @param second a predicate that will be logically-ORed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-ORed with the {@code second}
+     * @param second the predicate that will be logically-ORed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * OR of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if {@code first} is {@code null}
+     *                              or if {@code first} is {@code false} and {@code second} is {@code null}
      * @see java.util.function.Predicate#or(java.util.function.Predicate)
      * @since 0.3.0
      */
     static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second) {
-        return t -> first.test(t) || second.test(t);
+        return t -> requireNonNull(first, "The first predicate must not be null").test(t)
+                || requireNonNull(second, "The second predicate must not be null").test(t);
     }
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical OR of predicates.
+     * <p>
      * When evaluating the composed predicate,
      * if any predicate is {@code true},
      * then those following predicates are not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ORed with the {@code second}
-     * @param second a predicate that will be logically-ORed with the {@code first}
-     * @param others predicates that will be logically-ORed with previous result
+     * @param first  the predicate that will be logically-ORed with the {@code second}
+     * @param second the predicate that will be logically-ORed with the {@code first}
+     * @param others the predicates that will be logically-ORed with previous result
      *               starting from the result of the {@code first} and the {@code second}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * OR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
-     * @see java.util.function.Predicate#or(java.util.function.Predicate)
+     * @throws NullPointerException if any predicate is {@code null} and previous is {@code false}
      * @see #or(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
