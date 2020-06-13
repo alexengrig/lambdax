@@ -43,9 +43,9 @@ public interface PredicateX<T> extends Predicate<T> {
      * PredicateX.of(String::isEmpty).or("empty"::equals).test("string");
      * }</pre>
      *
-     * @param predicate a predicate to extension
+     * @param predicate the predicate to extension
      * @param <T>       the type of the input to {@code predicate}
-     * @return {@code predicate} extension
+     * @return the predicate extension
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @since 0.6.0
      */
