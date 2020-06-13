@@ -121,7 +121,8 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.3.0
      */
     static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second) {
-        return t -> first.test(t) && second.test(t);
+        return t -> requireNonNull(first, "The first predicate must not be null").test(t)
+                && requireNonNull(second, "The second predicate must not be null").test(t);
     }
 
     /**

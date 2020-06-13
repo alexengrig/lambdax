@@ -80,6 +80,7 @@ public class PredicateXTest {
         assertFalse(and(lie(), truth()).test(null));
         assertFalse(and(truth(), lie()).test(null));
         assertTrue(and(truth(), truth()).test(null));
+        assertFalse(and(lie(), failPredicate).test(null));
     }
 
     @Test
