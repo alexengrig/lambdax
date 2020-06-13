@@ -19,9 +19,10 @@ package io.github.alexengrig.lambdax.function;
 import io.github.alexengrig.lambdax.PredicateChainX;
 import io.github.alexengrig.lambdax.SafePredicateChainX;
 
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * {@link java.util.function.Predicate} extension.
@@ -50,7 +51,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @since 0.6.0
      */
     static <T> PredicateX<T> of(Predicate<? super T> predicate) {
-        return Objects.requireNonNull(predicate, "The predicate must not be null")::test;
+        return requireNonNull(predicate, "The predicate must not be null")::test;
     }
 
     static <T, R> PredicateChainX<T, R> chain(Function<T, R> mapper) {
@@ -90,19 +91,17 @@ public interface PredicateX<T> extends Predicate<T> {
     }
 
     /**
-     * <p>Returns the {@link java.util.function.Predicate} that is the negation of
-     * the supplied predicate.</p> <p>Like in JDK 11.</p>
+     * Returns a predicate extension of a predicate negation.
      *
-     * @param <T>       a type of the input to the predicate
-     * @param predicate a supplied predicate to negate
-     * @return The {@link java.util.function.Predicate} that negates the results
-     * of the supplied predicate
-     * @see java.util.function.Predicate
+     * @param <T>       the type of the input to the predicate
+     * @param predicate the predicate to negate
+     * @return the predicate extension
+     * @throws NullPointerException if {@code predicate} is {@code null}
      * @see java.util.function.Predicate#negate
      * @since 0.2.0
      */
     static <T> PredicateX<T> not(Predicate<? super T> predicate) {
-        return of(predicate.negate());
+        return of(requireNonNull(predicate, "The predicate must not be null").negate());
     }
 
     /**
