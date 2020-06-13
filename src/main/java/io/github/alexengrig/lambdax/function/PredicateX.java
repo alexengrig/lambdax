@@ -107,16 +107,18 @@ public interface PredicateX<T> extends Predicate<T> {
     /**
      * Returns a composed predicate that represents a short-circuiting logical
      * AND of first predicate and second predicate.
+     * <p>
      * When evaluating the composed predicate,
      * if first predicate is {@code false},
      * then second predicate is not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ANDed with the {@code second}
-     * @param second a predicate that will be logically-ANDed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-ANDed with the {@code second}
+     * @param second the predicate that will be logically-ANDed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * AND of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if {@code first} is {@code null}
+     *                              or if {@code first} is {@code false} and {@code second} is {@code null}
      * @see java.util.function.Predicate#and(java.util.function.Predicate)
      * @since 0.3.0
      */
