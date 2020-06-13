@@ -19,6 +19,7 @@ package io.github.alexengrig.lambdax.function;
 import io.github.alexengrig.lambdax.PredicateChainX;
 import io.github.alexengrig.lambdax.SafePredicateChainX;
 
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -33,24 +34,23 @@ import java.util.function.Predicate;
 @FunctionalInterface
 public interface PredicateX<T> extends Predicate<T> {
     /**
-     * Returns the same {@link java.util.function.Predicate} as passed to the method.
-     *
+     * Returns a predicate extension.
      * <p>
      * Usage example:
      * <pre>{@code
-     * String::isEmpty.or("empty"::equals).test("string"); // impossible
+     * // impossible: String::isEmpty.or("empty"::equals).test("string");
      *
      * PredicateX.of(String::isEmpty).or("empty"::equals).test("string");
      * }</pre>
      *
-     * @param predicate a predicate
-     * @param <T>       the type of the input to the predicate
-     * @return the {@code predicate}
-     * @see java.util.function.Predicate
-     * @since 0.999.0
+     * @param predicate a predicate to extension
+     * @param <T>       the type of the input to {@code predicate}
+     * @return {@code predicate} extension
+     * @throws NullPointerException if {@code predicate} is {@code null}
+     * @since 0.6.0
      */
     static <T> PredicateX<T> of(Predicate<? super T> predicate) {
-        return predicate::test;
+        return Objects.requireNonNull(predicate, "The predicate must not be null")::test;
     }
 
     static <T, R> PredicateChainX<T, R> chain(Function<T, R> mapper) {
