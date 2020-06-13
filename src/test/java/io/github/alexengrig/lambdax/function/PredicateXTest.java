@@ -80,7 +80,6 @@ public class PredicateXTest {
         assertFalse(and(lie(), truth()).test(null));
         assertFalse(and(truth(), lie()).test(null));
         assertTrue(and(truth(), truth()).test(null));
-        assertFalse(and(lie(), failPredicate).test(null));
     }
 
     @Test
@@ -93,12 +92,15 @@ public class PredicateXTest {
         assertFalse(and(truth(), lie(), truth()).test(null));
         assertFalse(and(truth(), truth(), lie()).test(null));
         assertTrue(and(truth(), truth(), truth()).test(null));
+        assertFalse(and(lie(), lie(), failPredicate).test(null));
     }
 
     @Test
     public void checkLazyAnd() {
         assertFalse(and(lie(), failPredicate).test(null));
+        assertFalse(and(lie(), null).test(null));
         assertFalse(and(truth(), lie(), failPredicate).test(null));
+        assertFalse(and(truth(), truth(), lie(), null).test(null));
     }
 
     @Test

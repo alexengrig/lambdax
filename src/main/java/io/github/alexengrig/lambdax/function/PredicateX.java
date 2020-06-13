@@ -118,7 +118,7 @@ public interface PredicateX<T> extends Predicate<T> {
      * @return the composed predicate that represents the short-circuiting logical
      * AND of the {@code first} predicate and the {@code second} predicate
      * @throws NullPointerException if {@code first} is {@code null}
-     *                              or if {@code first} is {@code false} and {@code second} is {@code null}
+     *                              or if {@code first} is {@code true} and {@code second} is {@code null}
      * @see java.util.function.Predicate#and(java.util.function.Predicate)
      * @since 0.3.0
      */
@@ -129,19 +129,19 @@ public interface PredicateX<T> extends Predicate<T> {
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical AND of predicates.
+     * <p>
      * When evaluating the composed predicate,
      * if any predicate is {@code false},
      * then those following predicates are not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ANDed with the {@code second}
-     * @param second a predicate that will be logically-ANDed with the {@code first}
-     * @param others predicates that will be logically-ANDed with previous result
+     * @param first  the predicate that will be logically-ANDed with the {@code second}
+     * @param second the predicate that will be logically-ANDed with the {@code first}
+     * @param others the predicates that will be logically-ANDed with previous result
      *               starting from the result of the {@code first} and the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * AND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
-     * @see java.util.function.Predicate#and(java.util.function.Predicate)
+     * @throws NullPointerException if any predicate is {@code null} and previous is {@code true}
      * @see #and(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
