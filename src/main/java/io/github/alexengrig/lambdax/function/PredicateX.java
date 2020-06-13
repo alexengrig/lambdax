@@ -23,14 +23,14 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * <p>This utility class contains useful lambdas for {@link java.util.function.Predicate}.</p>
+ * {@link java.util.function.Predicate} extension.
  *
  * @author Grig Alex
- * @version 0.3.0
- * @see java.util.function.Function
+ * @version 0.6.0
  * @see java.util.function.Predicate
  * @since 0.2.0
  */
+@FunctionalInterface
 public interface PredicateX<T> extends Predicate<T> {
     /**
      * Returns the same {@link java.util.function.Predicate} as passed to the method.
