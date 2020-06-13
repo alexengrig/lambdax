@@ -63,13 +63,13 @@ public interface PredicateX<T> extends Predicate<T> {
     }
 
     /**
-     * Returns the predicate extension:
+     * Returns the predicate:
      * <pre>{@code
      * t -> true
      * }</pre>
      *
      * @param <T> the type of the input to the predicate
-     * @return the predicate extension that always returns {@code true}
+     * @return the predicate that always returns {@code true}
      * @since 0.2.0
      */
     static <T> PredicateX<T> truth() {
@@ -77,13 +77,13 @@ public interface PredicateX<T> extends Predicate<T> {
     }
 
     /**
-     * Returns the predicate extension:
+     * Returns the predicate:
      * <pre>{@code
      * t -> false
      * }</pre>
      *
      * @param <T> the type of the input to the predicate
-     * @return the predicate extension that always returns {@code false}
+     * @return the predicate that always returns {@code false}
      * @since 0.2.0
      */
     static <T> PredicateX<T> lie() {
@@ -91,11 +91,11 @@ public interface PredicateX<T> extends Predicate<T> {
     }
 
     /**
-     * Returns a predicate extension of a predicate negation.
+     * Returns a predicate of a predicate negation.
      *
      * @param <T>       the type of the input to the predicate
      * @param predicate the predicate to negate
-     * @return the predicate extension
+     * @return the predicate
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see java.util.function.Predicate#negate
      * @since 0.2.0
