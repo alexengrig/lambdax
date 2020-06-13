@@ -62,12 +62,13 @@ public interface PredicateX<T> extends Predicate<T> {
     }
 
     /**
-     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
+     * Returns the predicate extension:
+     * <pre>{@code
+     * t -> true
+     * }</pre>
      *
-     * @param <T> a type of the input to the predicate
-     * @return The {@link java.util.function.Predicate} that always returns {@code
-     * true}
-     * @see java.util.function.Predicate
+     * @param <T> the type of the input to the predicate
+     * @return the predicate extension that always returns {@code true}
      * @since 0.2.0
      */
     static <T> PredicateX<T> truth() {
