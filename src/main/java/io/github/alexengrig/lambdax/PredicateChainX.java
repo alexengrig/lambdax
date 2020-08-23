@@ -23,6 +23,14 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * A predicate container which may manipulate its value.
+ *
+ * @param <T> the type of predicate value
+ * @author Grig Alex
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 public class PredicateChainX<T, R> {
     protected final Function<T, R> function;
 
