@@ -54,10 +54,30 @@ public interface PredicateX<T> extends Predicate<T> {
         return requireNonNull(predicate, "The predicate must not be null")::test;
     }
 
+    /**
+     * Returns {@link io.github.alexengrig.lambdax.PredicateChainX} of a mapping function.
+     *
+     * @param mapper the mapping function
+     * @param <T>    the type of the input to the mapping function
+     * @param <R>    the type of the result of the mapping function
+     * @return PredicateChainX of {@code mapper}
+     * @see io.github.alexengrig.lambdax.PredicateChainX#of(Function)
+     * @since 0.6.0
+     */
     static <T, R> PredicateChainX<T, R> chain(Function<T, R> mapper) {
         return PredicateChainX.of(mapper);
     }
 
+    /**
+     * Returns {@link io.github.alexengrig.lambdax.SafePredicateChainX} of a mapping function.
+     *
+     * @param mapper the mapping function
+     * @param <T>    the type of the input to the mapping function
+     * @param <R>    the type of the result of the mapping function
+     * @return SafePredicateChainX of {@code mapper}
+     * @see io.github.alexengrig.lambdax.SafePredicateChainX#of(Function)
+     * @since 0.6.0
+     */
     static <T, R> SafePredicateChainX<T, R> chainSafe(Function<T, R> mapper) {
         return SafePredicateChainX.of(mapper);
     }
