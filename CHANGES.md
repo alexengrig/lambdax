@@ -1,5 +1,9 @@
 # *Lambda*X changes
 
+## 0.6.0
+
+*   [[#111](../../issues/111)] Refactor PredicateX
+
 ## 0.5.0
 
 *   [[#87](../../issues/87)] Create tryXXX methods to ChainX
