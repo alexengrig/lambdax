@@ -6,4 +6,3 @@ install:
 after_success:
   - mvn clean test jacoco:report coveralls:report -DrepoToken=$COVERALLS_TOKEN
   - bash <(curl -s https://codecov.io/bash)
-  - mvn com.gavinmogan:codacy-maven-plugin:coverage -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
