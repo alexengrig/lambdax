@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.com/alexengrig/lambdax.svg?branch=master)](https://travis-ci.com/alexengrig/lambdax)[![codecov](https://codecov.io/gh/alexengrig/lambdax/branch/master/graph/badge.svg)](https://codecov.io/gh/alexengrig/lambdax)[![Coverage Status](https://coveralls.io/repos/github/alexengrig/lambdax/badge.svg)](https://coveralls.io/github/alexengrig/lambdax)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/138c91a8899645ae9e62f13e56bf9465)](https://app.codacy.com/app/alexengrig/lambdax?utm_source=github.com&utm_medium=referral&utm_content=alexengrig/lambdax&utm_campaign=Badge_Grade_Dashboard)[![BCH compliance](https://bettercodehub.com/edge/badge/alexengrig/lambdax?branch=master)](https://bettercodehub.com/)[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexengrig/lambdax.svg)](https://github.com/alexengrig/lambdax/releases)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Falexengrig%2Flambdax.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Falexengrig%2Flambdax?ref=badge_shield)
 
+## ⚠️ This library is under experimental development - expect the major version ⚠️
+
 This library contains utility classes with useful lambdas.
 
 ## Features
