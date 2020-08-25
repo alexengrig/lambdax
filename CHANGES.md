@@ -2,7 +2,7 @@
 
 ## 0.6.0
 
-*   [[#111](../../issues/111)] Refactor PredicateX
+*   [[#109](../../issues/109)] Refactor PredicateX
     *   Replace final class with interface to PredicateX
     *   Add PredicateChainX and SafePredicateChainX
     *   Remove classes:
