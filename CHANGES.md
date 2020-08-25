@@ -3,6 +3,20 @@
 ## 0.6.0
 
 *   [[#111](../../issues/111)] Refactor PredicateX
+    *   Replace final class with interface to PredicateX
+    *   Add PredicateChainX and SafePredicateChainX
+    *   Remove classes:
+        *   ComparableOptionalPredicateB
+        *   ComparableOptionalPredicateI
+        *   ComparablePredicateB
+        *   ComparablePredicateI
+        *   ComparableResultFunction
+        *   OptionalPredicateB
+        *   OptionalPredicateI
+        *   OptionalPredicateResultB
+        *   OptionalPredicateResultI
+        *   PredicateB
+        *   PredicateI
 
 ## 0.5.0
 
