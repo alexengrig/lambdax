@@ -6,9 +6,6 @@
 
 This library contains utility classes with useful lambdas.
 
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Falexengrig%2Flambdax.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Falexengrig%2Flambdax?ref=badge_large)
-
 ## Features
 
 *Lambda***X** uses concepts of [functional programming](https://en.wikipedia.org/wiki/Functional_programming):
@@ -143,3 +140,5 @@ Other snippets are available in [The Central Repository](https://search.maven.or
 ## License
 
 This project is [licensed](LICENSE) under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Falexengrig%2Flambdax.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Falexengrig%2Flambdax?ref=badge_large)
