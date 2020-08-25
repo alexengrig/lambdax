@@ -18,8 +18,8 @@ package io.github.alexengrig.lambdax;
 
 import org.junit.Assert;
 
+import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public abstract class PredicateTester {
     protected final String className;
@@ -45,7 +45,7 @@ public abstract class PredicateTester {
         };
     }
 
-    protected <T> Supplier<Boolean> failSupplierByMethod(String method) {
+    protected BooleanSupplier failBooleanSupplierByMethod(String method) {
         return () -> {
             Assert.fail(String.format("This supplier should not be called for the %s#%s", className, method));
             return false;

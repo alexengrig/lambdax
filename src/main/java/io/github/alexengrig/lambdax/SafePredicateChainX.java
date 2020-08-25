@@ -21,9 +21,9 @@ import io.github.alexengrig.lambdax.function.PredicateX;
 
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 /**
  * A safe predicate container which may manipulate its value.
@@ -135,13 +135,13 @@ public class SafePredicateChainX<T, R> {
             };
         }
 
-        public Predicate<T> orElse(Supplier<? extends Boolean> producer) {
+        public Predicate<T> orElse(BooleanSupplier producer) {
             return t -> {
                 R value = function.apply(t);
                 if (value != null) {
                     return predicate.test(value);
                 }
-                return producer.get();
+                return producer.getAsBoolean();
             };
         }
 

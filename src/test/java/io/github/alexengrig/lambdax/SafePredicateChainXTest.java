@@ -168,7 +168,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
 
         @Test
         public void checkOrElseWithSupplier() {
-            String method = "orElse(Supplier)";
+            String method = "orElse(BooleanSupplier)";
             assertTrueByMethod(
                     method,
                     of(Man::getGun).map(Gun::getName).equal("no-gun").orElse(PredicateX.truth()),
@@ -176,8 +176,13 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
             );
             assertTrueByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getDamage).greater(0).orElse(failSupplierByMethod(method)),
+                    of(Man::getGun).map(Gun::getDamage).greater(0).orElse(failBooleanSupplierByMethod(method)),
                     GORDON_FREEMAN
+            );
+            assertTrueByMethod(
+                    method,
+                    of(Man::getGun).map(Gun::getDamage).greater(0).orElse(() -> true),
+                    ZOMBIE
             );
         }
 
