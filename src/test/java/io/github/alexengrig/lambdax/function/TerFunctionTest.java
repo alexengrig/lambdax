@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Alexengrig Dev.
+ * Copyright 2019 - 2020 Alexengrig Dev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,14 @@
 
 package io.github.alexengrig.lambdax.function;
 
-import java.util.function.Function;
+import org.junit.Assert;
+import org.junit.Test;
 
-/**
- * <p>Represents a function that accepts one argument and produces a comparable result.</p>
- *
- * @param <T> the type of the input to the function
- * @param <R> the type of the comparable result of the function
- * @author Grig Alex
- * @version 0.2.0
- * @see java.lang.Comparable
- * @see java.util.function.Function
- * @since 0.2.0
- */
-@FunctionalInterface
-public interface ComparableResultFunction<T, R extends Comparable<R>> extends Function<T, R> {
+public class TerFunctionTest {
+    @Test
+    public void checkAndThen() {
+        TerFunction<Integer, Integer, Integer, Integer> sum = (a, b, c) -> a + b + c;
+        int actual = sum.andThen(i -> i * 2).apply(1, 2, 3);
+        Assert.assertEquals(12, actual);
+    }
 }

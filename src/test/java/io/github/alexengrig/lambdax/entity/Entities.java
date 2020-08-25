@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-/**
- * <p>This library contains utility classes with useful lambdas.</p>
- *
- * @version 0.6.0
- * @author Grig Alex
- * @since 0.1.0
- */
-package io.github.alexengrig.lambdax;
+package io.github.alexengrig.lambdax.entity;
+
+public interface Entities {
+    Gun CROWBAR = new Gun("Crowbar", 5);
+    Gun SNARK = new Gun("Snark", 10);
+    Man GORDON_FREEMAN = new Man(CROWBAR);
+    Man ZOMBIE = new Man(null);
+}

@@ -16,114 +16,160 @@
 
 package io.github.alexengrig.lambdax.function;
 
+import io.github.alexengrig.lambdax.PredicateChainX;
+import io.github.alexengrig.lambdax.SafePredicateChainX;
+
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import static java.util.Objects.requireNonNull;
+
 /**
- * <p>This utility class contains useful lambdas for {@link java.util.function.Predicate}.</p>
+ * {@link java.util.function.Predicate} extension.
  *
  * @author Grig Alex
- * @version 0.3.0
- * @see java.util.function.Function
+ * @version 0.6.0
  * @see java.util.function.Predicate
- * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
- * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
- * @see io.github.alexengrig.lambdax.function.PredicateI
  * @since 0.2.0
  */
-public final class PredicateX {
+@FunctionalInterface
+public interface PredicateX<T> extends Predicate<T> {
     /**
-     * <p>The private constructor.</p>
+     * Returns a predicate extension.
+     * <p>
+     * Usage example:
+     * <pre>{@code
+     * // impossible: String::isEmpty.or("empty"::equals).test("string");
      *
-     * @since 0.2.0
+     * PredicateX.of(String::isEmpty).or("empty"::equals).test("string");
+     * }</pre>
+     *
+     * @param predicate the predicate to extension
+     * @param <T>       the type of the input to {@code predicate}
+     * @return the predicate extension
+     * @throws NullPointerException if {@code predicate} is {@code null}
+     * @since 0.6.0
      */
-    private PredicateX() {
+    static <T> PredicateX<T> of(Predicate<? super T> predicate) {
+        return requireNonNull(predicate, "The predicate must not be null")::test;
     }
 
     /**
-     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; true.</p>
+     * Returns {@link io.github.alexengrig.lambdax.PredicateChainX} of a mapping function.
      *
-     * @param <T> a type of the input to the predicate
-     * @return The {@link java.util.function.Predicate} that always returns {@code
-     * true}
-     * @see java.util.function.Predicate
+     * @param mapper the mapping function
+     * @param <T>    the type of the input to the mapping function
+     * @param <R>    the type of the result of the mapping function
+     * @return PredicateChainX of {@code mapper}
+     * @see io.github.alexengrig.lambdax.PredicateChainX#of(Function)
+     * @since 0.6.0
+     */
+    static <T, R> PredicateChainX<T, R> chain(Function<T, R> mapper) {
+        return PredicateChainX.of(mapper);
+    }
+
+    /**
+     * Returns {@link io.github.alexengrig.lambdax.SafePredicateChainX} of a mapping function.
+     *
+     * @param mapper the mapping function
+     * @param <T>    the type of the input to the mapping function
+     * @param <R>    the type of the result of the mapping function
+     * @return SafePredicateChainX of {@code mapper}
+     * @see io.github.alexengrig.lambdax.SafePredicateChainX#of(Function)
+     * @since 0.6.0
+     */
+    static <T, R> SafePredicateChainX<T, R> chainSafe(Function<T, R> mapper) {
+        return SafePredicateChainX.of(mapper);
+    }
+
+    /**
+     * Returns the predicate:
+     * <pre>{@code
+     * t -> true
+     * }</pre>
+     *
+     * @param <T> the type of the input to the predicate
+     * @return the predicate that always returns {@code true}
      * @since 0.2.0
      */
-    public static <T> Predicate<T> truth() {
+    static <T> PredicateX<T> truth() {
         return t -> true;
     }
 
     /**
-     * <p>Returns the {@link java.util.function.Predicate}: t -&gt; false.</p>
+     * Returns the predicate:
+     * <pre>{@code
+     * t -> false
+     * }</pre>
      *
-     * @param <T> a type of the input to the predicate
-     * @return The {@link java.util.function.Predicate} that always returns {@code
-     * false}
-     * @see java.util.function.Predicate
+     * @param <T> the type of the input to the predicate
+     * @return the predicate that always returns {@code false}
      * @since 0.2.0
      */
-    public static <T> Predicate<T> lie() {
+    static <T> PredicateX<T> lie() {
         return t -> false;
     }
 
     /**
-     * <p>Returns the {@link java.util.function.Predicate} that is the negation of
-     * the supplied predicate.</p> <p>Like in JDK 11.</p>
+     * Returns a predicate of a predicate negation.
      *
-     * @param <T>       a type of the input to the predicate
-     * @param predicate a supplied predicate to negate
-     * @return The {@link java.util.function.Predicate} that negates the results
-     * of the supplied predicate
-     * @see java.util.function.Predicate
+     * @param <T>       the type of the input to the predicate
+     * @param predicate the predicate to negate
+     * @return the predicate
+     * @throws NullPointerException if {@code predicate} is {@code null}
      * @see java.util.function.Predicate#negate
      * @since 0.2.0
      */
-    public static <T> Predicate<T> not(Predicate<T> predicate) {
-        return predicate.negate();
+    static <T> PredicateX<T> not(Predicate<? super T> predicate) {
+        return of(requireNonNull(predicate, "The predicate must not be null").negate());
     }
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical
      * AND of first predicate and second predicate.
+     * <p>
      * When evaluating the composed predicate,
      * if first predicate is {@code false},
      * then second predicate is not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ANDed with the {@code second}
-     * @param second a predicate that will be logically-ANDed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-ANDed with the {@code second}
+     * @param second the predicate that will be logically-ANDed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * AND of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if {@code first} is {@code null}
+     *                              or if {@code first} is {@code true} and {@code second} is {@code null}
      * @see java.util.function.Predicate#and(java.util.function.Predicate)
      * @since 0.3.0
      */
-    public static <T> Predicate<T> and(Predicate<T> first, Predicate<T> second) {
-        return t -> first.test(t) && second.test(t);
+    static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second) {
+        return t -> requireNonNull(first, "The first predicate must not be null").test(t)
+                && requireNonNull(second, "The second predicate must not be null").test(t);
     }
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical AND of predicates.
+     * <p>
      * When evaluating the composed predicate,
      * if any predicate is {@code false},
      * then those following predicates are not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ANDed with the {@code second}
-     * @param second a predicate that will be logically-ANDed with the {@code first}
-     * @param others predicates that will be logically-ANDed with previous result
+     * @param first  the predicate that will be logically-ANDed with the {@code second}
+     * @param second the predicate that will be logically-ANDed with the {@code first}
+     * @param others the predicates that will be logically-ANDed with previous result
      *               starting from the result of the {@code first} and the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * AND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
-     * @see java.util.function.Predicate#and(java.util.function.Predicate)
-     * @see io.github.alexengrig.lambdax.function.PredicateX#and(java.util.function.Predicate, java.util.function.Predicate)
+     * @throws NullPointerException if any predicate is {@code null} and previous is {@code true}
+     * @see #and(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> and(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
-        Predicate<T> predicate = and(first, second);
-        for (Predicate<T> other : others) {
+    static <T> PredicateX<T> and(Predicate<? super T> first, Predicate<? super T> second,
+                                 Predicate<? super T>... others) {
+        PredicateX<T> predicate = and(first, second);
+        for (Predicate<? super T> other : others) {
             predicate = and(predicate, other);
         }
         return predicate;
@@ -132,46 +178,50 @@ public final class PredicateX {
     /**
      * Returns a composed predicate that represents a short-circuiting logical
      * OR of first predicate and second predicate.
+     * <p>
      * When evaluating the composed predicate,
      * if first predicate is {@code true},
      * then second predicate is not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ORed with the {@code second}
-     * @param second a predicate that will be logically-ORed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-ORed with the {@code second}
+     * @param second the predicate that will be logically-ORed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * OR of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if {@code first} is {@code null}
+     *                              or if {@code first} is {@code false} and {@code second} is {@code null}
      * @see java.util.function.Predicate#or(java.util.function.Predicate)
      * @since 0.3.0
      */
-    public static <T> Predicate<T> or(Predicate<T> first, Predicate<T> second) {
-        return t -> first.test(t) || second.test(t);
+    static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second) {
+        return t -> requireNonNull(first, "The first predicate must not be null").test(t)
+                || requireNonNull(second, "The second predicate must not be null").test(t);
     }
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical OR of predicates.
+     * <p>
      * When evaluating the composed predicate,
      * if any predicate is {@code true},
      * then those following predicates are not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-ORed with the {@code second}
-     * @param second a predicate that will be logically-ORed with the {@code first}
-     * @param others predicates that will be logically-ORed with previous result
+     * @param first  the predicate that will be logically-ORed with the {@code second}
+     * @param second the predicate that will be logically-ORed with the {@code first}
+     * @param others the predicates that will be logically-ORed with previous result
      *               starting from the result of the {@code first} and the {@code second}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * OR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
-     * @see java.util.function.Predicate#or(java.util.function.Predicate)
-     * @see io.github.alexengrig.lambdax.function.PredicateX#or(java.util.function.Predicate, java.util.function.Predicate)
+     * @throws NullPointerException if any predicate is {@code null} and previous is {@code false}
+     * @see #or(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> or(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
-        Predicate<T> predicate = first.or(second);
-        for (Predicate<T> other : others) {
-            predicate = predicate.or(other);
+    static <T> PredicateX<T> or(Predicate<? super T> first, Predicate<? super T> second,
+                                Predicate<? super T>... others) {
+        PredicateX<T> predicate = or(first, second);
+        for (Predicate<? super T> other : others) {
+            predicate = or(predicate, other);
         }
         return predicate;
     }
@@ -181,35 +231,37 @@ public final class PredicateX {
      * XOR of first predicate and second predicate.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-XORed with the {@code second}
-     * @param second a predicate that will be logically-XORed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-XORed with the {@code second}
+     * @param second the predicate that will be logically-XORed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * XOR of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if {@code first} or {@code second} is {@code null}
      * @since 0.3.0
      */
-    public static <T> Predicate<T> xor(Predicate<T> first, Predicate<T> second) {
-        return t -> first.test(t) ^ second.test(t);
+    static <T> PredicateX<T> xor(Predicate<? super T> first, Predicate<? super T> second) {
+        return t -> requireNonNull(first, "The first predicate must not be null").test(t)
+                ^ requireNonNull(second, "The second predicate must not be null").test(t);
     }
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical XOR of predicates.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-XORed with the {@code second}
-     * @param second a predicate that will be logically-XORed with the {@code first}
-     * @param others predicates that will be logically-XORed with previous result
+     * @param first  the predicate that will be logically-XORed with the {@code second}
+     * @param second the predicate that will be logically-XORed with the {@code first}
+     * @param others the predicates that will be logically-XORed with previous result
      *               starting from the result of the {@code first} and the {@code second}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * XOR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
-     * @see io.github.alexengrig.lambdax.function.PredicateX#xor(java.util.function.Predicate, java.util.function.Predicate)
+     * @throws NullPointerException if any predicate is {@code null}
+     * @see #xor(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> xor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
-        Predicate<T> predicate = xor(first, second);
-        for (Predicate<T> other : others) {
+    static <T> PredicateX<T> xor(Predicate<? super T> first, Predicate<? super T> second,
+                                 Predicate<? super T>... others) {
+        PredicateX<T> predicate = xor(first, second);
+        for (Predicate<? super T> other : others) {
             predicate = xor(predicate, other);
         }
         return predicate;
@@ -218,20 +270,23 @@ public final class PredicateX {
     /**
      * Returns a composed predicate that represents a short-circuiting logical
      * NAND of first predicate and second predicate.
+     * <p>
      * When evaluating the composed predicate,
      * if first predicate is {@code false},
      * then second predicate is not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-NANDed with the {@code second}
-     * @param second a predicate that will be logically-NANDed with the {@code first}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @param first  the predicate that will be logically-NANDed with the {@code second}
+     * @param second the predicate that will be logically-NANDed with the {@code first}
+     * @return the composed predicate that represents the short-circuiting logical
      * NAND of the {@code first} predicate and the {@code second} predicate
-     * @see java.util.function.Predicate
+     * @throws NullPointerException if any predicate is {@code null}
+     *                              or if {@code first} is {@code true} and {@code second} is {@code null}
      * @since 0.3.0
      */
-    public static <T> Predicate<T> nand(Predicate<T> first, Predicate<T> second) {
-        return t -> !(first.test(t) && second.test(t));
+    static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second) {
+        return t -> !(requireNonNull(first, "The first predicate must not be null").test(t)
+                && requireNonNull(second, "The second predicate must not be null").test(t));
     }
 
     /**
@@ -240,20 +295,21 @@ public final class PredicateX {
      * then those following predicates are not evaluated.
      *
      * @param <T>    the type of arguments to the predicate
-     * @param first  a predicate that will be logically-NANDed with the {@code second}
-     * @param second a predicate that will be logically-NANDed with the {@code first}
-     * @param others predicates that will be logically-NANDed with previous result
+     * @param first  the predicate that will be logically-NANDed with the {@code second}
+     * @param second the predicate that will be logically-NANDed with the {@code first}
+     * @param others the predicates that will be logically-NANDed with previous result
      *               starting from the result of the {@code first} and the {@code second}
-     * @return a composed predicate that represents the short-circuiting logical
+     * @return the composed predicate that represents the short-circuiting logical
      * NAND of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
-     * @see java.util.function.Predicate
-     * @see io.github.alexengrig.lambdax.function.PredicateX#nand(java.util.function.Predicate, java.util.function.Predicate)
+     * @throws NullPointerException if any predicate is {@code null} and previous is {@code true}
+     * @see #nand(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> nand(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
-        Predicate<T> predicate = nand(first, second);
-        for (Predicate<T> other : others) {
+    static <T> PredicateX<T> nand(Predicate<? super T> first, Predicate<? super T> second,
+                                  Predicate<? super T>... others) {
+        PredicateX<T> predicate = nand(first, second);
+        for (Predicate<? super T> other : others) {
             predicate = nand(predicate, other);
         }
         return predicate;
@@ -274,7 +330,7 @@ public final class PredicateX {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    public static <T> Predicate<T> nor(Predicate<T> first, Predicate<T> second) {
+    static <T> PredicateX<T> nor(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> !(first.test(t) || second.test(t));
     }
 
@@ -292,13 +348,14 @@ public final class PredicateX {
      * @return a composed predicate that represents the short-circuiting logical
      * NOR of the {@code first} predicate, the {@code second} predicate and the {@code others} predicates
      * @see java.util.function.Predicate
-     * @see io.github.alexengrig.lambdax.function.PredicateX#nor(java.util.function.Predicate, java.util.function.Predicate)
+     * @see #nor(java.util.function.Predicate, java.util.function.Predicate)
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> nor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
-        Predicate<T> predicate = nor(first, second);
-        for (Predicate<T> other : others) {
+    static <T> PredicateX<T> nor(Predicate<? super T> first, Predicate<? super T> second,
+                                 Predicate<? super T>... others) {
+        PredicateX<T> predicate = nor(first, second);
+        for (Predicate<? super T> other : others) {
             predicate = nor(predicate, other);
         }
         return predicate;
@@ -316,7 +373,7 @@ public final class PredicateX {
      * @see java.util.function.Predicate
      * @since 0.3.0
      */
-    public static <T> Predicate<T> xnor(Predicate<T> first, Predicate<T> second) {
+    static <T> PredicateX<T> xnor(Predicate<? super T> first, Predicate<? super T> second) {
         return t -> first.test(t) == second.test(t);
     }
 
@@ -334,102 +391,28 @@ public final class PredicateX {
      * @since 0.3.0
      */
     @SafeVarargs
-    public static <T> Predicate<T> xnor(Predicate<T> first, Predicate<T> second, Predicate<T>... others) {
-        Predicate<T> predicate = xnor(first, second);
-        for (Predicate<T> other : others) {
+    static <T> PredicateX<T> xnor(Predicate<? super T> first, Predicate<? super T> second,
+                                  Predicate<? super T>... others) {
+        PredicateX<T> predicate = xnor(first, second);
+        for (Predicate<? super T> other : others) {
             predicate = xnor(predicate, other);
         }
         return predicate;
     }
 
-    /**
-     * <p>Returns the same {@link java.util.function.Predicate} as passed to the
-     * method.</p>
-     *
-     * @param checker a predicate
-     * @param <T>     a type of the input to the predicate
-     * @return The same {@link java.util.function.Predicate} - checker
-     * @see java.util.function.Predicate
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> Predicate<T> from(Predicate<? super T> checker) {
-        return (Predicate<T>) checker;
+    default PredicateX<T> xor(Predicate<? super T> other) {
+        return t -> test(t) ^ other.test(t);
     }
 
-    /**
-     * <p>Returns the {@link io.github.alexengrig.lambdax.function.PredicateB}
-     * with the mapper.</p>
-     *
-     * @param mapper a function of map the input
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a type of the mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.PredicateI}
-     * @see io.github.alexengrig.lambdax.function.PredicateI
-     * @see java.util.function.Function
-     * @see io.github.alexengrig.lambdax.function.PredicateB
-     * @since 0.2.0
-     */
-    public static <T, R> PredicateI<T, R> of(Function<T, R> mapper) {
-        return new PredicateB<>(mapper);
+    default PredicateX<T> nand(Predicate<? super T> other) {
+        return t -> !(test(t) && other.test(t));
     }
 
-    /**
-     * <p>Returns the {@link
-     * io.github.alexengrig.lambdax.function.ComparablePredicateB} with the mapper
-     * with comparable result.</p>
-     *
-     * @param mapper a function of map the input to comparable result
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a comparable type of the mapper result
-     * @return The {@link
-     * io.github.alexengrig.lambdax.function.ComparablePredicateI}
-     * @see java.lang.Comparable
-     * @see io.github.alexengrig.lambdax.function.ComparablePredicateI
-     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-     * @see io.github.alexengrig.lambdax.function.ComparablePredicateB
-     * @since 0.2.0
-     */
-    public static <T, R extends Comparable<R>> ComparablePredicateI<T, R> of(ComparableResultFunction<T, R> mapper) {
-        return new ComparablePredicateB<>(mapper);
+    default PredicateX<T> nor(Predicate<? super T> other) {
+        return t -> !(test(t) || other.test(t));
     }
 
-    /**
-     * <p>
-     * Returns the {@link io.github.alexengrig.lambdax.function.OptionalPredicateB} with
-     * the mapper.
-     * </p>
-     *
-     * @param mapper a function of map the input
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a type of the optional mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.OptionalPredicateI}
-     * @see io.github.alexengrig.lambdax.function.OptionalPredicateI
-     * @see io.github.alexengrig.lambdax.function.OptionalPredicateB
-     * @see java.util.function.Function
-     * @since 0.3.0
-     */
-    public static <T, R> OptionalPredicateI<T, R> ofNullable(Function<T, R> mapper) {
-        return new OptionalPredicateB<>(mapper);
-    }
-
-    /**
-     * <p>
-     * Returns the {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB} with
-     * the mapper with comparable optional result.
-     * </p>
-     *
-     * @param mapper a function of map the input to comparable optional result
-     * @param <T>    a type of the input to the predicate
-     * @param <R>    a comparable type of the optional mapper result
-     * @return The {@link io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI}
-     * @see java.lang.Comparable
-     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateI
-     * @see io.github.alexengrig.lambdax.function.ComparableOptionalPredicateB
-     * @see io.github.alexengrig.lambdax.function.ComparableResultFunction
-     * @since 0.3.0
-     */
-    public static <T, R extends Comparable<R>> ComparableOptionalPredicateI<T, R> ofNullable(
-            ComparableResultFunction<T, R> mapper) {
-        return new ComparableOptionalPredicateB<>(mapper);
+    default PredicateX<T> xnor(Predicate<? super T> other) {
+        return t -> test(t) == other.test(t);
     }
 }

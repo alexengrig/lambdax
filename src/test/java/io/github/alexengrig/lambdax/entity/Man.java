@@ -14,11 +14,20 @@
  * limitations under the License.
  */
 
-/**
- * <p>This library contains utility classes with useful lambdas.</p>
- *
- * @version 0.6.0
- * @author Grig Alex
- * @since 0.1.0
- */
-package io.github.alexengrig.lambdax;
+package io.github.alexengrig.lambdax.entity;
+
+public class Man {
+    private Gun gun;
+
+    public Man(Gun gun) {
+        this.gun = gun;
+    }
+
+    public Gun getGun() {
+        return gun;
+    }
+
+    public void setGun(Gun gun) {
+        this.gun = gun;
+    }
+}

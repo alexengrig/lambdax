@@ -14,11 +14,30 @@
  * limitations under the License.
  */
 
-/**
- * <p>This library contains utility classes with useful lambdas.</p>
- *
- * @version 0.6.0
- * @author Grig Alex
- * @since 0.1.0
- */
-package io.github.alexengrig.lambdax;
+package io.github.alexengrig.lambdax.entity;
+
+public class Gun {
+    private String name;
+    private int damage;
+
+    public Gun(String name, int damage) {
+        this.name = name;
+        this.damage = damage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+}

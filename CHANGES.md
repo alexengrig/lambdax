@@ -1,5 +1,23 @@
 # *Lambda*X changes
 
+## 0.6.0
+
+*   [[#109](../../issues/109)] Refactor PredicateX
+    *   Replace final class with interface to PredicateX
+    *   Add PredicateChainX and SafePredicateChainX
+    *   Remove classes:
+        *   ComparableOptionalPredicateB
+        *   ComparableOptionalPredicateI
+        *   ComparablePredicateB
+        *   ComparablePredicateI
+        *   ComparableResultFunction
+        *   OptionalPredicateB
+        *   OptionalPredicateI
+        *   OptionalPredicateResultB
+        *   OptionalPredicateResultI
+        *   PredicateB
+        *   PredicateI
+
 ## 0.5.0
 
 *   [[#87](../../issues/87)] Create tryXXX methods to ChainX
