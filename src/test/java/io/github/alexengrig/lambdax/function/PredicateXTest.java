@@ -361,7 +361,7 @@ public class PredicateXTest {
     public void checkEqual() {
         String value = "Coca-Cola";
         Pack pack = new Pack(new Item(value));
-        Predicate<Pack> equalsCocaCola = PredicateX.chain(Pack::getItem).map(Item::getName).equal(value);
+        Predicate<Pack> equalsCocaCola = PredicateX.chain(Pack::getItem).map(Item::getName).equalTo(value);
         assertTrue(equalsCocaCola.test(pack));
     }
 
@@ -369,7 +369,7 @@ public class PredicateXTest {
     public void checkEqualNullable() {
         Holder<Box> hchainer = new Holder<>(new Box(null));
         Predicate<Holder<Box>> equal = PredicateX.chainSafe(Holder<Box>::get)
-                .equal(new Box(null))
+                .equalTo(new Box(null))
                 .orTruth();
         assertFalse(equal.test(hchainer));
     }
@@ -378,7 +378,7 @@ public class PredicateXTest {
     public void checkEqualNullableComparable() {
         String value = "Coca-Cola";
         Pack pack = new Pack(null);
-        Predicate<Pack> equalsCocaCola = PredicateX.chainSafe(Pack::getItem).map(Item::getName).equal(value).orLie();
+        Predicate<Pack> equalsCocaCola = PredicateX.chainSafe(Pack::getItem).map(Item::getName).equalTo(value).orLie();
         assertFalse(equalsCocaCola.test(pack));
     }
 
@@ -387,7 +387,7 @@ public class PredicateXTest {
         String value = "Coca-Cola";
         Pack pack = new Pack(new Item(value));
         List<Pack> list = Stream.of(pack)
-                .filter(PredicateX.chainSafe(Pack::getItem).map(Item::getName).equal(value).orTruth())
+                .filter(PredicateX.chainSafe(Pack::getItem).map(Item::getName).equalTo(value).orTruth())
                 .collect(Collectors.toList());
         assertFalse(list.isEmpty());
     }
@@ -397,7 +397,7 @@ public class PredicateXTest {
         String value = "Coca-Cola";
         Pack pack = new Pack(null);
         List<Pack> list = Stream.of(pack)
-                .filter(PredicateX.chainSafe(Pack::getItem).map(Item::getName).equal(value).orLie())
+                .filter(PredicateX.chainSafe(Pack::getItem).map(Item::getName).equalTo(value).orLie())
                 .collect(Collectors.toList());
         assertTrue(list.isEmpty());
     }

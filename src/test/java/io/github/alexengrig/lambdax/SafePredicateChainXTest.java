@@ -70,7 +70,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
     public void checkEqual() {
         assertTrueByMethod(
                 "equal",
-                of(Man::getGun).equal(CROWBAR).orLie(),
+                of(Man::getGun).equalTo(CROWBAR).orLie(),
                 GORDON_FREEMAN
         );
     }
@@ -141,7 +141,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
             String method = "orElse(Predicate)";
             assertTrueByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getName).equal("no-gun").orElse(m -> m.getGun() == null),
+                    of(Man::getGun).map(Gun::getName).equalTo("no-gun").orElse(m -> m.getGun() == null),
                     ZOMBIE
             );
             assertTrueByMethod(
@@ -156,7 +156,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
             String method = "orElse(boolean)";
             assertTrueByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getName).equal("no-gun").orElse(true),
+                    of(Man::getGun).map(Gun::getName).equalTo("no-gun").orElse(true),
                     ZOMBIE
             );
             assertTrueByMethod(
@@ -171,7 +171,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
             String method = "orElse(BooleanSupplier)";
             assertTrueByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getName).equal("no-gun").orElse(PredicateX.truth()),
+                    of(Man::getGun).map(Gun::getName).equalTo("no-gun").orElse(PredicateX.truth()),
                     ZOMBIE
             );
             assertTrueByMethod(
@@ -191,7 +191,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
             String method = "orTruth";
             assertTrueByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getName).equal("no-gun").orTruth(),
+                    of(Man::getGun).map(Gun::getName).equalTo("no-gun").orTruth(),
                     ZOMBIE
             );
             assertFalseByMethod(
@@ -206,7 +206,7 @@ public class SafePredicateChainXTest extends PredicateTester implements Entities
             String method = "orLie";
             assertFalseByMethod(
                     method,
-                    of(Man::getGun).map(Gun::getName).equal("no-gun").orLie(),
+                    of(Man::getGun).map(Gun::getName).equalTo("no-gun").orLie(),
                     ZOMBIE
             );
             assertTrueByMethod(

@@ -68,7 +68,7 @@ public class SafePredicateChainX<T, R> {
         return new Result(checker::test);
     }
 
-    public Result equal(R other) {
+    public Result equalTo(R other) {
         return new Result(r -> Objects.equals(r, other));
     }
 

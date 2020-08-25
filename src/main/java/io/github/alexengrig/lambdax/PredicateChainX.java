@@ -68,7 +68,7 @@ public class PredicateChainX<T, R> {
         return t -> checker.test(function.apply(t));
     }
 
-    public PredicateX<T> equal(R other) {
+    public PredicateX<T> equalTo(R other) {
         return t -> Objects.equals(function.apply(t), other);
     }
 

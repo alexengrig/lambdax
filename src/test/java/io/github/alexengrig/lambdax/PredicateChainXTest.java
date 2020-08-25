@@ -66,7 +66,7 @@ public class PredicateChainXTest extends PredicateTester implements Entities {
     public void checkEqual() {
         assertTrueByMethod(
                 "equal",
-                PredicateChainX.of(Man::getGun).equal(CROWBAR),
+                PredicateChainX.of(Man::getGun).equalTo(CROWBAR),
                 GORDON_FREEMAN
         );
     }
