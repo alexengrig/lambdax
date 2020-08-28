@@ -181,6 +181,12 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Codecov Plugin -->
+      <plugin>
+        <groupId>dev.alexengrig</groupId>
+        <artifactId>codecov-maven-plugin</artifactId>
+        <version>1.0</version>
+      </plugin>
     </plugins>
   </build>
 
