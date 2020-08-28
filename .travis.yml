@@ -2,8 +2,7 @@ language: java
 jdk:
   - openjdk8
 install:
-  - mvn install:install-file -Dfile=./libs/codecov-maven-plugin-1.0-SNAPSHOT.jar -DgroupId=dev.alexengrig -DartifactId=codecov-maven-plugin -Dpackaging=maven-plugin -Dversion=1.0-SNAPSHOT
   - mvn install -Dgpg.skip=true -B -V
 after_success:
   - mvn clean test jacoco:report coveralls:report -DrepoToken=$COVERALLS_TOKEN
-#  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
