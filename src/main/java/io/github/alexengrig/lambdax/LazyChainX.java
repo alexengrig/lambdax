@@ -24,6 +24,8 @@ public class LazyChainX<T> {
 
     protected final Supplier<? extends T> producer;
 
+    protected transient volatile T value;
+
     protected LazyChainX() {
         this.producer = () -> null;
     }
@@ -52,5 +54,31 @@ public class LazyChainX<T> {
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     public static <T> LazyChainX<T> of(Optional<? extends T> optional) {
         return new LazyChainX<>(() -> optional.orElse(null));
+    }
+
+//    Check
+
+    public final boolean isNull() {
+        return value() == null;
+    }
+
+    public final boolean nonNull() {
+        return value() != null;
+    }
+
+//    Value
+
+    public T value() {
+        T target = value;
+        if (target == null) {
+            synchronized (this) {
+                target = value;
+                if (target == null) {
+                    target = producer.get();
+                    value = target;
+                }
+            }
+        }
+        return target;
     }
 }
