@@ -69,24 +69,35 @@ public abstract class TupleTester {
     }
 
     @Test
-    public void should_return_value0() {
+    public <T extends String> void should_return_value0() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable0) {
             @SuppressWarnings("unchecked")
-            Valuable0<String> valuable0 = (Valuable0<String>) tuple;
+            Valuable0<T> valuable0 = (Valuable0<T>) tuple;
             assertSame(values.get(0), valuable0.getValue0());
         }
     }
 
     @Test
-    public void should_return_value1() {
+    public <T extends String> void should_return_value1() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable1) {
             @SuppressWarnings("unchecked")
-            Valuable1<String, String> valuable1 = (Valuable1<String, String>) tuple;
+            Valuable1<T, T> valuable1 = (Valuable1<T, T>) tuple;
             assertSame(values.get(1), valuable1.getValue1());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value2() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable2) {
+            @SuppressWarnings("unchecked")
+            Valuable2<T, T, T> valuable2 = (Valuable2<T, T, T>) tuple;
+            assertSame(values.get(2), valuable2.getValue2());
         }
     }
 }
