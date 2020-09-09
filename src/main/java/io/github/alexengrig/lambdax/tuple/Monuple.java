@@ -71,7 +71,7 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     }
 
     @Override
-    public T0 getValue0() {
+    public T0 value0() {
         return value0;
     }
 

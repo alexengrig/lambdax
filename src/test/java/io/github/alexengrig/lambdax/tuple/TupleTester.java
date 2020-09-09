@@ -75,7 +75,7 @@ public abstract class TupleTester {
         if (tuple instanceof Valuable0) {
             @SuppressWarnings("unchecked")
             Valuable0<T> valuable0 = (Valuable0<T>) tuple;
-            assertSame(values.get(0), valuable0.getValue0());
+            assertSame(values.get(0), valuable0.value0());
         }
     }
 
@@ -86,7 +86,7 @@ public abstract class TupleTester {
         if (tuple instanceof Valuable1) {
             @SuppressWarnings("unchecked")
             Valuable1<T, T> valuable1 = (Valuable1<T, T>) tuple;
-            assertSame(values.get(1), valuable1.getValue1());
+            assertSame(values.get(1), valuable1.value1());
         }
     }
 
@@ -97,7 +97,7 @@ public abstract class TupleTester {
         if (tuple instanceof Valuable2) {
             @SuppressWarnings("unchecked")
             Valuable2<T, T, T> valuable2 = (Valuable2<T, T, T>) tuple;
-            assertSame(values.get(2), valuable2.getValue2());
+            assertSame(values.get(2), valuable2.value2());
         }
     }
 }

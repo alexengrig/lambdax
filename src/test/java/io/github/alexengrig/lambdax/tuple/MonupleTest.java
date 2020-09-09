@@ -38,7 +38,7 @@ public class MonupleTest extends TupleTester {
     public void should_set_value0() {
         Monuple<Integer> oldMonuple = new Monuple<>(0);
         Monuple<String> monuple = oldMonuple.setAt0("0");
-        assertEquals("0", monuple.getValue0());
+        assertEquals("0", monuple.value0());
     }
 
     @Test
