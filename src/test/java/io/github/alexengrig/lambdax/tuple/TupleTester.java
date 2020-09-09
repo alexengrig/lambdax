@@ -57,7 +57,7 @@ public abstract class TupleTester {
         Tuple tuple = getTuple(values);
         int i = 0;
         for (String expected : values) {
-            String actual = tuple.getValue(i++);
+            String actual = tuple.value(i++);
             assertSame(expected, actual);
         }
     }
@@ -65,7 +65,7 @@ public abstract class TupleTester {
     @Test(expected = IndexOutOfBoundsException.class)
     public void should_throw_IndexOutOfBounds_on_valueByIndex() {
         Tuple tuple = getTuple(getValues());
-        tuple.getValue(tuple.size());
+        tuple.value(tuple.size());
     }
 
     @Test

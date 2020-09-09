@@ -39,7 +39,7 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     }
 
     @Override
-    public <X> X getValue(int index) {
+    public <X> X value(int index) {
         requireLegalIndex(index);
         @SuppressWarnings("unchecked")
         X target = (X) toArray()[index];

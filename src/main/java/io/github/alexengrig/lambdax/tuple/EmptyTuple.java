@@ -30,7 +30,7 @@ public class EmptyTuple implements Tuple {
     }
 
     @Override
-    public <X> X getValue(int index) {
+    public <X> X value(int index) {
         throw new IndexOutOfBoundsException("Empty tuple has no values");
     }
 }

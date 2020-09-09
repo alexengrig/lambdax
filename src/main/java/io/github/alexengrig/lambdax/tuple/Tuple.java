@@ -19,5 +19,5 @@ package io.github.alexengrig.lambdax.tuple;
 public interface Tuple {
     int size();
 
-    <X> X getValue(int index);
+    <X> X value(int index);
 }
