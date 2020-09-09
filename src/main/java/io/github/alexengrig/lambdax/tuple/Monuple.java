@@ -27,7 +27,7 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
         this.value0 = value0;
     }
 
-    public static <T> Monuple<T> of(Iterable<? extends T> collection) {
+    public static <T> Monuple<T> ofIterable(Iterable<? extends T> collection) {
         return new Monuple<>(collection.iterator().next());
     }
 

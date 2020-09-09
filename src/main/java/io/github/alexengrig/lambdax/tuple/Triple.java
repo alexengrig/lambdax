@@ -28,7 +28,7 @@ public class Triple<T0, T1, T2> extends Couple<T0, T1> implements Valuable2<T0, 
         this.value2 = value2;
     }
 
-    public static <T> Triple<T, T, T> of(Iterable<? extends T> iterable) {
+    public static <T> Triple<T, T, T> ofIterable(Iterable<? extends T> iterable) {
         Iterator<? extends T> iterator = iterable.iterator();
         T value0 = iterator.next();
         T value1 = iterator.next();

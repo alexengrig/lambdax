@@ -31,7 +31,7 @@ public class MonupleTest extends TupleTester {
 
     @Override
     protected Tuple getTuple(Collection<String> collection) {
-        return Monuple.of(collection);
+        return Monuple.ofIterable(collection);
     }
 
     @Test

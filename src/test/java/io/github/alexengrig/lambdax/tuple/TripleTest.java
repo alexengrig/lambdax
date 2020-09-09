@@ -27,6 +27,6 @@ public class TripleTest extends TupleTester {
 
     @Override
     protected Tuple getTuple(Collection<String> collection) {
-        return Triple.of(collection);
+        return Triple.ofIterable(collection);
     }
 }

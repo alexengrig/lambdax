@@ -30,7 +30,7 @@ public class CoupleTest extends TupleTester {
 
     @Override
     protected Tuple getTuple(Collection<String> collection) {
-        return Couple.of(collection);
+        return Couple.ofIterable(collection);
     }
 
     @Test
