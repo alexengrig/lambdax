@@ -100,4 +100,165 @@ public abstract class TupleTester {
             assertSame(values.get(2), valuable2.value2());
         }
     }
+
+    @Test
+    public <T extends String> void should_return_value3() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable3) {
+            @SuppressWarnings("unchecked")
+            Valuable3<T, T, T, T> valuable3 = (Valuable3<T, T, T, T>) tuple;
+            assertSame(values.get(3), valuable3.value3());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value4() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable4) {
+            @SuppressWarnings("unchecked")
+            Valuable4<T, T, T, T, T> valuable4 = (Valuable4<T, T, T, T, T>) tuple;
+            assertSame(values.get(4), valuable4.value4());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value5() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable5) {
+            @SuppressWarnings("unchecked")
+            Valuable5<T, T, T, T, T, T> valuable5 = (Valuable5<T, T, T, T, T, T>) tuple;
+            assertSame(values.get(5), valuable5.value5());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value6() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable6) {
+            @SuppressWarnings("unchecked")
+            Valuable6<T, T, T, T, T, T, T> valuable6 = (Valuable6<T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(6), valuable6.value6());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value7() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable7) {
+            @SuppressWarnings("unchecked")
+            Valuable7<T, T, T, T, T, T, T, T> valuable7 = (Valuable7<T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(7), valuable7.value7());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value8() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable8) {
+            @SuppressWarnings("unchecked")
+            Valuable8<T, T, T, T, T, T, T, T, T> valuable8 = (Valuable8<T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(8), valuable8.value8());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value9() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable9) {
+            @SuppressWarnings("unchecked")
+            Valuable9<T, T, T, T, T, T, T, T, T, T> valuable9 = (Valuable9<T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(9), valuable9.value9());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value10() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable10) {
+            @SuppressWarnings("unchecked")
+            Valuable10<T, T, T, T, T, T, T, T, T, T, T> valuable10 =
+                    (Valuable10<T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(10), valuable10.value10());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value11() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable11) {
+            @SuppressWarnings("unchecked")
+            Valuable11<T, T, T, T, T, T, T, T, T, T, T, T> valuable11 =
+                    (Valuable11<T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(11), valuable11.value11());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value12() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable12) {
+            @SuppressWarnings("unchecked")
+            Valuable12<T, T, T, T, T, T, T, T, T, T, T, T, T> valuable12 =
+                    (Valuable12<T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(12), valuable12.value12());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value13() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable13) {
+            @SuppressWarnings("unchecked")
+            Valuable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable13 =
+                    (Valuable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(13), valuable13.value13());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value14() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable14) {
+            @SuppressWarnings("unchecked")
+            Valuable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable14 =
+                    (Valuable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(14), valuable14.value14());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value15() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable15) {
+            @SuppressWarnings("unchecked")
+            Valuable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable15 =
+                    (Valuable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(15), valuable15.value15());
+        }
+    }
+
+    @Test
+    public <T extends String> void should_return_value16() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        if (tuple instanceof Valuable16) {
+            @SuppressWarnings("unchecked")
+            Valuable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable16 =
+                    (Valuable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            assertSame(values.get(16), valuable16.value16());
+        }
+    }
 }
