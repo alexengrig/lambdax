@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.set.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -259,6 +260,278 @@ public abstract class TupleTester {
             Valuable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable16 =
                     (Valuable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
             assertSame(values.get(16), valuable16.valueAt16());
+        }
+    }
+
+    @Test
+    public void should_set_value0() {
+        int index = 0;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable0) {
+                Settable0 oldSettable = (Settable0) oldTuple;
+                Settable0 settable = oldSettable.setAt0(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value1() {
+        int index = 1;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable1) {
+                Settable1 oldSettable = (Settable1) oldTuple;
+                Settable1 settable = oldSettable.setAt1(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value2() {
+        int index = 2;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable2) {
+                Settable2 oldSettable = (Settable2) oldTuple;
+                Settable2 settable = oldSettable.setAt2(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value3() {
+        int index = 3;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable3) {
+                Settable3 oldSettable = (Settable3) oldTuple;
+                Settable3 settable = oldSettable.setAt3(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value4() {
+        int index = 4;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable4) {
+                Settable4 oldSettable = (Settable4) oldTuple;
+                Settable4 settable = oldSettable.setAt4(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value5() {
+        int index = 5;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable5) {
+                Settable5 oldSettable = (Settable5) oldTuple;
+                Settable5 settable = oldSettable.setAt5(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value6() {
+        int index = 6;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable6) {
+                Settable6 oldSettable = (Settable6) oldTuple;
+                Settable6 settable = oldSettable.setAt6(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value7() {
+        int index = 7;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable7) {
+                Settable7 oldSettable = (Settable7) oldTuple;
+                Settable7 settable = oldSettable.setAt7(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value8() {
+        int index = 8;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable8) {
+                Settable8 oldSettable = (Settable8) oldTuple;
+                Settable8 settable = oldSettable.setAt8(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value9() {
+        int index = 9;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable9) {
+                Settable9 oldSettable = (Settable9) oldTuple;
+                Settable9 settable = oldSettable.setAt9(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value10() {
+        int index = 10;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable10) {
+                Settable10 oldSettable = (Settable10) oldTuple;
+                Settable10 settable = oldSettable.setAt10(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value11() {
+        int index = 11;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable11) {
+                Settable11 oldSettable = (Settable11) oldTuple;
+                Settable11 settable = oldSettable.setAt11(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value12() {
+        int index = 12;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable12) {
+                Settable12 oldSettable = (Settable12) oldTuple;
+                Settable12 settable = oldSettable.setAt12(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value13() {
+        int index = 13;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable13) {
+                Settable13 oldSettable = (Settable13) oldTuple;
+                Settable13 settable = oldSettable.setAt13(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value14() {
+        int index = 14;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable14) {
+                Settable14 oldSettable = (Settable14) oldTuple;
+                Settable14 settable = oldSettable.setAt14(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value15() {
+        int index = 15;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable15) {
+                Settable15 oldSettable = (Settable15) oldTuple;
+                Settable15 settable = oldSettable.setAt15(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public void should_set_value16() {
+        int index = 16;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            String expected = values.set(index, "unexpected");
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Settable16) {
+                Settable16 oldSettable = (Settable16) oldTuple;
+                Settable16 settable = oldSettable.setAt16(expected);
+                Tuple tuple = (Tuple) settable;
+                assertEquals(expected, tuple.valueAt(index));
+            }
         }
     }
 }

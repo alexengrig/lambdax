@@ -16,9 +16,12 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.set.Settable2;
+
 import java.util.Iterator;
 
-public class Triple<T0, T1, T2> extends Couple<T0, T1> implements Valuable2<T0, T1, T2> {
+public class Triple<T0, T1, T2> extends Couple<T0, T1>
+        implements Valuable2<T0, T1, T2>, Settable2 {
     protected static final int SIZE = 3;
 
     protected final T2 value2;
@@ -47,7 +50,17 @@ public class Triple<T0, T1, T2> extends Couple<T0, T1> implements Valuable2<T0, 
     }
 
     @Override
+    public <R0> Triple<R0, T1, T2> setAt0(R0 value0) {
+        return new Triple<>(value0, value1, value2);
+    }
+
+    @Override
     public T2 valueAt2() {
         return value2;
+    }
+
+    @Override
+    public <R2> Triple<T0, T1, R2> setAt2(R2 value2) {
+        return new Triple<>(value0, value1, value2);
     }
 }

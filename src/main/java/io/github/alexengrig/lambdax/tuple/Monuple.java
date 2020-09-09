@@ -16,7 +16,10 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
-public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
+import io.github.alexengrig.lambdax.tuple.set.Settable0;
+
+public class Monuple<T0> extends EmptyTuple
+        implements Valuable0<T0>, Settable0 {
     protected static final int SIZE = 1;
 
     protected final T0 value0;
@@ -73,6 +76,7 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
         return value0;
     }
 
+    @Override
     public <R0> Monuple<R0> setAt0(R0 value0) {
         return new Monuple<>(value0);
     }
