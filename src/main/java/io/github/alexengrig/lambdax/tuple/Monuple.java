@@ -23,6 +23,8 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
 
     protected final T0 value0;
 
+    protected transient volatile Object[] array;
+
     public Monuple(T0 value0) {
         this.value0 = value0;
     }
@@ -40,8 +42,32 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     public <X> X getValue(int index) {
         requireLegalIndex(index);
         @SuppressWarnings("unchecked")
-        X target = (X) this.value0;
+        X target = (X) toArray()[index];
         return target;
+    }
+
+    protected void requireLegalIndex(int index) {
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException(String.format("The index must be from 0 to %d (exclusive)", size()));
+        }
+    }
+
+    protected Object[] toArray() {
+        Object[] target = array;
+        if (target == null) {
+            synchronized (this) {
+                target = array;
+                if (target == null) {
+                    target = asArray();
+                    array = target;
+                }
+            }
+        }
+        return target;
+    }
+
+    protected Object[] asArray() {
+        return new Object[]{value0};
     }
 
     @Override
@@ -56,5 +82,4 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     public EmptyTuple removeAt0() {
         return EmptyTuple.INSTANCE;
     }
-
 }

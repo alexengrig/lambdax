@@ -33,10 +33,4 @@ public class EmptyTuple implements Tuple {
     public <X> X getValue(int index) {
         throw new IndexOutOfBoundsException("Empty tuple has no values");
     }
-
-    protected void requireLegalIndex(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException(String.format("The index must be from 0 to %d (exclusive)", size()));
-        }
-    }
 }

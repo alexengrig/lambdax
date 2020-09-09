@@ -42,17 +42,8 @@ public class Couple<T0, T1> extends Monuple<T0> implements Valuable1<T0, T1> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <X> X getValue(int index) {
-        requireLegalIndex(index);
-        switch (index) {
-            case 0:
-                return (X) value0;
-            case 1:
-                return (X) value1;
-            default:
-                throw new IllegalStateException();
-        }
+    protected Object[] asArray() {
+        return new Object[]{value0, value1};
     }
 
     @Override
