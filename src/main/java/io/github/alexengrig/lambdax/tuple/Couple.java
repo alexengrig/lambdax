@@ -17,6 +17,7 @@
 package io.github.alexengrig.lambdax.tuple;
 
 import io.github.alexengrig.lambdax.tuple.set.Settable1;
+import io.github.alexengrig.lambdax.tuple.value.Valuable1;
 
 import java.util.Iterator;
 

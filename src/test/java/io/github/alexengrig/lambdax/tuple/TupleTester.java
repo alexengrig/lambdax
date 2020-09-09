@@ -17,6 +17,7 @@
 package io.github.alexengrig.lambdax.tuple;
 
 import io.github.alexengrig.lambdax.tuple.set.*;
+import io.github.alexengrig.lambdax.tuple.value.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

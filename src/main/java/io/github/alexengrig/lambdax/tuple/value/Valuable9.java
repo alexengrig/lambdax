@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax.tuple;
+package io.github.alexengrig.lambdax.tuple.value;
 
-public interface Valuable14<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
-        extends Valuable13<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> {
-    T14 valueAt14();
+public interface Valuable9<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>
+        extends Valuable8<T0, T1, T2, T3, T4, T5, T6, T7, T8> {
+    T9 valueAt9();
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax.tuple;
+package io.github.alexengrig.lambdax.tuple.value;
 
 public interface Valuable5<T0, T1, T2, T3, T4, T5> extends Valuable4<T0, T1, T2, T3, T4> {
     T5 valueAt5();
