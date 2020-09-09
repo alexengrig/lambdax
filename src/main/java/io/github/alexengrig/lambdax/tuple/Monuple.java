@@ -37,7 +37,7 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     }
 
     @Override
-    public <X> X value(int index) {
+    public <X> X valueAt(int index) {
         requireLegalIndex(index);
         @SuppressWarnings("unchecked")
         X target = (X) toArray()[index];
@@ -69,7 +69,7 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     }
 
     @Override
-    public T0 value0() {
+    public T0 valueAt0() {
         return value0;
     }
 

@@ -47,7 +47,7 @@ public class Triple<T0, T1, T2> extends Couple<T0, T1> implements Valuable2<T0, 
     }
 
     @Override
-    public T2 value2() {
+    public T2 valueAt2() {
         return value2;
     }
 }

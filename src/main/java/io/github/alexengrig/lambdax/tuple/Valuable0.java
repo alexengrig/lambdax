@@ -17,5 +17,5 @@
 package io.github.alexengrig.lambdax.tuple;
 
 public interface Valuable0<T0> {
-    T0 value0();
+    T0 valueAt0();
 }

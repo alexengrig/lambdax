@@ -46,7 +46,7 @@ public class Couple<T0, T1> extends Monuple<T0> implements Valuable1<T0, T1> {
     }
 
     @Override
-    public T1 value1() {
+    public T1 valueAt1() {
         return value1;
     }
 

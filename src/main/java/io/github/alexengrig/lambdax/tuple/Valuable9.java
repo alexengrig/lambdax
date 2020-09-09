@@ -18,5 +18,5 @@ package io.github.alexengrig.lambdax.tuple;
 
 public interface Valuable9<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>
         extends Valuable8<T0, T1, T2, T3, T4, T5, T6, T7, T8> {
-    T9 value9();
+    T9 valueAt9();
 }

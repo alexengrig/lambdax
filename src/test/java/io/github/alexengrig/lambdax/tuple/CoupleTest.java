@@ -37,30 +37,30 @@ public class CoupleTest extends TupleTester {
     public void should_set_value0() {
         Couple<Integer, String> oldCouple = new Couple<>(0, "1");
         Couple<String, String> couple = oldCouple.setAt0("0");
-        assertEquals("0", couple.value0());
-        assertEquals("1", couple.value1());
+        assertEquals("0", couple.valueAt0());
+        assertEquals("1", couple.valueAt1());
     }
 
     @Test
     public void should_set_value1() {
         Couple<String, Integer> oldCouple = new Couple<>("0", 1);
         Couple<String, String> couple = oldCouple.setAt1("1");
-        assertEquals("0", couple.value0());
-        assertEquals("1", couple.value1());
+        assertEquals("0", couple.valueAt0());
+        assertEquals("1", couple.valueAt1());
     }
 
     @Test
     public void should_remove_value0() {
         Couple<Integer, String> couple = new Couple<>(0, "1");
         Monuple<String> monuple = couple.removeAt0();
-        assertEquals("1", monuple.value0());
+        assertEquals("1", monuple.valueAt0());
     }
 
     @Test
     public void should_remove_value1() {
         Couple<String, Integer> couple = new Couple<>("0", 1);
         Monuple<String> monuple = couple.removeAt1();
-        assertEquals("0", monuple.value0());
+        assertEquals("0", monuple.valueAt0());
     }
 
 
