@@ -16,7 +16,6 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 public class Couple<T0, T1> extends Monuple<T0> implements Valuable1<T0, T1> {
@@ -29,8 +28,8 @@ public class Couple<T0, T1> extends Monuple<T0> implements Valuable1<T0, T1> {
         this.value1 = value1;
     }
 
-    public static <T> Couple<T, T> of(Collection<T> collection) {
-        Iterator<T> iterator = collection.iterator();
+    public static <T> Couple<T, T> of(Iterable<? extends T> collection) {
+        Iterator<? extends T> iterator = collection.iterator();
         T value0 = iterator.next();
         T value1 = iterator.next();
         return new Couple<>(value0, value1);

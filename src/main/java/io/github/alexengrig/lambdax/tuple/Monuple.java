@@ -16,8 +16,6 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
-import java.util.Collection;
-
 public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
     protected static final int SIZE = 1;
 
@@ -29,8 +27,8 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0> {
         this.value0 = value0;
     }
 
-    public Monuple(Collection<? extends T0> collection) {
-        this(collection.iterator().next());
+    public static <T> Monuple<T> of(Iterable<? extends T> collection) {
+        return new Monuple<>(collection.iterator().next());
     }
 
     @Override
