@@ -22,8 +22,12 @@ import io.github.alexengrig.lambdax.tuple.value.Valuable1;
 
 import java.util.Iterator;
 
-public class Couple<T0, T1> extends Monuple<T0>
-        implements Valuable1<T0, T1>, Settable1, Removable1<T0, T1> {
+public class Couple<T0, T1>
+        extends Monuple<T0>
+        implements
+        Valuable1<T0, T1>,
+        Settable1<T0, T1>,
+        Removable1<T0, T1> {
     protected static final int SIZE = 2;
 
     protected final T1 value1;
@@ -41,13 +45,13 @@ public class Couple<T0, T1> extends Monuple<T0>
     }
 
     @Override
-    public int size() {
-        return SIZE;
+    protected Object[] asArray() {
+        return new Object[]{value0, value1};
     }
 
     @Override
-    protected Object[] asArray() {
-        return new Object[]{value0, value1};
+    public int size() {
+        return SIZE;
     }
 
     @Override
@@ -74,5 +78,4 @@ public class Couple<T0, T1> extends Monuple<T0>
     public Monuple<T0> removeAt1() {
         return new Monuple<>(value0);
     }
-
 }

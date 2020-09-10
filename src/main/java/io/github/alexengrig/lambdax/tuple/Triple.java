@@ -22,8 +22,12 @@ import io.github.alexengrig.lambdax.tuple.value.Valuable2;
 
 import java.util.Iterator;
 
-public class Triple<T0, T1, T2> extends Couple<T0, T1>
-        implements Valuable2<T0, T1, T2>, Settable2, Removable2<T0, T1, T2> {
+public class Triple<T0, T1, T2>
+        extends Couple<T0, T1>
+        implements
+        Valuable2<T0, T1, T2>,
+        Settable2<T0, T1, T2>,
+        Removable2<T0, T1, T2> {
     protected static final int SIZE = 3;
 
     protected final T2 value2;
@@ -42,13 +46,13 @@ public class Triple<T0, T1, T2> extends Couple<T0, T1>
     }
 
     @Override
-    public int size() {
-        return SIZE;
+    protected Object[] asArray() {
+        return new Object[]{value0, value1, value2};
     }
 
     @Override
-    protected Object[] asArray() {
-        return new Object[]{value0, value1, value2};
+    public int size() {
+        return SIZE;
     }
 
     @Override

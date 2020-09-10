@@ -22,7 +22,12 @@ import io.github.alexengrig.lambdax.tuple.value.Valuable0;
 
 import java.util.Arrays;
 
-public class Monuple<T0> extends EmptyTuple implements Valuable0<T0>, Settable0, Removable0<T0> {
+public class Monuple<T0>
+        extends EmptyTuple
+        implements
+        Valuable0<T0>,
+        Settable0<T0>,
+        Removable0<T0> {
     protected static final int SIZE = 1;
 
     protected final T0 value0;
