@@ -22,6 +22,7 @@ import io.github.alexengrig.lambdax.tuple.value.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,6 +44,13 @@ public abstract class TupleTester {
 
     protected Tuple getTupleWithValues() {
         return getTuple(getValues());
+    }
+
+    @Test
+    public void should_return_toString() {
+        List<String> values = getValues();
+        Tuple tuple = getTuple(values);
+        assertEquals(tuple.getClass().getSimpleName() + Arrays.toString(values.toArray()), tuple.toString());
     }
 
     @Test

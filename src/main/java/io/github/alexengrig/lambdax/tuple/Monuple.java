@@ -20,6 +20,8 @@ import io.github.alexengrig.lambdax.tuple.remove.Removable0;
 import io.github.alexengrig.lambdax.tuple.set.Settable0;
 import io.github.alexengrig.lambdax.tuple.value.Valuable0;
 
+import java.util.Arrays;
+
 public class Monuple<T0> extends EmptyTuple implements Valuable0<T0>, Settable0, Removable0<T0> {
     protected static final int SIZE = 1;
 
@@ -85,5 +87,10 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0>, Settable0,
     @Override
     public EmptyTuple removeAt0() {
         return EmptyTuple.INSTANCE;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + Arrays.toString(toArray());
     }
 }

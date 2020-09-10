@@ -35,4 +35,9 @@ public class EmptyTuple implements Tuple, NoRemovable {
     public <X> X valueAt(int index) {
         throw new IndexOutOfBoundsException("Empty tuple has no values");
     }
+
+    @Override
+    public String toString() {
+        return "EmptyTuple[]";
+    }
 }
