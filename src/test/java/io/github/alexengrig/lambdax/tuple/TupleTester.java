@@ -111,195 +111,195 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_return_value0() {
+    public void should_return_value0() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable0) {
-            @SuppressWarnings("unchecked")
-            Valuable0<T> valuable0 = (Valuable0<T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable0 valuable0 = (Valuable0) tuple;
             assertSame(values.get(0), valuable0.valueAt0());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value1() {
+    public void should_return_value1() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable1) {
-            @SuppressWarnings("unchecked")
-            Valuable1<T, T> valuable1 = (Valuable1<T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable1 valuable1 = (Valuable1) tuple;
             assertSame(values.get(1), valuable1.valueAt1());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value2() {
+    public void should_return_value2() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable2) {
-            @SuppressWarnings("unchecked")
-            Valuable2<T, T, T> valuable2 = (Valuable2<T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable2 valuable2 = (Valuable2) tuple;
             assertSame(values.get(2), valuable2.valueAt2());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value3() {
+    public void should_return_value3() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable3) {
-            @SuppressWarnings("unchecked")
-            Valuable3<T, T, T, T> valuable3 = (Valuable3<T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable3 valuable3 = (Valuable3) tuple;
             assertSame(values.get(3), valuable3.valueAt3());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value4() {
+    public void should_return_value4() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable4) {
-            @SuppressWarnings("unchecked")
-            Valuable4<T, T, T, T, T> valuable4 = (Valuable4<T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable4 valuable4 = (Valuable4) tuple;
             assertSame(values.get(4), valuable4.valueAt4());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value5() {
+    public void should_return_value5() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable5) {
-            @SuppressWarnings("unchecked")
-            Valuable5<T, T, T, T, T, T> valuable5 = (Valuable5<T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable5 valuable5 = (Valuable5) tuple;
             assertSame(values.get(5), valuable5.valueAt5());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value6() {
+    public void should_return_value6() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable6) {
-            @SuppressWarnings("unchecked")
-            Valuable6<T, T, T, T, T, T, T> valuable6 = (Valuable6<T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable6 valuable6 = (Valuable6) tuple;
             assertSame(values.get(6), valuable6.valueAt6());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value7() {
+    public void should_return_value7() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable7) {
-            @SuppressWarnings("unchecked")
-            Valuable7<T, T, T, T, T, T, T, T> valuable7 = (Valuable7<T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable7 valuable7 = (Valuable7) tuple;
             assertSame(values.get(7), valuable7.valueAt7());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value8() {
+    public void should_return_value8() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable8) {
-            @SuppressWarnings("unchecked")
-            Valuable8<T, T, T, T, T, T, T, T, T> valuable8 = (Valuable8<T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable8 valuable8 = (Valuable8) tuple;
             assertSame(values.get(8), valuable8.valueAt8());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value9() {
+    public void should_return_value9() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable9) {
-            @SuppressWarnings("unchecked")
-            Valuable9<T, T, T, T, T, T, T, T, T, T> valuable9 = (Valuable9<T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable9 valuable9 = (Valuable9) tuple;
             assertSame(values.get(9), valuable9.valueAt9());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value10() {
+    public void should_return_value10() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable10) {
-            @SuppressWarnings("unchecked")
-            Valuable10<T, T, T, T, T, T, T, T, T, T, T> valuable10 =
-                    (Valuable10<T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable10 valuable10 =
+                    (Valuable10) tuple;
             assertSame(values.get(10), valuable10.valueAt10());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value11() {
+    public void should_return_value11() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable11) {
-            @SuppressWarnings("unchecked")
-            Valuable11<T, T, T, T, T, T, T, T, T, T, T, T> valuable11 =
-                    (Valuable11<T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable11 valuable11 =
+                    (Valuable11) tuple;
             assertSame(values.get(11), valuable11.valueAt11());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value12() {
+    public void should_return_value12() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable12) {
-            @SuppressWarnings("unchecked")
-            Valuable12<T, T, T, T, T, T, T, T, T, T, T, T, T> valuable12 =
-                    (Valuable12<T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable12 valuable12 =
+                    (Valuable12) tuple;
             assertSame(values.get(12), valuable12.valueAt12());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value13() {
+    public void should_return_value13() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable13) {
-            @SuppressWarnings("unchecked")
-            Valuable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable13 =
-                    (Valuable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable13 valuable13 =
+                    (Valuable13) tuple;
             assertSame(values.get(13), valuable13.valueAt13());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value14() {
+    public void should_return_value14() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable14) {
-            @SuppressWarnings("unchecked")
-            Valuable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable14 =
-                    (Valuable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable14 valuable14 =
+                    (Valuable14) tuple;
             assertSame(values.get(14), valuable14.valueAt14());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value15() {
+    public void should_return_value15() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable15) {
-            @SuppressWarnings("unchecked")
-            Valuable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable15 =
-                    (Valuable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable15 valuable15 =
+                    (Valuable15) tuple;
             assertSame(values.get(15), valuable15.valueAt15());
         }
     }
 
     @Test
-    public <T extends String> void should_return_value16() {
+    public void should_return_value16() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         if (tuple instanceof Valuable16) {
-            @SuppressWarnings("unchecked")
-            Valuable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> valuable16 =
-                    (Valuable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) tuple;
+            @SuppressWarnings("rawtypes")
+            Valuable16 valuable16 =
+                    (Valuable16) tuple;
             assertSame(values.get(16), valuable16.valueAt16());
         }
     }
@@ -312,7 +312,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable0) {
+                @SuppressWarnings("rawtypes")
                 Settable0 oldSettable = (Settable0) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable0 settable = oldSettable.setAt0(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -328,7 +330,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable1) {
+                @SuppressWarnings("rawtypes")
                 Settable1 oldSettable = (Settable1) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable1 settable = oldSettable.setAt1(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -344,7 +348,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable2) {
+                @SuppressWarnings("rawtypes")
                 Settable2 oldSettable = (Settable2) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable2 settable = oldSettable.setAt2(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -360,7 +366,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable3) {
+                @SuppressWarnings("rawtypes")
                 Settable3 oldSettable = (Settable3) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable3 settable = oldSettable.setAt3(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -376,7 +384,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable4) {
+                @SuppressWarnings("rawtypes")
                 Settable4 oldSettable = (Settable4) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable4 settable = oldSettable.setAt4(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -392,7 +402,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable5) {
+                @SuppressWarnings("rawtypes")
                 Settable5 oldSettable = (Settable5) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable5 settable = oldSettable.setAt5(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -408,7 +420,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable6) {
+                @SuppressWarnings("rawtypes")
                 Settable6 oldSettable = (Settable6) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable6 settable = oldSettable.setAt6(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -424,7 +438,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable7) {
+                @SuppressWarnings("rawtypes")
                 Settable7 oldSettable = (Settable7) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable7 settable = oldSettable.setAt7(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -440,7 +456,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable8) {
+                @SuppressWarnings("rawtypes")
                 Settable8 oldSettable = (Settable8) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable8 settable = oldSettable.setAt8(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -456,7 +474,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable9) {
+                @SuppressWarnings("rawtypes")
                 Settable9 oldSettable = (Settable9) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable9 settable = oldSettable.setAt9(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -472,7 +492,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable10) {
+                @SuppressWarnings("rawtypes")
                 Settable10 oldSettable = (Settable10) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable10 settable = oldSettable.setAt10(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -488,7 +510,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable11) {
+                @SuppressWarnings("rawtypes")
                 Settable11 oldSettable = (Settable11) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable11 settable = oldSettable.setAt11(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -504,7 +528,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable12) {
+                @SuppressWarnings("rawtypes")
                 Settable12 oldSettable = (Settable12) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable12 settable = oldSettable.setAt12(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -520,7 +546,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable13) {
+                @SuppressWarnings("rawtypes")
                 Settable13 oldSettable = (Settable13) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable13 settable = oldSettable.setAt13(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -536,7 +564,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable14) {
+                @SuppressWarnings("rawtypes")
                 Settable14 oldSettable = (Settable14) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable14 settable = oldSettable.setAt14(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -552,7 +582,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable15) {
+                @SuppressWarnings("rawtypes")
                 Settable15 oldSettable = (Settable15) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable15 settable = oldSettable.setAt15(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -568,7 +600,9 @@ public abstract class TupleTester {
             String expected = values.set(index, "unexpected");
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Settable16) {
+                @SuppressWarnings("rawtypes")
                 Settable16 oldSettable = (Settable16) oldTuple;
+                @SuppressWarnings("rawtypes")
                 Settable16 settable = oldSettable.setAt16(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
@@ -577,14 +611,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value0() {
+    public void should_remove_value0() {
         int index = 0;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable0) {
-                @SuppressWarnings("unchecked")
-                Removable0<T> oldRemovable = (Removable0<T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable0 oldRemovable = (Removable0) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt0();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -600,14 +634,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value1() {
+    public void should_remove_value1() {
         int index = 1;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable1) {
-                @SuppressWarnings("unchecked")
-                Removable1<T, T> oldRemovable = (Removable1<T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable1 oldRemovable = (Removable1) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt1();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -627,15 +661,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value2() {
+    public void should_remove_value2() {
         int index = 2;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable2) {
-                @SuppressWarnings("unchecked")
-                Removable2<T, T, T> oldRemovable =
-                        (Removable2<T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable2 oldRemovable = (Removable2) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt2();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -655,15 +688,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value3() {
+    public void should_remove_value3() {
         int index = 3;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable3) {
-                @SuppressWarnings("unchecked")
-                Removable3<T, T, T, T> oldRemovable =
-                        (Removable3<T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable3 oldRemovable = (Removable3) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt3();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -683,15 +715,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value4() {
+    public void should_remove_value4() {
         int index = 4;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable4) {
-                @SuppressWarnings("unchecked")
-                Removable4<T, T, T, T, T> oldRemovable =
-                        (Removable4<T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable4 oldRemovable = (Removable4) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt4();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -711,15 +742,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value5() {
+    public void should_remove_value5() {
         int index = 5;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable5) {
-                @SuppressWarnings("unchecked")
-                Removable5<T, T, T, T, T, T> oldRemovable =
-                        (Removable5<T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable5 oldRemovable = (Removable5) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt5();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -739,15 +769,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value6() {
+    public void should_remove_value6() {
         int index = 6;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable6) {
-                @SuppressWarnings("unchecked")
-                Removable6<T, T, T, T, T, T, T> oldRemovable =
-                        (Removable6<T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable6 oldRemovable = (Removable6) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt6();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -767,15 +796,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value7() {
+    public void should_remove_value7() {
         int index = 7;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable7) {
-                @SuppressWarnings("unchecked")
-                Removable7<T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable7<T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable7 oldRemovable = (Removable7) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt7();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -795,15 +823,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value8() {
+    public void should_remove_value8() {
         int index = 8;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable8) {
-                @SuppressWarnings("unchecked")
-                Removable8<T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable8<T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable8 oldRemovable = (Removable8) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt8();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -823,15 +850,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value9() {
+    public void should_remove_value9() {
         int index = 9;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable9) {
-                @SuppressWarnings("unchecked")
-                Removable9<T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable9<T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable9 oldRemovable = (Removable9) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt9();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -851,15 +877,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value10() {
+    public void should_remove_value10() {
         int index = 10;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable10) {
-                @SuppressWarnings("unchecked")
-                Removable10<T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable10<T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable10 oldRemovable = (Removable10) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt10();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -879,15 +904,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value11() {
+    public void should_remove_value11() {
         int index = 11;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable11) {
-                @SuppressWarnings("unchecked")
-                Removable11<T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable11<T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable11 oldRemovable = (Removable11) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt11();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -907,15 +931,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value12() {
+    public void should_remove_value12() {
         int index = 12;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable12) {
-                @SuppressWarnings("unchecked")
-                Removable12<T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable12<T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable12 oldRemovable = (Removable12) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt12();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -935,15 +958,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value13() {
+    public void should_remove_value13() {
         int index = 13;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable13) {
-                @SuppressWarnings("unchecked")
-                Removable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable13 oldRemovable = (Removable13) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt13();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -963,15 +985,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value14() {
+    public void should_remove_value14() {
         int index = 14;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable14) {
-                @SuppressWarnings("unchecked")
-                Removable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable14 oldRemovable = (Removable14) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt14();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -991,15 +1012,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value15() {
+    public void should_remove_value15() {
         int index = 15;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable15) {
-                @SuppressWarnings("unchecked")
-                Removable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable15 oldRemovable = (Removable15) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt15();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
@@ -1019,15 +1039,14 @@ public abstract class TupleTester {
     }
 
     @Test
-    public <T extends String> void should_remove_value16() {
+    public void should_remove_value16() {
         int index = 16;
         if (getSize() > index) {
             List<String> values = getValues();
             Tuple oldTuple = getTuple(values);
             if (oldTuple instanceof Removable16) {
-                @SuppressWarnings("unchecked")
-                Removable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
-                        (Removable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                @SuppressWarnings("rawtypes")
+                Removable16 oldRemovable = (Removable16) oldTuple;
                 NoRemovable removable = oldRemovable.removeAt16();
                 Tuple tuple = (Tuple) removable;
                 String unexpected = values.get(index);
