@@ -17,6 +17,18 @@
 package io.github.alexengrig.lambdax.tuple;
 
 public interface Tuple {
+    static <T0> Monuple<T0> of(T0 value0) {
+        return new Monuple<>(value0);
+    }
+
+    static <T0, T1> Couple<T0, T1> of(T0 value0, T1 value1) {
+        return new Couple<>(value0, value1);
+    }
+
+    static <T0, T1, T2> Triple<T0, T1, T2> of(T0 value0, T1 value1, T2 value2) {
+        return new Triple<>(value0, value1, value2);
+    }
+
     int size();
 
     <X> X valueAt(int index);
