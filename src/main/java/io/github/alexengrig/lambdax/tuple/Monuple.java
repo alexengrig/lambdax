@@ -93,4 +93,17 @@ public class Monuple<T0> extends EmptyTuple implements Valuable0<T0>, Settable0,
     public String toString() {
         return getClass().getSimpleName() + Arrays.toString(toArray());
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Monuple<?> monuple = (Monuple<?>) other;
+        return Arrays.equals(toArray(), monuple.toArray());
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(toArray());
+    }
 }

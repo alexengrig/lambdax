@@ -46,11 +46,43 @@ public abstract class TupleTester {
         return getTuple(getValues());
     }
 
+    protected List<String> getOtherValues() {
+        int size = getSize();
+        ArrayList<String> values = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            values.add("other" + i);
+        }
+        return values;
+    }
+
+    protected Tuple getTupleWithOtherValues() {
+        return getTuple(getOtherValues());
+    }
+
     @Test
     public void should_return_toString() {
         List<String> values = getValues();
         Tuple tuple = getTuple(values);
         assertEquals(tuple.getClass().getSimpleName() + Arrays.toString(values.toArray()), tuple.toString());
+    }
+
+    @Test
+    public void should_work_correctly_equals() {
+        Tuple tuple = getTupleWithValues();
+        Tuple other = getTupleWithOtherValues();
+        assertEquals(tuple, tuple);
+        assertNotEquals(tuple, other);
+        assertNotEquals(tuple, null);
+        //noinspection AssertBetweenInconvertibleTypes
+        assertNotEquals(tuple, "OtherClass");
+    }
+
+    @Test
+    public void should_work_correctly_hashCode() {
+        Tuple tuple = getTupleWithValues();
+        Tuple other = getTupleWithOtherValues();
+        assertEquals(tuple.hashCode(), tuple.hashCode());
+        assertNotEquals(tuple.hashCode(), other.hashCode());
     }
 
     @Test
