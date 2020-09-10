@@ -16,6 +16,6 @@
 
 package io.github.alexengrig.lambdax.tuple.set;
 
-public interface Settable0 {
-    <T> Settable0 setAt0(T value0);
+public interface Settable0<T0> {
+    <R0> Settable0<R0> setAt0(R0 value0);
 }

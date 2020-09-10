@@ -16,6 +16,11 @@
 
 package io.github.alexengrig.lambdax.tuple.set;
 
-public interface Settable1 extends Settable0 {
-    <T> Settable1 setAt1(T value1);
+@SuppressWarnings({"unused", "RedundantSuppression"})
+public interface Settable1<T0, T1>
+        extends Settable0<T0> {
+    @Override
+    <R0> Settable1<R0, T1> setAt0(R0 value0);
+
+    <R1> Settable1<T0, R1> setAt1(R1 value1);
 }

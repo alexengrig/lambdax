@@ -16,6 +16,38 @@
 
 package io.github.alexengrig.lambdax.tuple.set;
 
-public interface Settable10 extends Settable9 {
-    <T> Settable10 setAt10(T value10);
+@SuppressWarnings({"unused", "RedundantSuppression"})
+public interface Settable10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+        extends Settable9<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> {
+    @Override
+    <R0> Settable10<R0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> setAt0(R0 value0);
+
+    @Override
+    <R1> Settable10<T0, R1, T2, T3, T4, T5, T6, T7, T8, T9, T10> setAt1(R1 value1);
+
+    @Override
+    <R2> Settable10<T0, T1, R2, T3, T4, T5, T6, T7, T8, T9, T10> setAt2(R2 value2);
+
+    @Override
+    <R3> Settable10<T0, T1, T2, R3, T4, T5, T6, T7, T8, T9, T10> setAt3(R3 value3);
+
+    @Override
+    <R4> Settable10<T0, T1, T2, T3, R4, T5, T6, T7, T8, T9, T10> setAt4(R4 value4);
+
+    @Override
+    <R5> Settable10<T0, T1, T2, T3, T4, R5, T6, T7, T8, T9, T10> setAt5(R5 value5);
+
+    @Override
+    <R6> Settable10<T0, T1, T2, T3, T4, T5, R6, T7, T8, T9, T10> setAt6(R6 value6);
+
+    @Override
+    <R7> Settable10<T0, T1, T2, T3, T4, T5, T6, R7, T8, T9, T10> setAt7(R7 value7);
+
+    @Override
+    <R8> Settable10<T0, T1, T2, T3, T4, T5, T6, T7, R8, T9, T10> setAt8(R8 value8);
+
+    @Override
+    <R9> Settable10<T0, T1, T2, T3, T4, T5, T6, T7, T8, R9, T10> setAt9(R9 value9);
+
+    <R10> Settable10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, R10> setAt10(R10 value10);
 }
