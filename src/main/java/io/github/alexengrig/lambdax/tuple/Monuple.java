@@ -16,11 +16,11 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.remove.Removable0;
 import io.github.alexengrig.lambdax.tuple.set.Settable0;
 import io.github.alexengrig.lambdax.tuple.value.Valuable0;
 
-public class Monuple<T0> extends EmptyTuple
-        implements Valuable0<T0>, Settable0 {
+public class Monuple<T0> extends EmptyTuple implements Valuable0<T0>, Settable0, Removable0<T0> {
     protected static final int SIZE = 1;
 
     protected final T0 value0;
@@ -82,6 +82,7 @@ public class Monuple<T0> extends EmptyTuple
         return new Monuple<>(value0);
     }
 
+    @Override
     public EmptyTuple removeAt0() {
         return EmptyTuple.INSTANCE;
     }

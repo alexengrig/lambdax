@@ -14,25 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.alexengrig.lambdax.tuple;
+package io.github.alexengrig.lambdax.tuple.remove;
 
-import io.github.alexengrig.lambdax.tuple.remove.NoRemovable;
-
-public class EmptyTuple implements Tuple, NoRemovable {
-    public static final EmptyTuple INSTANCE = new EmptyTuple();
-
-    protected static final int SIZE = 0;
-
-    protected EmptyTuple() {
-    }
-
-    @Override
-    public int size() {
-        return SIZE;
-    }
-
-    @Override
-    public <X> X valueAt(int index) {
-        throw new IndexOutOfBoundsException("Empty tuple has no values");
-    }
+public interface NoRemovable {
 }

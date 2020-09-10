@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.remove.*;
 import io.github.alexengrig.lambdax.tuple.set.*;
 import io.github.alexengrig.lambdax.tuple.value.*;
 import org.junit.Test;
@@ -24,8 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 public abstract class TupleTester {
     protected abstract Tuple getTuple(Collection<String> collection);
@@ -532,6 +532,476 @@ public abstract class TupleTester {
                 Settable16 settable = oldSettable.setAt16(expected);
                 Tuple tuple = (Tuple) settable;
                 assertEquals(expected, tuple.valueAt(index));
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value0() {
+        int index = 0;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable0) {
+                @SuppressWarnings("unchecked")
+                Removable0<T> oldRemovable = (Removable0<T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt0();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int rightIndex = 1;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value1() {
+        int index = 1;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable1) {
+                @SuppressWarnings("unchecked")
+                Removable1<T, T> oldRemovable = (Removable1<T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt1();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value2() {
+        int index = 2;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable2) {
+                @SuppressWarnings("unchecked")
+                Removable2<T, T, T> oldRemovable =
+                        (Removable2<T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt2();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value3() {
+        int index = 3;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable3) {
+                @SuppressWarnings("unchecked")
+                Removable3<T, T, T, T> oldRemovable =
+                        (Removable3<T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt3();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value4() {
+        int index = 4;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable4) {
+                @SuppressWarnings("unchecked")
+                Removable4<T, T, T, T, T> oldRemovable =
+                        (Removable4<T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt4();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value5() {
+        int index = 5;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable5) {
+                @SuppressWarnings("unchecked")
+                Removable5<T, T, T, T, T, T> oldRemovable =
+                        (Removable5<T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt5();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value6() {
+        int index = 6;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable6) {
+                @SuppressWarnings("unchecked")
+                Removable6<T, T, T, T, T, T, T> oldRemovable =
+                        (Removable6<T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt6();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value7() {
+        int index = 7;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable7) {
+                @SuppressWarnings("unchecked")
+                Removable7<T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable7<T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt7();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value8() {
+        int index = 8;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable8) {
+                @SuppressWarnings("unchecked")
+                Removable8<T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable8<T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt8();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value9() {
+        int index = 9;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable9) {
+                @SuppressWarnings("unchecked")
+                Removable9<T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable9<T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt9();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value10() {
+        int index = 10;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable10) {
+                @SuppressWarnings("unchecked")
+                Removable10<T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable10<T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt10();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value11() {
+        int index = 11;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable11) {
+                @SuppressWarnings("unchecked")
+                Removable11<T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable11<T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt11();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value12() {
+        int index = 12;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable12) {
+                @SuppressWarnings("unchecked")
+                Removable12<T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable12<T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt12();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value13() {
+        int index = 13;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable13) {
+                @SuppressWarnings("unchecked")
+                Removable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable13<T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt13();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value14() {
+        int index = 14;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable14) {
+                @SuppressWarnings("unchecked")
+                Removable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable14<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt14();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value15() {
+        int index = 15;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable15) {
+                @SuppressWarnings("unchecked")
+                Removable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable15<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt15();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
+            }
+        }
+    }
+
+    @Test
+    public <T extends String> void should_remove_value16() {
+        int index = 16;
+        if (getSize() > index) {
+            List<String> values = getValues();
+            Tuple oldTuple = getTuple(values);
+            if (oldTuple instanceof Removable16) {
+                @SuppressWarnings("unchecked")
+                Removable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T> oldRemovable =
+                        (Removable16<T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T>) oldTuple;
+                NoRemovable removable = oldRemovable.removeAt16();
+                Tuple tuple = (Tuple) removable;
+                String unexpected = values.get(index);
+                if (index < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(index));
+                }
+                int leftIndex = 0;
+                if (leftIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(leftIndex));
+                }
+                int rightIndex = 2;
+                if (rightIndex < tuple.size()) {
+                    assertNotEquals(unexpected, tuple.valueAt(rightIndex));
+                }
             }
         }
     }
