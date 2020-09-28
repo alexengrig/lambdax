@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple.set;
 
+@SuppressWarnings("unused")
 public interface Settable0<T0> {
     <R0> Settable0<R0> setAt0(R0 value0);
 }

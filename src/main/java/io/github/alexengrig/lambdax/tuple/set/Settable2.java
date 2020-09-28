@@ -16,7 +16,6 @@
 
 package io.github.alexengrig.lambdax.tuple.set;
 
-@SuppressWarnings({"unused", "RedundantSuppression"})
 public interface Settable2<T0, T1, T2>
         extends Settable1<T0, T1> {
     @Override
