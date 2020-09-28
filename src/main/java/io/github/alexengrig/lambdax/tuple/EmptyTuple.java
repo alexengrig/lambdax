@@ -16,9 +16,11 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.add.Addable;
+import io.github.alexengrig.lambdax.tuple.add.Addable0;
 import io.github.alexengrig.lambdax.tuple.remove.NoRemovable;
 
-public class EmptyTuple implements Tuple, NoRemovable {
+public class EmptyTuple implements Tuple, Addable, NoRemovable {
     public static final EmptyTuple INSTANCE = new EmptyTuple();
 
     protected static final int SIZE = 0;
@@ -29,6 +31,11 @@ public class EmptyTuple implements Tuple, NoRemovable {
     @Override
     public int size() {
         return SIZE;
+    }
+
+    @Override
+    public <R> Addable0<R> add(R value) {
+        return new Monuple<>(value);
     }
 
     @Override

@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.add.Addable1;
 import io.github.alexengrig.lambdax.tuple.remove.Removable1;
 import io.github.alexengrig.lambdax.tuple.set.Settable1;
 import io.github.alexengrig.lambdax.tuple.value.Valuable1;
@@ -25,6 +26,7 @@ import java.util.Iterator;
 public class Couple<T0, T1>
         extends Monuple<T0>
         implements
+        Addable1<T0, T1>,
         Valuable1<T0, T1>,
         Settable1<T0, T1>,
         Removable1<T0, T1> {
@@ -52,6 +54,21 @@ public class Couple<T0, T1>
     @Override
     public int size() {
         return SIZE;
+    }
+
+    @Override
+    public <R> Triple<R, T0, T1> add(R value) {
+        return addAt0(value);
+    }
+
+    @Override
+    public <R0> Triple<R0, T0, T1> addAt0(R0 value0) {
+        return new Triple<>(value0, this.value0, this.value1);
+    }
+
+    @Override
+    public <R1> Triple<T0, R1, T1> addAt1(R1 value1) {
+        return new Triple<>(this.value0, value1, this.value1);
     }
 
     @Override

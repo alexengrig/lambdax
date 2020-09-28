@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.add.Addable0;
 import io.github.alexengrig.lambdax.tuple.remove.Removable0;
 import io.github.alexengrig.lambdax.tuple.set.Settable0;
 import io.github.alexengrig.lambdax.tuple.value.Valuable0;
@@ -25,6 +26,7 @@ import java.util.Arrays;
 public class Monuple<T0>
         extends EmptyTuple
         implements
+        Addable0<T0>,
         Valuable0<T0>,
         Settable0<T0>,
         Removable0<T0> {
@@ -77,6 +79,16 @@ public class Monuple<T0>
 
     protected Object[] asArray() {
         return new Object[]{value0};
+    }
+
+    @Override
+    public <R> Couple<R, T0> add(R value) {
+        return addAt0(value);
+    }
+
+    @Override
+    public <R0> Couple<R0, T0> addAt0(R0 value0) {
+        return new Couple<>(value0, this.value0);
     }
 
     @Override
