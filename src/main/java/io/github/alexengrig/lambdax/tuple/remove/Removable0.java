@@ -16,7 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple.remove;
 
-@SuppressWarnings({"unused", "RedundantSuppression"})
+@SuppressWarnings("unused")
 public interface Removable0<T0> extends NoRemovable {
     NoRemovable removeAt0();
 }
