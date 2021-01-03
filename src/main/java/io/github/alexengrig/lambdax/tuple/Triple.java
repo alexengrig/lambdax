@@ -16,6 +16,7 @@
 
 package io.github.alexengrig.lambdax.tuple;
 
+import io.github.alexengrig.lambdax.tuple.add.NewAddable3;
 import io.github.alexengrig.lambdax.tuple.remove.Removable2;
 import io.github.alexengrig.lambdax.tuple.set.Settable2;
 import io.github.alexengrig.lambdax.tuple.value.Valuable2;
@@ -25,6 +26,7 @@ import java.util.Iterator;
 public class Triple<T0, T1, T2>
         extends Couple<T0, T1>
         implements
+        NewAddable3<T0, T1, T2>,
         Valuable2<T0, T1, T2>,
         Settable2<T0, T1, T2>,
         Removable2<T0, T1, T2> {
